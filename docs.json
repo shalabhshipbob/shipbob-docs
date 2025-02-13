@@ -209,7 +209,9 @@
           },
           {
             "version": "experiemntal",
-            "openapi": "./openapi-experimental.json"
+            "openapi": {
+              "source": "./openapi-experimental.json"
+            }
           }
         ]
       }
