@@ -23,7 +23,7 @@
       },
       {
         "tab": "API Reference",
-        "openapi": "https://productsmanagementapi-stage.shipbob.dev/swagger/v4/swagger.json"
+        "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
       }
     ]
   },
