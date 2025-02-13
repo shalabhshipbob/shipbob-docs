@@ -212,7 +212,9 @@
             "groups": [
               {
                 "group": "APIs",
-                "openapi": "https://productsmanagementapi-stage.shipbob.dev/swagger/v4/swagger.json"
+                "openapi": {
+                  "source": "https://productsmanagementapi-stage.shipbob.dev/swagger/v4/swagger.json"
+                }
               }
             ]
           }
