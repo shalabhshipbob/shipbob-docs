@@ -209,12 +209,7 @@
           },
           {
             "version": "experiemntal",
-            "groups": [
-              {
-                "group": "APIs",
-                "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
-              }
-            ]
+            "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
           }
         ]
       }
