@@ -213,7 +213,8 @@
               {
                 "group": "APIs",
                 "openapi": {
-                  "source": "https://productsmanagementapi-stage.shipbob.dev/swagger/v4/swagger.json"
+                  "source": "https://productsmanagementapi-stage.shipbob.dev/swagger/v4/swagger.json",
+                  "directory": "api-reference"
                 }
               }
             ]
