@@ -209,9 +209,7 @@
           },
           {
             "version": "experiemntal",
-            "openapi": {
-              "source": "/openapi-experimental.json"
-            }
+            "openapi": "https://productsmanagementapi-stage.shipbob.dev/swagger/v4/swagger.json"
           }
         ]
       }
