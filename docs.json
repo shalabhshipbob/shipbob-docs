@@ -210,7 +210,7 @@
           {
             "version": "experiemntal",
             "openapi": {
-              "source": "./openapi-experimental.json"
+              "source": "/openapi-experimental.json"
             }
           }
         ]
