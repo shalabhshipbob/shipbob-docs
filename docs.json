@@ -9,9 +9,10 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "tabs": [
+    "dropdowns": [
       {
-        "tab": "Getting Started",
+        "dropdown": "Getting Started",
+        "icon": "book-open",
         "pages": [
           "introduction",
           "guides",
@@ -22,7 +23,8 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "dropdown": "API Reference",
+        "icon": "sqaure-terminal",
         "versions": [
           {
             "version": "1.0",
@@ -212,7 +214,14 @@
             "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
           }
         ]
-      }
+      },
+      {
+        "dropdown": "Changelog",
+        "icon": "list-timeline",
+        "pages": [
+          "release-notes"
+        ]
+      },
     ]
   },
   "styling": {
