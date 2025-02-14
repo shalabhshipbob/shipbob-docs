@@ -12,6 +12,7 @@
     "dropdowns": [
       {
         "dropdown": "Getting Started",
+        "icon": "book-open",
         "pages": [
           "introduction",
           "guides",
@@ -23,6 +24,7 @@
       },
       {
         "dropdown": "API Reference",
+        "icon": "sqaure-terminal",
         "versions": [
           {
             "version": "1.0",
@@ -211,6 +213,13 @@
             "version": "Experiemntal",
             "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
           }
+        ]
+      },
+      {
+        "dropdown": "Changelog",
+        "icon": "list-timeline",
+        "pages": [
+          "changelog/changelog"
         ]
       }
     ]
