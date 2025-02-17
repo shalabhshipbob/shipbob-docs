@@ -11,7 +11,7 @@
   "navigation": {
     "dropdowns": [
       {
-        "dropdown": "Getting Started",
+        "dropdown": "Getting Starteds",
         "icon": "book-open",
         "pages": [
           "introduction",
@@ -219,16 +219,16 @@
         "dropdown": "Changelog",
         "icon": "list-timeline",
         "pages": [
-          "changelog/changelog"
+          "release-notes"
         ]
-      }
+      },
     ]
   },
   "styling": {
     "codeblocks": "system"
   },
   "logo": {
-    "light": "/logo/light.svg",
+    "light": "/logo/logo-sb.svg",
     "dark": "/logo/dark.png"
   },
   "background": {
