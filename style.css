@@ -7,8 +7,8 @@ table tbody tr:nth-of-type(even) {
     <!-- background-color: #f3f3f3; -->
 }
 
-#sidebar div div div a img {
-	/* height: 2rem !important; */
+#sidebar-content div img {
+	height: 2rem !important;
 }
 
 .mermaid div {

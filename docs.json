@@ -9,9 +9,10 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "tabs": [
+    "dropdowns": [
       {
-        "tab": "Getting Started",
+        "dropdown": "Getting Started",
+        "icon": "book-open",
         "pages": [
           "introduction",
           "guides",
@@ -22,7 +23,8 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "dropdown": "API Reference",
+        "icon": "sqaure-terminal",
         "versions": [
           {
             "version": "1.0",
@@ -212,6 +214,13 @@
             "openapi": "https://3f28-223-190-84-43.ngrok-free.app/doc"
           }
         ]
+      },
+      {
+        "dropdown": "Changelog",
+        "icon": "list-timeline",
+        "pages": [
+          "changelog/changelog"
+        ]
       }
     ]
   },
@@ -219,7 +228,7 @@
     "codeblocks": "system"
   },
   "logo": {
-    "light": "/logo/light.png",
+    "light": "/logo/light.svg",
     "dark": "/logo/dark.png"
   },
   "background": {
