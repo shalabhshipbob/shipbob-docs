@@ -31,15 +31,29 @@
             "default": true,
             "groups": [
               {
-                "group": "Inventory",
-                "pages": [{
+                "group": "API Reference",
+                "pages": [
+                  {
                   "group": "Inventory",
                   "pages": [
                   "api-reference/inventory/get-an-inventory-item",
                   "api-reference/inventory/list-inventory-items",
                   "api-reference/inventory/get-a-list-of-inventory-items-by-product-id"
                   ]
-                }]
+                  },
+              {
+                "group": "Receiving",
+                "pages": [
+                  "api-reference/receiving/get-fulfillment-centers",
+                  "api-reference/receiving/get-warehouse-receiving-order",
+                  "api-reference/receiving/get-warehouse-receiving-order-boxes",
+                  "api-reference/receiving/get-multiple-warehouse-receiving-orders",
+                  "api-reference/receiving/create-warehouse-receiving-order",
+                  "api-reference/receiving/get-warehouse-receiving-order-box-labels",
+                  "api-reference/receiving/cancel-warehouse-receiving-order"
+                ]
+              }                  
+                ]
               },
               {
                 "group": "Orders",
