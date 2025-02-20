@@ -24,7 +24,7 @@
       },
       {
         "tab": "API Reference",
-        "icon": "brackets-curlt",
+        "icon": "brackets-curl",
         "versions": [
           {
             "version": "1.0",
@@ -32,11 +32,14 @@
             "groups": [
               {
                 "group": "Inventory",
-                "pages": [
+                "pages": [{
+                  "group": "Inventory",
+                  "pages": [
                   "api-reference/inventory/get-an-inventory-item",
                   "api-reference/inventory/list-inventory-items",
                   "api-reference/inventory/get-a-list-of-inventory-items-by-product-id"
-                ]
+                  ]
+                }]
               },
               {
                 "group": "Orders",
