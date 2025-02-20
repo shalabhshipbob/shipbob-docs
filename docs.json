@@ -9,10 +9,10 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "dropdowns": [
+    "tabs": [
       {
-        "dropdown": "Getting Starteds",
-        "icon": "book-open",
+        "tab": "Getting Started",
+        "icon": "book",
         "pages": [
           "introduction",
           "guides",
@@ -23,8 +23,8 @@
         ]
       },
       {
-        "dropdown": "API Reference",
-        "icon": "sqaure-terminal",
+        "tab": "API Reference",
+        "icon": "brackets-curlt",
         "versions": [
           {
             "version": "1.0",
@@ -210,18 +210,18 @@
             ]
           },
           {
-            "version": "Beta",
-            "openapi": "https://3f28-223-190-84-43.ngrok-free.app/doc"
+            "version": "experiemntal",
+            "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
           }
         ]
       },
       {
-        "dropdown": "Changelog",
+        "tab": "Changelog",
         "icon": "list-timeline",
         "pages": [
           "release-notes"
         ]
-      }
+      },
     ]
   },
   "styling": {
