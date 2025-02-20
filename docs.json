@@ -76,8 +76,6 @@
                 "pages": [
                   "api-reference/locations/get-locations"
                 ]
-              }
-                ]
               },
               {
                 "group": "Orders",
@@ -111,6 +109,8 @@
                   "api-reference/returns/create-return-order",
                   "api-reference/returns/cancel-return-order",
                   "api-reference/returns/get-one-returns-status-history"
+                ]
+              }
                 ]
               }
             ]
