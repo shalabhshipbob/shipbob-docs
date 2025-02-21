@@ -42,7 +42,6 @@
                   {
                     "group": "Orders",
                     "pages": [
-                      "api-reference/orders/overview",
                       "api-reference/orders/estimate-fulfillment-cost-for-order",
                       "api-reference/orders/get-order",
                       "api-reference/orders/get-orders",
@@ -69,7 +68,6 @@
                       "api-reference/products/get-multiple-products",
                       "api-reference/products/add-a-single-product-to-the-store",
                       "api-reference/products/get-a-single-product",
-                      "api-reference/products/modify-a-single-product",
                       "api-reference/products/add-multiple-products-to-the-store"
                     ]
                   },
