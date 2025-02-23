@@ -39,7 +39,7 @@
       },
       {
         "dropdown": "API Reference",
-        "icon": "brackets-curl",
+        "icon": "brackets-curly",
         "versions": [
           {
             "version": "1.0",
