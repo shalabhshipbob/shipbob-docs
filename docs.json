@@ -17,17 +17,12 @@
           {
             "group": "Getting Started",
             "pages": [
-              {
-                "group": "Channels",
-                "pages": [
-                  "introduction",
-                  "guides",
-                  "auth",
-                  "webhooks",
-                  "sandbox-simulations",
-                  "tools"
-                ]
-              },
+                "introduction",
+                "guides",
+                "auth",
+                "webhooks",
+                "sandbox-simulations",
+                "tools"
               {
                 "group": "Use Cases",
                 "pages": [
