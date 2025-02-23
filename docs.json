@@ -18,20 +18,19 @@
             "group": "Getting Started",
             "pages": [
               "introduction",
-              "guides",
+              {
+                "group": "Use Cases",
+                "pages": [
+                  "guides/overview",
+                  "guides/orders"
+                ]
+              },
               "auth",
               "webhooks",
               "sandbox-simulations",
               "tools"
             ]
           },
-          {
-            "group": "Use Cases",
-            "pages": [
-              "guides/overview",
-              "guides/orders"
-            ]
-          }
         ]
       },
       {
