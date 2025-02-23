@@ -28,8 +28,8 @@
             "group": "Use Cases",
             "icon": "pen-paintbrush",
             "pages": [
-              "guides",
-              "orders"
+              "guides/overview",
+              "guides/orders"
             ]
           }
         ]
