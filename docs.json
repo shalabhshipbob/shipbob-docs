@@ -18,17 +18,20 @@
             "group": "Getting Started",
             "pages": [
               "introduction",
-              {
-                "group": "Use Cases",
-                "icon": "pen-paintbrush",
-                "pages": ["guides", "orders"]
-              },
               "auth",
               "webhooks",
               "sandbox-simulations",
               "tools"
             ]
           },
+          {
+            "group": "Use Cases",
+            "icon": "pen-paintbrush",
+            "pages": [
+              "guides",
+              "orders"
+            ]
+          }
         ]
       },
       {
