@@ -20,10 +20,8 @@
               "introduction",
               {
                 "group": "Use Cases",
-                "pages": [
-                  "guides/overview",
-                  "guides/orders"
-                ]
+                "icon": "pen-paintbrush",
+                "pages": ["guides", "orders"]
               },
               "auth",
               "webhooks",
