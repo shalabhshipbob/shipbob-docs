@@ -18,6 +18,9 @@
             "group": "Getting Started",
             "pages": [
               "introduction",
+              "quickstart",
+              "concepts",
+              "rate-limit",
               "auth",
               "webhooks",
               "sandbox-simulations",
