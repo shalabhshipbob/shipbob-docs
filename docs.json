@@ -13,13 +13,30 @@
       {
         "tab": "Getting Started",
         "icon": "book",
-        "pages": [
-          "introduction",
-          "guides",
-          "auth",
-          "webhooks",
-          "sandbox-simulations",
-          "tools"
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              {
+                "group": "Channels",
+                "pages": [
+                  "introduction",
+                  "guides",
+                  "auth",
+                  "webhooks",
+                  "sandbox-simulations",
+                  "tools"
+                ]
+              },
+              {
+                "group": "Use Cases",
+                "pages": [
+                  "guides/overview",
+                  "guides/orders"
+                ]
+              }
+            ]
+          }
         ]
       },
       {
