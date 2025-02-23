@@ -9,9 +9,9 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "tabs": [
+    "dropdowns": [
       {
-        "tab": "Documentation",
+        "dropdown": "Documentation",
         "icon": "book",
         "groups": [
           {
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "dropdown": "API Reference",
         "icon": "brackets-curl",
         "versions": [
           {
@@ -142,7 +142,7 @@
         ]
       },
       {
-        "tab": "Changelog",
+        "dropdown": "Changelog",
         "icon": "list-timeline",
         "pages": [
           "release-notes"
