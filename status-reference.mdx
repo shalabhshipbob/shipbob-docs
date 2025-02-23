@@ -1,0 +1,14 @@
+---
+title: 'Status Reference'
+description: ''
+---
+
+### Order Statuses
+- **Processing**: Order is being prepared.
+- **Completed**: Shipment has left ShipBob.
+
+### Example: Filter Orders by Status
+<CodeBlock language="bash">
+  {`curl -X GET "https://api.shipbob.com/1.0/order?status=Processing" \\  
+  -H "Authorization: Bearer YOUR_PAT_TOKEN"`}
+</CodeBlock>
