@@ -1,0 +1,65 @@
+---
+title: 'Manage Products'
+description: 'Set up your catalog'
+---
+
+### Quick Start
+
+Add products to ShipBob’s catalog.
+
+1. **Create**: POST to `/1.0/product`.
+
+2. **List**: GET from `/1.0/product`.
+
+```
+  {`curl -X POST "https://api.shipbob.com/1.0/product" \\
+    -H "Authorization: Bearer YOUR_TOKEN" \\
+    -H "Content-Type: application/json" \\
+    -H "shipbob_channel_id: 12345" \\
+    -d '{
+      "reference_id": "TEE001",
+      "name": "Blue Tee"
+    }'`}
+```
+
+
+
+<CodeBlock language="bash">
+  {`curl -X POST "https://api.shipbob.com/1.0/product" \\
+    -H "Authorization: Bearer YOUR_TOKEN" \\
+    -H "Content-Type: application/json" \\
+    -H "shipbob_channel_id: 12345" \\
+    -d '{
+      "reference_id": "TEE001",
+      "name": "Blue Tee"
+    }'`}
+</CodeBlock>
+
+**Response**:
+
+<CodeBlock language="json">
+  {`{"id": 2001, "reference_id": "TEE001"}`}
+</CodeBlock>
+
+<CodeBlock language="bash">
+  {`curl -X GET "https://api.shipbob.com/1.0/product?ReferenceIds=TEE001" \\
+    -H "Authorization: Bearer YOUR_TOKEN" \\
+    -H "shipbob_channel_id: 12345"`}
+</CodeBlock>
+
+**Response**:
+
+<CodeBlock language="json">
+  {`[{"id": 2001, "reference_id": "TEE001", "name": "Blue Tee"}]`}
+</CodeBlock>
+
+### Flow
+
+```mermaid
+  sequenceDiagram
+    Merchant->>ShipBob API: POST /1.0/product
+    ShipBob API-->>Merchant: 200 OK
+    Merchant->>ShipBob API: GET /1.0/product
+    ShipBob API-->>Merchant: 200 OK
+1111
+```
