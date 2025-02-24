@@ -9,37 +9,27 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "dropdowns": [
+    "tabs": [
       {
-        "dropdown": "Documentation",
+        "tab": "Getting Started",
         "icon": "book",
         "groups": [
           {
             "group": "Getting Started",
             "pages": [
               "introduction",
-              "quickstart",
+              "guides",
               "concepts",
-              "rate-limit",
               "auth",
-              "webhooks",
-              "sandbox-simulations",
-              "tools"
+              "status-reference",
+              "webhooks"
             ]
           },
-          {
-            "group": "Use Cases",
-            "icon": "pen-paintbrush",
-            "pages": [
-              "guides/overview",
-              "guides/orders"
-            ]
-          }
         ]
       },
       {
-        "dropdown": "API Reference",
-        "icon": "brackets-curly",
+        "tab": "API Reference",
+        "icon": "brackets-curl",
         "versions": [
           {
             "version": "1.0",
@@ -142,7 +132,7 @@
         ]
       },
       {
-        "dropdown": "Changelog",
+        "tab": "Changelog",
         "icon": "list-timeline",
         "pages": [
           "release-notes"

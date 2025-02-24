@@ -3,12 +3,71 @@ title: 'Status Reference'
 description: ''
 ---
 
-### Order Statuses
-- **Processing**: Order is being prepared.
-- **Completed**: Shipment has left ShipBob.
+## Status Reference
 
-### Example: Filter Orders by Status
-<CodeBlock language="bash">
-  {`curl -X GET "https://api.shipbob.com/1.0/order?status=Processing" \\  
-  -H "Authorization: Bearer YOUR_PAT_TOKEN"`}
-</CodeBlock>
+A common use case of ShipBob's API includes filtering orders, shipments, returns, or WROs by status. Here you will find the valid statuses by resource.
+
+### Shipment Statuses
+
+Shipment statuses reflect what is happening in the physical world with the package. There is an additional "status detail" section with more detailed information that is also available in our ShipBob Merchant Application.
+
+* **Exception**: the shipment cannot be fulfilled due to an out of stock or inactive product.
+
+* **On Hold**: the shipment is not ready for fulfillment, even if there is stock available. Common reasons are: merchant manually placed on hold, missing tarriff codes on international orders, or bad credit card information.
+
+* **Processing**: the shipment is in the process of fulfillment.
+
+* **Completed**: the shipment has been fulfilled, i.e. it has left ShipBob. This does not mean it has been delivered by the carrier.
+
+* **Cancelled**: the shipment has been cancelled and will not be fulfilled.
+
+The most important statuses and status details are listed here:
+
+| Shipment Status | Status Detail Name        | Status Detail Description                | Status Detail ID |
+| --------------- | ------------------------- | :--------------------------------------- | :--------------- |
+| Processing      | -                         | -                                        | -                |
+| Processing      | Picked                    | Picking Completed                        | 100              |
+| Processing      | Packed                    |                                          |                  |
+| Processing      | Labeled                   |                                          |                  |
+| LabeledCreated  | -                         | -                                        | -                |
+| Completed       | Processing                | Waiting For Carrier Pickup               | 200              |
+| Completed       | InTransit                 | Shipment In Transit                      | 201              |
+| Completed       | Delivered                 | Shipment Delivered                       | 203              |
+| Completed       | DeliveryException         |                                          |                  |
+| Exception       | -                         | -                                        | -                |
+| Exception       | OutOfStock                | No Stock On Hand For Sku                 | 303              |
+| Exception       | UnknownSku                | No Sku History (if there are no reasons) | 304              |
+| Exception       | InactiveSku               |                                          |                  |
+| On Hold         | PaymentDeclined           |                                          |                  |
+| On Hold         | MissingTarriffInformation |                                          |                  |
+| On Hold         | Manual                    | Manual                                   | 405              |
+| On Hold         | InvalidAddress            | Invalid Address                          | 401              |
+| On Hold         | AutoProcessingPause       |                                          |                  |
+| Cancelled       | Cancelled                 |                                          |                  |
+
+### Order Statuses
+
+Orders can have 1 or many shipments (if the contents will not fit in 1 box, for example). Order statuses are imputed from the statuses of the underlying shipments.
+
+| Shipment 1 Status | Shipment n Status | Order Status        |
+| ----------------- | ----------------- | ------------------- |
+| Processing        |                   | Processing          |
+| Exception         |                   | Exception           |
+| On Hold           |                   | On Hold             |
+| Completed         |                   | Completed           |
+| Cancelled         |                   | Cancelled           |
+| Processing        | Processing        | Processing          |
+| Processing        | Exception         | Processing          |
+| Processing        | On Hold           | Processing          |
+| Processing        | Cancelled         | Processing          |
+| Processing        | Completed         | Partially Fulfilled |
+| Exception         | Exception         | Exception           |
+| Exception         | On Hold           | Exception           |
+| Exception         | Completed         | Partially Fulfilled |
+| Exception         | Cancelled         | Exception           |
+| On Hold           | On Hold           | Exception           |
+| On Hold           | Completed         | Partially Fulfilled |
+| On Hold           | Cancelled         | Exception           |
+| Completed         | Completed         | Fulfilled           |
+| Completed         | Cancelled         | Partially Fulfilled |
+| Cancelled         | Cancelled         | Cancelled           |

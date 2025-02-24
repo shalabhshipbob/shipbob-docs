@@ -6,43 +6,23 @@ ShipBob’s public API supports a variety of different use cases. This guide sho
 
 You can create a typical integration using the following endpoints:
 
-* [Order POST](https://developer.shipbob.com/api-docs/#tag/Orders/paths/~11.0~1order/post)
+* [Order POST](https://developer.shipbob.com/api-docs/#tag/Orders/paths/~11.0~1order/post) – This allows you to create orders in ShipBob. Example API request is found in the documentation linked.
 
-   – This allows you to create orders in ShipBob. Example API request is found in the documentation linked.
+* [Order GET](https://developer.shipbob.com/api-docs/#tag/Orders/paths/~11.0~1order/get) – This allows you to fetch tracking details from ShipBob if you want to take a polling/scheduled based approach.
 
-* [Order GET](https://developer.shipbob.com/api-docs/#tag/Orders/paths/~11.0~1order/get)
+  * You can also subscribe to our webhooks if you’d like to automatically receive shipment events [here](https://developer.shipbob.com/api-docs/#tag/Webhooks).
 
-   – This allows you to fetch tracking details from ShipBob if you want to take a polling/scheduled based approach.
-
-  * You can also subscribe to our webhooks if you’d like to automatically receive shipment events 
-
-    [here](https://developer.shipbob.com/api-docs/#tag/Webhooks)
-
-    .
-
-* [Inventory GET](https://developer.shipbob.com/api-docs/#tag/Inventory/paths/~11.0~1inventory~1%7BinventoryId%7D/get)
-
-   – This allows you to fetch inventory levels across ShipBob’s facility network. This endpoint will return per-facility inventory levels as well as aggregated inventory levels across the network.
+* [Inventory GET](https://developer.shipbob.com/api-docs/#tag/Inventory/paths/~11.0~1inventory~1%7BinventoryId%7D/get) – This allows you to fetch inventory levels across ShipBob’s facility network. This endpoint will return per-facility inventory levels as well as aggregated inventory levels across the network.
 
   * The following inventory quantity calculations are available:
 
-    * **On hand**
+    * **On hand** quantities are everything currently stocked at the warehouse.
 
-       quantities are everything currently stocked at the warehouse.
+    * **Fulfillable** quantities are everything stocked at the warehouse minus quantities committed to orders.
 
-    * **Fulfillable**
+    * **Sellable** quantities are everything stocked at the warehouse, minus quantities committed to orders, minus any exception orders. This calculation is only available at a network-wide level.
 
-       quantities are everything stocked at the warehouse minus quantities committed to orders.
-
-    * **Sellable**
-
-       quantities are everything stocked at the warehouse, minus quantities committed to orders, minus any exception orders. This calculation is only available at a network-wide level.
-
-* Authentication is handled either via OAuth or a token-based approach. For a custom integration, we typically see the token approach used – you are able to generate an API token directly in your ShipBob dashboard. Steps 
-
-  [here](https://developer.shipbob.com/auth)
-
-  .
+* Authentication is handled either via OAuth or a token-based approach. For a custom integration, we typically see the token approach used – you are able to generate an API token directly in your ShipBob dashboard. Steps [here](https://developer.shipbob.com/auth).
 
 ***
 
@@ -52,51 +32,25 @@ You can create a typical integration using the following endpoints:
 
 ShipBob’s Order POST endpoint has several required fields that you need to be aware of:
 
-* **Shipping method:**
+* **Shipping method:** This is typically a value such as “Standard”, “Expedited”, “2-Day”, etc. Once a ship method comes through via the integration, the merchant will have the ability to map the method to a specific Ship Option that will determine the shipment’s SLA and carrier selection. More detail on Ship Options can be found in our help center [here](https://support.shipbob.com/s/article/Available-Ship-Options-and-Average-Carrier-Transit-Times-by-Country-of-Origin).
 
-   This is typically a value such as “Standard”, “Expedited”, “2-Day”, etc. Once a ship method comes through via the integration, the merchant will have the ability to map the method to a specific Ship Option that will determine the shipment’s SLA and carrier selection. More detail on Ship Options can be found in our help center 
+* **Recipient name** - The name of the individual the shipment will be delivered to.
 
-  [here](https://support.shipbob.com/s/article/Available-Ship-Options-and-Average-Carrier-Transit-Times-by-Country-of-Origin)
-
-  .
-
-* **Recipient name**
-
-   - The name of the individual the shipment will be delivered to.
-
-* **Recipient address**
-
-   – specifically the Address1, City, and Country (ISO Alpha-2 code is highly recommended).
+* **Recipient address** – specifically the Address1, City, and Country (ISO Alpha-2 code is highly recommended).
 
   * If available, please also pass the City and Zip Code.
 
-* **Reference id**
+* **Reference id** – This is a unique order number from the upstream platform being integrated with ShipBob. This number must be unique within ShipBob account.
 
-   – This is a unique order number from the upstream platform being integrated with ShipBob. This number must be unique within ShipBob account.
+  * You can also pass an optional **order\_number** field. This does **not** need to be unique, and is a more user-friendly order number that a customer service agent might be more familiar with.
 
-  * You can also pass an optional 
+* **Products –** There are two methods for providing product data with your order payload to ShipBob:
 
-    **order_number**
+  * **ReferenceId Model** (highly recommended) – This model allows you to pass a product’s reference\_id (typically the SKU value), as well as the product name. When an order is created, ShipBob will check if the product already exists based on a matching reference\_id, and will automatically create a new product if one does not already exist.
 
-     field. This does 
+    * This model is recommended as you do not need to store any external ShipBob product id values to create an order successfully. It also has the ability to auto-create products if they do not exist based on the duplicate match of a reference\_id value.
 
-    **not**
-
-     need to be unique, and is a more user-friendly order number that a customer service agent might be more familiar with.
-
-* **Products –**
-
-   There are two methods for providing product data with your order payload to ShipBob:
-
-  * **ReferenceId Model**
-
-     (highly recommended) – This model allows you to pass a product’s reference_id (typically the SKU value), as well as the product name. When an order is created, ShipBob will check if the product already exists based on a matching reference_id, and will automatically create a new product if one does not already exist.
-
-    * This model is recommended as you do not need to store any external ShipBob product id values to create an order successfully. It also has the ability to auto-create products if they do not exist based on the duplicate match of a reference_id value.
-
-  * **ProductId Model –**
-
-     This model requires that you pass ShipBob’s ProductId as part of the order payload to create the order. This will mean that you first must create a product using ShipBob’s Product API and have a method to either store or reference the ShipBob-generated ProductId to use as part of your order creation process.
+  * **ProductId Model –** This model requires that you pass ShipBob’s ProductId as part of the order payload to create the order. This will mean that you first must create a product using ShipBob’s Product API and have a method to either store or reference the ShipBob-generated ProductId to use as part of your order creation process.
 
     * This model works best if you always create products in ShipBob prior to sending any orders, and have a way to store the ProductId somewhere upstream.
 
@@ -106,7 +60,7 @@ ShipBob’s Order POST endpoint has several required fields that you need to be 
 
 In addition to the required fields highlighted above, you also have the ability to pass order tags to ShipBob. Tags are an array that consists of a name, value pair which can be used to store additional data that might be needed with your platform upstream, and can also trigger automation rules that have been created in ShipBob.
 
-More details on available rules can be found [here](https://support.shipbob.com/s/article/Automation-Rules).
+More details on available rules can be found [here](https://support.shipbob.com/s/article/Automation-Rules).
 
 To trigger a rule created within ShipBob, the order tag name must match the rule. As an example, if you desire to pass a tag that triggers a rule to automatically add a marketing insert to specific orders, your tag structure may look like:
 
@@ -119,7 +73,7 @@ To trigger a rule created within ShipBob, the order tag name must match the rule
 
 Where the tag “name” value of “AddMarketingInsert” is what will be used to trigger a rule created in ShipBob.
 
-Lastly, you will need to also specific a **`shipbob_channel_id`** within the request header to successfully create an order. To find which channel you have write access to, you can call the [GET Channel](https://developer.shipbob.com/api-docs#tag/Channels/paths/~11.0~1channel/get) endpoint to view a list of permissions you have access to under each channel. You will only have write access for one channel (your own integration channel), but you typically will have the ability to read data across other channels.
+Lastly, you will need to also specific a **`shipbob_channel_id`** within the request header to successfully create an order. To find which channel you have write access to, you can call the [GET Channel](https://developer.shipbob.com/api-docs#tag/Channels/paths/~11.0~1channel/get) endpoint to view a list of permissions you have access to under each channel. You will only have write access for one channel (your own integration channel), but you typically will have the ability to read data across other channels.
 
 ```mermaid
 graph TD
@@ -187,43 +141,33 @@ Attached, you will find an example API request for a general b2b order. While re
 
 * Ensure that the "type" is set to a value of 2 or "b2b" (this denotes a B2B order type).
 
-* carrier_type will be either "Parcel" or "Freight" – recommended that you have the ability to select which of these options should be used.
+* carrier\_type will be either "Parcel" or "Freight" – recommended that you have the ability to select which of these options should be used.
 
-* shipping_method should be "B2B".
+* shipping\_method should be "B2B".
 
-* payment_terms can either be "Prepaid" or "MerchantResponsible".
+* payment\_terms can either be "Prepaid" or "MerchantResponsible".
 
   * This depends if you will be uploading your own labels on the ShipBob dashboard, or if ShipBob will provide the labels. If ShipBob will handle labels, then pass the value "Prepaid".
 
-* retailer_program_type should be set to "SB-B2B".
+* retailer\_program\_type should be set to "SB-B2B".
 
-* Pass a purchase_order_number.
+* Pass a purchase\_order\_number.
 
-* company_name within the recipient address data should be the retailer's name.
+* company\_name within the recipient address data should be the retailer's name.
 
-* quantity_unit_of_measure_code should be "EA" for eaches
+* quantity\_unit\_of\_measure\_code should be "EA" for eaches
 
 ***
 
 ## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-channel-products-via-shipbobs-api)Quick guidelines on creating channel products via ShipBob’s API
 
-A product in ShipBob is a fulfillable item that will exist on orders and shipments. To create a product via the ShipBob API, this can be handled either by [creating a single product](https://developer.shipbob.com/api-docs#tag/Products/paths/~11.0~1product/post), or creating products [in bulk](https://developer.shipbob.com/api-docs#tag/Products/paths/~11.0~1product~1batch/post). There are two required fields to successfully create a product in ShipBob, as well as a recommended optional field:
+A product in ShipBob is a fulfillable item that will exist on orders and shipments. To create a product via the ShipBob API, this can be handled either by [creating a single product](https://developer.shipbob.com/api-docs#tag/Products/paths/~11.0~1product/post), or creating products [in bulk](https://developer.shipbob.com/api-docs#tag/Products/paths/~11.0~1product~1batch/post). There are two required fields to successfully create a product in ShipBob, as well as a recommended optional field:
 
-* **Reference_id**
+* **Reference\_id** (required) – this is typically the product SKU or it can be another unique identifier. ShipBob highly recommends to use a product’s SKU value for this field. When viewing a product in ShipBob’s UI, the reference\_id API field translates the UI **SKU** value.
 
-   (required) – this is typically the product SKU or it can be another unique identifier. ShipBob highly recommends to use a product’s SKU value for this field. When viewing a product in ShipBob’s UI, the reference_id API field translates the UI 
+* **Name** (required) – this is the name of the product.
 
-  **SKU**
-
-   value.
-
-* **Name**
-
-   (required) – this is the name of the product.
-
-* **Barcode**
-
-   (optional, recommended) – the product’s barcode. This is very useful to have available as it assists the receiving process when inbound inventory is sent to a ShipBob facility to be stowed.
+* **Barcode** (optional, recommended) – the product’s barcode. This is very useful to have available as it assists the receiving process when inbound inventory is sent to a ShipBob facility to be stowed.
 
 ### [](https://developer.shipbob.com/guides/#managing-channel-products)**Managing channel products**
 
@@ -244,7 +188,7 @@ graph TD
     F --> G
 ```
 
-As an example, if your integration creates a channel product “SKU123”, the merchant could also be connected between ShipBob and other integrations, such as Shopify, BigCommerce, Magento, NetSuite, etc. Each of these integrations manages their own channel products, so “SKU123” could be a channel product for each of those integrations as well. Each channel product will resolve to the same **inventory item**, which is the item that is visible in the ShipBob UI. As a result, despite multiple channel products for the same item existing, you will only see the one inventory item when searching for “SKU123” in the ShipBob UI:
+As an example, if your integration creates a channel product “SKU123”, the merchant could also be connected between ShipBob and other integrations, such as Shopify, BigCommerce, Magento, NetSuite, etc. Each of these integrations manages their own channel products, so “SKU123” could be a channel product for each of those integrations as well. Each channel product will resolve to the same **inventory item**, which is the item that is visible in the ShipBob UI. As a result, despite multiple channel products for the same item existing, you will only see the one inventory item when searching for “SKU123” in the ShipBob UI:
 
 ### [](https://developer.shipbob.com/guides/#bundle-considerations)**Bundle considerations**
 
@@ -288,17 +232,13 @@ This option means that bundles would not need to be maintained in ShipBob direct
 
 In ShipBob, bundles can be created directly in the UI from a product. A product can be marked as a Bundle, and then a merchant is able to breakdown the component SKUs that make up that bundle.
 
-The ability to mark the product as a bundle is not available with an API request, so if bundles will be maintained within ShipBob directly, the merchant will need to manually update a product to be a bundle and ensure that all component SKUs are correctly associated with the bundle product. [Here is a tutorial](https://support.shipbob.com/en/articles/3967384-bundle-items) on managing bundles in ShipBob.
+The ability to mark the product as a bundle is not available with an API request, so if bundles will be maintained within ShipBob directly, the merchant will need to manually update a product to be a bundle and ensure that all component SKUs are correctly associated with the bundle product. [Here is a tutorial](https://support.shipbob.com/en/articles/3967384-bundle-items) on managing bundles in ShipBob.
 
 Once correctly configured in ShipBob, the integration would be able to send the specific bundle SKU, and ShipBob fulfillment centers will ship all products comprising that bundle.
 
 Considerations with this option:
 
-1. If a bundle SKU is sent in an Order POST to ShipBob, retrieving that order data will return the bundle SKU. The component SKUs will not be returned in an Order GET response, but the 
-
-   **inventory ids**
-
-    of the component products will be returned.
+1. If a bundle SKU is sent in an Order POST to ShipBob, retrieving that order data will return the bundle SKU. The component SKUs will not be returned in an Order GET response, but the **inventory ids** of the component products will be returned.
 
 2. Inventory quantities in ShipBob are tracked at the component level, not at the bundle level. You will need to conduct inventory level calculations for the bundle as a result.
 
@@ -310,21 +250,13 @@ There are two primary options for retrieving shipment details from ShipBob.
 
 ### [](https://developer.shipbob.com/guides/#option-1--polling-based-approach)Option 1 – Polling-based approach
 
-This method allows you to fetch tracking details from ShipBob on demand using the [GET Orders](https://developer.shipbob.com/api-docs#tag/Orders/paths/~11.0~1order/get) endpoint. There are several parameters to choose from depending on your use case, but the most common params used are:
+This method allows you to fetch tracking details from ShipBob on demand using the [GET Orders](https://developer.shipbob.com/api-docs#tag/Orders/paths/~11.0~1order/get) endpoint. There are several parameters to choose from depending on your use case, but the most common params used are:
 
-* **LastUpdateStartDate**
+* **LastUpdateStartDate** and **LastUpdateEndDate** – this allows you to implement a sliding time window so that you fetch only newly updates orders since the time you last checked ShipBob.
 
-   and 
+* **HasTracking** – this will filter orders only where tracking information has been made available (i.e. the order has shipped).
 
-  **LastUpdateEndDate**
-
-   – this allows you to implement a sliding time window so that you fetch only newly updates orders since the time you last checked ShipBob.
-
-* **HasTracking**
-
-   – this will filter orders only where tracking information has been made available (i.e. the order has shipped).
-
-You also can specify a **`shipbob_channel_id`** header parameter. It is advised to pass this parameter for the channel you have write access to, so you only retrieve order and shipment details from orders that were created from your integration. Excluding the channel id will be a global search across all channels for the Merchant, which has the possibility to retrieve order details from other sources/integrations a merchant has installed that you may not need.
+You also can specify a **`shipbob_channel_id`** header parameter. It is advised to pass this parameter for the channel you have write access to, so you only retrieve order and shipment details from orders that were created from your integration. Excluding the channel id will be a global search across all channels for the Merchant, which has the possibility to retrieve order details from other sources/integrations a merchant has installed that you may not need.
 
 If your platform supports split orders/shipments, you will need to refer to the multiple shipment objects returned in the API response in the event that an order has been split.
 
@@ -344,7 +276,7 @@ graph TD
     O -->|"Track Shipment Timeline"| P["GET /1.0/order/{orderId}/shipment/{shipmentId}/timeline"]
 ```
 
-To see more detail on other statuses you may encounter, please refer to our documentation [here](https://developer.shipbob.com/).
+To see more detail on other statuses you may encounter, please refer to our documentation [here](https://developer.shipbob.com/).
 
 ### [](https://developer.shipbob.com/guides/#option-2--webhooks)Option 2 – Webhooks
 
@@ -360,15 +292,11 @@ ShipBob has the ability to fire webhooks for certain shipment events. The topics
 
 * Shipment cancelled event
 
-Each topic can be subscribed to individually via a webhook POST request. Request details can be found [here](https://developer.shipbob.com/api-docs#tag/Webhooks/paths/~11.0~1webhook/post). ShipBob also has several example payloads on the webhook page of our documentation [here](https://developer.shipbob.com/webhooks).
+Each topic can be subscribed to individually via a webhook POST request. Request details can be found [here](https://developer.shipbob.com/api-docs#tag/Webhooks/paths/~11.0~1webhook/post). ShipBob also has several example payloads on the webhook page of our documentation [here](https://developer.shipbob.com/webhooks).
 
 A couple critical pieces to note:
 
-* The Shipped topic will include a payload that is identical to the Order GET response detailed in method one above. In the event of a split shipment, you will receive multiple events when each individual shipment of an order has been shipped, which is when the shipment status has been updated to 
-
-  **LabeledCreated**
-
-  .
+* The Shipped topic will include a payload that is identical to the Order GET response detailed in method one above. In the event of a split shipment, you will receive multiple events when each individual shipment of an order has been shipped, which is when the shipment status has been updated to **LabeledCreated**.
 
 * ShipBob uses an exponential backoff approach to deliver a webhook event to your endpoint for up to 24 hours. However, ShipBob cannot guarantee the delivery of retried events in the order in which they were originally generated. Therefore, if you have implemented a webhook solution that expects events to be delivered in a specific sequence, it is highly advised that you have a method in place to handle these events.
 
@@ -376,7 +304,7 @@ A couple critical pieces to note:
 
 ## [](https://developer.shipbob.com/guides/#quick-guidelines-on-retrieving-inventory-levels-from-shipbobs-api)Quick guidelines on retrieving inventory levels from ShipBob’s API
 
-ShipBob’s [GET inventory endpoint](https://developer.shipbob.com/api-docs#tag/Inventory/paths/~11.0~1inventory/get) will return inventory quantities associated with products that are stocked at a facility. This endpoint will return an **inventoryid** associated with a product, which is a unique ShipBob identifier. When creating a product via ShipBob’s product API, an inventoryid is automatically generated and retuned in the product creation response. As such, ShipBob recommends implementing one of the following best practices to fetch inventory levels:
+ShipBob’s [GET inventory endpoint](https://developer.shipbob.com/api-docs#tag/Inventory/paths/~11.0~1inventory/get) will return inventory quantities associated with products that are stocked at a facility. This endpoint will return an **inventoryid** associated with a product, which is a unique ShipBob identifier. When creating a product via ShipBob’s product API, an inventoryid is automatically generated and retuned in the product creation response. As such, ShipBob recommends implementing one of the following best practices to fetch inventory levels:
 
 ### [](https://developer.shipbob.com/guides/#option-1--fetching-products-from-shipbob-each-time-inventory-levels-are-updated-in-your-platform)Option 1 – Fetching products from ShipBob each time inventory levels are updated in your platform
 
@@ -384,7 +312,7 @@ The solution would be to follow this process:
 
 1. Grab the products in bulk each time you are conducting an inventory sync (1 or multiple calls) using the Product endpoint
 
-2. Get the list of the product’s inventory components (inventory_id is returned in the Product endpoint)
+2. Get the list of the product’s inventory components (inventory\_id is returned in the Product endpoint)
 
 3. Grab all the inventories in bulk (1 or multiple calls) using the Inventory endpoint
 
@@ -420,19 +348,9 @@ ShipBob’s inbound receiving process comes in the form of Warehouse Receiving O
 
 ### [](https://developer.shipbob.com/guides/#details-on-wro-creation)Details on WRO Creation
 
-The [WRO POST request](https://developer.shipbob.com/api-docs/#tag/Receiving/paths/~12.0~1receiving/post) requires several fields to be populated based on how the inbound will be sent to ShipBob.
+The [WRO POST request](https://developer.shipbob.com/api-docs/#tag/Receiving/paths/~12.0~1receiving/post) requires several fields to be populated based on how the inbound will be sent to ShipBob.
 
-* The package_type field accepts the values of 
-
-  **Pallet**
-
-  , 
-
-  **Package**
-
-  , and 
-
-  **FloorLoadedContainer**
+* The package\_type field accepts the values of **Pallet**, **Package**, and **FloorLoadedContainer**
 
   * Pallet – if the inbound order is palletized, please include the Pallet tracking number and the contents of the pallet as a “box” within the ShipBob box array. If multiple pallets are being sent, please separate each pallet as its own “box” in the box array.
 
@@ -442,15 +360,15 @@ The [WRO POST request](https://developer.shipbob.com/api-docs/#tag/Receiving/pa
 
 * The expected arrival date must be a date in the future, otherwise the WRO creation request will fail, and you will receive a 400 response with a description stating that the arrival date must be in the future.
 
-* The ShipBob inventory_id (a unique ShipBob product identifier) is also a requirement for the WRO record to be created successfully. As a result, product records must first exist within the ShipBob WMS prior to the WRO request being sent to ShipBob. There are several strategies to accomplish this:
+* The ShipBob inventory\_id (a unique ShipBob product identifier) is also a requirement for the WRO record to be created successfully. As a result, product records must first exist within the ShipBob WMS prior to the WRO request being sent to ShipBob. There are several strategies to accomplish this:
 
-  * The recommended approach is for the integration to first check, via the Product GET API, if products within an inbound already exist within the WMS. If they do, the associated inventory_ids can be used in the WRO creation request. If they do not, they can be created via a Product POST request, and the request response will include the inventory_id.
+  * The recommended approach is for the integration to first check, via the Product GET API, if products within an inbound already exist within the WMS. If they do, the associated inventory\_ids can be used in the WRO creation request. If they do not, they can be created via a Product POST request, and the request response will include the inventory\_id.
 
-  * The alternative approach is to store the ShipBob inventory_id upstream whenever a product is created via the integration.
+  * The alternative approach is to store the ShipBob inventory\_id upstream whenever a product is created via the integration.
 
 * The purchase order number field should be populated with a unique PO number or shipment number.
 
-* Provide the scannable carton ID in the tracking_number field for each box/pallet that the ShipBob operations team can physically scan when the WRO arrives at the warehouse.
+* Provide the scannable carton ID in the tracking\_number field for each box/pallet that the ShipBob operations team can physically scan when the WRO arrives at the warehouse.
 
 ### [](https://developer.shipbob.com/guides/#details-on-wro-status-updates)Details on WRO Status Updates
 
@@ -464,13 +382,13 @@ Several parameters can be used to fetch WROs by status or by specific WRO record
 
   * A Completed status means that all stowing has been completed and no further action will be taken against the WRO record.
 
-  * A Processing status means that stowing is taking place; the “stowed_quantity” field within the “inventory_items” array will continually increase until stowing is complete for a product.
+  * A Processing status means that stowing is taking place; the “stowed\_quantity” field within the “inventory\_items” array will continually increase until stowing is complete for a product.
 
 * The PurchaseOrderNumbers parameter can return specific WRO records associated with the purchase order numbers passed during the WRO creation.
 
 Depending on the use-case, the integration can continuously poll a WRO and monitor the “stowed\_quantity” for each product as the stowing occurs during the WRO’s Processing status, or wait until the WRO is in Completed status before updating inventory in the upsteam platform.
 
-Additionally, the [GET WRO Boxes](https://developer.shipbob.com/api-docs/#tag/Receiving/paths/~12.0~1receiving~1%7Bid%7D~1boxes/get) endpoint can be used to fetch the status for each box individually, which will also include the received quantities per box.
+Additionally, the [GET WRO Boxes](https://developer.shipbob.com/api-docs/#tag/Receiving/paths/~12.0~1receiving~1%7Bid%7D~1boxes/get) endpoint can be used to fetch the status for each box individually, which will also include the received quantities per box.
 
 ### [](https://developer.shipbob.com/guides/#assumptions--considerations)
 
