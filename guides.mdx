@@ -28,7 +28,7 @@ You can create a typical integration using the following endpoints:
 
 ## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-b2b-orders-via-api)
 
-## Quick guidelines on creating D2C orders:
+## Create Orders
 
 ShipBob’s Order POST endpoint has several required fields that you need to be aware of:
 
@@ -131,7 +131,7 @@ graph TD
 
 ***
 
-## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-b2b-orders-via-api)Quick guidelines on creating B2B orders via API:
+## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-b2b-orders-via-api)Create B2B orders
 
 ShipBob has the ability to ingest generic B2B orders via the public API. Please note that these are B2B orders which do not have retailer compliance standards, ShipBob standard packing slips, boxes, GS1 labels will be used for these orders. If you are working with retailers that have compliance guidelines that ShipBob must adhere to, please reach out to your Merchant Success Manager for additional assistance.
 
@@ -159,7 +159,7 @@ Attached, you will find an example API request for a general b2b order. While re
 
 ***
 
-## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-channel-products-via-shipbobs-api)Quick guidelines on creating channel products via ShipBob’s API
+## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-channel-products-via-shipbobs-api)Creating channel products
 
 A product in ShipBob is a fulfillable item that will exist on orders and shipments. To create a product via the ShipBob API, this can be handled either by [creating a single product](https://developer.shipbob.com/api-docs#tag/Products/paths/~11.0~1product/post), or creating products [in bulk](https://developer.shipbob.com/api-docs#tag/Products/paths/~11.0~1product~1batch/post). There are two required fields to successfully create a product in ShipBob, as well as a recommended optional field:
 
@@ -244,7 +244,7 @@ Considerations with this option:
 
 ***
 
-## [](https://developer.shipbob.com/guides/#quick-guidelines-on-retrieving-tracking-and-fulfillment-details-from-shipbobs-api)Quick guidelines on retrieving tracking and fulfillment details from ShipBob’s API
+## [](https://developer.shipbob.com/guides/#quick-guidelines-on-retrieving-tracking-and-fulfillment-details-from-shipbobs-api)Retrieving tracking and fulfillment details
 
 There are two primary options for retrieving shipment details from ShipBob.
 
@@ -302,7 +302,7 @@ A couple critical pieces to note:
 
 ***
 
-## [](https://developer.shipbob.com/guides/#quick-guidelines-on-retrieving-inventory-levels-from-shipbobs-api)Quick guidelines on retrieving inventory levels from ShipBob’s API
+## [](https://developer.shipbob.com/guides/#quick-guidelines-on-retrieving-inventory-levels-from-shipbobs-api)Retrieving inventory levels
 
 ShipBob’s [GET inventory endpoint](https://developer.shipbob.com/api-docs#tag/Inventory/paths/~11.0~1inventory/get) will return inventory quantities associated with products that are stocked at a facility. This endpoint will return an **inventoryid** associated with a product, which is a unique ShipBob identifier. When creating a product via ShipBob’s product API, an inventoryid is automatically generated and retuned in the product creation response. As such, ShipBob recommends implementing one of the following best practices to fetch inventory levels:
 
@@ -330,7 +330,7 @@ This would also mean that when a product is created via the API, you have the ab
 
 ***
 
-## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-warehouse-receiving-orders-from-shipbobs-api)Quick guidelines on creating warehouse receiving orders from ShipBob’s API
+## [](https://developer.shipbob.com/guides/#quick-guidelines-on-creating-warehouse-receiving-orders-from-shipbobs-api)Creating warehouse receiving orders
 
 ShipBob’s inbound receiving process comes in the form of Warehouse Receiving Orders (WROs). A WRO can be created via the ShipBob API.
 
