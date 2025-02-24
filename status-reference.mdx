@@ -36,11 +36,11 @@ The most important statuses and status details are listed here:
 | Exception       | OutOfStock                | No Stock On Hand For Sku                 | 303              |
 | Exception       | UnknownSku                | No Sku History (if there are no reasons) | 304              |
 | Exception       | InactiveSku               |                                          |                  |
+| On Hold         | InvalidAddress            | Invalid Address                          | 401              |
 | On Hold         | PaymentDeclined           |                                          |                  |
 | On Hold         | MissingTarriffInformation |                                          |                  |
-| On Hold         | Manual                    | Manual                                   | 405              |
-| On Hold         | InvalidAddress            | Invalid Address                          | 401              |
 | On Hold         | AutoProcessingPause       |                                          |                  |
+| On Hold         | Manual                    | Manual                                   | 405              |
 | Cancelled       | Cancelled                 |                                          |                  |
 
 ### Order Statuses
@@ -69,3 +69,15 @@ Orders can have 1 or many shipments (if the contents will not fit in 1 box, for 
 | Completed         | Completed         | Fulfilled           |
 | Completed         | Cancelled         | Partially Fulfilled |
 | Cancelled         | Cancelled         | Cancelled           |
+
+### Return Statuses
+
+
+
+| Status            | Description                                                   |
+| ----------------- | ------------------------------------------------------------- |
+| `AwaitingArrival` | Return has been created and awaiting arrival to the warehouse |
+| `Arrived`         | Return has arrived at the warehouse                           |
+|  `Processing`     | Return is processing at the warehouse                         |
+| `Completed`       | Return has been processed and is completed                    |
+| `Cancelled`       | Return has been cancelled                                     |
