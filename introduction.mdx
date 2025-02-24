@@ -16,23 +16,3 @@ Before you are able to interact with ShipBob's API, you must have an account. Ac
 If you have questions, please email our Developer Support Team at [developers@shipbob.com](mailto:developers@shipbob.com). This will create a ticket with a 1-business day first response time.
 
 API calls will be rate-limited to 150 requests per-minute using a sliding window, and will be totalled per user, per application across calls to any of the Shipbob APIs.
-
-## FAQ
-
-Please review our documentation thoroughly. Common issues that come up are listed here:
-
-<AccordionGroup>
-  <Accordion title="Why can't I see my products in the ShipBob UI?">
-    We are undergoing a schema migration to better support new features. Thus, the API has concepts - like "product" - which are not yet reflected in the UI. What you see on the UI is an inventory item, which is automatically created when you send us a channel product.
-  </Accordion>
-
-  <Accordion title="Why can't I submit an order for a product that already exists in ShipBob's UI?">
-    At ShipBob you must create “channel product” records in our system in order to create orders. This is so we always have a unique and immutable tie to the upstream system, which reduces the risk of line item errors and order duplication. You cannot create orders with inventory\_ids or with products created from other sources. Please review our documentation:
-
-    There are 2 ways to create products for your convenience:
-
-    1. Create the products via the Product POST. If you pass through a SKU that already exists in the ShipBob UI as the product’s “reference\_id”, we will automatically merge that product to the existing inventory. Otherwise, the merchant will have to manually “merge” the items using our UI
-
-    2. Create the products using both the <code>reference\_id</code> and <code>name</code> fields in the line item field for the Order POST. We will auto-create any unrecognized products given both reference\_id and name are provided when you send us orders. This replaces the products sync step described above. Similarly, we will auto-merge the items in the manner described above if appropriate.
-  </Accordion>
-</AccordionGroup>

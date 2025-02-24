@@ -1,7 +1,18 @@
 ---
-title: 'FAQ'
-description: ''
+title: "FAQ"
 ---
+
+
+
+<Accordion title="Why can't I submit an order for a product that already exists in ShipBob's UI?" defaultOpen={false}>
+  At ShipBob you must create “channel product” records in our system in order to create orders. This is so we always have a unique and immutable tie to the upstream system, which reduces the risk of line item errors and order duplication. You cannot create orders with inventory\_ids or with products created from other sources. Please review our documentation:
+
+  There are 2 ways to create products for your convenience:
+
+  1. Create the products via the Product POST. If you pass through a SKU that already exists in the ShipBob UI as the product’s “reference\_id”, we will automatically merge that product to the existing inventory. Otherwise, the merchant will have to manually “merge” the items using our UI
+
+  2. Create the products using both the `reference_id` and `name` fields in the line item field for the Order POST. We will auto-create any unrecognized products given both reference\_id and name are provided when you send us orders. This replaces the products sync step described above. Similarly, we will auto-merge the items in the manner described above if appropriate.
+</Accordion>
 
 <Accordion title="What is the difference between PAT and OAuth 2.0?">
   PAT is for single merchants with full access, while OAuth 2.0 is for multi-user apps with granular permissions. ([Learn more](/authentication))
