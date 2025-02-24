@@ -9,27 +9,28 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "tabs": [
+    "dropdowns": [
       {
-        "tab": "Getting Started",
+        "dropdown": "Getting Started",
         "icon": "book",
         "groups": [
           {
             "group": "Getting Started",
             "pages": [
               "introduction",
+              "quickstart",
               "guides",
               "concepts",
               "auth",
               "status-reference",
               "webhooks"
             ]
-          },
+          }
         ]
       },
       {
-        "tab": "API Reference",
-        "icon": "brackets-curl",
+        "dropdown": "API Reference",
+        "icon": "brackets-curly",
         "versions": [
           {
             "version": "1.0",
@@ -132,7 +133,7 @@
         ]
       },
       {
-        "tab": "Changelog",
+        "dropdown": "Changelog",
         "icon": "list-timeline",
         "pages": [
           "release-notes"
