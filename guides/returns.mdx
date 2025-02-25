@@ -20,12 +20,9 @@ sequenceDiagram
     ShipBobAPI-->>YourSystem: 201 Created (Status: AwaitingArrival)
 
     loop Poll for Status Update
-        YourSystem->>ShipBobAPI: GET /1.0/return (Check Status)
-        ShipBobAPI-->>YourSystem: Return Status (e.g., Processing,Completed)
+        YourSystem->>ShipBobAPI: GET /1.0/return (check if status is Processing or Completed)
+        ShipBobAPI-->>YourSystem: Return Details (inventory.actionTaken)
     end
-
-    YourSystem->>ShipBobAPI: GET /1.0/return (Final Status and Details)
-    ShipBobAPI-->>YourSystem: Return Details (inventory.actionTaken)
 
     YourSystem->>YourSystem: Sync Status to Your System
 ```
