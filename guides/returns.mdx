@@ -11,6 +11,25 @@ A key field in this process is the referenceId, a unique and immutable identifie
 
 This guide explains how to create and manage returns using the ShipBob API. It includes detailed instructions and diagrams to help you build a seamless returns integration.
 
+```mermaid
+sequenceDiagram
+    participant YourSystem as Your System
+    participant ShipBobAPI as ShipBob API
+
+    YourSystem->>ShipBobAPI: POST /1.0/return (Create Return)
+    ShipBobAPI-->>YourSystem: 201 Created (Status: AwaitingArrival)
+
+    loop Poll for Status Update
+        YourSystem->>ShipBobAPI: GET /1.0/return (Check Status)
+        ShipBobAPI-->>YourSystem: Return Status (e.g., Processing,Completed)
+    end
+
+    YourSystem->>ShipBobAPI: GET /1.0/return (Final Status and Details)
+    ShipBobAPI-->>YourSystem: Return Details (inventory.actionTaken)
+
+    YourSystem->>YourSystem: Sync Status to Your System
+```
+
 ## Introduction
 
 A **return** in ShipBob refers to a request to process inventory being sent back to their fulfillment centers, typically for customer refunds or exchanges. ShipBob manages the physical handling of returned items, but refunds or exchanges are handled by your system.
@@ -23,33 +42,13 @@ The **`referenceId`** field is key—it’s a unique identifier from your system
 
 To get started, you’ll need:
 
-1. **ShipBob Sandbox Account**
+1. **ShipBob Sandbox Account**Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/). If issues arise, note that you process over 1,000 shipments per month.
 
+2. **Personal Access Token**Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
 
+3. **Channel ID**Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
 
-
-   Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/). If issues arise, note that you process over 1,000 shipments per month.
-
-2. **Personal Access Token**
-
-
-
-
-   Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
-
-3. **Channel ID**
-
-
-
-
-   Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
-
-4. **Inventory IDs**
-
-
-
-
-   Identify the `inventoryId` values for items being returned.
+4. **Inventory IDs**Identify the `inventoryId` values for items being returned.
 
 ***
 
@@ -223,4 +222,19 @@ sequenceDiagram
     R->>S: POST /1.0/return<br>{referenceId, inventory, trackingNumber}
     S-->>R: 201 Created<br>{id, status: "Awaiting Arrival"}
     Note over R,S: Store ShipBob return ID<br>for tracking
+```
+
+Monitoring return status
+```mermaid
+flowchart TD
+    A[Start] --> B[Create Return<br>POST /1.0/return]
+    B --> C[Status: Awaiting Arrival]
+    C --> D{Poll GET /1.0/return}
+    D --> E[Status Updated?]
+    E -->|No| D
+    E -->|Yes| F[Status: Processed]
+    F --> G[Status: Completed]
+    G --> H[Check inventory.actionTaken]
+    H --> I[Sync Status]
+    I --> J[End]
 ```
