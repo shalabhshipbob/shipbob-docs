@@ -3,7 +3,18 @@ title: 'Returns'
 description: ''
 ---
 
-# Creating Returns with ShipBob API
+```mermaid
+graph TD;
+    A[Sync Returns to ShipBob] -->|Send return request| B[POST /1.0/return];
+    B --> C[Return Created in ShipBob];
+    C -->|Periodically Check| D[Poll Return Statuses];
+    D -->|GET /1.0/return| E[Fetch Return Status];
+    E -->|Check for Updates| F[Return Status Updated];
+    F -->|Sync Status Updates Back| G[Update Merchant's System];
+    G -->|Merchant sees return processing results| H[Process Completed];
+```
+
+## Creating Returns
 
 This guide will walk you through creating returns using the ShipBob API by retrieving the necessary inventory data, creating a return order, and managing returns through the API.
 
