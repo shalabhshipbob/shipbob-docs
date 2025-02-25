@@ -3,41 +3,224 @@ title: 'Returns'
 description: ''
 ---
 
-```mermaid
-graph TD;
-    A[Sync Returns to ShipBob] -->|Send return request| B[POST /1.0/return];
-    B --> C[Return Created in ShipBob];
-    C -->|Periodically Check| D[Poll Return Statuses];
-    D -->|GET /1.0/return| E[Fetch Return Status];
-    E -->|Check for Updates| F[Return Status Updated];
-    F -->|Sync Status Updates Back| G[Update Merchant's System];
-    G -->|Merchant sees return processing results| H[Process Completed];
-```
+A return in the ShipBob ecosystem is a request for ShipBob to process inventory being sent back to their fulfillment centers, typically due to a refund or exchange requested by a customer. ShipBob handles the physical processing of returned inventory based on merchant specifications but does not manage refunds or exchanges directly. This documentation guides you through creating a return using the ShipBob API, ensuring seamless integration with your system.
 
-## Creating Returns
+A key field in this process is the referenceId, a unique and immutable identifier from your upstream system. It links the return in ShipBob to your records, making tracking and reconciliation straightforward.
 
-This guide will walk you through creating returns using the ShipBob API by retrieving the necessary inventory data, creating a return order, and managing returns through the API.
+## ShipBob Returns API Integration Guide
 
-## Typical API Endpoints for Integration
+This guide explains how to create and manage returns using the ShipBob API. It includes detailed instructions and diagrams to help you build a seamless returns integration.
 
-* **Get Channels**Retrieves information about the channels linked to your ShipBob account.**Endpoint**: `GET `[`https://api.shipbob.com/1.0/channel`](https://api.shipbob.com/1.0/channel)
+## Introduction
 
-* **Get Products**Retrieve product information, including the inventory ID needed for returns.**Endpoint**: `GET `[`https://api.shipbob.com/1.0/product`](https://api.shipbob.com/1.0/product)
+A **return** in ShipBob refers to a request to process inventory being sent back to their fulfillment centers, typically for customer refunds or exchanges. ShipBob manages the physical handling of returned items, but refunds or exchanges are handled by your system.
 
-* **Create Return**Create a return order in ShipBob.**Endpoint**: `POST `[`https://api.shipbob.com/1.0/return`](https://api.shipbob.com/1.0/return)
-
-* **Get Return Orders**Retrieve a list of return orders from ShipBob.**Endpoint**: `GET `[`https://api.shipbob.com/1.0/return`](https://api.shipbob.com/1.0/return)You can filter by start and end dates to get specific return order updates.
+The **`referenceId`** field is key—it’s a unique identifier from your system that links the return in ShipBob to your records, ensuring easy tracking and reconciliation.
 
 ***
 
-## Step-by-Step Process to Create Returns
+## Prerequisites
 
-### 1. Get Channel ID
+To get started, you’ll need:
 
-Use the `/channel` endpoint to retrieve your channel ID, which is required for making return-related requests. The channel represents your e-commerce platform integration, such as a Shopify store.
+1. **ShipBob Sandbox Account**
 
-#### **Endpoint**:
 
-```bash
-GET https://api.shipbob.com/1.0/channel
+
+
+   Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/). If issues arise, note that you process over 1,000 shipments per month.
+
+2. **Personal Access Token**
+
+
+
+
+   Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
+
+3. **Channel ID**
+
+
+
+
+   Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
+
+4. **Inventory IDs**
+
+
+
+
+   Identify the `inventoryId` values for items being returned.
+
+***
+
+## Creating a Return
+
+Use the **Create Return Order** endpoint to start a return:
+
+* **Endpoint**: `POST `[`https://sandbox-api.shipbob.com/1.0/return`](https://sandbox-api.shipbob.com/1.0/return) (switch to `api.shipbob.com` for production)
+
+* **Authentication**: Add your Personal Access Token in the `Authorization` header or use OAuth2.
+
+* **Header**: Include `shipbob_channel_id` with your channel ID.
+
+### Request Body
+
+The request body is a JSON object with these fields:
+
+| Field            | Type   | Required? | Description                                                                              |
+| ---------------- | ------ | --------- | ---------------------------------------------------------------------------------------- |
+| `referenceId`    | String | Yes       | Your system’s unique identifier (e.g., "REDO\_RETURN\_12345") to track the return.       |
+| `inventory`      | Array  | Yes       | List of items being returned, each with an `inventoryId` and optional `requestedAction`. |
+| `trackingNumber` | String | No        | Carrier tracking number for the return shipment—helps ShipBob identify it faster.        |
+
+* **`inventory` Details**:
+
+  * Each object represents one type of item.
+
+  * Use each `inventoryId` only once per return.
+
+  * Optional `requestedAction` values: `Default`, `Restock`, `Quarantine`, or `Dispose`.
+
+### Example Request
+
+<Tabs>
+  <TabItem label="JSON">
+    ```json
+    {
+      "referenceId": "REDO_RETURN_12345",
+      "inventory": [
+        {
+          "inventoryId": 12232,
+          "requestedAction": "Restock"
+        },
+        {
+          "inventoryId": 12039,
+          "requestedAction": "Dispose"
+        }
+      ],
+      "trackingNumber": "1Z9999W99999999999"
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+* **Notes**:
+
+  * `referenceId`: Links to "REDO\_RETURN\_12345" in your system.
+
+  * `inventory`: Two items returned in one box.
+
+  * `trackingNumber`: Speeds up processing at ShipBob.
+
+### Key Rules
+
+* **One Box, One Return**: Each physical shipment needs its own return order.
+
+* **No Duplicates**: Each `inventoryId` must appear only once in the `inventory` array.
+
+* **Physical Items Only**: Exclude digital items or bundles.
+
+***
+
+## Handling Responses
+
+### Success Response
+
+A `201 Created` status indicates success:
+
+<Tabs>
+  <TabItem label="JSON">
+    ```json
+    {
+      "id": 98765,
+      "referenceId": "REDO_RETURN_12345",
+      "status": "Awaiting Arrival",
+      "inventory": [
+        {
+          "inventoryId": 12232,
+          "requestedAction": "Restock",
+          "actionTaken": null
+        },
+        {
+          "inventoryId": 12039,
+          "requestedAction": "Dispose",
+          "actionTaken": null
+        }
+      ],
+      "trackingNumber": "1Z9999W99999999999",
+      "createdDate": "2023-10-15T10:00:00Z"
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+* `id`: ShipBob’s internal return ID.
+
+* `status`: Starts as "Awaiting Arrival."
+
+* `actionTaken`: Filled after inspection (e.g., "Restock" or "Dispose").
+
+### Error Responses
+
+* **400 Bad Request**: Invalid data (e.g., duplicate `inventoryId`).
+
+* **401 Unauthorized**: Missing or invalid authentication.
+
+***
+
+## Best Practices
+
+1. **Unique `referenceId`**: Make it immutable and traceable in your system.
+
+2. **Add `trackingNumber`**: Optional but accelerates processing.
+
+3. **One Return per Box**: Match returns to physical shipments.
+
+4. **Choose Actions Carefully**: Set `requestedAction` based on merchant needs.
+
+5. **Test in Sandbox**: Use a Shopify dev store to sync products and orders.
+
+***
+
+## Monitoring Returns
+
+Track returns with the **Get Return Orders** endpoint:
+
+* **Endpoint**: `GET `[`https://sandbox-api.shipbob.com/1.0/return`](https://sandbox-api.shipbob.com/1.0/return)
+
+* **Parameters**: Filter by `referenceId`, `status`, or `id`.
+
+### Statuses
+
+* **Awaiting Arrival**: Return is inbound; can be modified or canceled.
+
+* **Processed**: Inspection underway; no changes allowed.
+
+* **Completed**: Processing done; no further edits.
+
+### Polling vs. Webhooks
+
+* **Polling**: Check the `GET` endpoint periodically.
+
+* **Webhooks**: Preferred for real-time updates but not yet available for returns.
+
+### Quality Grading
+
+* **`requestedAction`**: Your requested outcome (e.g., "Restock").
+
+* **`actionTaken`**: ShipBob’s final action post-inspection (e.g., "Dispose" if defective).
+
+***
+
+## Diagrams
+
+### 1. Sequence Diagram: Creating a Return
+
+```mermaid
+sequenceDiagram
+    participant R as Your System
+    participant S as ShipBob API
+    R->>S: POST /1.0/return<br>{referenceId, inventory, trackingNumber}
+    S-->>R: 201 Created<br>{id, status: "Awaiting Arrival"}
+    Note over R,S: Store ShipBob return ID<br>for tracking
 ```
