@@ -53,6 +53,24 @@ A ***return*** is an order to unpack returned inventory and restock, dispose, 
 
 This API lets you create shipping labels and sync tracking numbers for orders processed through ShipBob’s logistics system. It’s straightforward to integrate and works in both sandbox and production environments.
 
+```mermaid
+sequenceDiagram
+    participant Client
+    participant ShipBob API
+
+    Client->>ShipBob API: POST /api/order:createLabel (Create Shipping Label)
+    ShipBob API-->>Client: Returns Label (ZPL/PDF) + Shipment ID
+
+    alt Polling-Based Tracking Sync
+        Client->>ShipBob API: GET /1.0/order?HasTracking=true&IsTrackingUploaded=false
+        ShipBob API-->>Client: Returns Orders with Tracking
+        Client->>ShipBob API: PUT /1.0/{shipmentId} (Mark as Uploaded)
+        ShipBob API-->>Client: Tracking Marked as Uploaded
+    end
+
+    Client->>Client: Sync tracking number in the system
+```
+
 ## Getting Started
 
 ### Create an Account
