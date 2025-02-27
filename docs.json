@@ -19,12 +19,20 @@
             "pages": [
               "introduction",
               "quickstart",
-              "guides",
               "concepts",
               "auth",
               "status-reference",
               "rate-limit",
               "webhooks"
+            ]
+          },
+          {
+            "group": "Use Cases",
+            "pages": [
+              "guides/overview",
+              "guides/orders",
+              "guides/products",
+              "guides/returns"
             ]
           }
         ]
