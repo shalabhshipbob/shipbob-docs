@@ -23,8 +23,6 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
 
 <AccordionGroup>
   <Accordion title="Create product" defaultOpen={false}>
-    Below is a sample API requ
-
 
 
     <CodeGroup>
@@ -44,8 +42,6 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
 
   <Accordion title="Create order" defaultOpen={false}>
     &#x20;Below is a sample request:
-
-
 
     <CodeGroup>
       ```javascript POST /1.0/order
@@ -86,81 +82,47 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
     <Note>
       Make sure to pass the `shipbob_channel_id` in the header.
     </Note>
+  </Accordion>
+
+  <Accordion title="Create warehouse receiving order" defaultOpen={false}>
+    Here is a sample request. If testing on sandbox you can use id 8 or id 10&#x20;
+
+
+
+    <CodeGroup>
+      ```javascript POST /2.0/receiving
+      {
+        "fulfillment_center": {
+          "id": 8
+        },
+        "package_type": "Package",
+        "box_packaging_type": "EverythingInOneBox",
+        "boxes": [
+          {
+            "tracking_number": "860C8CDC8F0B4FC7AB69AC86C20539EC",
+            "box_items": [
+              {
+                "quantity": 1,
+                "inventory_id": 0
+              }
+            ]
+          }
+        ],
+        "expected_arrival_date": "2025-11-24T14:15:22Z",
+        "purchase_order_number": "PO123"
+      }
+      ```
+    </CodeGroup>
+
+
+
+    <Note>
+      When you create warehouse receiving orders with the ShipBob API, you do not need to pass the `shipbob_channel_id`.
+    </Note>
 
 
   </Accordion>
 </AccordionGroup>
-
-### Create order
-
-Similar to creating products, you need to pass the `shipbob_channel_id` in the header.&#x20;
-
-<CodeGroup>
-  ```javascript POST /1.0/order
-  {
-    "shipping_method": "Standard",
-    "recipient": {
-      "name": "John Doe",
-      "address": {
-        "address1": "100 Nowhere Blvd",
-        "address2": "Suite 100",
-        "city": "Gotham City",
-        "state": "NJ",
-        "country": "US",
-        "zip_code": "07093"
-      },
-      "email": "john@example.com",
-      "phone_number": "555-555-5555"
-    },
-    "products": [
-      {
-        "reference_id": "COF-LGT-REG",
-        "name": "Light Roast Coffee",
-        "quantity": 1,
-      },
-      {
-        "reference_id": "COF-DARK-REG",
-        "name": "Dark Roast Coffee",
-        "quantity": 1,
-      }
-    ],
-    "reference_id": "101",
-    "order_number": "840343901234",
-    "type": "DTC",
-  }
-  ```
-</CodeGroup>
-
-### Create Warehouse Receiving Order
-
-When you create warehouse receiving orders with the ShipBob API, you do not need to pass the `shipbob_channel_id`.
-
-<CodeGroup>
-  ```javascript POST /2.0/receiving
-  {
-    "fulfillment_center": {
-      "id": 8
-    },
-    "package_type": "Package",
-    "box_packaging_type": "EverythingInOneBox",
-    "boxes": [
-      {
-        "tracking_number": "860C8CDC8F0B4FC7AB69AC86C20539EC",
-        "box_items": [
-          {
-            "quantity": 1,
-            "inventory_id": 0
-          }
-        ]
-      }
-    ],
-    "expected_arrival_date": "2025-11-24T14:15:22Z",
-    "purchase_order_number": "PO123"
-  }
-  ```
-</CodeGroup>
-
-##
 
 <Check>
   Download our [OpenAPI spec](blob:https://developer.shipbob.com/e2e5b9a7-6b80-4461-aae1-89561a76e2e8).
