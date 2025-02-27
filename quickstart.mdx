@@ -5,9 +5,9 @@ description: "This quickstart guide intends to walk you through a few common sce
 
 ## 1. Get API key
 
-ShipBob verifies a user's request by adding an as-api-key in the header.
+ShipBob verifies a user's request by using a Bearer token in the header.
 
-On the ShipBob dashboard, go to Integrations > API Tokens. Click Generate New Token. Copy this token as we will use in next step. If you do not have a ShipBob account yet, you can create a sandbox account by following [this link](https://webstage.shipbob.dev/app/merchant/#/SignUp).&#x20;
+On the ShipBob dashboard, go to **Integrations** > **API Tokens**. Click Generate New Token. Copy this token as we will use in next step. If you do not have a ShipBob account yet, you can create a sandbox account by following [this link](https://webstage.shipbob.dev/app/merchant/#/SignUp).&#x20;
 
 ## 2. Make your first API request
 
@@ -23,8 +23,6 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
 
 <AccordionGroup>
   <Accordion title="Create product" defaultOpen={false}>
-
-
     <CodeGroup>
       ```javascript POST /1.0/product
       {
@@ -87,8 +85,6 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
   <Accordion title="Create warehouse receiving order" defaultOpen={false}>
     Here is a sample request. If testing on sandbox you can use id 8 or id 10&#x20;
 
-
-
     <CodeGroup>
       ```javascript POST /2.0/receiving
       {
@@ -114,13 +110,9 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
       ```
     </CodeGroup>
 
-
-
     <Note>
       When you create warehouse receiving orders with the ShipBob API, you do not need to pass the `shipbob_channel_id`.
     </Note>
-
-
   </Accordion>
 </AccordionGroup>
 
