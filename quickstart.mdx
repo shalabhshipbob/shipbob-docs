@@ -13,7 +13,7 @@ On the ShipBob dashboard, go to Integrations > API Tokens. Click Generate New To
 
 Use your PAT token to make a request to the GET Channels endpoint. You will need the channel ID to create products, orders and returns with the ShipBob API.
 
-```javascript
+```
 GET https://api.shipbob.com/1.0/channel
 ```
 
@@ -21,19 +21,75 @@ GET https://api.shipbob.com/1.0/channel
 
 A few common scenarios to get started with the ShipBob API. All endpoints are only accessible via `HTTPS`.
 
-### Create product
+<AccordionGroup>
+  <Accordion title="Create product" defaultOpen={false}>
+    Below is a sample API requ
 
-Make sure to pass the `shipbob_channel_id` in the header.
 
-<CodeGroup>
-  ```javascript POST /1.0/product
-  {
-    "reference_id": "TShirtBlueM",
-    "sku": "TShirtBlueM",
-    "name": "Medium Blue T-Shirt"
-  }
-  ```
-</CodeGroup>
+
+    <CodeGroup>
+      ```javascript POST /1.0/product
+      {
+        "reference_id": "TShirtBlueM",
+        "sku": "TShirtBlueM",
+        "name": "Medium Blue T-Shirt"
+      }
+      ```
+    </CodeGroup>
+
+    <Note>
+      Make sure to pass the `shipbob_channel_id` in the header.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Create order" defaultOpen={false}>
+    &#x20;Below is a sample request:
+
+
+
+    <CodeGroup>
+      ```javascript POST /1.0/order
+      {
+        "shipping_method": "Standard",
+        "recipient": {
+          "name": "John Doe",
+          "address": {
+            "address1": "100 Nowhere Blvd",
+            "address2": "Suite 100",
+            "city": "Gotham City",
+            "state": "NJ",
+            "country": "US",
+            "zip_code": "07093"
+          },
+          "email": "john@example.com",
+          "phone_number": "555-555-5555"
+        },
+        "products": [
+          {
+            "reference_id": "COF-LGT-REG",
+            "name": "Light Roast Coffee",
+            "quantity": 1,
+          },
+          {
+            "reference_id": "COF-DARK-REG",
+            "name": "Dark Roast Coffee",
+            "quantity": 1,
+          }
+        ],
+        "reference_id": "101",
+        "order_number": "840343901234",
+        "type": "DTC",
+      }
+      ```
+    </CodeGroup>
+
+    <Note>
+      Make sure to pass the `shipbob_channel_id` in the header.
+    </Note>
+
+
+  </Accordion>
+</AccordionGroup>
 
 ### Create order
 
