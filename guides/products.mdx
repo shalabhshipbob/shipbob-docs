@@ -22,8 +22,6 @@ Add products to ShipBob’s catalog.
     }'`}
 ```
 
-
-
 <CodeBlock language="bash">
   {`curl -X POST "https://api.shipbob.com/1.0/product" \\
     -H "Authorization: Bearer YOUR_TOKEN" \\
@@ -35,25 +33,7 @@ Add products to ShipBob’s catalog.
     }'`}
 </CodeBlock>
 
-**Response**:
-
-<CodeBlock language="json">
-  {`{"id": 2001, "reference_id": "TEE001"}`}
-</CodeBlock>
-
-<CodeBlock language="bash">
-  {`curl -X GET "https://api.shipbob.com/1.0/product?ReferenceIds=TEE001" \\
-    -H "Authorization: Bearer YOUR_TOKEN" \\
-    -H "shipbob_channel_id: 12345"`}
-</CodeBlock>
-
-**Response**:
-
-<CodeBlock language="json">
-  {`[{"id": 2001, "reference_id": "TEE001", "name": "Blue Tee"}]`}
-</CodeBlock>
-
-### Flow
+**Response**:Flow
 
 ```mermaid
   sequenceDiagram
