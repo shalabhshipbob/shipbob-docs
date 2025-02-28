@@ -25,17 +25,17 @@ sequenceDiagram
 
 ##
 
-## Prerequisites
+<Accordion title="Prerequisites" defaultOpen={false}>
+  To get started, you’ll need:
 
-To get started, you’ll need:
+  1. **ShipBob Sandbox Account:** Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/).
 
-1. **ShipBob Sandbox Account:** Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/).
+  2. **Personal Access Token:** Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
 
-2. **Personal Access Token:** Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
+  3. **Channel ID:** Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
 
-3. **Channel ID:** Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
-
-4. **Inventory IDs:** Identify the `inventoryId` values for items being returned.
+  4. **Inventory IDs:** Identify the `inventoryId` values for items being returned.
+</Accordion>
 
 ***
 
