@@ -1,15 +1,11 @@
 ---
-title: 'Returns'
-description: ''
+title: "Returns"
+description: "How to create and manage returns using the ShipBob API"
 ---
 
-A return in the ShipBob ecosystem is a request for ShipBob to process inventory being sent back to their fulfillment centers, typically due to a refund or exchange requested by a customer. ShipBob handles the physical processing of returned inventory based on merchant specifications but does not manage refunds or exchanges directly. This documentation guides you through creating a return using the ShipBob API, ensuring seamless integration with your system.
+A **return** in ShipBob refers to a request to process inventory being sent back to their fulfillment centers, typically for customer refunds or exchanges. ShipBob manages the physical handling of returned items, but refunds or exchanges are handled by your system.
 
-A key field in this process is the referenceId, a unique and immutable identifier from your upstream system. It links the return in ShipBob to your records, making tracking and reconciliation straightforward.
-
-## ShipBob Returns API Integration Guide
-
-This guide explains how to create and manage returns using the ShipBob API. It includes detailed instructions and diagrams to help you build a seamless returns integration.
+The **`referenceId`** field is key—it’s a unique identifier from your system that links the return in ShipBob to your records, ensuring easy tracking and reconciliation.
 
 ```mermaid
 sequenceDiagram
@@ -27,25 +23,19 @@ sequenceDiagram
     YourSystem->>YourSystem: Sync Status to Your System
 ```
 
-## Introduction
-
-A **return** in ShipBob refers to a request to process inventory being sent back to their fulfillment centers, typically for customer refunds or exchanges. ShipBob manages the physical handling of returned items, but refunds or exchanges are handled by your system.
-
-The **`referenceId`** field is key—it’s a unique identifier from your system that links the return in ShipBob to your records, ensuring easy tracking and reconciliation.
-
-***
+##
 
 ## Prerequisites
 
 To get started, you’ll need:
 
-1. **ShipBob Sandbox Account**Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/). If issues arise, note that you process over 1,000 shipments per month.
+1. **ShipBob Sandbox Account:** Sign up at [ShipBob's sandbox signup page](https://developer.shipbob.com/).
 
-2. **Personal Access Token**Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
+2. **Personal Access Token:** Generate this in the ShipBob dashboard under **Integrations > API Tokens**. Alternatively, use OAuth2 by submitting [this form](https://developer.shipbob.com/) twice (sandbox and production).
 
-3. **Channel ID**Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
+3. **Channel ID:** Fetch this with a `GET` request to [`https://sandbox-api.shipbob.com/1.0/channel`](https://sandbox-api.shipbob.com/1.0/channel) using your token. Look for a channel starting with "Personal Access Token..." and note its `id`.
 
-4. **Inventory IDs**Identify the `inventoryId` values for items being returned.
+4. **Inventory IDs:** Identify the `inventoryId` values for items being returned.
 
 ***
 
@@ -83,7 +73,7 @@ The request body is a JSON object with these fields:
   <TabItem label="JSON">
     ```json
     {
-      "referenceId": "REDO_RETURN_12345",
+      "referenceId": "TEST_RETURN_12345",
       "inventory": [
         {
           "inventoryId": 12232,
@@ -102,7 +92,7 @@ The request body is a JSON object with these fields:
 
 * **Notes**:
 
-  * `referenceId`: Links to "REDO\_RETURN\_12345" in your system.
+  * `referenceId`: Links to "TEST\_RETURN\_12345" in your system.
 
   * `inventory`: Two items returned in one box.
 
@@ -129,7 +119,7 @@ A `201 Created` status indicates success:
     ```json
     {
       "id": 98765,
-      "referenceId": "REDO_RETURN_12345",
+      "referenceId": "TEST_RETURN_12345",
       "status": "Awaiting Arrival",
       "inventory": [
         {
@@ -144,7 +134,7 @@ A `201 Created` status indicates success:
         }
       ],
       "trackingNumber": "1Z9999W99999999999",
-      "createdDate": "2023-10-15T10:00:00Z"
+      "createdDate": "2025-10-15T10:00:00Z"
     }
     ```
   </TabItem>
@@ -194,12 +184,6 @@ Track returns with the **Get Return Orders** endpoint:
 
 * **Completed**: Processing done; no further edits.
 
-### Polling vs. Webhooks
-
-* **Polling**: Check the `GET` endpoint periodically.
-
-* **Webhooks**: Preferred for real-time updates but not yet available for returns.
-
 ### Quality Grading
 
 * **`requestedAction`**: Your requested outcome (e.g., "Restock").
@@ -222,6 +206,7 @@ sequenceDiagram
 ```
 
 Monitoring return status
+
 ```mermaid
 flowchart TD
     A[Start] --> B[Create Return<br>POST /1.0/return]
