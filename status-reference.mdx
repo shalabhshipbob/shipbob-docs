@@ -5,7 +5,7 @@ description: ''
 
 A common use case of ShipBob's API includes filtering orders, shipments, returns, or WROs by status. Here you will find the valid statuses by resource.
 
-### Shipment Statuses
+## Shipment Statuses
 
 Shipment statuses reflect what is happening in the physical world with the package. There is an additional "status detail" section with more detailed information that is also available in our ShipBob Merchant Application.
 
@@ -43,7 +43,7 @@ The most important statuses and status details are listed here:
 | On Hold         | Manual                    | Manual                                   | 405              |
 | Cancelled       | Cancelled                 |                                          |                  |
 
-### Order Statuses
+## Order Statuses
 
 Orders can have 1 or many shipments (if the contents will not fit in 1 box, for example). Order statuses are imputed from the statuses of the underlying shipments.
 
@@ -70,14 +70,29 @@ Orders can have 1 or many shipments (if the contents will not fit in 1 box, for 
 | Completed         | Cancelled         | Partially Fulfilled |
 | Cancelled         | Cancelled         | Cancelled           |
 
-### Return Statuses
+## Warehouse Receiving Order Statuses
+
+| Status                  | Description                                                |
+| ----------------------- | ---------------------------------------------------------- |
+| `Awaiting`              | WRO has been created and awaiting arrival to the warehouse |
+| `Processing`            |                                                            |
+| `Arrived`               |                                                            |
+| `PartiallyArrived`      |                                                            |
+| `PartiallyArrivedAtHub` |                                                            |
+| `ArrivedAtHub`          |                                                            |
+| `ProcessingAtHub`       |                                                            |
+| `InternalTransfer`      |                                                            |
+| `Completed`             | WRO has been completed                                     |
+| `Cancelled`             | WRO has been cancelled                                     |
 
 
+
+## Return Statuses
 
 | Status            | Description                                                   |
 | ----------------- | ------------------------------------------------------------- |
 | `AwaitingArrival` | Return has been created and awaiting arrival to the warehouse |
 | `Arrived`         | Return has arrived at the warehouse                           |
-|  `Processing`     | Return is processing at the warehouse                         |
+| `Processing`      | Return is processing at the warehouse                         |
 | `Completed`       | Return has been processed and is completed                    |
 | `Cancelled`       | Return has been cancelled                                     |
