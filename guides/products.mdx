@@ -1,6 +1,6 @@
 ---
 title: "Products"
-description: ""
+description: "How to create and manage products with the ShipBob API"
 ---
 
 ## Creating channel products
@@ -13,7 +13,7 @@ A product in ShipBob is a fulfillable item that will exist on orders and shipmen
 
 * **Barcode** (optional, recommended) – the product’s barcode. This is very useful to have available as it assists the receiving process when inbound inventory is sent to a ShipBob facility to be stowed.
 
-### [](https://developer.shipbob.com/guides/#managing-channel-products)**Managing channel products**
+## [](https://developer.shipbob.com/guides/#managing-channel-products)Managing channel products
 
 When creating a product under the channel that you have write access to, you are creating a channel product, or a digital representation of a physical good. A channel product will be associated with an inventory item, which is the physical representation of that good that holds inventory levels and other item attributes. Since a channel product is a digital representation, it is possible for that same item to exist across various different channels.
 
@@ -64,24 +64,28 @@ graph TD
 
 There are two primary options for handling bundles via ShipBob API.
 
-### [](https://developer.shipbob.com/guides/#option-1--deconstruct-bundle-prior-to-sending-to-shipbob-preferred)Option 1 – Deconstruct bundle prior to sending to ShipBob (preferred)
+<Accordion title="Option 1 – Deconstruct bundle prior to sending to ShipBob (preferred)" defaultOpen={false}>
+  ShipBob ultimately needs all products at the variant/component level as this is what ShipBob fulfillment centers pack shipments with.
 
-ShipBob ultimately needs all products at the variant/component level as this is what ShipBob fulfillment centers pack shipments with.
+  If the upstream system that is integrating with ShipBob is able to deconstruct bundles into the component SKUs prior to sending to ShipBob, ShipBob will also return the component SKUs within the fulfillment data, so the upstream system may need to also reconstruct bundles based on the capabilities of the system, how inventory is calculated, or other merchant requirements.
 
-If the upstream system that is integrating with ShipBob is able to deconstruct bundles into the component SKUs prior to sending to ShipBob, ShipBob will also return the component SKUs within the fulfillment data, so the upstream system may need to also reconstruct bundles based on the capabilities of the system, how inventory is calculated, or other merchant requirements.
+  This option means that bundles would not need to be maintained in ShipBob directly, as ShipBob will only create products at the component level. This is more user friendly for the merchant as they will not need to manually convert a product to be a bundle, or create bundles via the ShipBob dashboard.
+</Accordion>
 
-This option means that bundles would not need to be maintained in ShipBob directly, as ShipBob will only create products at the component level. This is more user friendly for the merchant as they will not need to manually convert a product to be a bundle, or create bundles via the ShipBob dashboard.
+<Accordion title="Option 2 – Construct bundle prior to sending to ShipBob" defaultOpen={false}>
+  In ShipBob, bundles can be created directly in the UI from a product. A product can be marked as a Bundle, and then a merchant is able to breakdown the component SKUs that make up that bundle.
 
-### [](https://developer.shipbob.com/guides/#option-2--construct-bundle-prior-to-sending-to-shipbob)Option 2 – Construct bundle prior to sending to ShipBob
+  The ability to mark the product as a bundle is not available with an API request, so if bundles will be maintained within ShipBob directly, the merchant will need to manually update a product to be a bundle and ensure that all component SKUs are correctly associated with the bundle product. [Here is a tutorial](https://support.shipbob.com/en/articles/3967384-bundle-items) on managing bundles in ShipBob.
 
-In ShipBob, bundles can be created directly in the UI from a product. A product can be marked as a Bundle, and then a merchant is able to breakdown the component SKUs that make up that bundle.
+  Once correctly configured in ShipBob, the integration would be able to send the specific bundle SKU, and ShipBob fulfillment centers will ship all products comprising that bundle.
 
-The ability to mark the product as a bundle is not available with an API request, so if bundles will be maintained within ShipBob directly, the merchant will need to manually update a product to be a bundle and ensure that all component SKUs are correctly associated with the bundle product. [Here is a tutorial](https://support.shipbob.com/en/articles/3967384-bundle-items) on managing bundles in ShipBob.
+  Considerations with this option:
 
-Once correctly configured in ShipBob, the integration would be able to send the specific bundle SKU, and ShipBob fulfillment centers will ship all products comprising that bundle.
+  1. If a bundle SKU is sent in an Order POST to ShipBob, retrieving that order data will return the bundle SKU. The component SKUs will not be returned in an Order GET response, but the **inventory ids** of the component products will be returned.
 
-Considerations with this option:
+  2. Inventory quantities in ShipBob are tracked at the component level, not at the bundle level. You will need to conduct inventory level calculations for the bundle as a result.
+</Accordion>
 
-1. If a bundle SKU is sent in an Order POST to ShipBob, retrieving that order data will return the bundle SKU. The component SKUs will not be returned in an Order GET response, but the **inventory ids** of the component products will be returned.
+### [](https://developer.shipbob.com/guides/#option-1--deconstruct-bundle-prior-to-sending-to-shipbob-preferred)
 
-2. Inventory quantities in ShipBob are tracked at the component level, not at the bundle level. You will need to conduct inventory level calculations for the bundle as a result.
+### [](https://developer.shipbob.com/guides/#option-2--construct-bundle-prior-to-sending-to-shipbob)
