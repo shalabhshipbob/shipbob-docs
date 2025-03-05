@@ -134,10 +134,6 @@
                 ]
               }
             ]
-          },
-          {
-            "version": "experimental",
-            "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
           }
         ]
       },
