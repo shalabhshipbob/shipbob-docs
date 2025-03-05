@@ -6,7 +6,7 @@ This quickstart guide intends to walk you through a few common scenarios to let 
 
 ## 1. Get API key
 
-ShipBob verifies a user's request by using a Bearer token in the header.
+ShipBob verifies a user's request by using a Bearer token in the header. We call this a Personal Access Token.
 
 On the ShipBob dashboard, go to **Integrations** > **API Tokens**. Click Generate New Token. Copy this token as we will use in next step. If you do not have a ShipBob account yet, you can create a sandbox account by following [this link](https://webstage.shipbob.dev/app/merchant/#/SignUp).&#x20;
 
@@ -18,18 +18,71 @@ Use your PAT token to make a request to the GET Channels endpoint. You will need
 GET https://api.shipbob.com/1.0/channel
 ```
 
+<Accordion title="Example response" defaultOpen={false}>
+  ```
+  [
+    {
+    	"id": 100102,
+    	"name": "Privileged Access Token Wednesday, September 20, 2025",
+    	"application_name": "SMA",
+    	"scopes": [
+    		"fulfillments_write",
+    		"webhooks_read",
+    		"returns_read",
+    		"orders_read",
+    		"inventory_write",
+    		"inventory_read",
+    		"returns_write",
+    		"products_read",
+    		"webhooks_write",
+    		"receiving_write",
+    		"receiving_read",
+    		"channels_read",
+    		"products_write",
+    		"locations_read",
+    		"orders_write",
+    		"fulfillments_read",
+    		"locations_write"
+    	]
+    },
+    {
+    	"id": 100101,
+    	"name": "ShipBob Default",
+    	"application_name": "ShipBob",
+    	"scopes": [
+    		"webhooks_read",
+    		"returns_read",
+    		"orders_read",
+    		"inventory_read",
+    		"products_read",
+    		"receiving_read",
+    		"channels_read",
+    		"locations_read",
+    		"fulfillments_read"
+    	]
+    }
+  ]
+  ```
+</Accordion>
+
 ## 3. Common scenarios
 
 A few common scenarios to get started with the ShipBob API. All endpoints are only accessible via `HTTPS`.
 
 <AccordionGroup>
   <Accordion title="Create product" defaultOpen={false}>
+    Below is a sample request to create a product:
+
+    <Note>
+      Make sure to pass the `shipbob_channel_id` in the header.
+    </Note>
+
     <CodeGroup>
       ```javascript POST /1.0/product
       {
-        "reference_id": "TShirtBlueM",
-        "sku": "TShirtBlueM",
-        "name": "Medium Blue T-Shirt"
+        "reference_id": "LIGHT-ROAST",
+        "sku": "LIGHT-ROAST",
+        "name": "Light Roast Coffee"
       }
       ```
     </CodeGroup>
@@ -40,7 +93,11 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
   </Accordion>
 
   <Accordion title="Create order" defaultOpen={false}>
-    &#x20;Below is a sample request:
+    &#x20;Below is a sample request to create a order:
+
+    <Note>
+      Make sure to pass the `shipbob_channel_id` in the header.
+    </Note>
 
     <CodeGroup>
       ```javascript POST /1.0/order
@@ -61,30 +118,30 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
         },
         "products": [
           {
-            "reference_id": "COF-LGT-REG",
+            "reference_id": "LIGHT-ROAST",
             "name": "Light Roast Coffee",
             "quantity": 1,
           },
           {
-            "reference_id": "COF-DARK-REG",
+            "reference_id": "DARK-ROAST",
             "name": "Dark Roast Coffee",
             "quantity": 1,
           }
         ],
-        "reference_id": "101",
-        "order_number": "840343901234",
+        "reference_id": "840343901234", // the reference_id can be the same as the order_number
+        "order_number": "1001",
         "type": "DTC",
       }
       ```
     </CodeGroup>
-
-    <Note>
-      Make sure to pass the `shipbob_channel_id` in the header.
-    </Note>
   </Accordion>
 
   <Accordion title="Create warehouse receiving order" defaultOpen={false}>
-    Here is a sample request. If testing on sandbox you can use id 8 or id 10&#x20;
+    Here is a sample request to create a warehouse receiving order. If testing on sandbox you can use fulfillment\_center id 8 or id 10&#x20;
+
+    <Note>
+      When you create warehouse receiving orders with the ShipBob API, you do not need to pass the `shipbob_channel_id`.
+    </Note>
 
     <CodeGroup>
       ```javascript POST /2.0/receiving
@@ -110,15 +167,7 @@ A few common scenarios to get started with the ShipBob API. All endpoints are on
       }
       ```
     </CodeGroup>
-
-    <Note>
-      When you create warehouse receiving orders with the ShipBob API, you do not need to pass the `shipbob_channel_id`.
-    </Note>
   </Accordion>
 </AccordionGroup>
-
-<Check>
-  Download our [OpenAPI spec](blob:https://developer.shipbob.com/e2e5b9a7-6b80-4461-aae1-89561a76e2e8).
-</Check>
 
 ##
