@@ -1,7 +1,6 @@
 ---
 title: "ShipBob Logistics"
 description: ""
-mode: "wide"
 ---
 
 This API lets you create shipping labels and sync tracking numbers for orders processed through ShipBob’s logistics system. It’s straightforward to integrate and works in both sandbox and production environments.
@@ -47,20 +46,31 @@ To get started, you’ll need a ShipBob account. Reach out to your ShipBob repre
 Authentication depends on the API you’re calling:
 
 <Accordion title="For logisticslabelprintingapi Endpoints">
-  For `https://logisticslabelprintingapi-stage.shipbob.dev/` or `https://logisticslabelprintingapi.shipbob.com/`:\
-  Use an `SBL_authToken` provided by your ShipBob rep.
+  For `https://logisticslabelprintingapi-stage.shipbob.dev/` or `https://logisticslabelprintingapi.shipbob.com/`:
 
-  ```json
+  Use an `SBL_authToken` provided by your ShipBob rep:
+
+  ```
   Authorization: <SBL_authToken>
   ```
+
+  <Tip>
+    You can also find this by inspecting the element in your browser
+
+
+
+    ![](/images/shot-GoogleChrome-006736@2x.png)
+  </Tip>
 </Accordion>
 
 <Accordion title="For sandbox-api or api.shipbob.com Endpoints">
-  For `https://sandbox-api.shipbob.com/` or `https://api.shipbob.com/`:\
-  Use a Personal Access Token (PAT), which you can generate in the ShipBob dashboard.
+  For `https://sandbox-api.shipbob.com/` or `https://api.shipbob.com/`:
+
+
+  Use a Personal Access Token (PAT), which you can generate in the ShipBob dashboard by going to Integrations > API Tokens > Generate new token.
 
   ```json
-  Authorization: <Personal_Access_Token>
+  Authorization: Bearer <Personal_Access_Token>
   ```
 </Accordion>
 
