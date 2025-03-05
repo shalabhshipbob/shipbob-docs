@@ -32,6 +32,9 @@
               "guides/overview",
               "guides/orders",
               "guides/products",
+              "guides/tracking",
+              "guides/inventory",
+              "guides/receiving",
               "guides/returns"
             ]
           }

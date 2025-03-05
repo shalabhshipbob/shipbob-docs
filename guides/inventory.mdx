@@ -1,0 +1,30 @@
+---
+title: "Inventory"
+description: "Description of your new file."
+---
+
+## Retrieving inventory levels
+
+ShipBob’s [GET inventory endpoint](https://developer.shipbob.com/api-docs#tag/Inventory/paths/~11.0~1inventory/get) will return inventory quantities associated with products that are stocked at a facility. This endpoint will return an **inventoryid** associated with a product, which is a unique ShipBob identifier. When creating a product via ShipBob’s product API, an inventoryid is automatically generated and retuned in the product creation response. As such, ShipBob recommends implementing one of the following best practices to fetch inventory levels:
+
+### [](https://developer.shipbob.com/guides/#option-1--fetching-products-from-shipbob-each-time-inventory-levels-are-updated-in-your-platform)Option 1 – Fetching products from ShipBob each time inventory levels are updated in your platform
+
+The solution would be to follow this process:
+
+1. Grab the products in bulk each time you are conducting an inventory sync (1 or multiple calls) using the Product endpoint
+
+2. Get the list of the product’s inventory components (inventory\_id is returned in the Product endpoint)
+
+3. Grab all the inventories in bulk (1 or multiple calls) using the Inventory endpoint
+
+4. Reconcile product with inventory. If not a bundle, grab the inventory id and set that as the product sellable. If it is a bundle, you need to do the calculations. If the inventory is inactive or digital, you can skip the product or place a 0 value.
+
+   * Note - inventory quantities in ShipBob are tracked at the component level, not at the bundle SKU level.
+
+If overselling is a large issue, you can also implement a “buffer” for certain skus, meaning that if you want to stop sales upstream at, say, 20 remaining inventory for a sku, you can send a 0 quantity to your platform of the 20 or less that ShipBob is reporting for that particular sku. This buffer will allow for a certain “reserve” stock on the ShipBob end in case there any customer service/high priority orders that need to be pushed through and fulfilled. The buffer quantity logic would need to live on your platform/integration layer, and you can decide to do this on a per-sku basis or a global setting across all skus.
+
+### [](https://developer.shipbob.com/guides/#option-2---store-products-in-your-system)Option 2 - Store products in your system
+
+The alternative solution would be for you to store the ShipBob Inventory Id somewhere on your system. This way, you can use the bulk inventory endpoint and page through all inventory records that ShipBob returns to update your system’s inventory levels. The only caveat is that if a product merge happens on ShipBob, the inventoryid could change, so you’d need a way to reconcile the inventory ids on a regular basis to ensure you store the correct id.
+
+This would also mean that when a product is created via the API, you have the ability to store the inventory id based on the product creation response.
