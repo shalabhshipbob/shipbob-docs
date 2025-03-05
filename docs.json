@@ -167,5 +167,11 @@
       "facebook": "https://www.facebook.com/LoveShipBob/",
       "twitter": "https://twitter.com/shipbob"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/logistics",
+      "destination": "/logistics/overview"
+    }
+  ]
 }

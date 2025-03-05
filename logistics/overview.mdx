@@ -162,116 +162,68 @@ On success (HTTP 200):
 
 ## Sync Tracking Numbers
 
-Sync tracking numbers back to your system using either polling or webhooks.
+Sync tracking numbers back to your system using the polling-based approach.
 
-<Accordion title="Option A: Polling-Based Approach">
-  Manually check for tracking updates.
+Manually check for tracking updates.
 
-  #### Step 1: Fetch Orders with Tracking
+<Steps>
+  <Step title="Fetch Orders with Tracking">
+    * **Endpoint**: `GET `[`https://sandbox-api.shipbob.com/1.0/order?HasTracking=true&IsTrackingUploaded=false`](https://sandbox-api.shipbob.com/1.0/order?HasTracking=true\&IsTrackingUploaded=false)
 
-  * **Endpoint**: `GET https://sandbox-api.shipbob.com/1.0/order?HasTracking=true&IsTrackingUploaded=false`
+    * **Optional Parameter**: Add `&limit=250` for up to 250 results.
 
-  * **Optional Parameter**: Add `&limit=250` for up to 250 results.
+    * **Header**:`Authorization: Bearer <Personal_Access_Token>`
 
-  * **Header**:
+    * **Response Example**:
 
-
-
-
-    `jsonAuthorization: <Personal_Access_Token>`
-
-  * **Response Example**:
-
-  ```json
-    [
-      {
-        "id": 123,
-        "reference_id": "101",
-        "shipments": [
-          {
-            "id": 456,
-            "tracking_number": "1Z9999W99999999999"
-          }
-        ]
-      }
-    ]
-  ```
-
-  #### Step 2: Iterate through each order
-
-  * Each order has 1 shipment with ShipBob Logistics
-
-  #### Step 3: Sync Tracking
-
-  * Extract the `tracking_number` and update your system.
-
-  #### Step 4: Mark as Uploaded
-
-  * **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
-
-  * **Header**:
-
-
-
-
-    `jsonAuthorization: <Personal_Access_Token>`
-
-  * **Body**:
-
-  ```json
-    {
-      "is_tracking_uploaded": "true"
-    }
-  ```
-
-  * Replace `{shipmentId}` with the shipment ID (e.g., `12345678`).
-
-  #### Step 5: Repeat
-
-  * Poll every 30 minutes to stay updated.
-</Accordion>
-
-<Accordion title="Option B: Webhooks">
-  Get real-time updates with the `order_shipped` webhook.
-
-  #### Step 1: Subscribe
-
-  * **Endpoint**: `POST https://sandbox-api.shipbob.com/1.0/webhook`
-
-  * **Header**:\
-    `jsonAuthorization: <Personal_Access_Token>`
-
-  * **Body**:
-
-  ```json
-    {
-      "topic": "order_shipped",
-      "subscription_url": "https://mywebsite.com/shipbob/handler"
-    }
-  ```
-
-  #### Step 2: Handle Webhook Events
-
-  * ShipBob sends a POST request to your URL:
-
-  ```json
-    {
-      "order_id": "101",
-      "shipments": [
+    ```json
+      [
         {
-          "id": 456,
-          "tracking_number": "1Z9999W99999999999"
+          "id": 234567890,
+          "reference_id": "101",
+          "shipments": [
+            {
+              "id": 12345678,
+              "tracking_number": "1Z9999W99999999999"
+            }
+          ]
         }
       ]
-    }
-  ```
+    ```
 
-  * Sync the `tracking_number` to your system.
+    ####
+  </Step>
 
-  #### More Info
+  <Step title="Iterate through each order">
+    * Each order has 1 shipment with ShipBob Logistics
+  </Step>
 
-  * [ShipBob Webhooks](https://developer.shipbob.com/api-docs/#tag/Webhooks/paths/~11.0~1webhook/post).
-</Accordion>
+  <Step title="Sync Tracking">
+    * Extract the `tracking_number` from the shipments array and update your system.
+  </Step>
+
+  <Step title="Mark as Uploaded">
+    * **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
+
+    * **Header**:`jsonAuthorization: <Personal_Access_Token>`
+
+    * **Body**:
+
+    ```json
+      {
+        "is_tracking_uploaded": "true"
+      }
+    ```
+
+    * Replace `{shipmentId}` with the shipment ID (e.g., `12345678`).
+  </Step>
+
+  <Step title="Repeat">
+    * Poll every 30 minutes to stay updated.
+  </Step>
+</Steps>
+
+
 
 ## Tips for Success
 
