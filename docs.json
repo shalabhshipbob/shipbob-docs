@@ -145,7 +145,7 @@
         "icon": "list-timeline",
         "description": "Updates and changes",
         "pages": [
-          "changelog/changelog"
+          "release-notes"
         ]
       }
     ]
