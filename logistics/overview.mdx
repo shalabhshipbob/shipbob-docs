@@ -1,6 +1,7 @@
 ---
 title: "ShipBob Logistics"
 description: ""
+mode: "wide"
 ---
 
 This API lets you create shipping labels and sync tracking numbers for orders processed through ShipBob’s logistics system. It’s straightforward to integrate and works in both sandbox and production environments.
@@ -16,8 +17,6 @@ sequenceDiagram
     alt Polling-Based Tracking Sync
         Client->>ShipBob API: GET /1.0/order?HasTracking=true&IsTrackingUploaded=false
         ShipBob API-->>Client: Returns Orders with Tracking
-        Client->>ShipBob API: PUT /1.0/{shipmentId} (Mark as Uploaded)
-        ShipBob API-->>Client: Tracking Marked as Uploaded
     end
 
     Client->>Client: Sync tracking number in the system
@@ -164,66 +163,64 @@ On success (HTTP 200):
 
 Sync tracking numbers back to your system using the polling-based approach.
 
-Manually check for tracking updates.
+<Accordion title="How to integrate?" defaultOpen={false}>
+  <Steps>
+    <Step title="Fetch Orders with Tracking">
+      * **Endpoint**: `GET `[`https://sandbox-api.shipbob.com/1.0/order?HasTracking=true&IsTrackingUploaded=false`](https://sandbox-api.shipbob.com/1.0/order?HasTracking=true\&IsTrackingUploaded=false)
 
-<Steps>
-  <Step title="Fetch Orders with Tracking">
-    * **Endpoint**: `GET `[`https://sandbox-api.shipbob.com/1.0/order?HasTracking=true&IsTrackingUploaded=false`](https://sandbox-api.shipbob.com/1.0/order?HasTracking=true\&IsTrackingUploaded=false)
+      * **Optional Parameter**: Add `&limit=250` for up to 250 results.
 
-    * **Optional Parameter**: Add `&limit=250` for up to 250 results.
+      * **Header**:`Authorization: Bearer <Personal_Access_Token>`
 
-    * **Header**:`Authorization: Bearer <Personal_Access_Token>`
+      * **Response Example**:
 
-    * **Response Example**:
+      ```json
+        [
+          {
+            "id": 234567890,
+            "reference_id": "101",
+            "shipments": [
+              {
+                "id": 12345678,
+                "tracking_number": "1Z9999W99999999999"
+              }
+            ]
+          }
+        ]
+      ```
 
-    ```json
-      [
+      ####
+    </Step>
+
+    <Step title="Iterate through each order">
+      * Each order has 1 shipment with ShipBob Logistics
+    </Step>
+
+    <Step title="Sync Tracking">
+      * Extract the `tracking_number` from the shipments array and update your system.
+    </Step>
+
+    <Step title="Mark as Uploaded">
+      * **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
+
+      * **Header**:`jsonAuthorization: <Personal_Access_Token>`
+
+      * **Body**:
+
+      ```json
         {
-          "id": 234567890,
-          "reference_id": "101",
-          "shipments": [
-            {
-              "id": 12345678,
-              "tracking_number": "1Z9999W99999999999"
-            }
-          ]
+          "is_tracking_uploaded": "true"
         }
-      ]
-    ```
+      ```
 
-    ####
-  </Step>
+      * Replace `{shipmentId}` with the shipment ID (e.g., `12345678`).
+    </Step>
 
-  <Step title="Iterate through each order">
-    * Each order has 1 shipment with ShipBob Logistics
-  </Step>
-
-  <Step title="Sync Tracking">
-    * Extract the `tracking_number` from the shipments array and update your system.
-  </Step>
-
-  <Step title="Mark as Uploaded">
-    * **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
-
-    * **Header**:`jsonAuthorization: <Personal_Access_Token>`
-
-    * **Body**:
-
-    ```json
-      {
-        "is_tracking_uploaded": "true"
-      }
-    ```
-
-    * Replace `{shipmentId}` with the shipment ID (e.g., `12345678`).
-  </Step>
-
-  <Step title="Repeat">
-    * Poll every 30 minutes to stay updated.
-  </Step>
-</Steps>
-
-
+    <Step title="Repeat">
+      * Poll every 30 minutes to stay updated.
+    </Step>
+  </Steps>
+</Accordion>
 
 ## Tips for Success
 
