@@ -14,7 +14,6 @@
         ],
         "summary": "  Update Warehouse Receiving Order Tags\n",
         "description": "  Updates tags for the provided Warehouse Receiving Order\n",
-        "operationId": "0b40a20e6f25678c26ed11ebd0a2e433",
         "parameters": [
           {
             "name": "id",
@@ -137,7 +136,6 @@
         ],
         "summary": "  Search channels\n",
         "description": "  Search channels based on filters\n",
-        "operationId": "831a7380f5aaf8f77b9a356776f3e457",
         "requestBody": {
           "content": {
             "application/json": {
@@ -209,7 +207,6 @@
         ],
         "summary": "  Create Channel\n",
         "description": "  Creates channel with provided name if none exists\n",
-        "operationId": "92111627502044489c5f9a8f8e0a8228",
         "parameters": [
           {
             "name": "InheritScopes",
@@ -301,7 +298,6 @@
           "Receiving"
         ],
         "summary": "Set ExternalSync flag for Wros\n",
-        "operationId": "a24cc704b22486f1d00776d6eabef67e",
         "requestBody": {
           "description": "The list of wro ids and a flag to enable external sync",
           "content": {
@@ -379,7 +375,6 @@
           "InventoryLevels"
         ],
         "summary": "    Get All Inventory Levels\n",
-        "operationId": "92f6f4de418ed836aca7dec8d17a1f84",
         "parameters": [
           {
             "name": "SearchBy",
@@ -496,7 +491,6 @@
           "Inventories"
         ],
         "summary": "    Get All Inventories\n",
-        "operationId": "5a3e974ce80c445f8f51b7f9ac682e2c",
         "parameters": [
           {
             "name": "SearchBy",
@@ -620,7 +614,6 @@
           "InventoryLevels"
         ],
         "summary": "    Get Inventory Levels\n",
-        "operationId": "69d1808c5d320b58f248877290e03f36",
         "parameters": [
           {
             "name": "inventoryId",
@@ -713,7 +706,6 @@
           "InventoryLevels"
         ],
         "summary": "    Get All Inventory Levels Grouped By Fulfillment Center\n",
-        "operationId": "511ebaa4c51b171357da1850ec73b690",
         "parameters": [
           {
             "name": "LocationType",
@@ -845,7 +837,6 @@
           "InventoryLevels"
         ],
         "summary": "    Get All Inventory Levels Grouped By Lot\n",
-        "operationId": "f114ded633454ff81bd27c6324c5d098",
         "parameters": [
           {
             "name": "LocationId",
@@ -970,7 +961,6 @@
           "InventoryLevels"
         ],
         "summary": "    Get Inventory Levels Grouped By Fulfillment Center\n",
-        "operationId": "9ccd2885c6a35d9758faf63aee5c50bd",
         "parameters": [
           {
             "name": "inventoryId",
@@ -1063,7 +1053,6 @@
           "InventoryLevels"
         ],
         "summary": "    Get Inventory Levels Grouped By Lot\n",
-        "operationId": "53e0fe48fd3e068eb74400fcdf4ac39d",
         "parameters": [
           {
             "name": "inventoryId",
@@ -1156,7 +1145,6 @@
           "Inventories"
         ],
         "summary": "    Get Inventory\n",
-        "operationId": "baabdeacd0fb29ccd774844538582e71",
         "parameters": [
           {
             "name": "inventoryId",
@@ -1250,7 +1238,6 @@
         ],
         "summary": "Merchant Inventory History.\n",
         "description": "Returns all events that change the total on-hand quantity of a given merchant's inventory for a given facility.\n",
-        "operationId": "e717a735deb90e36e99360ae311df0c3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1291,7 +1278,6 @@
         ],
         "summary": "Single Inventory History.\n",
         "description": "Returns all events that change the total on-hand quantity of a given inventory and lot combination for a given facility.\n",
-        "operationId": "97192f9a8c0a15b9832cfa9b74fa705c",
         "parameters": [
           {
             "name": "InventoryId",
@@ -1371,7 +1357,6 @@
           "Product"
         ],
         "summary": "Gets multiple product variants\n",
-        "operationId": "d7b5853f4a24d00f149fbe297ee11e5b",
         "parameters": [
           {
             "name": "productId",
@@ -1431,7 +1416,6 @@
           "Product"
         ],
         "summary": "Adds new product variants to a product\n",
-        "operationId": "14daa5e4386442d68fbf15d81ca67bea",
         "parameters": [
           {
             "name": "productId",
@@ -1496,7 +1480,6 @@
           "Product"
         ],
         "summary": "Updates multiple product variants\n",
-        "operationId": "16364e8117703570686434e0b3ba7abe",
         "parameters": [
           {
             "name": "productId",
@@ -1547,7 +1530,6 @@
           "Product"
         ],
         "summary": "  Gets Product by Id\n",
-        "operationId": "9d82d40f4758612d28c98612ce997deb",
         "parameters": [
           {
             "name": "productId",
@@ -1606,7 +1588,6 @@
           "Product"
         ],
         "summary": "Deletes Bundle and removes associations to related products\n",
-        "operationId": "dff42dc941ad7015e0ef589a5df04a41",
         "parameters": [
           {
             "name": "productId",
@@ -1663,7 +1644,6 @@
         ],
         "summary": "Update a single product with Json Merge Patch functionality\n",
         "description": "Updates a single product. This endpoint supports Json Merge Patch functionality, which allows partial updates to be made to the product. The endpoint will only update the fields that are provided in the request. For updating variants, you mnust include the ID of the variant that you would like to update.\n",
-        "operationId": "2dd7afd0ffe30df53fe295964e471abc",
         "parameters": [
           {
             "name": "productId",
@@ -1715,7 +1695,6 @@
           "Taxonomy"
         ],
         "summary": "  Gets Taxonomy\n",
-        "operationId": "261e342a8a9514a5c30d6321ef4ff2c2",
         "parameters": [
           {
             "name": "search",
@@ -1786,7 +1765,6 @@
           "Variant"
         ],
         "summary": "Update specific channel metadata record from a variant by channel metadata ID\n",
-        "operationId": "90aa9021b19d7789681a49b76d79703d",
         "parameters": [
           {
             "name": "variantId",
@@ -1881,7 +1859,6 @@
           "Variant"
         ],
         "summary": "Used to delete a specific channel metadata record from a variant by channel metadata ID\n",
-        "operationId": "b48e74188d2b119e672f2ea93f9b96c6",
         "parameters": [
           {
             "name": "variantId",
@@ -1953,7 +1930,6 @@
           "Product"
         ],
         "summary": "Migrates variants to existing product\n",
-        "operationId": "a3869424cb29a4540a3c8890462b4704",
         "parameters": [
           {
             "name": "productId",
@@ -2040,7 +2016,6 @@
           "Taxonomy"
         ],
         "summary": "  Gets Taxonomy Parent\n",
-        "operationId": "09c013ed682b50f3d16234d4c69f519b",
         "parameters": [
           {
             "name": "id",
@@ -2123,7 +2098,6 @@
           "Variant"
         ],
         "summary": "Add new product variants to a product\n",
-        "operationId": "0386f51f54514a8488c3b7e914220aba",
         "parameters": [
           {
             "name": "variantId",
@@ -2190,7 +2164,6 @@
           "Taxonomy"
         ],
         "summary": "  Gets Taxonomy by Id\n",
-        "operationId": "45c19cd89efa4b89bc9c93f3d443f77c",
         "parameters": [
           {
             "name": "id",
@@ -2273,7 +2246,6 @@
           "Product"
         ],
         "summary": "Retrieves List of Products based on filters provided\n",
-        "operationId": "5e4fe606de2077dfa918ff128f5bbfff",
         "parameters": [
           {
             "name": "Search",
@@ -2515,7 +2487,6 @@
           "Product"
         ],
         "summary": "Create single product to the store\n",
-        "operationId": "0c4a773215d74006c7062e138ae1b94e",
         "requestBody": {
           "description": "The product to add",
           "content": {
@@ -2571,7 +2542,6 @@
           "PackagingRequirement"
         ],
         "summary": "Gets Packaging Requirement\n",
-        "operationId": "672942b09322e1990e33ef572188ad73",
         "responses": {
           "200": {
             "description": "Success",
@@ -2601,7 +2571,6 @@
           "Variant"
         ],
         "summary": "Used to merge two or more variants together\n",
-        "operationId": "089b4461bf637cc52135f10eaf8f02a9",
         "parameters": [
           {
             "name": "variantId",
@@ -2669,7 +2638,6 @@
           "Variant"
         ],
         "summary": "Create a new Channel Metadata Entry for a given Variant\n",
-        "operationId": "16bdf05dd87417fa58047a46bb481f61",
         "parameters": [
           {
             "name": "variantId",
@@ -2735,7 +2703,6 @@
           "Product"
         ],
         "summary": "Migrates existing variants to a new product\n",
-        "operationId": "d88155a65d5492b57f4cf1d9b2351989",
         "requestBody": {
           "description": "Migration definition",
           "content": {
@@ -2812,7 +2779,6 @@
         ],
         "summary": "  \tPOS Pick Inventory\n",
         "description": "    POS Integration API to pick inventory\n",
-        "operationId": "1400c7aeab22edbc7311475e92739299",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
