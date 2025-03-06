@@ -208,10 +208,6 @@
                 ]
               }
             ]
-          },
-          {
-            "version": "Beta",
-            "openapi": "https://converter.swagger.io/api/convert?url=https%3A%2F%2Fmarketplaceapi-dev.shipbob.dev%2Fdocs%2FShipBob-Experimental-Original.json"
           }
         ]
       },
