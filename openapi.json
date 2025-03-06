@@ -6367,16 +6367,15 @@
         "x-bearerFormat": "JWT",
         "x-key-type": "Bearer"
       },
-      "OAuth2": {
+      "oauth2": {
         "type": "oauth2",
-        "description": "OAuth2 authentication using JWT tokens",
         "flows": {
-          "password": {
-            "tokenUrl": "https://auth.example.com/oauth/token",
+          "authorizationCode": {
+            "authorizationUrl": "https://auth.shipbob.com/connect/integrate",
+            "tokenUrl": "https://auth.shipbob.com/connect/token",
             "scopes": {
-              "read": "Read access",
-              "write": "Write access",
-              "admin": "Admin access"
+              "orders_read": "Access read operations",
+              "orders_write": "Access write operations"
             }
           }
         }
