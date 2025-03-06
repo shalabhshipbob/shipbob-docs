@@ -211,7 +211,7 @@
           },
           {
             "version": "Beta",
-            "openapi": "openapi-experimental.json"
+            "openapi": "https://publicordersapi.shipbob.com/swagger/v1/swagger.json"
           }
         ]
       },
