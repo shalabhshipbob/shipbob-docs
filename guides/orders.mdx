@@ -75,3 +75,45 @@ Attached, you will find an example API request for a general b2b order. While re
 * `company_name` within the recipient address data should be the retailer’s name.
 
 * `quantity_unit_of_measure_code` should be “EA” for eaches
+
+### Sample request
+
+```json Create B2B Order [expandable]
+{
+  "shipping_method": "Standard",
+  "recipient": {
+    "name": "John Doe",
+    "address": {
+      "address1": "100 Nowhere Blvd",
+      "address2": "Suite 100",
+      "city": "Gotham City",
+      "state": "NJ",
+      "zip_code": "07093",
+      "country": "US"
+    },
+    "email": "test@shipbob.com"
+    "phone_number": "9998887777"
+  },
+  "reference_id": "10001",
+  "order_number": "10001",
+  "purchase_date": "2024-09-22T23:00:48Z",
+  "type": "B2B",
+  "retailer_program_data": {
+    "purchase_order_number": "10001"
+    "retailer_program_type": "SB-B2B",
+    "mark_for_store": null,
+    "department": null,
+    "delivery_date": null,
+    "addresses": [],
+    "customer_ticket_number": null
+  },
+  "products": [
+    {
+      "name": "Test SKU",
+      "sku": "test-sku",
+      "reference_id": "test-sku",
+      "quantity": "1"
+    }
+  ]
+}
+```
