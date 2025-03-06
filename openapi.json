@@ -6,56 +6,57 @@
     "version": "v1"
   },
   "paths": {
-    "/receiving-extended/{id}/tag": {
-      "put": {
+    "/api/order/estimate": {
+      "post": {
         "tags": [
-          "Receiving",
-          "Receiving:Extended"
+          "Orders"
         ],
-        "summary": "  Update Warehouse Receiving Order Tags\n",
-        "description": "  Updates tags for the provided Warehouse Receiving Order\n",
+        "summary": "Estimate Fulfillment Cost For Order",
+        "description": "This endpoint will provide, where possible, an estimate of pricing and fulfillment center assignment of a potential standard (direct to consumer) order. \r\nKeep in mind that there are ways for the merchant to change FC assignment or product configuration after order creation that could invalidate this estimate. \r\nEstimates cannot be returned for items that are unknown, out of stock, or too large for fulfillment using standard box sizes. \r\nAdditional services such as high-pick fees, shipping insurance, auto-splitting or auto-adding items to orders, and signature required are not included in this estimate.",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
+            "name": "shipbob_channel_id",
+            "in": "header",
+            "description": "Channel Id for Operation",
             "required": true,
             "schema": {
-              "type": "string",
+              "type": "integer",
               "format": "int32"
             }
           },
           {
-            "name": "Authorization",
+            "name": "x_correlation_id",
             "in": "header",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "200": {
@@ -63,17 +64,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.EstimateViewModel"
                 }
               }
             }
@@ -83,124 +74,51 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object"
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
           },
           "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
-                }
-              }
-            }
+            "description": "No access right at this time"
           },
           "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object"
-                }
-              }
-            }
+            "description": "No access"
           }
         },
         "security": [
           {
-            "OAuth2": []
+            "oauth2": [
+              "orders_read"
+            ]
           }
         ]
       }
     },
   },
   "components": {
-    "schemas": {
-      "Receiving.UpdateReceivingTagsRequest": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Receiving.TagModel"
-            }
-          }
-        }
-      },
-      "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object": {
-        "type": "object"
-      },
-       "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object": {
-        "type": "object"
-      },
-      "Receiving.UpdateReceivingTagsResponse": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Receiving.TagModel"
-            }
-          },
-          "total_records": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "Receiving.TagModel": {
-        "required": [
-          "name",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "Receiving.ProblemDetails": {
-        "type": "object",
-        "properties": {
-          "detail": {
-            "type": "string"
-          },
-          "instance": {
-            "type": "string"
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "title": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          }
-        }
-      },
-    }
     "securitySchemes": {
       "oauth2": {
         "type": "oauth2",
