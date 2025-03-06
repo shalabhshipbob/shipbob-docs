@@ -1,15 +1,10 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "ShipBob-Experimental-Original",
-    "version": ""
+    "title": "ShipBob Orders API",
+    "description": "ShipBob Orders API",
+    "version": "v1"
   },
-  "servers": [
-    {
-      "url": "https://gateway-dev.shipbob.dev/experimental"
-    }
-  ],
-  "tags": [],
   "paths": {
     "/receiving-extended/{id}/tag": {
       "put": {
