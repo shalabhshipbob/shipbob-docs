@@ -127,8 +127,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "receiving.UpdateReceivingTagsRequest"
+        ]
       }
     },
     "/channel:search": {
@@ -200,8 +199,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "channels.v2.ChannelsV2SearchRequest"
+        ]
       }
     },
     "/channel": {
@@ -294,8 +292,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "channels.CreateChannelRequestModel"
+        ]
       }
     },
     "/receiving/:set-external-sync": {
@@ -372,8 +369,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "receiving.UpdateExternalSyncModel"
+        ]
       }
     },
     "/inventory-levels": {
@@ -1284,8 +1280,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "fulfillmentCenterInventoryService.MerchantHistoryRequest"
+        ]
       }
     },
     "/inventory/{InventoryId}/history": {
@@ -1493,8 +1488,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.CreateProductVariantRequestModelV5Array"
+        ]
       },
       "patch": {
         "tags": [
@@ -1543,8 +1537,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.UpdateProductVariantModelV5"
+        ]
       }
     },
     "/Product/{productId}": {
@@ -1712,8 +1705,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.UpdateProductRequestModelV5"
+        ]
       }
     },
     "/Taxonomy": {
@@ -1881,8 +1873,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
+        ]
       },
       "delete": {
         "tags": [
@@ -2039,8 +2030,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.MigrateVariantRequestModel"
+        ]
       }
     },
     "/Taxonomy/{id}/parent": {
@@ -2190,8 +2180,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.ConvertVariantToBundleRequest"
+        ]
       }
     },
     "/Taxonomy/{id}": {
@@ -2572,8 +2561,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.CreateProductRequestModelV5"
+        ]
       }
     },
     "/packaging-requirement": {
@@ -2671,8 +2659,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.MergeVariantRequestModelArray"
+        ]
       }
     },
     "/Variant/{variantId}/channel-metadata": {
@@ -2738,8 +2725,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.Post.Api.V5.Variant.VariantId.Channel.Metadata.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
+        ]
       }
     },
     "/Product:moveVariants": {
@@ -2815,8 +2801,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "products.MigrateVariantRequestModel"
+        ]
       }
     },
     "/pos-integration/pick-inventory": {
@@ -2888,8 +2873,7 @@
           {
             "OAuth2": []
           }
-        ],
-        "x-codegen-request-body-name": "facilityWorkflowIntegrations.ShopifyPickData"
+        ]
       }
     }
   },
@@ -6423,6 +6407,5 @@
         }
       }
     }
-  },
-  "x-original-swagger-version": "2.0"
+  }
 }
