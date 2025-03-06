@@ -1,0 +1,154 @@
+---
+title: "Product Catalog API Documentation"
+description: "API documentation for managing products through the ShipBob product catalog."
+---
+
+## Overview
+
+This documentation provides an overview and API request examples for creating, retrieving, and modifying products through the ShipBob product catalog.
+
+## Base URL
+
+All requests should be directed to the following base URL:
+
+```plaintext
+https://api.shipbob.com/2.0/
+```
+
+## Creating a Product
+
+### Endpoint: `POST /product`
+
+```json
+{
+  "name": "Saturn Shirt",
+  "type_id": 1,
+  "taxonomy_id": 266,
+  "variants": [
+    {
+      "name": "Saturn Shirt",
+      "sku": "saturn-shirt",
+      "packaging_requirement_id": 7,
+      "packaging_material_type_id": 10,
+      "barcode": "06547321109",
+      "upc": "9011233234",
+      "gtin": "7334568872",
+      "customs": {
+        "country_code_of_origin": "US",
+        "hs_tariff_code": "6103.22.00",
+        "value": "15",
+        "description": "t-shirt"
+      }
+    }
+  ]
+}
+```
+
+### Notes:
+
+* **Type ID**: `1` indicates a regular product (not a bundle).
+
+* **Taxonomy ID**: Categorizes products in the UI. (`266` represents "Clothing").
+
+* **Packaging Requirement ID**: Determines special handling (e.g., `7` for apparel).
+
+* **Customs Information**: Required for international shipments.
+
+## Creating a Varying Product
+
+### Endpoint: `POST /product`
+
+```json
+{
+  "name": "Space Shirts",
+  "type_id": 1,
+  "taxonomy_id": 266,
+  "variants": [
+    {
+      "name": "Saturn Shirt Small",
+      "sku": "saturn-shirt-s",
+      "packaging_requirement_id": 7,
+      "packaging_material_type_id": 10,
+      "barcode": "06547321110",
+      "customs": {
+        "country_code_of_origin": "US",
+        "hs_tariff_code": "6103.22",
+        "value": "15",
+        "description": "t-shirt"
+      }
+    }
+  ]
+}
+```
+
+## Updating Existing Products
+
+### Endpoint: `PATCH /product/{product-id}`
+
+```json
+{
+  "variants": [
+    {
+      "id": 6,
+      "barcode": "4324323212",
+      "packaging_material_type_id": 6
+    },
+    {
+      "id": 8,
+      "name": "Jupiter Shirt (Small)"
+    }
+  ]
+}
+```
+
+## Retrieving Products
+
+### Endpoint: `GET /product`
+
+```plaintext
+/product?productTypeId=1&variantStatus=1&hasDigitalVariants=false
+```
+
+## Product Attributes
+
+### Product-Level Attributes
+
+| Field         | Type   | Description                       |
+| ------------- | ------ | --------------------------------- |
+| `name`        | string | Name of the product               |
+| `type_id`     | int    | Regular Product (1) or Bundle (2) |
+| `taxonomy_id` | int    | Product category ID               |
+
+### Variant-Level Attributes
+
+| Field                        | Type    | Description                                                       |
+| ---------------------------- | ------- | ----------------------------------------------------------------- |
+| `name`                       | string  | Variant name (should match product name for non-varying products) |
+| `status_id`                  | int     | Active (1) or Inactive (2)                                        |
+| `sku`                        | string  | Unique SKU for the variant                                        |
+| `barcode`                    | string  | Barcode for scanning                                              |
+| `packaging_requirement_id`   | int     | Packaging requirement                                             |
+| `packaging_material_type_id` | int     | Packaging material                                                |
+| `is_digital`                 | boolean | True for digital items                                            |
+| `customs`                    | object  | Customs details for international shipping                        |
+
+## Packaging Requirements
+
+| ID | Name            |
+| -- | --------------- |
+| 1  | No Requirements |
+| 2  | Fragile         |
+| 7  | Is Apparel      |
+
+## Packaging Material Types
+
+| ID | Name               |
+| -- | ------------------ |
+| 1  | Box                |
+| 2  | Bubble Mailer      |
+| 10 | Custom Poly Mailer |
+
+## Taxonomy Values
+
+Taxonomy values can be found using the lookup tool (requires login):
+[ShipBob Taxonomy Lookup](https://web.shipbob.com/app/merchant/#/product-catalog/taxonomy)

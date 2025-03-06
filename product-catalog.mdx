@@ -1,0 +1,45 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+# Product Catalog API Documentation
+
+This API provides endpoints for creating, retrieving, and modifying products in the ShipBob Product Catalog. Below are detailed examples, parameters, and field definitions to assist with integration.
+
+## Base Setup
+
+**Base URL:** `https://api.shipbob.com/2.0/`
+
+All API requests should be made to this base URL with the appropriate endpoint appended.
+
+## Endpoints
+
+### Create Product
+**Endpoint:** `POST /product`  
+Creates a new product in the catalog. Supports both non-varying and varying products.
+
+#### Example 1: Creating a Non-Varying Product
+```json
+{
+  "name": "Saturn Shirt",
+  "type_id": 1,
+  "taxonomy_id": 266,
+  "variants": [
+    {
+      "name": "Saturn Shirt",
+      "sku": "saturn-shirt",
+      "packaging_requirement_id": 7,
+      "packaging_material_type_id": 10,
+      "barcode": "06547321109",
+      "upc": "9011233234",
+      "gtin": "733 456 8872",
+      "customs": {
+        "country_code_of_origin": "US",
+        "hs_tariff_code": "6103.22.00",
+        "value": "15",
+        "description": "t-shirt"
+      }
+    }
+  ]
+}
