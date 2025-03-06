@@ -194,7 +194,7 @@ Track returns with the **Get Return Orders** endpoint:
 
 ## Diagrams
 
-### 1. Sequence Diagram: Creating a Return
+### Creating a Return
 
 ```mermaid
 sequenceDiagram
@@ -203,20 +203,4 @@ sequenceDiagram
     R->>S: POST /1.0/return<br>{referenceId, inventory, trackingNumber}
     S-->>R: 201 Created<br>{id, status: "Awaiting Arrival"}
     Note over R,S: Store ShipBob return ID<br>for tracking
-```
-
-Monitoring return status
-
-```mermaid
-flowchart TD
-    A[Start] --> B[Create Return<br>POST /1.0/return]
-    B --> C[Status: Awaiting Arrival]
-    C --> D{Poll GET /1.0/return}
-    D --> E[Status Updated?]
-    E -->|No| D
-    E -->|Yes| F[Status: Processed]
-    F --> G[Status: Completed]
-    G --> H[Check inventory.actionTaken]
-    H --> I[Sync Status]
-    I --> J[End]
 ```
