@@ -211,7 +211,7 @@
           },
           {
             "version": "Beta",
-            "openapi": "https://3f28-223-190-84-43.ngrok-free.app/doc"
+            "openapi": "openapi-experimental.json"
           }
         ]
       },
