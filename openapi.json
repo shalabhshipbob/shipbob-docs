@@ -143,6 +143,63 @@
           }
         }
       },
+      "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object": {
+        "type": "object"
+      },
+       "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object": {
+        "type": "object"
+      },
+      "Receiving.UpdateReceivingTagsResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Receiving.TagModel"
+            }
+          },
+          "total_records": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Receiving.TagModel": {
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Receiving.ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
     }
     "securitySchemes": {
       "oauth2": {
