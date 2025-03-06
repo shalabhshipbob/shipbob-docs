@@ -54,6 +54,7 @@
                   {
                     "group": "Channels",
                     "pages": [
+                      "api-reference/channels/resource-object",
                       "api-reference/channels/get-user-authorized-channel-info"
                     ]
                   },
