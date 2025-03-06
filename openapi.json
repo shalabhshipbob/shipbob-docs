@@ -6359,15 +6359,24 @@
       }
     },
     "securitySchemes": {
-      "oauth2": {
+      "PAT": {
+        "type": "apiKey",
+        "description": "Enter 'Bearer {your_personal_access_token}'",
+        "name": "Authorization",
+        "in": "header",
+        "x-bearerFormat": "JWT",
+        "x-key-type": "Bearer"
+      },
+      "OAuth2": {
         "type": "oauth2",
+        "description": "OAuth2 authentication using JWT tokens",
         "flows": {
-          "authorizationCode": {
-            "authorizationUrl": "https://auth.shipbob.com/connect/integrate",
-            "tokenUrl": "https://auth.shipbob.com/connect/token",
+          "password": {
+            "tokenUrl": "https://auth.example.com/oauth/token",
             "scopes": {
-              "orders_read": "Access read operations",
-              "orders_write": "Access write operations"
+              "read": "Read access",
+              "write": "Write access",
+              "admin": "Admin access"
             }
           }
         }
