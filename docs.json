@@ -131,6 +131,7 @@
                   {
                     "group": "Locations",
                     "pages": [
+                      "api-reference/locations/locations-resource",
                       "api-reference/locations/get-locations"
                     ]
                   }
