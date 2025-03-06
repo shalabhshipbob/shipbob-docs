@@ -152,7 +152,7 @@
     ]
   },
   "styling": {
-    "codeblocks": "dark"
+    "codeblocks": "system"
   },
   "logo": {
     "light": "/logo/logo-sb.svg",
