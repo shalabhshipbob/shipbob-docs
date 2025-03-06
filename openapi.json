@@ -121,9 +121,6 @@
         },
         "security": [
           {
-            "PAT": []
-          },
-          {
             "OAuth2": []
           }
         ]
@@ -131,15 +128,23 @@
     },
   },
   "components": {
-    "securitySchemes": {
-      "PAT": {
-        "type": "apiKey",
-        "description": "Enter 'Bearer {your_personal_access_token}'",
-        "name": "Authorization",
-        "in": "header",
-        "x-bearerFormat": "JWT",
-        "x-key-type": "Bearer"
+    "schemas": {
+      "Receiving.UpdateReceivingTagsRequest": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Receiving.TagModel"
+            }
+          }
+        }
       },
+    }
+    "securitySchemes": {
       "oauth2": {
         "type": "oauth2",
         "flows": {
