@@ -1,0 +1,33 @@
+---
+title: 'ShipBob Logistics API'
+description: ''
+---
+
+This API lets you create shipping labels, sync tracking numbers, and handle batches for orders processed through ShipBob’s logistics system. It’s straightforward to integrate and works in both sandbox and production environments.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant ShipBob API
+
+    Client->>ShipBob API: POST /api/order:createLabel (Create Shipping Label)
+    ShipBob API-->>Client: Returns Label (ZPL/PDF) + Shipment ID
+
+    alt Polling-Based Tracking Sync
+        Client->>ShipBob API: GET /1.0/order?HasTracking=true&IsTrackingUploaded=false
+        ShipBob API-->>Client: Returns Orders with Tracking
+    end
+
+    Client->>Client: Sync tracking number in the system
+```
+
+## Getting Started
+
+### Create an Account
+
+To get started, you’ll need a ShipBob account. Reach out to your ShipBob representative to set one up—they’ll guide you through the process and provide the necessary credentials.
+
+## Label Endpoints
+
+
+
