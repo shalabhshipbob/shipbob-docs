@@ -4,12 +4,6 @@
     "title": "ShipBob-Experimental-Original",
     "version": ""
   },
-  "servers": [
-    {
-      "url": "https://gateway-dev.shipbob.dev/experimental"
-    }
-  ],
-  "tags": [],
   "paths": {
     "/receiving-extended/{id}/tag": {
       "put": {
