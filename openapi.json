@@ -78,7 +78,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -213,7 +213,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -296,7 +296,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -367,11 +367,35 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "x_correlation_id",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel"
               }
@@ -460,8 +484,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -524,6 +547,8 @@
             "in": "query",
             "description": "Page of orders to get",
             "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -533,6 +558,8 @@
             "in": "query",
             "description": "Amount of orders per page to request",
             "schema": {
+              "maximum": 250,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -566,8 +593,7 @@
             "description": "Start date to filter orders inserted later than",
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "nullable": true
+              "format": "date-time"
             }
           },
           {
@@ -576,8 +602,7 @@
             "description": "End date to filter orders inserted earlier than",
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "nullable": true
+              "format": "date-time"
             }
           },
           {
@@ -585,11 +610,7 @@
             "in": "query",
             "description": "Order to sort results in",
             "schema": {
-              "enum": [
-                "Newest",
-                "Oldest"
-              ],
-              "type": "string"
+              "$ref": "#/components/schemas/Shipbob.Orders.Common.SortOrder"
             }
           },
           {
@@ -597,8 +618,7 @@
             "in": "query",
             "description": "Has any portion of this order been assigned a tracking number",
             "schema": {
-              "type": "boolean",
-              "nullable": true
+              "type": "boolean"
             }
           },
           {
@@ -607,8 +627,7 @@
             "description": "Start date to filter orders updated later than",
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "nullable": true
+              "format": "date-time"
             }
           },
           {
@@ -617,8 +636,7 @@
             "description": "End date to filter orders updated later than",
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "nullable": true
+              "format": "date-time"
             }
           },
           {
@@ -626,8 +644,7 @@
             "in": "query",
             "description": "Filter orders that their tracking information was fully uploaded",
             "schema": {
-              "type": "boolean",
-              "nullable": true
+              "type": "boolean"
             }
           },
           {
@@ -636,8 +653,7 @@
             "description": "Start date to filter orders with tracking updates later than the supplied date. Will only return orders that have tracking information",
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "nullable": true
+              "format": "date-time"
             }
           },
           {
@@ -646,8 +662,7 @@
             "description": "End date to filter orders updated later than the supplied date. Will only return orders that have tracking information",
             "schema": {
               "type": "string",
-              "format": "date-time",
-              "nullable": true
+              "format": "date-time"
             }
           },
           {
@@ -656,8 +671,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -724,8 +738,24 @@
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CreateOrderModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CreateOrderModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CreateOrderModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CreateOrderModel"
               }
@@ -734,7 +764,7 @@
         },
         "responses": {
           "201": {
-            "description": "Success",
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -927,7 +957,7 @@
             }
           },
           "204": {
-            "description": "Success"
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request",
@@ -997,8 +1027,24 @@
           }
         ],
         "requestBody": {
+          "description": "The JSON that represent the order on the Third Party Source",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddStoreOrderJsonModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddStoreOrderJsonModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddStoreOrderJsonModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddStoreOrderJsonModel"
               }
@@ -1007,7 +1053,7 @@
         },
         "responses": {
           "201": {
-            "description": "Success",
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -1100,8 +1146,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1111,7 +1156,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                    }
+                  ],
+                  "description": "Information about a shipment"
                 }
               }
             }
@@ -1174,8 +1227,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           },
           {
@@ -1193,7 +1245,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                    }
+                  ],
+                  "description": "Information about a shipment"
                 }
               }
             }
@@ -1259,7 +1319,7 @@
         "security": [
           {
             "oauth2": [
-              "fulfillments_cancel"
+              "MultiChannelWriteAccess"
             ]
           }
         ]
@@ -1298,8 +1358,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1375,8 +1434,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1388,7 +1446,15 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                      },
+                      {
+                        "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                      }
+                    ],
+                    "description": "Information about a shipment"
                   }
                 }
               }
@@ -1462,8 +1528,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1539,8 +1604,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1550,7 +1614,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                    }
+                  ],
+                  "description": "Information about a shipment"
                 }
               }
             }
@@ -1588,6 +1660,113 @@
             ]
           }
         ]
+      },
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Update a Shipment",
+        "parameters": [
+          {
+            "name": "shipmentId",
+            "in": "path",
+            "description": "The Shipment id to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "shipbob_channel_id",
+            "in": "header",
+            "description": "Channel Id for Operation",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Shipment Information to be updated",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.UpdateShipmentModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.UpdateShipmentModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.UpdateShipmentModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.UpdateShipmentModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                      },
+                      {
+                        "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                      }
+                    ],
+                    "description": "Information about a shipment"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No access right at this time"
+          },
+          "403": {
+            "description": "No access"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "MultiChannelWriteAccess"
+            ]
+          }
+        ]
       }
     },
     "/1.0/shipment/{shipmentId}/cancel": {
@@ -1613,8 +1792,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1624,7 +1802,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                    }
+                  ],
+                  "description": "Information about a shipment"
                 }
               }
             }
@@ -1690,7 +1876,7 @@
         "security": [
           {
             "oauth2": [
-              "fulfillments_cancel"
+              "MultiChannelWriteAccess"
             ]
           }
         ]
@@ -1710,14 +1896,29 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
         "requestBody": {
+          "description": "The shipment IDs to cancel",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CancelShipmentsModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CancelShipmentsModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CancelShipmentsModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.CancelShipmentsModel"
               }
@@ -1806,8 +2007,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1883,8 +2083,7 @@
             "description": "Channel Id for Operation",
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "nullable": true
+              "format": "int32"
             }
           }
         ],
@@ -1937,6 +2136,75 @@
         ]
       }
     },
+    "/1.0/shipment/:bulkUpdateTrackingUpload": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.BulkUpdateTrackingUploadModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.BulkUpdateTrackingUploadModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.BulkUpdateTrackingUploadModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.BulkUpdateTrackingUploadModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Shipbob.Orders.Domain.Models.BulkUpdateResponseModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No access right at this time"
+          },
+          "403": {
+            "description": "No access"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "MultiChannelWriteAccess"
+            ]
+          }
+        ]
+      }
+    },
     "/1.0/shippingmethod": {
       "get": {
         "tags": [
@@ -1950,6 +2218,8 @@
             "in": "query",
             "description": "Page of orders to get",
             "schema": {
+              "maximum": 2147483647,
+              "minimum": 0,
               "type": "integer",
               "format": "int32"
             }
@@ -1959,6 +2229,8 @@
             "in": "query",
             "description": "Amount of records per page to request",
             "schema": {
+              "maximum": 250,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -2034,6 +2306,17 @@
         "summary": "Get multiple products",
         "parameters": [
           {
+            "name": "ReferenceIds",
+            "in": "query",
+            "description": "Comma separated list of reference ids to filter by",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
             "name": "Page",
             "in": "query",
             "description": "Page of products to get\r\n- Valid Range is 0 to integer max with a default of 1",
@@ -2064,17 +2347,6 @@
               "items": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "name": "ReferenceIds",
-            "in": "query",
-            "description": "Comma separated list of reference ids to filter by",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
               }
             }
           },
@@ -2114,12 +2386,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "headers": {
               "Page-Number": {
                 "description": "Number of the current page",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Number of the current page",
                   "format": ""
                 }
@@ -2127,7 +2399,7 @@
               "Total-Pages": {
                 "description": "Total number of pages of results",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Total number of pages of results",
                   "format": ""
                 }
@@ -2135,7 +2407,7 @@
               "Total-Count": {
                 "description": "Total number of results",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Total number of results",
                   "format": ""
                 }
@@ -2143,7 +2415,7 @@
               "Page-Size": {
                 "description": "Number of results per page",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Number of results per page",
                   "format": ""
                 }
@@ -2219,7 +2491,22 @@
         "requestBody": {
           "description": "The product to add",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
               }
@@ -2228,7 +2515,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2260,7 +2547,7 @@
             "description": "No access"
           },
           "422": {
-            "description": "Client Error",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -2314,7 +2601,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2394,7 +2681,22 @@
         "requestBody": {
           "description": "Updated fields to the product",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.UpdateProductModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.UpdateProductModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.UpdateProductModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.UpdateProductModel"
               }
@@ -2403,7 +2705,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2445,7 +2747,7 @@
             }
           },
           "422": {
-            "description": "Client Error",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -2491,7 +2793,34 @@
         "requestBody": {
           "description": "List of up to 50 products to add",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
+                }
+              }
+            },
             "application/json": {
+              "schema": {
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Shipbob.Products.Api.Models.Public.CreateProductModel"
+                }
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "maxItems": 50,
                 "type": "array",
@@ -2504,7 +2833,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2539,7 +2868,7 @@
             "description": "No access"
           },
           "422": {
-            "description": "Client Error",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -2809,6 +3138,14 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "ExternalSync",
+            "in": "query",
+            "description": "Flag to return external_sync_timestamp WROs",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -2818,25 +3155,25 @@
               "Page-Number": {
                 "description": "Number of the current page",
                 "schema": {
-                  "type": "integer"
+                  "type": "int"
                 }
               },
               "Total-Pages": {
                 "description": "Total number of pages of results",
                 "schema": {
-                  "type": "integer"
+                  "type": "int"
                 }
               },
               "Total-Count": {
                 "description": "Total number of results",
                 "schema": {
-                  "type": "integer"
+                  "type": "int"
                 }
               },
               "Page-Size": {
                 "description": "Number of results per page",
                 "schema": {
-                  "type": "integer"
+                  "type": "int"
                 }
               },
               "Next-Page": {
@@ -2894,7 +3231,22 @@
         "requestBody": {
           "description": "The receiving order to create",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
               }
@@ -3257,7 +3609,22 @@
         "requestBody": {
           "description": "The receiving order to create",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Shipbob.Receiving.Public.Api.Models.CreateReceivingOrderModel"
               }
@@ -3586,7 +3953,22 @@
         "requestBody": {
           "description": "Model defining the return",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
               }
@@ -3796,7 +4178,7 @@
               "Page-Number": {
                 "description": "Number of the current page",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Number of the current page",
                   "format": ""
                 }
@@ -3804,7 +4186,7 @@
               "Total-Pages": {
                 "description": "Total number of pages of results",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Total number of pages of results",
                   "format": ""
                 }
@@ -3812,7 +4194,7 @@
               "Total-Count": {
                 "description": "Total number of results",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Total number of results",
                   "format": ""
                 }
@@ -3820,7 +4202,7 @@
               "Page-Size": {
                 "description": "Number of results per page",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Number of results per page",
                   "format": ""
                 }
@@ -3872,7 +4254,22 @@
         "requestBody": {
           "description": "Model defining the return",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.CreateReturnViewModel"
               }
@@ -4136,7 +4533,7 @@
               "Page-Number": {
                 "description": "Number of the current page",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Number of the current page",
                   "format": ""
                 }
@@ -4144,7 +4541,7 @@
               "Total-Pages": {
                 "description": "Total number of pages of results",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Total number of pages of results",
                   "format": ""
                 }
@@ -4152,7 +4549,7 @@
               "Total-Count": {
                 "description": "Total number of results",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Total number of results",
                   "format": ""
                 }
@@ -4160,7 +4557,7 @@
               "Page-Size": {
                 "description": "Number of results per page",
                 "schema": {
-                  "type": "integer",
+                  "type": "int",
                   "description": "Number of results per page",
                   "format": ""
                 }
@@ -4235,7 +4632,22 @@
         "requestBody": {
           "description": "",
           "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Webhooks.Public.Api.Models.CreateWebhookSubscriptionModel"
+              }
+            },
             "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Webhooks.Public.Api.Models.CreateWebhookSubscriptionModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipBob.Webhooks.Public.Api.Models.CreateWebhookSubscriptionModel"
+              }
+            },
+            "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/ShipBob.Webhooks.Public.Api.Models.CreateWebhookSubscriptionModel"
               }
@@ -4335,7 +4747,7 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
+                      "$ref": "#/components/schemas/Microsoft.AspNetCore.Http.HttpValidationProblemDetails"
                     }
                   ]
                 }
@@ -4357,6 +4769,17 @@
         ],
         "summary": "Get locations",
         "parameters": [
+          {
+            "name": "UserId",
+            "in": "query",
+            "description": "Return all locations the user has access to",
+            "schema": {
+              "type": "integer",
+              "description": "Return all locations the user has access to",
+              "format": "int32",
+              "nullable": true
+            }
+          },
           {
             "name": "IncludeInactive",
             "in": "query",
@@ -4398,17 +4821,16 @@
                   "items": {
                     "oneOf": [
                       {
+                        "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModel"
+                      },
+                      {
                         "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.InternalLocationViewModel"
                       },
                       {
                         "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.InternalLocationViewModelV2"
                       },
                       {
-                        "oneOf": [
-                          {
-                            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.InternalLocationViewModelV2"
-                          }
-                        ]
+                        "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModelV2"
                       }
                     ]
                   }
@@ -4460,7 +4882,12 @@
               "type": "string"
             },
             "description": "Array of permissions granted for the channel",
-            "nullable": true
+            "nullable": true,
+            "example": [
+              "channels_read",
+              "orders_read",
+              "orders_write"
+            ]
           }
         },
         "additionalProperties": false
@@ -4498,8 +4925,7 @@
               "type": "object",
               "additionalProperties": false
             },
-            "nullable": true,
-            "readOnly": true
+            "nullable": true
           }
         },
         "additionalProperties": false,
@@ -4540,7 +4966,7 @@
       "Shipbob.Inventory.Api.ViewModels.FulfillmentCenterQuantityViewModel": {
         "type": "object",
         "properties": {
-          "fulfillmentCenterId": {
+          "id": {
             "type": "integer",
             "description": "Unique id of the fulfillment center",
             "format": "int32"
@@ -4551,27 +4977,27 @@
             "nullable": true,
             "example": "Cicero"
           },
-          "fulfillableQuantity": {
+          "fulfillable_quantity": {
             "type": "integer",
             "description": "Amount of fulfillable quantity at this fulfillment center",
             "format": "int32"
           },
-          "onHandQuantity": {
+          "onhand_quantity": {
             "type": "integer",
             "description": "Amount of onhand quantity at this fulfillment center",
             "format": "int32"
           },
-          "committedQuantity": {
+          "committed_quantity": {
             "type": "integer",
             "description": "Amount of committed quantity at this fulfillment center",
             "format": "int32"
           },
-          "awaitingQuantity": {
+          "awaiting_quantity": {
             "type": "integer",
             "description": "Amount of quantity awaiting arrival of a receiving order at this fulfillment center",
             "format": "int32"
           },
-          "internalTransferQuantity": {
+          "internal_transfer_quantity": {
             "type": "integer",
             "description": "The quantity of items that are in the process of internal transit \r\nbetween ShipBob fulfillment centers, with a destination of this fulfillment center.\r\nThese items are not pickable or fulfillable until they have been received and moved \r\nto the \"On Hand\" quantity of the destination FC.",
             "format": "int32"
@@ -4583,7 +5009,7 @@
       "Shipbob.Inventory.Api.ViewModels.InventoryViewModel": {
         "type": "object",
         "properties": {
-          "inventoryId": {
+          "id": {
             "type": "integer",
             "description": "Unique id of the inventory item",
             "format": "int32"
@@ -4594,66 +5020,66 @@
             "nullable": true,
             "example": "Medium Blue T-Shirt"
           },
-          "isDigital": {
+          "is_digital": {
             "type": "boolean",
             "description": "True if the inventory item is marked as a digital item"
           },
-          "isCasePick": {
+          "is_case_pick": {
             "type": "boolean",
             "description": "True if the inventory item is marked as case pick"
           },
-          "isLot": {
+          "is_lot": {
             "type": "boolean",
             "description": "True if this inventory item is organized into lots"
           },
           "dimensions": {
             "$ref": "#/components/schemas/Shipbob.Inventory.Api.ViewModels.DimensionViewModel"
           },
-          "totalFulfillableQuantity": {
+          "total_fulfillable_quantity": {
             "type": "integer",
             "description": "Total fulfillable quantity of this inventory item",
             "format": "int32"
           },
-          "totalOnHandQuantity": {
+          "total_onhand_quantity": {
             "type": "integer",
             "description": "Total onhand quantity of this inventory item",
             "format": "int32"
           },
-          "totalCommitedQuantity": {
+          "total_committed_quantity": {
             "type": "integer",
             "description": "Total committed quantity of this inventory item",
             "format": "int32"
           },
-          "totalSellableQuantity": {
+          "total_sellable_quantity": {
             "type": "integer",
             "description": "Total quantity that can be sold without overselling the inventory item.\r\nThis is calculated by subtracting the total exception quantity from the\r\nfulfillable quantity.",
             "format": "int32"
           },
-          "totalAwaitingQuantity": {
+          "total_awaiting_quantity": {
             "type": "integer",
             "description": "Total quantity in unreceived receiving orders for this inventory item",
             "format": "int32"
           },
-          "totalExceptionQuantity": {
+          "total_exception_quantity": {
             "type": "integer",
             "description": "The total quantity of all items that are contained within orders that\r\nare in exception/out of stock status. Out of stock orders have not been\r\nprocessed and therefore do not have lot or fulfillment centers assigned.",
             "format": "int32"
           },
-          "totalInternalTransferQuantity": {
+          "total_internal_transfer_quantity": {
             "type": "integer",
             "description": "The total quantity of all items that are in the process of internal transit \r\nbetween ShipBob fulfillment centers. These items are not pickable or fulfillable\r\nuntil they have been received and moved to the \"On Hand\" quantity of the destination FC.\r\nInternal transit quantities for each FC represent the incoming transfer stock\r\nfor that specific location.",
             "format": "int32"
           },
-          "totalBackorderedQuantity": {
+          "total_backordered_quantity": {
             "type": "integer",
             "description": "The amount of the item you need to send to ShipBob to fulfill all exception orders containing \r\nthe item. This is the exception_quantity less the fulfillable_quantity of the item.",
             "format": "int32"
           },
-          "isActive": {
+          "is_active": {
             "type": "boolean",
             "description": "Whether the inventory is active or not"
           },
-          "fulfillableQuantityByFulfillmentCenter": {
+          "fulfillable_quantity_by_fulfillment_center": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Shipbob.Inventory.Api.ViewModels.FulfillmentCenterQuantityViewModel"
@@ -4661,7 +5087,7 @@
             "description": "Fulfillable quantity of this inventory item broken down by fulfillment center location",
             "nullable": true
           },
-          "fulfillableQuantityByLot": {
+          "fulfillable_quantity_by_lot": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Shipbob.Inventory.Api.ViewModels.LotQuantityViewModel"
@@ -4669,7 +5095,7 @@
             "description": "Fulfillable quantity of this inventory item broken down by lot",
             "nullable": true
           },
-          "packagingAttribute": {
+          "packaging_attribute": {
             "$ref": "#/components/schemas/Shipbob.Inventory.Domain.Models.PackagingAttribute"
           }
         },
@@ -4679,44 +5105,44 @@
       "Shipbob.Inventory.Api.ViewModels.LotQuantityViewModel": {
         "type": "object",
         "properties": {
-          "lotNumber": {
+          "lot_number": {
             "type": "string",
             "description": "Identification number of this lot",
             "nullable": true,
             "example": "1234"
           },
-          "expirationDate": {
+          "expiration_date": {
             "type": "string",
             "description": "Expiration date for this lot",
             "format": "date-time",
             "nullable": true
           },
-          "fulfillableQuantity": {
+          "fulfillable_quantity": {
             "type": "integer",
             "description": "Fulfillable quantity of inventory items belonging to this lot",
             "format": "int32"
           },
-          "onHandQuantity": {
+          "onhand_quantity": {
             "type": "integer",
             "description": "OnHand quantity of inventory items belonging to this lot",
             "format": "int32"
           },
-          "committedQuantity": {
+          "committed_quantity": {
             "type": "integer",
             "description": "Committed quantity of inventory items belonging to this lot",
             "format": "int32"
           },
-          "awaitingQuantity": {
+          "awaiting_quantity": {
             "type": "integer",
             "description": "Quantity of inventory items belonging to this lot awaiting arrival of a receiving order",
             "format": "int32"
           },
-          "internalTransferQuantity": {
+          "internal_transfer_quantity": {
             "type": "integer",
             "description": "The quantity of all items belonging to this lot that are in the process of internal transit \r\nbetween ShipBob fulfillment centers. These items are not pickable or fulfillable\r\nuntil they have been received and moved to the \"On Hand\" quantity of the destination FC.\r\nInternal transit quantities for each FC represent the incoming transfer stock\r\nfor that specific location.",
             "format": "int32"
           },
-          "fulfillableQuantityByFulfillmentCenter": {
+          "fulfillable_quantity_by_fulfillment_center": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Shipbob.Inventory.Api.ViewModels.FulfillmentCenterQuantityViewModel"
@@ -4743,46 +5169,300 @@
         "type": "integer",
         "format": "int32"
       },
-      "ShipBob.Orders.Presentation.ViewModels.EstimationAddressViewModel": {
+      "ShipBob.Orders.Presentation.Models.AddProductToOrderByProductIdModel": {
         "required": [
-          "country"
+          "productId",
+          "quantity"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderModel"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique id of the product",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "The quantity of this product ordered",
+            "format": "int32"
+          },
+          "quantity_unit_of_measure_code": {
+            "type": "string",
+            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL",
+            "nullable": true
+          },
+          "external_line_id": {
+            "type": "integer",
+            "description": "Numeric assignment per item. Used as a reference number for multiple purposes such as split orders, split containers, etc.",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.Models.AddProductToOrderByReferenceIdModel": {
+        "required": [
+          "quantity",
+          "referenceId"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderModel"
+          }
+        ],
+        "properties": {
+          "reference_id": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique reference id of the product",
+            "example": "TShirtBlueM"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the product. Required if there is not an existing ShipBob product with a matching reference_id value.",
+            "nullable": true,
+            "example": "TShirtBlueM"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "The quantity of this product ordered",
+            "format": "int32"
+          },
+          "quantity_unit_of_measure_code": {
+            "type": "string",
+            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL",
+            "nullable": true
+          },
+          "gtin": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Global Trade Item Number - unique and internationally recognized identifier assigned to item by company GS1",
+            "nullable": true
+          },
+          "upc": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": "Universal Product Code - Unique external identifier",
+            "nullable": true
+          },
+          "sku": {
+            "type": "string",
+            "description": "Product SKU",
+            "nullable": true
+          },
+          "unit_price": {
+            "type": "number",
+            "description": "Price for one item",
+            "format": "double",
+            "nullable": true
+          },
+          "external_line_id": {
+            "type": "integer",
+            "description": "Numeric assignment per item. Used as a reference number for multiple purposes such as split orders, split containers, etc.",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.Models.AddProductToOrderModel": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity_unit_of_measure_code": {
+            "type": "string",
+            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL",
+            "nullable": true
+          },
+          "external_line_id": {
+            "type": "integer",
+            "description": "Numeric assignment per item. Used as a reference number for multiple purposes such as split orders, split containers, etc.",
+            "format": "int32",
+            "nullable": true
+          },
+          "required_lot": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.RequiredLotModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.Models.AddStoreOrderJsonModel": {
+        "required": [
+          "orderJson"
         ],
         "type": "object",
         "properties": {
-          "address1": {
+          "order_json": {
+            "minLength": 1,
             "type": "string",
-            "description": "First line of the address",
-            "example": "100 Nowhere Blvd"
+            "description": "Json String that represent the order on a store front system"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Model for adding a Store Order Json to a ShipBob Order."
+      },
+      "ShipBob.Orders.Presentation.Models.BulkUpdateTrackingUploadModel": {
+        "type": "object",
+        "properties": {
+          "is_tracking_uploaded": {
+            "type": "boolean",
+            "description": "Indicates whether the Shipment was marked with tracking information\r\nuploaded to a third-party system where the order originated.\r\nApplies to all shipments in shipment_ids"
           },
-          "address2": {
+          "shipment_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "Shipment IDs to apply the tracking upload status to",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Model for updating tracking upload status for multiple shipments"
+      },
+      "ShipBob.Orders.Presentation.Models.CancelShipmentsModel": {
+        "type": "object",
+        "properties": {
+          "shipment_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "Shipment IDs to cancel",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Model for cancel multiple shipments at once"
+      },
+      "ShipBob.Orders.Presentation.Models.CreateOrderModel": {
+        "required": [
+          "products",
+          "recipient",
+          "referenceId",
+          "shippingMethod"
+        ],
+        "type": "object",
+        "properties": {
+          "shipping_method": {
+            "minLength": 1,
             "type": "string",
-            "description": "Second line of the address",
-            "example": "Suite 100"
+            "description": "Client-defined shipping method matching what the user has listed as the shipping method on the Ship Option Mapping setup page in the ShipBob Merchant Portal. If they don’t match, we will create a new one and default it to Standard",
+            "example": "Free 2-day Shipping"
           },
-          "company_name": {
-            "type": "string",
-            "description": "Name of the company receiving the shipment",
-            "example": "Wayne Enterprises"
+          "recipient": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RecipientInfoViewModel"
           },
-          "city": {
-            "type": "string",
-            "description": "The city",
-            "example": "Gotham City"
+          "products": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByProductIdModel"
+                },
+                {
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByReferenceIdModel"
+                }
+              ]
+            },
+            "description": "Products included in the order. Products identified by reference_id must also include the product name if there is no matching ShipBob product."
           },
-          "state": {
+          "reference_id": {
+            "maxLength": 300,
+            "minLength": 1,
             "type": "string",
-            "description": "The state or province",
-            "example": "NJ"
+            "description": "Unique and immutable order identifier from your upstream system"
           },
-          "country": {
+          "order_number": {
+            "maxLength": 400,
             "type": "string",
-            "description": "The country (Must be ISO Alpha-2 for estimates)",
-            "example": "US"
+            "description": "User friendly orderId or store order number that will be shown on the Orders Page. If not provided, referenceId will be used",
+            "nullable": true
           },
-          "zip_code": {
+          "type": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.OrderType"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.TagViewModel"
+            },
+            "description": "Key value pair array to store extra information at the order level for API purposes. ShipBob won't display the info in the ShipBob Merchant Portal or react based on this data.",
+            "nullable": true
+          },
+          "purchase_date": {
             "type": "string",
-            "description": "The zip code or postal code",
-            "example": "07093"
+            "description": "Date this order was purchase by the end user",
+            "format": "date-time",
+            "nullable": true
+          },
+          "location_id": {
+            "type": "integer",
+            "description": "Desired Fulfillment Center Location ID. If not specified, ShipBob will determine the location that fulfills this order.",
+            "format": "int32",
+            "nullable": true
+          },
+          "shipping_terms": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShippingTermsViewModel"
+          },
+          "retailer_program_data": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataViewModel"
+          },
+          "gift_message": {
+            "maxLength": 500,
+            "type": "string",
+            "description": "Gift message associated with the order",
+            "nullable": true
+          },
+          "financials": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.Financials"
+          },
+          "origin_platform_program": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.FulfillmentProgram"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel": {
+        "required": [
+          "address",
+          "products"
+        ],
+        "type": "object",
+        "properties": {
+          "shipping_methods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of strings specifying shipping methods for which to fetch estimates.\r\n\r\nIf this field is omitted we will return estimates for all shipping methods defined in ShipBob",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.EstimationAddressViewModel"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateProductInfoModel"
+            },
+            "description": "Products to be included in the order. Each product must include one of reference_id or id"
           }
         },
         "additionalProperties": false
@@ -4802,6 +5482,7 @@
           "reference_id": {
             "type": "string",
             "description": "Unique reference id of the product (Must be provided if ID is unknown)",
+            "nullable": true,
             "example": "TShirtBlueM"
           },
           "quantity": {
@@ -4814,125 +5495,57 @@
         },
         "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.Models.EstimateFulfillmentRequestModel": {
-        "required": [
-          "address",
-          "products"
-        ],
+      "ShipBob.Orders.Presentation.Models.Financials": {
         "type": "object",
         "properties": {
-          "shipping_methods": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Array of strings specifying shipping methods for which to fetch estimates.\r\n\r\nIf this field is omitted we will return estimates for all shipping methods defined in ShipBob"
-          },
-          "address": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.EstimationAddressViewModel"
-          },
-          "products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.EstimateProductInfoModel"
-            },
-            "description": "Products to be included in the order. Each product must include one of reference_id or id"
+          "total_price": {
+            "type": "number",
+            "description": "Sum of all line item prices, discounts, and taxes in USD",
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.ViewModels.FulfillmentCenterViewModel": {
+      "ShipBob.Orders.Presentation.Models.RequiredLotModel": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Id of the fulfillment center",
-            "format": "int32"
-          },
-          "name": {
+          "lot_number": {
             "type": "string",
-            "description": "Name of the fulfillment center",
-            "example": "Cicero (IL)"
+            "description": "Manually specified lot number",
+            "nullable": true
+          },
+          "lot_date": {
+            "type": "string",
+            "description": "Manually specified lot date",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false,
-        "description": "Information about a fulfillment center that a shipment can belong to"
+        "description": ""
       },
-      "ShipBob.Orders.Presentation.ViewModels.EstimateDetailViewModel": {
+      "ShipBob.Orders.Presentation.Models.UpdateShipmentModel": {
         "type": "object",
         "properties": {
-          "fulfillment_center": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.FulfillmentCenterViewModel"
-          },
-          "shipping_method": {
-            "type": "string",
-            "description": "Provided shipping method. Maps to ship option in ShipBob."
-          },
-          "estimated_price": {
-            "type": "number",
-            "description": "Estimated price in dollars for the provided shipping method",
-            "format": "double"
-          },
-          "estimated_currency_code": {
-            "type": "string",
-            "description": "Estimated local currency code"
-          },
-          "total_weight_oz": {
-            "type": "number",
-            "description": "Total weight of items in cart including packaging.",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.EstimateViewModel": {
-        "type": "object",
-        "properties": {
-          "estimates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.EstimateDetailViewModel"
-            },
-            "description": "Array of estimates for each shipping method"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.ChannelInfoViewModel": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Unique id of the channel",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the channel",
-            "example": "ShipBobs-Shopify-Store"
+          "is_tracking_uploaded": {
+            "type": "boolean",
+            "description": "Indicates whether the Shipment was marked with tracking information\r\nuploaded to a third-party system where the order originated."
           }
         },
         "additionalProperties": false,
-        "description": "Created by channel metadata"
+        "description": "Model for Updating multiple shipments of the same Order"
       },
-      "ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel": {
+      "ShipBob.Orders.Presentation.ViewModels.AddressViewModel": {
         "required": [
           "address1",
           "city",
-          "country",
-          "type"
+          "country"
         ],
         "type": "object",
         "properties": {
-          "type": {
-            "enum": [
-              "MarkFor",
-              "ShipFrom"
-            ],
-            "type": "string",
-            "description": "Specifies the type of address:\r\nShipFrom\r\nMarkFor"
-          },
           "address1": {
+            "minLength": 1,
             "type": "string",
             "description": "First line of the address",
             "example": "100 Nowhere Blvd"
@@ -4940,14 +5553,17 @@
           "address2": {
             "type": "string",
             "description": "Second line of the address",
+            "nullable": true,
             "example": "Suite 100"
           },
           "company_name": {
             "type": "string",
             "description": "Name of the company receiving the shipment",
+            "nullable": true,
             "example": "Wayne Enterprises"
           },
           "city": {
+            "minLength": 1,
             "type": "string",
             "description": "The city",
             "example": "Gotham City"
@@ -4955,9 +5571,11 @@
           "state": {
             "type": "string",
             "description": "The state or province",
+            "nullable": true,
             "example": "NJ"
           },
           "country": {
+            "minLength": 1,
             "type": "string",
             "description": "The country (Must be ISO Alpha-2 for estimates)",
             "example": "US"
@@ -4965,330 +5583,91 @@
           "zip_code": {
             "type": "string",
             "description": "The zip code or postal code",
+            "format": "postal-code",
+            "nullable": true,
             "example": "07093"
           }
         },
-        "additionalProperties": false,
-        "description": "Address to used when creating a B2B/DropShip order."
+        "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.ViewModels.AddressViewModel": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel"
-          }
-        ]
-      },
-      "ShipBob.Orders.Presentation.ViewModels.RecipientInfoViewModel": {
-        "required": [
-          "address",
-          "name"
-        ],
+      "ShipBob.Orders.Presentation.ViewModels.CanceledOrderViewModel": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "Name of the recipient",
-            "example": "John Doe"
-          },
-          "full_name": {
-            "type": "string",
-            "description": "FullName of the recipient",
-            "example": "John Doe"
-          },
-          "address": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.AddressViewModel"
-          },
-          "email": {
-            "type": "string",
-            "description": "Email address of the recipient",
-            "example": "john@example.com"
-          },
-          "phone_number": {
-            "maxLength": 50,
-            "type": "string",
-            "description": "Phone number of the recipient",
-            "example": "555-555-5555"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Information about the recipient of an order"
-      },
-      "ShipBob.Orders.Presentation.ViewModels.ProductInfoViewModel": {
-        "type": "object",
-        "properties": {
-          "id": {
+          "order_id": {
             "type": "integer",
-            "description": "Unique id of the product",
-            "format": "int32",
-            "nullable": true
-          },
-          "reference_id": {
-            "type": "string",
-            "description": "Unique reference id of the product",
-            "example": "TShirtBlueM"
-          },
-          "quantity": {
-            "type": "integer",
-            "description": "The quantity of this product ordered",
+            "description": "The ID of the canceled order",
             "format": "int32"
           },
-          "quantity_unit_of_measure_code": {
-            "type": "string",
-            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL"
+          "order": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.OrderViewModel"
           },
-          "sku": {
-            "type": "string",
-            "description": "Stock keeping unit for the product",
-            "example": "TShirtBlueM"
+          "status": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.CancellationResult"
           },
-          "gtin": {
-            "type": "string",
-            "description": "Global Trade Item Number - unique and internationally recognized identifier assigned to item by company GS1"
-          },
-          "upc": {
-            "type": "string",
-            "description": "Universal Product Code - Unique external identifier"
-          },
-          "unit_price": {
-            "type": "number",
-            "description": "Price for one item",
-            "format": "double",
-            "nullable": true
-          },
-          "external_line_id": {
-            "type": "integer",
-            "description": "Numeric assignment per item. Used as a reference number for multiple purposes such as split orders, split containers, etc.",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.TagViewModel": {
-        "required": [
-          "name",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 50,
-            "type": "string",
-            "description": "The key of the tag",
-            "example": "Handling instructions"
-          },
-          "value": {
-            "maxLength": 500,
-            "type": "string",
-            "description": "The value of the tag",
-            "example": "Fragile"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.RecipientViewModel": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Name of the recipient",
-            "example": "John Doe"
-          },
-          "full_name": {
-            "type": "string",
-            "description": "FullName of the recipient",
-            "example": "John Doe"
-          },
-          "address": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.AddressViewModel"
-          },
-          "email": {
-            "type": "string",
-            "description": "Email address of the recipient",
-            "example": "john@example.com"
-          },
-          "phone_number": {
-            "type": "string",
-            "description": "Phone number of the recipient",
-            "example": "555-555-5555"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Information about the recipient of a shipment"
-      },
-      "ShipBob.Orders.Presentation.ViewModels.Shipments.StatusInformationViewModel": {
-        "type": "object",
-        "properties": {
-          "validation_messages": {
+          "canceled_shipment_results": {
             "type": "array",
             "items": {
-              "type": "string"
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.StatusDetailViewModel": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Short name of the status detail"
-          },
-          "description": {
-            "type": "string",
-            "description": "Describes what the status detail means"
-          },
-          "id": {
-            "type": "integer",
-            "description": "The id of the status detail",
-            "format": "int32"
-          },
-          "inventory_id": {
-            "type": "integer",
-            "description": "Inventory Id the detail applies to (if applicable)",
-            "format": "int32",
-            "nullable": true
-          },
-          "exception_fulfillment_center_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "extra_information": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.Shipments.StatusInformationViewModel"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.TrackingViewModel": {
-        "type": "object",
-        "properties": {
-          "carrier": {
-            "type": "string",
-            "description": "Carrier of the shipment",
-            "example": "USPS"
-          },
-          "tracking_number": {
-            "type": "string",
-            "description": "Tracking number of the shipment",
-            "example": "860C8CDC8F0B4FC7AB69AC86C20539EC"
-          },
-          "carrier_service": {
-            "type": "string",
-            "description": "The carrier's service which was used for this shipment",
-            "example": "Priority"
-          },
-          "tracking_url": {
-            "type": "string",
-            "description": "URL to the website where a shipment can be tracked",
-            "example": "https://www.example.com/tracking?id=860C8CDC8F0B4FC7AB69AC86C20539EC"
-          },
-          "bol": {
-            "type": "string",
-            "description": "Bill of lading (BOL) number. Document acknowledging receipt of cargo for shipment."
-          },
-          "shipping_date": {
-            "type": "string",
-            "description": "Date freight was shipped on",
-            "format": "date-time",
-            "nullable": true
-          },
-          "pro_number": {
-            "type": "string",
-            "description": "Tracking number used for freight carriers"
-          },
-          "scac": {
-            "type": "string",
-            "description": "Standard Carrier Alpha Code (SCAC). Unique 2-4 letter code used to identify transportation companies."
-          }
-        },
-        "additionalProperties": false,
-        "description": "Tracking information for a shipment"
-      },
-      "ShipBob.Orders.Presentation.ViewModels.InventoryViewModel": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Unique id of the inventory",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the inventory item",
-            "example": "Medium Blue T-Shirt"
-          },
-          "quantity": {
-            "type": "integer",
-            "description": "Quantity of the inventory item to be included in the fulfillment",
-            "format": "int32"
-          },
-          "quantity_committed": {
-            "type": "integer",
-            "description": "The quantity of the inventory item allocated from the assigned fulfillment center and committed to the order. If quantity committed is less than order quantity, then the inventory item is out of stock at the assigned fulfillment center.",
-            "format": "int32"
-          },
-          "lot": {
-            "type": "string",
-            "description": "Lot number of the inventory",
-            "example": "22222"
-          },
-          "expiration_date": {
-            "type": "string",
-            "description": "Expiration date of the inventory",
-            "format": "date-time",
-            "nullable": true
-          },
-          "serial_numbers": {
-            "type": "array",
-            "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CanceledShipmentViewModel"
             },
-            "description": "Serial number of the inventory"
+            "description": "Results of canceling the shipments associated with the order",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "ShipBob.Orders.Presentation.ViewModels.CanceledShipmentViewModel": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.ShipmentAction"
           },
-          "is_dangerous_goods": {
+          "shipment_id": {
+            "type": "integer",
+            "description": "The ID of the shipment",
+            "format": "int64"
+          },
+          "is_success": {
             "type": "boolean",
-            "description": "Is inventory Dangerous Good",
-            "example": true
+            "description": "If the cancel action was successful"
+          },
+          "reason": {
+            "type": "string",
+            "description": "The reason the cancellation result",
+            "nullable": true
           }
         },
         "additionalProperties": false,
-        "description": "Information about inventory belonging to a store product"
+        "description": ""
       },
-      "ShipBob.Orders.Presentation.ViewModels.ShipmentProductViewModel": {
+      "ShipBob.Orders.Presentation.ViewModels.CanceledShipmentsViewModel": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Unique id of the product",
-            "format": "int32"
-          },
-          "reference_id": {
-            "type": "string",
-            "description": "Unique reference id of the product",
-            "example": "TShirtBlueM"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the product",
-            "example": "Medium Blue T-Shirt"
-          },
-          "sku": {
-            "type": "string",
-            "description": "Stock keeping unit for the product",
-            "example": "TShirtBlueM"
-          },
-          "inventory_items": {
+          "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InventoryViewModel"
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CanceledShipmentViewModel"
             },
-            "description": "Information about fulfillable inventory items belonging to this product"
+            "description": "The results of all cancellation actions",
+            "nullable": true
           }
         },
         "additionalProperties": false,
-        "description": "Information about a store product belonging to a shipment"
+        "description": ""
+      },
+      "ShipBob.Orders.Presentation.ViewModels.CartonDetailsViewModel": {
+        "type": "object",
+        "properties": {
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentProductViewModel"
+            },
+            "description": "List of what is packed in this carton",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "ShipBob.Orders.Presentation.ViewModels.CartonMeasurementsViewModel": {
         "type": "object",
@@ -5317,19 +5696,6 @@
         "additionalProperties": false,
         "description": "Measurements of a carton"
       },
-      "ShipBob.Orders.Presentation.ViewModels.CartonDetailsViewModel": {
-        "type": "object",
-        "properties": {
-          "products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentProductViewModel"
-            },
-            "description": "List of what is packed in this carton"
-          }
-        },
-        "additionalProperties": false
-      },
       "ShipBob.Orders.Presentation.ViewModels.CartonViewModel": {
         "type": "object",
         "properties": {
@@ -5341,11 +5707,13 @@
           "type": {
             "type": "string",
             "description": "Type of this carton container",
+            "nullable": true,
             "example": "Box or pallet"
           },
           "barcode": {
             "type": "string",
-            "description": "Barcode assigned to this carton"
+            "description": "Barcode assigned to this carton",
+            "nullable": true
           },
           "measurements": {
             "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CartonMeasurementsViewModel"
@@ -5355,35 +5723,211 @@
             "items": {
               "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CartonDetailsViewModel"
             },
-            "description": "Details about the contents of this carton"
+            "description": "Details about the contents of this carton",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.ViewModels.ParentCartonViewModel": {
+      "ShipBob.Orders.Presentation.ViewModels.ChannelInfoViewModel": {
         "type": "object",
         "properties": {
-          "type": {
+          "id": {
+            "type": "integer",
+            "description": "Unique id of the channel",
+            "format": "int32"
+          },
+          "name": {
             "type": "string",
-            "description": "Type of this carton container",
-            "example": "Box or pallet"
+            "description": "Name of the channel",
+            "nullable": true,
+            "example": "ShipBobs-Shopify-Store"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Created by channel metadata"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.EstimateDetailViewModel": {
+        "type": "object",
+        "properties": {
+          "fulfillment_center": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.FulfillmentCenterViewModel"
           },
-          "barcode": {
+          "shipping_method": {
             "type": "string",
-            "description": "Barcode assigned to this carton"
+            "description": "Provided shipping method. Maps to ship option in ShipBob.",
+            "nullable": true
           },
-          "measurements": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CartonMeasurementsViewModel"
+          "estimated_price": {
+            "type": "number",
+            "description": "Estimated price in dollars for the provided shipping method",
+            "format": "double"
           },
-          "cartons": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CartonViewModel"
-            },
-            "description": "Cartons packed inside this parent container"
+          "estimated_currency_code": {
+            "type": "string",
+            "description": "Estimated local currency code",
+            "nullable": true
+          },
+          "total_weight_oz": {
+            "type": "number",
+            "description": "Total weight of items in cart including packaging.",
+            "format": "double"
           }
         },
         "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.EstimateViewModel": {
+        "type": "object",
+        "properties": {
+          "estimates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.EstimateDetailViewModel"
+            },
+            "description": "Array of estimates for each shipping method",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.EstimationAddressViewModel": {
+        "required": [
+          "country"
+        ],
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "description": "First line of the address",
+            "nullable": true,
+            "example": "100 Nowhere Blvd"
+          },
+          "address2": {
+            "type": "string",
+            "description": "Second line of the address",
+            "nullable": true,
+            "example": "Suite 100"
+          },
+          "company_name": {
+            "type": "string",
+            "description": "Name of the company receiving the shipment",
+            "nullable": true,
+            "example": "Wayne Enterprises"
+          },
+          "city": {
+            "type": "string",
+            "description": "The city",
+            "nullable": true,
+            "example": "Gotham City"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state or province",
+            "nullable": true,
+            "example": "NJ"
+          },
+          "country": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The country (Must be ISO Alpha-2 for estimates)",
+            "example": "US"
+          },
+          "zip_code": {
+            "type": "string",
+            "description": "The zip code or postal code",
+            "format": "postal-code",
+            "nullable": true,
+            "example": "07093"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.FulfillmentCenterViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id of the fulfillment center",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the fulfillment center",
+            "nullable": true,
+            "example": "Cicero (IL)"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about a fulfillment center that a shipment can belong to"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+          }
+        ],
+        "properties": {
+          "store_order_id": {
+            "type": "string",
+            "description": "Unique store order id of the shipment",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.InventoryViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique id of the inventory",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the inventory item",
+            "nullable": true,
+            "example": "Medium Blue T-Shirt"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity of the inventory item to be included in the fulfillment",
+            "format": "int32"
+          },
+          "quantity_committed": {
+            "type": "integer",
+            "description": "The quantity of the inventory item allocated from the assigned fulfillment center and committed to the order. If quantity committed is less than order quantity, then the inventory item is out of stock at the assigned fulfillment center.",
+            "format": "int32"
+          },
+          "lot": {
+            "type": "string",
+            "description": "Lot number of the inventory",
+            "nullable": true,
+            "example": "22222"
+          },
+          "expiration_date": {
+            "type": "string",
+            "description": "Expiration date of the inventory",
+            "format": "date-time",
+            "nullable": true
+          },
+          "serial_numbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Serial number of the inventory",
+            "nullable": true
+          },
+          "is_dangerous_goods": {
+            "type": "boolean",
+            "description": "Is inventory Dangerous Good",
+            "example": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about inventory belonging to a store product"
       },
       "ShipBob.Orders.Presentation.ViewModels.MeasurementsViewModel": {
         "type": "object",
@@ -5412,272 +5956,6 @@
         "additionalProperties": false,
         "description": "Measurements of a shipment"
       },
-      "ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel": {
-        "type": "object",
-        "properties": {
-          "store_order_id": {
-            "type": "string",
-            "description": "Unique store order id of the shipment"
-          },
-          "id": {
-            "type": "integer",
-            "description": "Unique id of the shipment",
-            "format": "int32"
-          },
-          "order_id": {
-            "type": "integer",
-            "description": "Id of the order this shipment belongs to",
-            "format": "int32"
-          },
-          "reference_id": {
-            "type": "string",
-            "description": "Client-defined external unique id of the order this shipment belongs to"
-          },
-          "recipient": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RecipientViewModel"
-          },
-          "created_date": {
-            "type": "string",
-            "description": "Date this shipment was created",
-            "format": "date-time"
-          },
-          "last_update_at": {
-            "type": "string",
-            "description": "Date this shipment was last updated",
-            "format": "date-time",
-            "nullable": true
-          },
-          "last_tracking_update_at": {
-            "type": "string",
-            "description": "Timestamp for the last time this shipment had a tracking update",
-            "format": "date-time",
-            "nullable": true
-          },
-          "status": {
-            "enum": [
-              "None",
-              "Processing",
-              "Pending",
-              "Completed",
-              "Exception",
-              "OnHold",
-              "Cancelled",
-              "CleanSweeped",
-              "LabeledCreated",
-              "ImportReview"
-            ],
-            "type": "string",
-            "description": "The shipment status"
-          },
-          "status_details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.StatusDetailViewModel"
-            },
-            "description": "Additional details about the shipment status"
-          },
-          "location": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.FulfillmentCenterViewModel"
-          },
-          "invoice_amount": {
-            "type": "number",
-            "description": "Monetary amount that was invoiced for this shipment",
-            "format": "double",
-            "nullable": true
-          },
-          "invoice_currency_code": {
-            "type": "string"
-          },
-          "insurance_value": {
-            "type": "number",
-            "description": "Monetary amount that this shipment was insured for",
-            "format": "double",
-            "nullable": true
-          },
-          "ship_option": {
-            "type": "string",
-            "description": "Name of the shipping option used for this shipment",
-            "example": "Standard"
-          },
-          "package_material_type": {
-            "enum": [
-              "Unknown",
-              "Box",
-              "BubbleMailer",
-              "PolyMailer",
-              "FragileBox",
-              "PosterTube",
-              "Custom",
-              "Bookfold",
-              "OwnContainer",
-              "Undefined"
-            ],
-            "type": "string",
-            "description": "Container type for the shipment",
-            "example": "Box"
-          },
-          "tracking": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.TrackingViewModel"
-          },
-          "products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentProductViewModel"
-            },
-            "description": "Information about the products contained in this shipment"
-          },
-          "parent_cartons": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ParentCartonViewModel"
-            },
-            "description": "Carton information for this shipment"
-          },
-          "measurements": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.MeasurementsViewModel"
-          },
-          "require_signature": {
-            "type": "boolean",
-            "description": "If a shipment requires signature"
-          },
-          "estimated_fulfillment_date": {
-            "type": "string",
-            "description": "The datetime of ShipBob\u2019s commitment for completing\r\nthe shipment and handing to the carrier for delivery.",
-            "format": "date-time",
-            "nullable": true
-          },
-          "actual_fulfillment_date": {
-            "type": "string",
-            "description": "The datetime of ShipBob\u2019s completion of the fulfillment operation as promised.\r\nCurrently, this means the shipment has been picked, packed, and label has been printed.",
-            "format": "date-time",
-            "nullable": true
-          },
-          "estimated_fulfillment_date_status": {
-            "enum": [
-              "AwaitingInventoryAllocation",
-              "AwaitingReset",
-              "Unavailable",
-              "PendingOnTime",
-              "FulfilledOnTime",
-              "PendingLate",
-              "FulfilledLate"
-            ],
-            "type": "string",
-            "description": "Status of ShipBob\u2019s completion of the fulfillment operation."
-          },
-          "is_tracking_uploaded": {
-            "type": "boolean",
-            "description": "Indicates whether the Shipment was marked with tracking information\r\nuploaded to a third-party system where the order originated."
-          },
-          "gift_message": {
-            "maxLength": 500,
-            "type": "string",
-            "description": "Gift message associated with the shipment"
-          },
-          "delivery_date": {
-            "type": "string",
-            "description": "The datetime of Shipment delivered to customer.",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
-          }
-        ],
-        "description": "Information about a shipment"
-      },
-      "ShipBob.Orders.Presentation.ViewModels.ShippingTermsViewModel": {
-        "type": "object",
-        "properties": {
-          "carrier_type": {
-            "enum": [
-              "Parcel",
-              "Freight"
-            ],
-            "type": "string",
-            "description": "Identifies whether to ship parcel or freight.\r\n            \r\nParcel: Smaller, light weight boxes.\r\n            \r\nFreight: Larger boxes, usually transported by truckload.",
-            "nullable": true
-          },
-          "payment_term": {
-            "enum": [
-              "Collect",
-              "ThirdParty",
-              "Prepaid",
-              "MerchantResponsible"
-            ],
-            "type": "string",
-            "description": "Identifies the party responsible for shipping charges.\r\n            \r\nCollect: The person/entity receiving the product pays the shipping charges.\r\n            \r\nThirdParty: Another party pays for the shipping charges (not Shipbob) [parcel only].\r\n            \r\nPrepaid: The shipper pays the shipping charges (Shipbob or merchant).\r\n            \r\nMerchantResponsible: The merchant will be responsible for uploading shipping labels or booking freight transportation.",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Contains shipping properties that need to be used for fulfilling an order."
-      },
-      "ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataViewModel": {
-        "required": [
-          "purchase_order_number",
-          "retailer_program_type"
-        ],
-        "type": "object",
-        "properties": {
-          "purchase_order_number": {
-            "type": "string",
-            "description": "First initial documentation sent from buyer to seller with item(s) and quantities."
-          },
-          "retailer_program_type": {
-            "type": "string",
-            "description": "Identifies retailer-merchant combination",
-            "example": "TGTDS"
-          },
-          "mark_for_store": {
-            "type": "string",
-            "description": "Store Number",
-            "example": "TGT105"
-          },
-          "department": {
-            "type": "string",
-            "description": "Identifies a merchant's store department",
-            "example": "245"
-          },
-          "delivery_date": {
-            "type": "string",
-            "description": "Expected delivery date",
-            "format": "date-time",
-            "nullable": true
-          },
-          "addresses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel"
-            },
-            "description": "Ship From - Certain retailers want to display the ship from address as their return facility, not Shipbob\u2019s warehouse address        /// \r\nMark For Address - Final destination address"
-          },
-          "customer_ticket_number": {
-            "type": "string",
-            "description": "Customer Ticket Number",
-            "example": "co_12345"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Contains properties that needs to be used for fulfilling B2B/Dropship orders."
-      },
-      "ShipBob.Orders.Presentation.Models.Financials": {
-        "type": "object",
-        "properties": {
-          "total_price": {
-            "type": "number",
-            "description": "Sum of all line item prices, discounts, and taxes in USD",
-            "format": "double",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ShipBob.Orders.Presentation.ViewModels.OrderViewModel": {
         "type": "object",
         "properties": {
@@ -5699,33 +5977,19 @@
           },
           "reference_id": {
             "type": "string",
-            "description": "Client-defined external unique id of the order"
+            "description": "Client-defined external unique id of the order",
+            "nullable": true
           },
           "order_number": {
             "type": "string",
-            "description": "User friendly orderId or store order number that will be shown on the Orders Page. If not provided, referenceId will be used"
+            "description": "User friendly orderId or store order number that will be shown on the Orders Page. If not provided, referenceId will be used",
+            "nullable": true
           },
           "status": {
-            "enum": [
-              "Processing",
-              "Exception",
-              "PartiallyFulfilled",
-              "Fulfilled",
-              "Cancelled",
-              "ImportReview"
-            ],
-            "type": "string",
-            "description": "The order status"
+            "$ref": "#/components/schemas/ShipBob.Orders.StatusResolver.OrderStatus"
           },
           "type": {
-            "enum": [
-              "DTC",
-              "DropShip",
-              "B2B"
-            ],
-            "type": "string",
-            "description": "Shipment type of the order",
-            "example": "DTC"
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.OrderType"
           },
           "channel": {
             "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ChannelInfoViewModel"
@@ -5733,6 +5997,7 @@
           "shipping_method": {
             "type": "string",
             "description": "Client-defined shipping method",
+            "nullable": true,
             "example": "Free 2-day Shipping"
           },
           "recipient": {
@@ -5743,25 +6008,37 @@
             "items": {
               "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ProductInfoViewModel"
             },
-            "description": "List of products included in the order"
+            "description": "List of products included in the order",
+            "nullable": true
           },
           "tags": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.TagViewModel"
             },
-            "description": "Client-defined order tags"
+            "description": "Client-defined order tags",
+            "nullable": true
           },
           "shipments": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel"
+                },
+                {
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InternalShipmentViewModel"
+                }
+              ],
+              "description": "Information about a shipment"
             },
-            "description": "Shipments affiliated with the order"
+            "description": "Shipments affiliated with the order",
+            "nullable": true
           },
           "gift_message": {
             "type": "string",
-            "description": "Gift message associated with the order"
+            "description": "Gift message associated with the order",
+            "nullable": true
           },
           "shipping_terms": {
             "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShippingTermsViewModel"
@@ -5775,51 +6052,47 @@
         },
         "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.Models.AddProductToOrderByProductIdModel": {
-        "required": [
-          "id",
-          "quantity"
-        ],
+      "ShipBob.Orders.Presentation.ViewModels.ParentCartonViewModel": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "description": "Unique id of the product",
-            "format": "int32"
-          },
-          "quantity": {
-            "type": "integer",
-            "description": "The quantity of this product ordered",
-            "format": "int32"
-          },
-          "quantity_unit_of_measure_code": {
+          "type": {
             "type": "string",
-            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL"
+            "description": "Type of this carton container",
+            "nullable": true,
+            "example": "Box or pallet"
           },
-          "external_line_id": {
-            "type": "integer",
-            "description": "Numeric assignment per item. Used as a reference number for multiple purposes such as split orders, split containers, etc.",
-            "format": "int32",
+          "barcode": {
+            "type": "string",
+            "description": "Barcode assigned to this carton",
+            "nullable": true
+          },
+          "measurements": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CartonMeasurementsViewModel"
+          },
+          "cartons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CartonViewModel"
+            },
+            "description": "Cartons packed inside this parent container",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.Models.AddProductToOrderByReferenceIdModel": {
-        "required": [
-          "quantity",
-          "reference_id"
-        ],
+      "ShipBob.Orders.Presentation.ViewModels.ProductInfoViewModel": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique id of the product",
+            "format": "int32",
+            "nullable": true
+          },
           "reference_id": {
             "type": "string",
             "description": "Unique reference id of the product",
-            "example": "TShirtBlueM"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the product. Required if there is not an existing ShipBob product with a matching reference_id value.",
+            "nullable": true,
             "example": "TShirtBlueM"
           },
           "quantity": {
@@ -5829,23 +6102,24 @@
           },
           "quantity_unit_of_measure_code": {
             "type": "string",
-            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL"
-          },
-          "gtin": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string",
-            "description": "Global Trade Item Number - unique and internationally recognized identifier assigned to item by company GS1"
-          },
-          "upc": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string",
-            "description": "Universal Product Code - Unique external identifier"
+            "description": "Defined standard for measure for an item (each, inner pack, case, pallet).  Values: EA, INP, CS and PL",
+            "nullable": true
           },
           "sku": {
             "type": "string",
-            "description": "Product SKU"
+            "description": "Stock keeping unit for the product",
+            "nullable": true,
+            "example": "TShirtBlueM"
+          },
+          "gtin": {
+            "type": "string",
+            "description": "Global Trade Item Number - unique and internationally recognized identifier assigned to item by company GS1",
+            "nullable": true
+          },
+          "upc": {
+            "type": "string",
+            "description": "Universal Product Code - Unique external identifier",
+            "nullable": true
           },
           "unit_price": {
             "type": "number",
@@ -5862,227 +6136,173 @@
         },
         "additionalProperties": false
       },
-      "ShipBob.Orders.Presentation.Models.AddProductToOrderModel": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByProductIdModel"
-          },
-          {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByReferenceIdModel"
-          }
-        ]
-      },
-      "ShipBob.Orders.Presentation.Models.CreateOrderModel": {
+      "ShipBob.Orders.Presentation.ViewModels.RecipientInfoViewModel": {
         "required": [
-          "products",
-          "recipient",
-          "reference_id",
-          "shipping_method"
+          "address",
+          "name"
         ],
         "type": "object",
         "properties": {
-          "shipping_method": {
-            "type": "string",
-            "description": "Client-defined shipping method matching what the user has listed as the shipping method on the Ship Option Mapping setup page in the ShipBob Merchant Portal. If they don\u2019t match, we will create a new one and default it to Standard",
-            "example": "Free 2-day Shipping"
-          },
-          "recipient": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RecipientInfoViewModel"
-          },
-          "products": {
-            "minLength": 1,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderModel"
-            },
-            "description": "Products included in the order. Products identified by reference_id must also include the product name if there is no matching ShipBob product."
-          },
-          "reference_id": {
+          "name": {
             "maxLength": 300,
+            "minLength": 1,
             "type": "string",
-            "description": "Unique and immutable order identifier from your upstream system"
+            "description": "Name of the recipient",
+            "example": "John Doe"
           },
-          "order_number": {
-            "maxLength": 400,
-            "type": "string",
-            "description": "User friendly orderId or store order number that will be shown on the Orders Page. If not provided, referenceId will be used"
-          },
-          "type": {
-            "enum": [
-              "DTC",
-              "DropShip",
-              "B2B"
+          "address": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.AddressViewModel"
+              },
+              {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel"
+              }
             ],
-            "type": "string",
-            "description": "Defaults to Direct to Consumer (DTC) if not provided. Note: B2B is not supported at this time"
+            "description": "Address of the recipient"
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.TagViewModel"
-            },
-            "description": "Key value pair array to store extra information at the order level for API purposes. ShipBob won't display the info in the ShipBob Merchant Portal or react based on this data."
-          },
-          "purchase_date": {
+          "email": {
             "type": "string",
-            "description": "Date this order was purchase by the end user",
+            "description": "Email address of the recipient",
+            "format": "email",
+            "nullable": true,
+            "example": "john@example.com"
+          },
+          "phone_number": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Phone number of the recipient",
+            "nullable": true,
+            "example": "555-555-5555"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about the recipient of an order"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.RecipientViewModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the recipient",
+            "nullable": true,
+            "example": "John Doe"
+          },
+          "full_name": {
+            "type": "string",
+            "description": "FullName of the recipient",
+            "nullable": true,
+            "example": "John Doe"
+          },
+          "address": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.AddressViewModel"
+              },
+              {
+                "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel"
+              }
+            ],
+            "description": "Address of the recipient",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the recipient",
+            "format": "email",
+            "nullable": true,
+            "example": "john@example.com"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Phone number of the recipient",
+            "format": "tel",
+            "nullable": true,
+            "example": "555-555-5555"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about the recipient of a shipment"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.AddressViewModel"
+          }
+        ],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.AddressType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Address to used when creating a B2B/DropShip order."
+      },
+      "ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataViewModel": {
+        "required": [
+          "purchaseOrderNumber",
+          "retailerProgramType"
+        ],
+        "type": "object",
+        "properties": {
+          "purchase_order_number": {
+            "minLength": 1,
+            "type": "string",
+            "description": "First initial documentation sent from buyer to seller with item(s) and quantities."
+          },
+          "retailer_program_type": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Identifies retailer-merchant combination"
+          },
+          "mark_for_store": {
+            "type": "string",
+            "description": "Store Number",
+            "nullable": true
+          },
+          "department": {
+            "type": "string",
+            "description": "Identifies a merchant's store department",
+            "nullable": true
+          },
+          "delivery_date": {
+            "type": "string",
+            "description": "Expected delivery date",
             "format": "date-time",
             "nullable": true
           },
-          "location_id": {
-            "type": "integer",
-            "description": "Desired Fulfillment Center Location ID. If not specified, ShipBob will determine the location that fulfills this order.",
-            "format": "int32",
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataAddressViewModel"
+            },
+            "description": "Ship From - Certain retailers want to display the ship from address as their return facility, not Shipbob’s warehouse address        /// \r\nMark For Address - Final destination address",
             "nullable": true
           },
-          "shipping_terms": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShippingTermsViewModel"
-          },
-          "retailer_program_data": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RetailerProgramDataViewModel"
-          },
-          "gift_message": {
-            "maxLength": 500,
+          "customer_ticket_number": {
             "type": "string",
-            "description": "Gift message associated with the order"
+            "description": "Customer Ticket Number",
+            "nullable": true
           },
-          "financials": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.Financials"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.ViewModels.CanceledShipmentViewModel": {
-        "type": "object",
-        "properties": {
-          "action": {
-            "enum": [
-              "Cancel"
-            ],
+          "shipByDate": {
             "type": "string",
-            "description": ""
+            "description": "The date the retailer has requested the order to ship by.",
+            "format": "date-time",
+            "nullable": true
           },
-          "shipment_id": {
-            "type": "integer",
-            "description": "The ID of the shipment",
-            "format": "int64"
-          },
-          "is_success": {
-            "type": "boolean",
-            "description": "If the cancel action was successful"
-          },
-          "reason": {
+          "doNotShipBeforeDate": {
             "type": "string",
-            "description": "The reason the cancellation result"
+            "description": "The date the retailer does not want the order shipped by.",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false,
-        "description": ""
-      },
-      "ShipBob.Orders.Presentation.ViewModels.CanceledOrderViewModel": {
-        "type": "object",
-        "properties": {
-          "order_id": {
-            "type": "integer",
-            "description": "The ID of the canceled order",
-            "format": "int32"
-          },
-          "order": {
-            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.OrderViewModel"
-          },
-          "status": {
-            "enum": [
-              "Success",
-              "Failure",
-              "PartialSuccess"
-            ],
-            "type": "string",
-            "description": "The overall result of canceling the shipments associated with the order"
-          },
-          "canceled_shipment_results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CanceledShipmentViewModel"
-            },
-            "description": "Results of canceling the shipments associated with the order"
-          }
-        },
-        "additionalProperties": false,
-        "description": ""
-      },
-      "ShipBob.Orders.Presentation.Models.AddStoreOrderJsonModel": {
-        "required": [
-          "order_json"
-        ],
-        "type": "object",
-        "properties": {
-          "order_json": {
-            "type": "string",
-            "description": "Json String that represent the order on a store front system"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Model for adding a Store Order Json to a ShipBob Order."
-      },
-      "ShipBob.Orders.Presentation.ViewModels.ShipmentLogViewModel": {
-        "type": "object",
-        "properties": {
-          "log_type_id": {
-            "type": "integer",
-            "description": "Log type id of the shipment",
-            "format": "int32"
-          },
-          "log_type_name": {
-            "type": "string",
-            "description": "Name of the log type"
-          },
-          "log_type_text": {
-            "type": "string",
-            "description": "Summary of log type meaning"
-          },
-          "timestamp": {
-            "type": "string",
-            "description": "Timestamp of event",
-            "format": "date-time"
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Specifics data for the event"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ShipBob.Orders.Presentation.Models.CancelShipmentsModel": {
-        "type": "object",
-        "properties": {
-          "shipment_ids": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": "Shipment IDs to cancel"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Model for cancel multiple shipments at once"
-      },
-      "ShipBob.Orders.Presentation.ViewModels.CanceledShipmentsViewModel": {
-        "type": "object",
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.CanceledShipmentViewModel"
-            },
-            "description": "The results of all cancellation actions"
-          }
-        },
-        "additionalProperties": false,
-        "description": ""
+        "description": "Contains properties that needs to be used for fulfilling B2B/Dropship orders."
       },
       "ShipBob.Orders.Presentation.ViewModels.ServiceLevelDetailViewModel": {
         "type": "object",
@@ -6094,7 +6314,8 @@
           },
           "name": {
             "type": "string",
-            "description": "The name or title of the service level"
+            "description": "The name or title of the service level",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -6117,10 +6338,575 @@
           },
           "name": {
             "type": "string",
-            "description": "Name of the ship method as selected by the merchant and saved in ShipBob\u2019s database (i.e. \u201cground\u201d). Corresponds to the shipping_method field in the Orders API."
+            "description": "Name of the ship method as selected by the merchant and saved in ShipBob’s database (i.e. “ground”). Corresponds to the shipping_method field in the Orders API.",
+            "nullable": true
           },
           "service_level": {
             "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ServiceLevelDetailViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.ShipmentLogViewModel": {
+        "type": "object",
+        "properties": {
+          "log_type_id": {
+            "type": "integer",
+            "description": "Log type id of the shipment",
+            "format": "int32"
+          },
+          "log_type_name": {
+            "type": "string",
+            "description": "Name of the log type",
+            "nullable": true
+          },
+          "log_type_text": {
+            "type": "string",
+            "description": "Summary of log type meaning",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp of event",
+            "format": "date-time"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            },
+            "description": "Specifics data for the event",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.ShipmentProductViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique id of the product",
+            "format": "int32"
+          },
+          "reference_id": {
+            "type": "string",
+            "description": "Unique reference id of the product",
+            "nullable": true,
+            "example": "TShirtBlueM"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the product",
+            "nullable": true,
+            "example": "Medium Blue T-Shirt"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Stock keeping unit for the product",
+            "nullable": true,
+            "example": "TShirtBlueM"
+          },
+          "inventory_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.InventoryViewModel"
+            },
+            "description": "Information about fulfillable inventory items belonging to this product",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about a store product belonging to a shipment"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.ShipmentViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique id of the shipment",
+            "format": "int32"
+          },
+          "order_id": {
+            "type": "integer",
+            "description": "Id of the order this shipment belongs to",
+            "format": "int32"
+          },
+          "reference_id": {
+            "type": "string",
+            "description": "Client-defined external unique id of the order this shipment belongs to",
+            "nullable": true
+          },
+          "recipient": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.RecipientViewModel"
+          },
+          "created_date": {
+            "type": "string",
+            "description": "Date this shipment was created",
+            "format": "date-time"
+          },
+          "last_update_at": {
+            "type": "string",
+            "description": "Date this shipment was last updated",
+            "format": "date-time",
+            "nullable": true
+          },
+          "last_tracking_update_at": {
+            "type": "string",
+            "description": "Timestamp for the last time this shipment had a tracking update",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/Shipbob.CoreModels.OrderStateResolver.OrderStatusEnum"
+          },
+          "status_details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.StatusDetailViewModel"
+            },
+            "description": "Additional details about the shipment status",
+            "nullable": true
+          },
+          "location": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.FulfillmentCenterViewModel"
+          },
+          "invoice_amount": {
+            "type": "number",
+            "description": "Monetary amount that was invoiced for this shipment",
+            "format": "currency",
+            "nullable": true
+          },
+          "invoice_currency_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "insurance_value": {
+            "type": "number",
+            "description": "Monetary amount that this shipment was insured for",
+            "format": "currency",
+            "nullable": true
+          },
+          "ship_option": {
+            "type": "string",
+            "description": "Name of the shipping option used for this shipment",
+            "nullable": true,
+            "example": "Standard"
+          },
+          "package_material_type": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.PackageMaterialType"
+          },
+          "tracking": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.TrackingViewModel"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ShipmentProductViewModel"
+            },
+            "description": "Information about the products contained in this shipment",
+            "nullable": true
+          },
+          "parent_cartons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.ParentCartonViewModel"
+            },
+            "description": "Carton information for this shipment",
+            "nullable": true
+          },
+          "measurements": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.MeasurementsViewModel"
+          },
+          "require_signature": {
+            "type": "boolean",
+            "description": "If a shipment requires signature"
+          },
+          "estimated_fulfillment_date": {
+            "type": "string",
+            "description": "The datetime of ShipBob’s commitment for completing\r\nthe shipment and handing to the carrier for delivery.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "actual_fulfillment_date": {
+            "type": "string",
+            "description": "The datetime of ShipBob’s completion of the fulfillment operation as promised.\r\nCurrently, this means the shipment has been picked, packed, and label has been printed.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "estimated_fulfillment_date_status": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Domain.Enums.FulfillmentStatus"
+          },
+          "is_tracking_uploaded": {
+            "type": "boolean",
+            "description": "Indicates whether the Shipment was marked with tracking information\r\nuploaded to a third-party system where the order originated."
+          },
+          "gift_message": {
+            "maxLength": 500,
+            "type": "string",
+            "description": "Gift message associated with the shipment",
+            "nullable": true
+          },
+          "delivery_date": {
+            "type": "string",
+            "description": "The datetime of Shipment delivered to customer.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "zone": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.Shipments.ShippingZoneViewModel"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about a shipment"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.Shipments.ShippingZoneViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about the shipping zone"
+      },
+      "ShipBob.Orders.Presentation.ViewModels.Shipments.StatusInformationViewModel": {
+        "type": "object",
+        "properties": {
+          "validation_messages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.ShippingTermsViewModel": {
+        "type": "object",
+        "properties": {
+          "carrier_type": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.CarrierShipType"
+          },
+          "payment_term": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Common.PaymentShipTerm"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Contains shipping properties that need to be used for fulfilling an order."
+      },
+      "ShipBob.Orders.Presentation.ViewModels.StatusDetailViewModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Short name of the status detail",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Describes what the status detail means",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "description": "The id of the status detail",
+            "format": "int32"
+          },
+          "inventory_id": {
+            "type": "integer",
+            "description": "Inventory Id the detail applies to (if applicable)",
+            "format": "int32",
+            "nullable": true
+          },
+          "exception_fulfillment_center_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "extra_information": {
+            "$ref": "#/components/schemas/ShipBob.Orders.Presentation.ViewModels.Shipments.StatusInformationViewModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.TagViewModel": {
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "description": "The key of the tag",
+            "example": "Handling instructions"
+          },
+          "value": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string",
+            "description": "The value of the tag",
+            "example": "Fragile"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShipBob.Orders.Presentation.ViewModels.TrackingViewModel": {
+        "type": "object",
+        "properties": {
+          "carrier": {
+            "type": "string",
+            "description": "Carrier of the shipment",
+            "nullable": true,
+            "example": "USPS"
+          },
+          "tracking_number": {
+            "type": "string",
+            "description": "Tracking number of the shipment",
+            "nullable": true,
+            "example": "860C8CDC8F0B4FC7AB69AC86C20539EC"
+          },
+          "carrier_service": {
+            "type": "string",
+            "description": "The carrier's service which was used for this shipment",
+            "nullable": true,
+            "example": "Priority"
+          },
+          "tracking_url": {
+            "type": "string",
+            "description": "URL to the website where a shipment can be tracked",
+            "nullable": true,
+            "example": "https://www.example.com/tracking?id=860C8CDC8F0B4FC7AB69AC86C20539EC"
+          },
+          "bol": {
+            "type": "string",
+            "description": "Bill of lading (BOL) number. Document acknowledging receipt of cargo for shipment.",
+            "nullable": true
+          },
+          "shipping_date": {
+            "type": "string",
+            "description": "Date freight was shipped on",
+            "format": "date-time",
+            "nullable": true
+          },
+          "pro_number": {
+            "type": "string",
+            "description": "Tracking number used for freight carriers",
+            "nullable": true
+          },
+          "scac": {
+            "type": "string",
+            "description": "Standard Carrier Alpha Code (SCAC). Unique 2-4 letter code used to identify transportation companies.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Tracking information for a shipment"
+      },
+      "ShipBob.Orders.StatusResolver.OrderStatus": {
+        "enum": [
+          "Processing",
+          "Exception",
+          "PartiallyFulfilled",
+          "Fulfilled",
+          "Cancelled",
+          "ImportReview"
+        ],
+        "type": "string"
+      },
+      "Shipbob.CoreModels.OrderStateResolver.OrderStatusEnum": {
+        "enum": [
+          "None",
+          "Processing",
+          "Completed",
+          "Exception",
+          "OnHold",
+          "Cancelled",
+          "CleanSweeped",
+          "LabeledCreated",
+          "ImportReview"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.AddressType": {
+        "enum": [
+          "MarkFor",
+          "ShipFrom"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.CancellationResult": {
+        "enum": [
+          "Success",
+          "Failure",
+          "PartialSuccess"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.CarrierShipType": {
+        "enum": [
+          "Parcel",
+          "Freight"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.FulfillmentProgram": {
+        "enum": [
+          "FBM"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.OrderType": {
+        "enum": [
+          "DTC",
+          "DropShip",
+          "B2B",
+          "Transportation"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.PackageMaterialType": {
+        "enum": [
+          "Unknown",
+          "Box",
+          "BubbleMailer",
+          "PolyMailer",
+          "FragileBox",
+          "PosterTube",
+          "Custom",
+          "Bookfold",
+          "OwnContainer",
+          "Undefined"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.PaymentShipTerm": {
+        "enum": [
+          "Collect",
+          "ThirdParty",
+          "Prepaid",
+          "MerchantResponsible"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.PlatformSource": {
+        "enum": [
+          "Ebay",
+          "Shopify",
+          "BigCommerce",
+          "Magento",
+          "ShipStation",
+          "Amazon",
+          "API",
+          "BackerKit",
+          "ShipBob",
+          "CrateJoy",
+          "Stitchlabs",
+          "QuickBooks",
+          "ExcelUpload",
+          "Walmart",
+          "TicTail",
+          "SquareSpace",
+          "WooCommerce",
+          "SquareConnect",
+          "Returnly",
+          "Sps",
+          "TikTok"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.ShipmentAction": {
+        "enum": [
+          "Cancel"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Common.SortOrder": {
+        "enum": [
+          "Newest",
+          "Oldest"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Domain.Enums.FulfillmentStatus": {
+        "enum": [
+          "AwaitingInventoryAllocation",
+          "AwaitingReset",
+          "Unavailable",
+          "PendingOnTime",
+          "FulfilledOnTime",
+          "PendingLate",
+          "FulfilledLate"
+        ],
+        "type": "string"
+      },
+      "Shipbob.Orders.Domain.Models.BulkUpdateResponseError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Shipbob.Orders.Domain.Models.BulkUpdateResponseModel": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Domain.Models.BulkUpdateResponseSummary"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Shipbob.Orders.Domain.Models.BulkUpdateResponseResult"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Shipbob.Orders.Domain.Models.BulkUpdateResponseResult": {
+        "type": "object",
+        "properties": {
+          "shipmentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/Shipbob.Orders.Domain.Models.BulkUpdateResponseError"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Shipbob.Orders.Domain.Models.BulkUpdateResponseSummary": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "successful": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "failed": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -6622,6 +7408,12 @@
             },
             "description": "Inventory items and quantities within the WRO",
             "nullable": true
+          },
+          "external_sync_timestamp": {
+            "type": "string",
+            "description": "The timestamp in UTC when a 3rd party integrator has set in our system",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -6671,28 +7463,7 @@
             "readOnly": true
           }
         },
-        "additionalProperties": false,
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "errors": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "nullable": true
-              }
-            },
-            "additionalProperties": false
-          }
-        ]
+        "additionalProperties": false
       },
       "Shipbob.Receiving.Public.Common.Models.BoxStatus": {
         "enum": [
@@ -6701,7 +7472,8 @@
           "Completed",
           "Counting",
           "Stowing",
-          "Cancelled"
+          "Cancelled",
+          "InternalTransfer"
         ],
         "type": "string"
       },
@@ -6716,6 +7488,11 @@
           "received_quantity": {
             "type": "integer",
             "description": "Quantity of the item that was received after processing the receiving order",
+            "format": "int32"
+          },
+          "stowed_quantity": {
+            "type": "integer",
+            "description": "Quantity of the item that has been stowed",
             "format": "int32"
           },
           "inventory_id": {
@@ -7068,6 +7845,24 @@
         },
         "additionalProperties": false
       },
+      "Shipbob.Returns.Public.Api.ViewModels.LotInformationViewModel": {
+        "type": "object",
+        "properties": {
+          "lot_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiration_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "quantity_processed": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Shipbob.Returns.Public.Api.ViewModels.ReturnActionTakenViewModel": {
         "type": "object",
         "properties": {
@@ -7085,6 +7880,13 @@
             "type": "integer",
             "description": "Quantity of inventory processed with the taken action",
             "format": "int32"
+          },
+          "lot_information": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Shipbob.Returns.Public.Api.ViewModels.LotInformationViewModel"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -7358,6 +8160,29 @@
         },
         "additionalProperties": false
       },
+      "Microsoft.AspNetCore.Http.HttpValidationProblemDetails": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "nullable": true
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      },
       "Integrations.Location.Public.Api.ViewModels.OrganizationRoleViewModel": {
         "type": "object",
         "properties": {
@@ -7376,15 +8201,35 @@
         },
         "additionalProperties": false
       },
-      "Integrations.Location.Public.Api.ViewModels.FcTypeViewModel": {
-        "required": [
-          "$type"
+      "Integrations.Location.Public.Api.ViewModels.FcTypeViewModelV2": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModel"
+          }
         ],
+        "properties": {
+          "organization_type_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "organization_type_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "organization_roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.OrganizationRoleViewModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integrations.Location.Public.Api.ViewModels.FcTypeViewModel": {
         "type": "object",
         "properties": {
-          "$type": {
-            "type": "string"
-          },
           "id": {
             "type": "integer",
             "description": "Unique Id for the fulfillment center type",
@@ -7396,38 +8241,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": false,
-        "discriminator": {
-          "propertyName": "$type"
-        }
-      },
-      "Integrations.Location.Public.Api.ViewModels.FcTypeViewModelV2": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModel"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "organization_type_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "organization_type_name": {
-                "type": "string",
-                "nullable": true
-              },
-              "organization_roles": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.OrganizationRoleViewModel"
-                },
-                "nullable": true
-              }
-            },
-            "additionalProperties": false
-          }
-        ]
+        "additionalProperties": false
       },
       "Integrations.Location.Public.Api.ViewModels.FcAttributeViewModel": {
         "type": "object",
@@ -7441,6 +8255,120 @@
             "type": "string",
             "description": "Name of the attribute.",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integrations.Location.Public.Api.ViewModels.InternalLocationViewModel": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModel"
+          }
+        ],
+        "properties": {
+          "is_enabled_for_new_user": {
+            "type": "boolean"
+          },
+          "fulfillment_center_type": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModel"
+              },
+              {
+                "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModelV2"
+              }
+            ],
+            "nullable": true
+          },
+          "is_external": {
+            "type": "boolean"
+          },
+          "fulfillment_center_attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcAttributeViewModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integrations.Location.Public.Api.ViewModels.LocationViewModelV2": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModel"
+          }
+        ],
+        "properties": {
+          "organization_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parent_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "owner_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integrations.Location.Public.Api.ViewModels.FulfillmentCenterNameViewModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique Id for the fulfillment center",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name for the fulfillment center",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integrations.Location.Public.Api.ViewModels.InternalLocationViewModelV2": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModelV2"
+          }
+        ],
+        "properties": {
+          "is_enabled_for_new_user": {
+            "type": "boolean"
+          },
+          "fulfillment_center_type": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModel"
+              },
+              {
+                "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModelV2"
+              }
+            ],
+            "nullable": true
+          },
+          "fulfillment_center_attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcAttributeViewModel"
+            },
+            "nullable": true
+          },
+          "receiving_hub": {
+            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FulfillmentCenterNameViewModel"
+          },
+          "sort_center": {
+            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FulfillmentCenterNameViewModel"
           }
         },
         "additionalProperties": false
@@ -7537,17 +8465,11 @@
         "additionalProperties": false
       },
       "Integrations.Location.Public.Api.ViewModels.LocationViewModel": {
-        "required": [
-          "$type"
-        ],
         "type": "object",
         "properties": {
-          "$type": {
-            "type": "string"
-          },
           "id": {
             "type": "integer",
-            "description": "Id of the location in ShipBob\u2019s database",
+            "description": "Id of the location in ShipBob’s database",
             "format": "int32"
           },
           "name": {
@@ -7601,177 +8523,7 @@
             "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FulfillmentCenterRegionViewModel"
           }
         },
-        "additionalProperties": false,
-        "discriminator": {
-          "propertyName": "$type"
-        }
-      },
-      "Integrations.Location.Public.Api.ViewModels.InternalLocationViewModel": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModel"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "is_enabled_for_new_user": {
-                "type": "boolean"
-              },
-              "fulfillment_center_type": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModelV2"
-                  }
-                ],
-                "nullable": true
-              },
-              "is_external": {
-                "type": "boolean"
-              },
-              "fulfillment_center_attributes": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcAttributeViewModel"
-                },
-                "nullable": true
-              }
-            },
-            "additionalProperties": false
-          }
-        ]
-      },
-      "Integrations.Location.Public.Api.ViewModels.LocationViewModelV2": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModel"
-          },
-          {
-            "required": [
-              "$type"
-            ],
-            "type": "object",
-            "properties": {
-              "organization_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "parent_id": {
-                "type": "string",
-                "format": "uuid",
-                "nullable": true
-              },
-              "owner_id": {
-                "type": "string",
-                "format": "uuid",
-                "nullable": true
-              }
-            },
-            "additionalProperties": false,
-            "discriminator": {
-              "propertyName": "$type"
-            }
-          }
-        ]
-      },
-      "Integrations.Location.Public.Api.ViewModels.InternalLocationViewModelV2": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.LocationViewModelV2"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "is_enabled_for_new_user": {
-                "type": "boolean"
-              },
-              "fulfillment_center_type": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcTypeViewModelV2"
-                  }
-                ],
-                "nullable": true
-              },
-              "fulfillment_center_attributes": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FcAttributeViewModel"
-                },
-                "nullable": true
-              },
-              "organization_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "parent_id": {
-                "type": "string",
-                "format": "uuid",
-                "nullable": true
-              },
-              "owner_id": {
-                "type": "string",
-                "format": "uuid",
-                "nullable": true
-              },
-              "id": {
-                "type": "integer",
-                "description": "Id of the location in ShipBob\u2019s database",
-                "format": "int32"
-              },
-              "name": {
-                "type": "string",
-                "description": "Name of the location. Follows the naming convention City (State Code)\r\nfor domestic FCs and City (Country Code) for international FCs",
-                "nullable": true
-              },
-              "abbreviation": {
-                "type": "string",
-                "description": "Abbreviation of the location. Combination of nearest Airport Code and the sequence number.",
-                "nullable": true
-              },
-              "timezone": {
-                "type": "string",
-                "description": "Time zone of the location",
-                "nullable": true
-              },
-              "is_active": {
-                "type": "boolean",
-                "description": "Indicates if the location is operationally active or inactive"
-              },
-              "is_receiving_enabled": {
-                "type": "boolean",
-                "description": "Indicates if the receiving is enabled for FC"
-              },
-              "is_shipping_enabled": {
-                "type": "boolean",
-                "description": "Indicates if the shipping is enabled for FC"
-              },
-              "access_granted": {
-                "type": "boolean",
-                "description": "Indicates whether or not the user is authorized to interact at all with the location"
-              },
-              "attributes": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "Available attributes for the location",
-                "nullable": true
-              },
-              "services": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.ServiceViewModel"
-                },
-                "description": "Services provided by the location",
-                "nullable": true
-              },
-              "region": {
-                "$ref": "#/components/schemas/Integrations.Location.Public.Api.ViewModels.FulfillmentCenterRegionViewModel"
-              }
-            },
-            "additionalProperties": false
-          }
-        ]
+        "additionalProperties": false
       }
     },
     "securitySchemes": {
@@ -7806,27 +8558,27 @@
   "tags": [
     {
       "name": "Orders",
-      "description": " >  Note: The orderId in the API response will not match the Id displayed in the ShipBob Merchant Portal when you navigate to the Orders page. ShipBob is currently undergoing a schema migration and the Id displayed in the ShipBob Merchant Portal is the shipmentId not the orderId. In the future, the portal will display both orderId(s) and shipmentId(s). \n\n Use the Orders Resource to create and retrieve orders in ShipBob. \n\n An order a digital record of a complete purchase that comes from an upstream source (i.e. Shopify) and is intended for ShipBob to fulfill. The order object includes products purchased, shipping address details, shipping method selected etc. Orders are created in ShipBob via a channel. \n\n When ShipBob fulfills the order, one or more shipments are created for that order. A shipment is a record of the physical package(s) sent out via a carrier. If an order is shipped in multiple packages then 2 or more shipments can be created for that order. \n\n ### Tips for creating orders in ShipBob via the POST Order endpoint: \n\n * Populate the referenceId with a unique and immutable order identifier from your upstream system. This field was created to allow you to tieback records in ShipBob with your upstream system. \n\n * Ensure that the <em> shipping method </em> passed in the API request matches exactly what the user has listed as the <em> shipping method </em> on the <em>  Ship Option Mapping </em> setup page in the ShipBob Merchant Portal. If they don\u2019t match, ShipBob will assume that the user wants to leverage ShipBob\u2019s default shipping method. \n\n * You can leverage either productId (the ShipBob productId) or the product referenceId (your system's  unique Identifier for products) when creating an order. \n\n Use the Shipments endpoints to retrieve fulfillment information for shipments or orders. \n\n A shipment is an object that is the result of a fulfillment of an order. An order can have one or more shipments. Say Shopify order #122323 contains 3 different products, shipped in two separate packages, there would be 2 shipments for that order. \n\n  Serial numbers are unique identifiers for an individual item (e.g. your specific iPhone X that you bought at the Apple Store). No inventory item can possess duplicate serial numbers. Merchants can request \u201cserial scan\u201d, which means ShipBob will capture the serial number(s) upon sending a shipment so the merchant knows which customer received which individual item(s)."
+      "description": " >  Note: The orderId in the API response will not match the Id displayed in the ShipBob Merchant Portal when you navigate to the Orders page. ShipBob is currently undergoing a schema migration and the Id displayed in the ShipBob Merchant Portal is the shipmentId not the orderId. In the future, the portal will display both orderId(s) and shipmentId(s). \n\n Use the Orders Resource to create and retrieve orders in ShipBob. \n\n An order a digital record of a complete purchase that comes from an upstream source (i.e. Shopify) and is intended for ShipBob to fulfill. The order object includes products purchased, shipping address details, shipping method selected etc. Orders are created in ShipBob via a channel. \n\n When ShipBob fulfills the order, one or more shipments are created for that order. A shipment is a record of the physical package(s) sent out via a carrier. If an order is shipped in multiple packages then 2 or more shipments can be created for that order. \n\n ### Tips for creating orders in ShipBob via the POST Order endpoint: \n\n * Populate the referenceId with a unique and immutable order identifier from your upstream system. This field was created to allow you to tieback records in ShipBob with your upstream system. \n\n * Ensure that the <em> shipping method </em> passed in the API request matches exactly what the user has listed as the <em> shipping method </em> on the <em>  Ship Option Mapping </em> setup page in the ShipBob Merchant Portal. If they don’t match, ShipBob will assume that the user wants to leverage ShipBob’s default shipping method. \n\n * You can leverage either productId (the ShipBob productId) or the product referenceId (your system's  unique Identifier for products) when creating an order. \n\n Use the Shipments endpoints to retrieve fulfillment information for shipments or orders. \n\n A shipment is an object that is the result of a fulfillment of an order. An order can have one or more shipments. Say Shopify order #122323 contains 3 different products, shipped in two separate packages, there would be 2 shipments for that order. \n\n  Serial numbers are unique identifiers for an individual item (e.g. your specific iPhone X that you bought at the Apple Store). No inventory item can possess duplicate serial numbers. Merchants can request “serial scan”, which means ShipBob will capture the serial number(s) upon sending a shipment so the merchant knows which customer received which individual item(s)."
     },
     {
       "name": "Products",
-      "description": "Use the Products Resource to retrieve and create product records in ShipBob. \n\n A product is a virtual record created in ShipBob\u2019s system via a channel. Say a merchant has two Shopify stores (each store would have its own channel), Kevin\u2019s Shopify Store #133 and Kevin\u2019s Shopify store #134. If the same SKU was sold on both stores, two products would be created for that SKU, one product would be created to represent the SKU sold on Store #133 and one to represent it on Store on #134, with productIds 3884009 and 3884008 respectively. \n\n While a product is a virtual record, the inventory item is a representation of a physical good. So in the above example, as product 3884009 and product 3884008 represent the same SKU sold on different channels, the same inventory item will be mapped to both products. Every product will have one or more inventory items mapped to it. Bundle products, a set of products that are sold to consumers as one combined package, think gift or multi packs, may have 2 or more inventory items mapped to them. \n\n ### Tips for creating products in ShipBob via the POST Product endpoints: \n\n * ShipBob needs products to be created at the lowest level. So if a product has 3 variants, small, medium and large, a separate product needs to be created in ShipBob for all three.\n\n * Populate the referenceId with a unique and immutable product identifier from your upstream system. This field was created to allow you to tie back records in ShipBob with your upstream system. \n\n * Use specific and/or unique names to describe each product so they can be easily identified by users in the ShipBob Merchant Portal. In particular, when creating variants, please give them distinguishable names i.e. for a Blue shirt that comes in two sizes, small and medium, strong product names would be Blue shirt size:small and Blue shirt size:medium. \n\n > **NOTE:** The productId returned in the API response will not match the id displayed in the ShipBob Merchant Portal when you navigate to Inventory > Products. ShipBob is currently undergoing a schema migration and the Id displayed in the ShipBob Merchant Portal is the inventoryId not the productId. In the future, the portal will display both productId(s) and inventoryId(s)"
+      "description": "Use the Products Resource to retrieve and create product records in ShipBob. \n\n A product is a virtual record created in ShipBob’s system via a channel. Say a merchant has two Shopify stores (each store would have its own channel), Kevin’s Shopify Store #133 and Kevin’s Shopify store #134. If the same SKU was sold on both stores, two products would be created for that SKU, one product would be created to represent the SKU sold on Store #133 and one to represent it on Store on #134, with productIds 3884009 and 3884008 respectively. \n\n While a product is a virtual record, the inventory item is a representation of a physical good. So in the above example, as product 3884009 and product 3884008 represent the same SKU sold on different channels, the same inventory item will be mapped to both products. Every product will have one or more inventory items mapped to it. Bundle products, a set of products that are sold to consumers as one combined package, think gift or multi packs, may have 2 or more inventory items mapped to them. \n\n ### Tips for creating products in ShipBob via the POST Product endpoints: \n\n * ShipBob needs products to be created at the lowest level. So if a product has 3 variants, small, medium and large, a separate product needs to be created in ShipBob for all three.\n\n * Populate the referenceId with a unique and immutable product identifier from your upstream system. This field was created to allow you to tie back records in ShipBob with your upstream system. \n\n * Use specific and/or unique names to describe each product so they can be easily identified by users in the ShipBob Merchant Portal. In particular, when creating variants, please give them distinguishable names i.e. for a Blue shirt that comes in two sizes, small and medium, strong product names would be Blue shirt size:small and Blue shirt size:medium. \n\n > **NOTE:** The productId returned in the API response will not match the id displayed in the ShipBob Merchant Portal when you navigate to Inventory > Products. ShipBob is currently undergoing a schema migration and the Id displayed in the ShipBob Merchant Portal is the inventoryId not the productId. In the future, the portal will display both productId(s) and inventoryId(s)"
     },
     {
       "name": "Inventory",
-      "description": " Use the Inventory Resource to retrieve ShipBob  inventory items and quantities. \n\n An inventory item is a representation of a physical good, that may or may not have physical stock in ShipBob\u2019s fulfillment centers. Every product will have one or more inventory items mapped to it. A bundle product (a set of products that are sold as one combined package - e.g.  gift or multi packs) is an example of a product that has  2 or more inventory items mapped to it. \n\n Lot items are physical items that have expiration dates or batch numbers that should be fulfilled in a FIFO (first in, first out) manner. Most food items are lot items. Quantities by lot # and/or expiration date are also listed in the Inventory object."
+      "description": " Use the Inventory Resource to retrieve ShipBob  inventory items and quantities. \n\n An inventory item is a representation of a physical good, that may or may not have physical stock in ShipBob’s fulfillment centers. Every product will have one or more inventory items mapped to it. A bundle product (a set of products that are sold as one combined package - e.g.  gift or multi packs) is an example of a product that has  2 or more inventory items mapped to it. \n\n Lot items are physical items that have expiration dates or batch numbers that should be fulfilled in a FIFO (first in, first out) manner. Most food items are lot items. Quantities by lot # and/or expiration date are also listed in the Inventory object."
     },
     {
       "name": "Channels",
-      "description": "Use the Channel Resource to list \u201cchannels\u201d which you have access to. You will use this channelId for subsequent API calls made to ShipBob endpoints. \n\n A channel is a specific installation of an application built by a vendor on top of our API \u2013 e.g. Kevin\u2019s Shopify Store #133432.  All write and most read endpoints require a channel to be passed in the header to complete the request. The channel is used to Identify where the data originally came from.  \n\n Applications that are granted multi-channel permissions will be able to read data from all channels that belong to a user. However, multi-channel applications will only be able to write on behalf of their own channel."
+      "description": "Use the Channel Resource to list “channels” which you have access to. You will use this channelId for subsequent API calls made to ShipBob endpoints. \n\n A channel is a specific installation of an application built by a vendor on top of our API – e.g. Kevin’s Shopify Store #133432.  All write and most read endpoints require a channel to be passed in the header to complete the request. The channel is used to Identify where the data originally came from.  \n\n Applications that are granted multi-channel permissions will be able to read data from all channels that belong to a user. However, multi-channel applications will only be able to write on behalf of their own channel."
     },
     {
       "name": "Returns",
-      "description": "Use the Returns resource to retrieve, create, edit and cancel return records in ShipBob. \n\n A return is a request for ShipBob to perform an action on inventory that is coming back into our fulfillment centers. Typically, the return is a result of an order being requested to be refunded or exchanged. ShipBob does not handle refunds or exchanges - we simply process the inventory according to the merchant specifications. \n\n Returns can only be **modified** or **cancelled** when they are in the Awaiting Arrival status. Returns that are being Processed or have been Completed cannot be modified or cancelled. \n\n ### Tips for creating return orders: \n\n * Populate the referenceId with a unique and immutable return identifier from your upstream system. This field was created to allow you to tie back records in ShipBob with your upstream system. \n\n *Include each inventoryId exactly once in the inventory object. If an inventoryId is included more than once, the call will return an error code \n\n * Provide a tracking # when submitting a return, while it is not a required field, it is the the most surefire way for ShipBob staff to properly and quickly identify the return package when it reaches our fulfillment center. \n\n * Only include inventory items to the return record that will be returned in the same box i.e. if InventoryId 12232 and InventoryId 12039 will be returned in two seperate boxes, two return orders should be created. \n\n * ShipBob does not process returns for digital items or bundle inventory items. Return calls that include digital inventory  items (e.g. ebooks) or bundle inventory items (i.e. multipacks, combination of multiple inventory items)  will return an error code. \n\n * If you choose to provide a requested action (it is an optional field), only provide one requested action per inventory item. So if  you have more than 1 quantity of a given item being returned within the same box, all quantities of the item have to have the same action associated with them. If you don\u2019t provide a requested action, it will default to the action the User set for that inventory item in the ShipBob Merchant portal."
+      "description": "Use the Returns resource to retrieve, create, edit and cancel return records in ShipBob. \n\n A return is a request for ShipBob to perform an action on inventory that is coming back into our fulfillment centers. Typically, the return is a result of an order being requested to be refunded or exchanged. ShipBob does not handle refunds or exchanges - we simply process the inventory according to the merchant specifications. \n\n Returns can only be **modified** or **cancelled** when they are in the Awaiting Arrival status. Returns that are being Processed or have been Completed cannot be modified or cancelled. \n\n ### Tips for creating return orders: \n\n * Populate the referenceId with a unique and immutable return identifier from your upstream system. This field was created to allow you to tie back records in ShipBob with your upstream system. \n\n *Include each inventoryId exactly once in the inventory object. If an inventoryId is included more than once, the call will return an error code \n\n * Provide a tracking # when submitting a return, while it is not a required field, it is the the most surefire way for ShipBob staff to properly and quickly identify the return package when it reaches our fulfillment center. \n\n * Only include inventory items to the return record that will be returned in the same box i.e. if InventoryId 12232 and InventoryId 12039 will be returned in two seperate boxes, two return orders should be created. \n\n * ShipBob does not process returns for digital items or bundle inventory items. Return calls that include digital inventory  items (e.g. ebooks) or bundle inventory items (i.e. multipacks, combination of multiple inventory items)  will return an error code. \n\n * If you choose to provide a requested action (it is an optional field), only provide one requested action per inventory item. So if  you have more than 1 quantity of a given item being returned within the same box, all quantities of the item have to have the same action associated with them. If you don’t provide a requested action, it will default to the action the User set for that inventory item in the ShipBob Merchant portal."
     },
     {
       "name": "Receiving",
-      "description": "Note: 1.0/receiving endpoints have been deprecated. Please use 2.0/receiving instead. \n\n Use the Receiving Resource to retrieve, create and cancel Warehouse Receiving Orders (WROs). \n\n A WRO is a request form that tells ShipBob's fulfillment centers what inventory should be received and stocked. Some other solutions call this an \u201cASN\u201d or Advanced Ship Notice. WROs may include multiple inventory items with specific quantities. More details on creating a WRO can be found [here](https://support.shipbob.com/s/article/New-Send-Inventory-to-ShipBob-WRO). \n\n A WRO can only be **canceled** if it is in the Awaiting status. WROs in Awaiting status are considered to still be in transit to ShipBob FCs. WROs that have Partially Arrived, have been Processed or are Completed, cannot be canceled."
+      "description": "Note: 1.0/receiving endpoints have been deprecated. Please use 2.0/receiving instead. \n\n Use the Receiving Resource to retrieve, create and cancel Warehouse Receiving Orders (WROs). \n\n A WRO is a request form that tells ShipBob's fulfillment centers what inventory should be received and stocked. Some other solutions call this an “ASN” or Advanced Ship Notice. WROs may include multiple inventory items with specific quantities. More details on creating a WRO can be found [here](https://support.shipbob.com/s/article/New-Send-Inventory-to-ShipBob-WRO). \n\n A WRO can only be **canceled** if it is in the Awaiting status. WROs in Awaiting status are considered to still be in transit to ShipBob FCs. WROs that have Partially Arrived, have been Processed or are Completed, cannot be canceled."
     },
     {
       "name": "Webhooks",
@@ -7840,9 +8592,6 @@
   "servers": [
     {
       "url": "https://api.shipbob.com/"
-    },
-    {
-      "url": "https://sandbox-api.shipbob.com/"
     }
   ]
 }
