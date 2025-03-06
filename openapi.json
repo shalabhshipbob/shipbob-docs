@@ -202,6 +202,14 @@
       },
     },
     "securitySchemes": {
+      "PAT": {
+        "type": "apiKey",
+        "description": "Enter 'Bearer {your_personal_access_token}'",
+        "name": "Authorization",
+        "in": "header",
+        "x-bearerFormat": "JWT",
+        "x-key-type": "Bearer"
+      },
       "oauth2": {
         "type": "oauth2",
         "flows": {
