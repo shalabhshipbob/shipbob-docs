@@ -5,6 +5,11 @@
         "description": "test",
         "version": "v1"
     },
+     "servers": [
+      {
+        "url": "https://gateway-dev.shipbob.dev/experimental"
+      }
+    ],
     "paths": {
         "/receiving-extended/{id}/tag": {
             "put": {
