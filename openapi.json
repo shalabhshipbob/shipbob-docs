@@ -2,8 +2,8 @@
     "openapi": "3.0.1",
     "info": {
         "title": "ShipBob-Experimental-Original",
-        "description": "",
-        "version": ""
+        "description": "test",
+        "version": "v1"
     },
     "paths": {
         "/receiving-extended/{id}/tag": {
