@@ -128,7 +128,6 @@
             "OAuth2": []
           }
         ],
-        "x-codegen-request-body-name": "receiving.UpdateReceivingTagsRequest"
       }
     },
   },
