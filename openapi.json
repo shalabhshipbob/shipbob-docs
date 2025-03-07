@@ -32,6 +32,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Authorization.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -93,7 +101,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -170,7 +178,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object"
+                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Not.Found.object"
                 },
                 "examples": {
                   "default": {
@@ -333,7 +341,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Search.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Search.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -525,7 +533,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -676,7 +684,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -804,6 +812,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.SearchBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -812,6 +828,16 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.InventoryIds.IntegerArray"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": [
+                  0
+                ],
+                "externalValue": ""
+              }
             }
           },
           {
@@ -820,6 +846,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.IsActive.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -828,6 +862,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.IsDigital.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -844,6 +886,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.SortBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -996,6 +1046,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.SearchBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1004,6 +1062,19 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.FilterOperationArray"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": [
+                  {
+                    "key": "string",
+                    "rawValue": "string"
+                  }
+                ],
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1012,6 +1083,16 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.InventoryIds.IntegerArray"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": [
+                  0
+                ],
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1020,6 +1101,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.IsActive.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1028,6 +1117,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.IsDigital.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1044,6 +1141,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.SortBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -1384,6 +1489,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.LocationType.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1400,6 +1513,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.SearchBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1408,6 +1529,16 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.InventoryIds.IntegerArray"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": [
+                  0
+                ],
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1416,6 +1547,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.IsActive.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1424,6 +1563,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.IsDigital.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1440,6 +1587,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.SortBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -1603,6 +1758,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.SearchBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1611,6 +1774,16 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.InventoryIds.IntegerArray"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": [
+                  0
+                ],
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1619,6 +1792,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.IsActive.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1627,6 +1808,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.IsDigital.Boolean"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "True",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -1643,6 +1832,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.SortBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -2465,6 +2662,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.EventCategory.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -2473,6 +2678,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.StartDate.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "2019-08-24T14:15:22+00:00",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -2481,6 +2694,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.EndDate.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "2019-08-24T14:15:22+00:00",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -3637,7 +3858,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -4039,7 +4260,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Product.ProductId.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Product.ProductId.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -4295,7 +4516,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -4367,6 +4588,14 @@
             "description": "",
             "schema": {
               "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Search.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -4670,7 +4899,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -5031,7 +5260,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -5293,7 +5522,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -6753,6 +6982,14 @@
             "description": "Search Products by name, sku, inventory id or product Id.\n",
             "schema": {
               "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Search.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -6929,6 +7166,14 @@
             "description": "Id, Name, Category, TotalOnHandQty\n",
             "schema": {
               "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SortBy.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           },
           {
@@ -6937,6 +7182,14 @@
             "description": "ASC,DESC\n",
             "schema": {
               "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SortOrder.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
             }
           }
         ],
@@ -7130,7 +7383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -8042,7 +8295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.MoveVariants.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.MoveVariants.Bad.Request.object"
                 },
                 "examples": {
                   "default": {
@@ -8362,11 +8615,23 @@
   },
   "components": {
     "schemas": {
-      "Attachment.Post.Api.Attachment.Bad.Request.Object": {
-        "type": "object"
+      "Attachment.Post.Api.Attachment.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
-      "Attachment.Post.Api.Attachment.Unprocessable.Entity.Object": {
-        "type": "object"
+      "Attachment.Post.Api.Attachment.Unprocessable.Entity.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Attachment.Post.Api.BlobKey.String": {
         "type": "string"
@@ -8386,97 +8651,142 @@
         "type": "object",
         "properties": {
           "AttachmentName": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the attachment"
           },
           "AttachmentUri": {
-            "type": "string"
+            "type": "string",
+            "description": "Uri for the attachment"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Channels.ChannelViewModel": {
         "type": "object",
         "properties": {
           "application_name": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the application that owns the channel",
+            "example": "Api"
           },
           "id": {
             "type": "integer",
+            "description": "Unique id of the channel",
             "format": "int32"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the channel"
           },
           "scopes": {
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "Array of permissions granted for the channel",
+            "example": [
+              "channels_read",
+              "orders_read",
+              "orders_write"
+            ]
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Channels.CreateChannelRequestModel": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "minLength": 1,
+            "type": "string",
+            "description": "Name of the channel"
           }
         },
-        "required": [
-          "name"
-        ]
+        "additionalProperties": false,
+        "description": "Model for create channel request"
       },
-      "Channels.Post.Api.V2.Channel.Bad.Request.Object": {
-        "type": "object"
+      "Channels.Post.Api.V2.Channel.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Channels.Post.Api.V2.Channel.InheritScopes.Boolean": {
-        "type": "boolean"
+        "type": "boolean",
+        "default": false
       },
-      "Channels.Post.Api.V2.Channel.Search.Bad.Request.Object": {
-        "type": "object"
+      "Channels.Post.Api.V2.Channel.Search.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Channels.v2.ChannelBasicViewModel": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
+            "description": "",
             "format": "int32"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": ""
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "Channel basic information"
       },
       "Channels.v2.ChannelSearchViewModel": {
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
-            "items": {}
+            "items": {},
+            "description": "List of channels"
           },
           "next": {
-            "type": "string"
+            "type": "string",
+            "description": "Next page cursor"
           },
           "prev": {
-            "type": "string"
+            "type": "string",
+            "description": "Previous page cursor"
           },
           "total_records": {
             "type": "integer",
+            "description": "Total records on current page",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "GChannel search response"
       },
       "Channels.v2.ChannelsV2SearchRequest": {
         "type": "object",
         "properties": {
           "cursor": {
-            "type": "string"
+            "type": "string",
+            "description": "Next/Previous Cursor"
           },
           "records_per_page": {
             "type": "integer",
+            "description": "Records Per Page",
             "format": "int32"
           },
           "search_filters": {}
-        }
+        },
+        "additionalProperties": false,
+        "description": "Channel search request body"
       },
       "Channels.v2.SearchFilters": {
         "type": "object",
@@ -8486,40 +8796,50 @@
             "items": {
               "type": "integer",
               "format": "int32"
-            }
+            },
+            "description": "Channel Ids to search for"
           },
           "channel_names": {
             "type": "array",
             "items": {
               "type": "string"
-            }
-          }
-        }
-      },
-      "FacilityWorkflowIntegrations.ShopifyPickData": {
-        "type": "object",
-        "properties": {
-          "fulfillmentCenterId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "inventorySku": {
-            "type": "string"
-          },
-          "quantityToPick": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "transactionId": {
-            "type": "string"
+            },
+            "description": "Channel Names to search for"
           }
         },
+        "additionalProperties": false,
+        "description": "Search filters"
+      },
+      "FacilityWorkflowIntegrations.ShopifyPickData": {
         "required": [
           "fulfillmentCenterId",
           "inventorySku",
           "quantityToPick",
           "transactionId"
-        ]
+        ],
+        "type": "object",
+        "properties": {
+          "fulfillmentCenterId": {
+            "type": "integer",
+            "description": "A representation of a specific facility.",
+            "format": "int32"
+          },
+          "inventorySku": {
+            "type": "string",
+            "description": "An identifier for a particular piece of inventory."
+          },
+          "quantityToPick": {
+            "type": "integer",
+            "description": "The quantity to be picked.",
+            "format": "int32"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "The unique identifier for a transaction."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The data provided by a Shopify flow."
       },
       "FacilityWorkflowIntegrations.ShopifyResponseError": {
         "type": "object",
@@ -8527,7 +8847,8 @@
           "errorMessage": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.Cursor.Integer": {
         "type": "integer",
@@ -8572,7 +8893,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FulfillmentCenterInventoryService.InventoryHistoryDetails": {
         "type": "object",
@@ -8592,7 +8914,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FulfillmentCenterInventoryService.InventoryHistoryResponse": {
         "type": "object",
@@ -8613,9 +8936,13 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FulfillmentCenterInventoryService.MerchantHistoryRequest": {
+        "required": [
+          "inventory_ids"
+        ],
         "type": "object",
         "properties": {
           "end_date": {
@@ -8645,9 +8972,7 @@
             "format": "date-time"
           }
         },
-        "required": [
-          "inventory_ids"
-        ]
+        "additionalProperties": false
       },
       "Inventory.CreateInventoryLotExclusionRequest": {
         "type": "object",
@@ -8663,7 +8988,8 @@
           "lot_number": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.DimensionsResponse": {
         "type": "object",
@@ -8689,7 +9015,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.FilterOperati": {
         "type": "object",
@@ -8700,7 +9027,8 @@
           "rawValue": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.FilterOperation": {
         "type": "object",
@@ -8711,7 +9039,8 @@
           "rawValue": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.FilterOperationArray": {
         "type": "array",
@@ -8747,7 +9076,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.FulfillmentCenterResponse": {
         "type": "object",
@@ -8779,7 +9109,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.Get.Api.V2.Inventories.InventoryId.InventoryId.Integer": {
         "type": "integer",
@@ -9052,17 +9383,20 @@
           "validated": {
             "type": "boolean"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryHistoryReportQueryModel": {
         "type": "object",
         "properties": {
           "endDate": {
             "type": "string",
+            "description": "End date to filter orders inserted earlier than. If provided, end date must be after the start date.",
             "format": "date-time"
           },
           "fulfillmentCenterId": {
             "type": "integer",
+            "description": "Fulfillment center Id to filter by.",
             "format": "int32"
           },
           "inventoryIds": {
@@ -9070,27 +9404,34 @@
             "items": {
               "type": "integer",
               "format": "int32"
-            }
+            },
+            "description": "List of InventoryIds to filter by."
           },
           "requestId": {
-            "type": "string"
+            "type": "string",
+            "description": "RequestId to correlate the request with the response file"
           },
           "startDate": {
             "type": "string",
+            "description": "Start date to filter orders inserted later than.",
             "format": "date-time"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryHistoryReportResponse": {
         "type": "object",
         "properties": {
           "reportUrl": {
-            "type": "string"
+            "type": "string",
+            "description": "The publicly accessible URL to download the report"
           },
           "requestId": {
-            "type": "string"
+            "type": "string",
+            "description": "RequestId to correlate the request with the response file"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryQuantityFcResponse": {
         "type": "object",
@@ -9109,7 +9450,8 @@
           "sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryQuantityFcResponsePagedResponse": {
         "type": "object",
@@ -9130,7 +9472,8 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryQuantityLotResponse": {
         "type": "object",
@@ -9149,7 +9492,8 @@
           "sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryQuantityLotResponsePagedResponse": {
         "type": "object",
@@ -9170,7 +9514,8 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryQuantityResponse": {
         "type": "object",
@@ -9217,7 +9562,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryQuantityResponsePagedResponse": {
         "type": "object",
@@ -9238,7 +9584,8 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryResponse": {
         "type": "object",
@@ -9269,7 +9616,8 @@
           },
           "variant": {},
           "weight": {}
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.InventoryResponsePagedResponse": {
         "type": "object",
@@ -9290,7 +9638,8 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.Lot": {
         "type": "object",
@@ -9326,7 +9675,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.Lots": {
         "type": "object",
@@ -9362,10 +9712,17 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "Inventory.Post.Api.Inventory.History.Report.Bad.Request.Object": {
-        "type": "object"
+      "Inventory.Post.Api.Inventory.History.Report.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Inventory.ProblemDetail": {
         "type": "object",
@@ -9386,7 +9743,8 @@
           "type": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": {}
       },
       "Inventory.ProblemDetails": {
         "type": "object",
@@ -9407,7 +9765,8 @@
           "type": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": {}
       },
       "Inventory.ResponseError": {
         "type": "object",
@@ -9415,7 +9774,8 @@
           "error_message": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.VariantResponse": {
         "type": "object",
@@ -9430,7 +9790,8 @@
           "is_digital": {
             "type": "boolean"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Inventory.WeightResponse": {
         "type": "object",
@@ -9442,66 +9803,97 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Orders.AddressType": {
+        "enum": [
+          "MarkFor",
+          "ShipFrom"
+        ],
         "type": "string"
       },
       "Orders.AddressViewModel": {
-        "type": "object",
-        "properties": {
-          "address1": {
-            "type": "string"
-          },
-          "address2": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "company_name": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string"
-          },
-          "zip_code": {
-            "type": "string",
-            "format": "postal-code"
-          }
-        },
         "required": [
           "address1",
           "city",
           "country"
-        ]
-      },
-      "Orders.CreateTransportationOrderModel": {
+        ],
         "type": "object",
         "properties": {
-          "location_id": {
-            "type": "integer",
-            "format": "int32"
+          "address1": {
+            "minLength": 1,
+            "type": "string",
+            "description": "First line of the address",
+            "example": "100 Nowhere Blvd"
           },
-          "measurements": {},
-          "recipient": {},
-          "reference_id": {
-            "type": "string"
+          "address2": {
+            "type": "string",
+            "description": "Second line of the address",
+            "example": "Suite 100"
           },
-          "shipping_method": {
-            "type": "string"
+          "city": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The city",
+            "example": "Gotham City"
+          },
+          "company_name": {
+            "type": "string",
+            "description": "Name of the company receiving the shipment",
+            "example": "Wayne Enterprises"
+          },
+          "country": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The country (Must be ISO Alpha-2 for estimates)",
+            "example": "US"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state or province",
+            "example": "NJ"
+          },
+          "zip_code": {
+            "type": "string",
+            "description": "The zip code or postal code",
+            "format": "postal-code",
+            "example": "07093"
           }
         },
+        "additionalProperties": false
+      },
+      "Orders.CreateTransportationOrderModel": {
         "required": [
           "locationId",
           "measurements",
           "recipient",
           "referenceId",
           "shippingMethod"
-        ]
+        ],
+        "type": "object",
+        "properties": {
+          "location_id": {
+            "type": "integer",
+            "description": "Desired Fulfillment Center Location ID. If not specified, ShipBob will determine the location that fulfills this order.",
+            "format": "int32"
+          },
+          "measurements": {},
+          "recipient": {},
+          "reference_id": {
+            "maxLength": 300,
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique and immutable order identifier from your upstream system"
+          },
+          "shipping_method": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Client-defined shipping method matching what the user has listed as the shipping method on the Ship Option Mapping setup page in the ShipBob Merchant Portal. If they don’t match, we will create a new one and default it to Standard",
+            "example": "Free 2-day Shipping"
+          }
+        },
+        "additionalProperties": false
       },
       "Orders.Get.Api.LotExclusions.Inventory.Id.Integer": {
         "type": "integer",
@@ -9511,13 +9903,18 @@
         "type": "object",
         "properties": {
           "exclusions": {
-            "type": "array"
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
           },
           "inventory_id": {
             "type": "integer",
+            "description": "Inventory ID for excluded lot",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Orders.Get.Api.LotExclusions.InventoryLotExclusionsViewModelArray": {
         "type": "array",
@@ -9532,20 +9929,25 @@
         "properties": {
           "location_id": {
             "type": "integer",
+            "description": "Id of location",
             "format": "int32"
           },
           "lot_date": {
             "type": "string",
+            "description": "Lot date",
             "format": "date-time"
           },
           "lot_number": {
-            "type": "string"
+            "type": "string",
+            "description": "Lot number"
           },
           "quantity": {
             "type": "integer",
+            "description": "Quantity available from excluded lot at location",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Orders.Get.Api.LotExclusions.LotExclusionsViewModelArray": {
         "type": "array",
@@ -9563,34 +9965,58 @@
         "properties": {
           "depth_in": {
             "type": "integer",
+            "description": "Total depth in inches",
             "format": "int32"
           },
           "length_in": {
             "type": "integer",
+            "description": "Total length in inches",
             "format": "int32"
           },
           "total_weight_oz": {
             "type": "integer",
+            "description": "Total weight in ounces",
             "format": "int32"
           },
           "width_in": {
             "type": "integer",
+            "description": "Total width in inches",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "Measurements of a shipment"
       },
-      "Orders.Post.Api.Order.Transportation.Bad.Request.Object": {
-        "type": "object"
+      "Orders.Post.Api.Order.Transportation.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Orders.Post.Api.Order.Transportation.Shipbob.Channel.Id.Integer": {
         "type": "integer",
         "format": "int32"
       },
-      "Orders.Post.Api.Order.Transportation.Unprocessable.Entity.Object": {
-        "type": "object"
+      "Orders.Post.Api.Order.Transportation.Unprocessable.Entity.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
-      "Orders.Put.Api.Order.OrderId.Dimensions.Bad.Request.Object": {
-        "type": "object"
+      "Orders.Put.Api.Order.OrderId.Dimensions.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Orders.Put.Api.Order.OrderId.Dimensions.OrderId.Integer": {
         "type": "integer",
@@ -9600,82 +10026,116 @@
         "type": "integer",
         "format": "int32"
       },
-      "Orders.Put.Api.Order.OrderId.Dimensions.Unprocessable.Entity.Object": {
-        "type": "object"
-      },
-      "Orders.RecipientInfoViewModel": {
+      "Orders.Put.Api.Order.OrderId.Dimensions.Unprocessable.Entity.object": {
         "type": "object",
-        "properties": {
-          "address": {},
-          "email": {
-            "type": "string",
-            "format": "email"
-          },
-          "name": {
-            "type": "string"
-          },
-          "phone_number": {
+        "additionalProperties": {
+          "type": "array",
+          "items": {
             "type": "string"
           }
-        },
+        }
+      },
+      "Orders.RecipientInfoViewModel": {
         "required": [
           "address",
           "name"
-        ]
+        ],
+        "type": "object",
+        "properties": {
+          "address": {
+            "description": "Address of the recipient"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the recipient",
+            "format": "email",
+            "example": "john@example.com"
+          },
+          "name": {
+            "maxLength": 300,
+            "minLength": 1,
+            "type": "string",
+            "description": "Name of the recipient",
+            "example": "John Doe"
+          },
+          "phone_number": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Phone number of the recipient",
+            "example": "555-555-5555"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about the recipient of an order"
       },
       "Orders.RetailerProgramDataAddressViewModel": {
+        "required": [
+          "type"
+        ],
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "type": {}
         },
-        "required": [
-          "type"
-        ]
+        "additionalProperties": false,
+        "description": "Address to used when creating a B2B/DropShip order."
       },
       "Orders.TransportationOrderViewModel": {
         "type": "object",
         "properties": {
           "shipment_id": {
             "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "Orders.UpdateMeasurementsViewModel": {
-        "type": "object",
-        "properties": {
-          "depth_in": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "length_in": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "total_weight_oz": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "width_in": {
-            "type": "integer",
+            "description": "Unique ID of the transportation shipment",
             "format": "int32"
           }
         },
+        "additionalProperties": false
+      },
+      "Orders.UpdateMeasurementsViewModel": {
         "required": [
           "depth",
           "length",
           "totalWeight",
           "width"
-        ]
+        ],
+        "type": "object",
+        "properties": {
+          "depth_in": {
+            "type": "integer",
+            "description": "Total depth in inches",
+            "format": "int32"
+          },
+          "length_in": {
+            "type": "integer",
+            "description": "Total length in inches",
+            "format": "int32"
+          },
+          "total_weight_oz": {
+            "type": "integer",
+            "description": "Total weight in ounces",
+            "format": "int32"
+          },
+          "width_in": {
+            "type": "integer",
+            "description": "Total width in inches",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Measurements of a shipment"
       },
       "Orders.UpdateOrderDimensionsModel": {
+        "required": [
+          "measurements"
+        ],
         "type": "object",
         "properties": {
           "measurements": {}
         },
-        "required": [
-          "measurements"
-        ]
+        "additionalProperties": false,
+        "description": "Request schema class for transport order update endpoint"
       },
       "Products.AdditionalHazmatAttributesRequestModel": {
         "type": "object",
@@ -9704,7 +10164,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.AdditionalHazmatAttributesViewModel": {
         "type": "object",
@@ -9733,10 +10194,14 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.AmazonChannelMetadataRequestModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "asin": {
             "type": "string"
@@ -9748,12 +10213,18 @@
             "type": "string"
           },
           "platform": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "Amazon Sales Channel Information with custom Amazon Fields"
       },
       "Products.AmazonChannelMetadataViewModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "asin": {
             "type": "string"
@@ -9764,10 +10235,14 @@
           "fulfillment_channel": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.AmazonProductChannelMetadataModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "asin": {
             "type": "string"
@@ -9778,7 +10253,8 @@
           "fulfillment_channel": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ApplicableCategoryViewModel": {
         "type": "object",
@@ -9794,7 +10270,8 @@
               "format": "int32"
             }
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.AssociatedBundlesViewModel": {
         "type": "object",
@@ -9817,7 +10294,8 @@
           "variant_sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BarcodeModel": {
         "type": "object",
@@ -9828,7 +10306,8 @@
           "value": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BarcodeRequestModel": {
         "type": "object",
@@ -9839,7 +10318,8 @@
           "value": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BarcodeViewModel": {
         "type": "object",
@@ -9850,7 +10330,8 @@
           "value": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseAdditionalHazmatAttributesModel": {
         "type": "object",
@@ -9879,7 +10360,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseBundleDefinitionModel": {
         "type": "object",
@@ -9892,10 +10374,16 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseChannelMetadataRequestModel": {
-        "type": "object"
+        "type": "object",
+        "allOf": [
+          {}
+        ],
+        "additionalProperties": false,
+        "description": "Standard Channel Metadata Record to store SellerSKU for a Sales Channel"
       },
       "Products.BaseCustomsModel": {
         "type": "object",
@@ -9919,7 +10407,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseDimensionModel": {
         "type": "object",
@@ -9936,7 +10425,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseFulfillmentSettingsModel": {
         "type": "object",
@@ -9957,7 +10447,8 @@
             "type": "boolean"
           },
           "serial_scan": {}
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseLotInformationModel": {
         "type": "object",
@@ -9969,10 +10460,15 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseProductChannelMetadataModel": {
-        "type": "object"
+        "type": "object",
+        "allOf": [
+          {}
+        ],
+        "additionalProperties": false
       },
       "Products.BaseProductRequestModel": {
         "type": "object",
@@ -9988,7 +10484,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseProductVariantModel": {
         "type": "object",
@@ -10039,7 +10536,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseProductVariantRequestModel": {
         "type": "object",
@@ -10089,7 +10587,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseReturnPreferencesModel": {
         "type": "object",
@@ -10113,7 +10612,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseSerialScanModel": {
         "type": "object",
@@ -10131,7 +10631,8 @@
           "suffix": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BaseTaxonomyViewModel": {
         "type": "object",
@@ -10146,13 +10647,18 @@
           "path": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BigCommerceChannelMetadataRequestModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "platform": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "platform_product_id": {
             "type": "integer",
@@ -10162,10 +10668,15 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "BigCommerce Sales Channel Information with custom Amazon Fields"
       },
       "Products.BigCommerceChannelMetadataViewModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "platform_product_id": {
             "type": "integer",
@@ -10175,10 +10686,14 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BigCommerceProductChannelMetadataModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "platform_product_id": {
             "type": "integer",
@@ -10188,7 +10703,8 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BundleDefinitionRequestModel": {
         "type": "object",
@@ -10201,7 +10717,8 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.BundleDefinitionViewModel": {
         "type": "object",
@@ -10224,7 +10741,8 @@
           "variant_sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ChannelMetadataRequestModel": {
         "type": "object",
@@ -10263,7 +10781,8 @@
           "seller_sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ChannelMetadataViewModel": {
         "type": "object",
@@ -10305,15 +10824,20 @@
           "seller_sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ChildTaxonomyViewModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "has_children": {
             "type": "boolean"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ConvertVariantToBundleRequest": {
         "type": "object",
@@ -10332,36 +10856,53 @@
           "sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.CreateProductRequestModelV3": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "variants": {
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.CreateProductRequestModelV5": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "variants": {
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.CreateProductVariantRequestModel": {
-        "type": "object"
+        "type": "object",
+        "allOf": [
+          {}
+        ],
+        "additionalProperties": false
       },
       "Products.CreateProductVariantRequestModelV3": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcode_sticker_url": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.CreateProductVariantRequestModelV3Array": {
         "type": "array",
@@ -10369,12 +10910,16 @@
       },
       "Products.CreateProductVariantRequestModelV5": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcodes": {
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.CreateProductVariantRequestModelV5Array": {
         "type": "array",
@@ -10399,7 +10944,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.CustomsViewModel": {
         "type": "object",
@@ -10423,10 +10969,17 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "Products.Delete.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Delete.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Delete.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.ChannelMetadataId.Integer": {
         "type": "integer",
@@ -10437,24 +10990,42 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Delete.Api.V4.Product.ProductId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Delete.Api.V4.Product.ProductId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Delete.Api.V4.Product.ProductId.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Delete.Api.V4.Product.ProductId.ProductId.Integer": {
         "type": "integer",
         "format": "int64"
       },
-      "Products.Delete.Api.V5.Product.ProductId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Delete.Api.V5.Product.ProductId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Delete.Api.V5.Product.ProductId.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Delete.Api.V5.Product.ProductId.ProductId.Integer": {
         "type": "integer",
         "format": "int64"
       },
-      "Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.ChannelMetadataId.Integer": {
         "type": "integer",
@@ -10480,7 +11051,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.DimensionViewModel": {
         "type": "object",
@@ -10506,7 +11078,8 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.EnumViewModel": {
         "type": "object",
@@ -10518,7 +11091,8 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.FulfillmentSettingsRequestModel": {
         "type": "object",
@@ -10539,7 +11113,8 @@
             "type": "boolean"
           },
           "serial_scan": {}
-        }
+        },
+        "additionalProperties": false
       },
       "Products.FulfillmentSettingsViewModel": {
         "type": "object",
@@ -10560,50 +11135,74 @@
             "type": "boolean"
           },
           "serial_scan": {}
+        },
+        "additionalProperties": false
+      },
+      "Products.Get.Api.V4.Product.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "Products.Get.Api.V4.Product.Bad.Request.Object": {
-        "type": "object"
-      },
       "Products.Get.Api.V4.Product.Barcode.Int": {
-        "type": "Int"
+        "type": "object",
+        "description": "Barcode Associated with variant"
       },
       "Products.Get.Api.V4.Product.CategoryIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "List of Category Ids associated with product"
       },
       "Products.Get.Api.V4.Product.ChannelIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products variants by their channel IDs"
       },
       "Products.Get.Api.V4.Product.HasDigitalVariants.Boolean": {
-        "type": "Boolean"
+        "type": "boolean",
+        "description": "Looks for Products with/without digital variants"
       },
       "Products.Get.Api.V4.Product.HasVariants.Boolean": {
-        "type": "Boolean"
+        "type": "boolean",
+        "description": "Looks for Products with/without variants"
       },
       "Products.Get.Api.V4.Product.InventoryId.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for variants by its associated inventory id"
       },
       "Products.Get.Api.V4.Product.LegacyIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products with by Legacy Product Id(s)"
       },
       "Products.Get.Api.V4.Product.Name.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products/Variants by name"
       },
       "Products.Get.Api.V4.Product.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V4.Product.OnHand.Integer": {
-        "type": "Integer"
+        "type": "integer",
+        "description": "Looks for Products with inventory"
       },
       "Products.Get.Api.V4.Product.PageSize.Int": {
-        "type": "int"
+        "type": "integer"
       },
       "Products.Get.Api.V4.Product.PlatformIds.List.String": {
-        "type": "List<String>"
+        "type": "object",
+        "description": "Looks for Products variants by their external Platform IDs"
       },
-      "Products.Get.Api.V4.Product.ProductId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Get.Api.V4.Product.ProductId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Get.Api.V4.Product.ProductId.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products with an assigned Id"
       },
       "Products.Get.Api.V4.Product.ProductId.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V4.Product.ProductId.ProductId.Integer": {
@@ -10611,22 +11210,27 @@
         "format": "int64"
       },
       "Products.Get.Api.V4.Product.ProductType.Integer": {
-        "type": "Integer"
+        "type": "integer",
+        "description": "Looks for Products by type"
       },
       "Products.Get.Api.V4.Product.ReviewsPending.List.ReviewsPendingType": {
-        "type": "List<ReviewsPendingType>"
+        "type": "object",
+        "description": "Looks for Products by ReviewsPending"
       },
       "Products.Get.Api.V4.Product.SKU.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products that match the provided Sku query"
       },
       "Products.Get.Api.V4.Product.SalesChannel.List.String": {
-        "type": "List<String>"
+        "type": "object",
+        "description": "Looks for Products variants assigned to a platform/sales channel "
       },
       "Products.Get.Api.V4.Product.Search.String": {
         "type": "string"
       },
       "Products.Get.Api.V4.Product.SellerSKU.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products that match the provided Seller query"
       },
       "Products.Get.Api.V4.Product.SortBy.String": {
         "type": "string"
@@ -10635,13 +11239,16 @@
         "type": "string"
       },
       "Products.Get.Api.V4.Product.TaxonomyIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products variants by their taxonomy id or any descendants of the taxonomies sent separated by comma"
       },
       "Products.Get.Api.V4.Product.VariantId.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for products that contain a variant with the given ID"
       },
       "Products.Get.Api.V4.Product.VariantStatus.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products with variants that contain provided status"
       },
       "Products.Get.Api.V4.Taxonomy.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V4.Taxonomy.Id.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
@@ -10662,56 +11269,85 @@
         "type": "string"
       },
       "Products.Get.Api.V4.Taxonomy.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V5.Product.Bad.Request.Object": {
-        "type": "object"
+      "Products.Get.Api.V5.Product.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Get.Api.V5.Product.Barcode.Int": {
-        "type": "Int"
+        "type": "integer",
+        "description": "Barcode Associated with variant"
       },
       "Products.Get.Api.V5.Product.CategoryIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "List of Category Ids associated with product"
       },
       "Products.Get.Api.V5.Product.ChannelIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products variants by their channel IDs"
       },
       "Products.Get.Api.V5.Product.HasDigitalVariants.Boolean": {
-        "type": "Boolean"
+        "type": "boolean",
+        "description": "Looks for Products with/without digital variants"
       },
       "Products.Get.Api.V5.Product.HasVariants.Boolean": {
-        "type": "Boolean"
+        "type": "boolean",
+        "description": "Looks for Products with/without variants"
       },
       "Products.Get.Api.V5.Product.InventoryId.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for variants by its associated inventory id"
       },
       "Products.Get.Api.V5.Product.LegacyIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products with by Legacy Product Id(s)"
       },
       "Products.Get.Api.V5.Product.Name.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products/Variants by name"
       },
       "Products.Get.Api.V5.Product.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V5.Product.OnHand.Integer": {
-        "type": "Integer"
+        "type": "integer",
+        "description": "Looks for Products with inventory"
       },
       "Products.Get.Api.V5.Product.PageSize.Int": {
-        "type": "int"
+        "type": "integer"
       },
       "Products.Get.Api.V5.Product.PlatformIds.List.String": {
-        "type": "List<String>"
+        "type": "object",
+        "description": "Looks for Products variants by their external Platform IDs"
       },
-      "Products.Get.Api.V5.Product.ProductId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Get.Api.V5.Product.ProductId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Get.Api.V5.Product.ProductId.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products with an assigned Id"
       },
       "Products.Get.Api.V5.Product.ProductId.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V5.Product.ProductId.ProductId.Integer": {
         "type": "integer",
         "format": "int64"
       },
-      "Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.Object": {
-        "type": "object"
+      "Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Get.Api.V5.Product.ProductId.Variants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V5.Product.ProductId.Variants.ProductId.Integer": {
@@ -10719,22 +11355,27 @@
         "format": "int64"
       },
       "Products.Get.Api.V5.Product.ProductType.Integer": {
-        "type": "Integer"
+        "type": "integer",
+        "description": "Looks for Products by type"
       },
       "Products.Get.Api.V5.Product.ReviewsPending.List.ReviewsPendingType": {
-        "type": "List<ReviewsPendingType>"
+        "type": "object",
+        "description": "Looks for Products by ReviewsPending"
       },
       "Products.Get.Api.V5.Product.SKU.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products that match the provided Sku query"
       },
       "Products.Get.Api.V5.Product.SalesChannel.List.String": {
-        "type": "List<String>"
+        "type": "object",
+        "description": "Looks for Products variants assigned to a platform/sales channel "
       },
       "Products.Get.Api.V5.Product.Search.String": {
         "type": "string"
       },
       "Products.Get.Api.V5.Product.SellerSKU.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products that match the provided Seller query"
       },
       "Products.Get.Api.V5.Product.SortBy.String": {
         "type": "string"
@@ -10743,13 +11384,16 @@
         "type": "string"
       },
       "Products.Get.Api.V5.Product.TaxonomyIds.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for Products variants by their taxonomy id or any descendants of the taxonomies sent separated by comma"
       },
       "Products.Get.Api.V5.Product.VariantId.List.Int": {
-        "type": "List<int>"
+        "type": "object",
+        "description": "Looks for products that contain a variant with the given ID"
       },
       "Products.Get.Api.V5.Product.VariantStatus.String": {
-        "type": "String"
+        "type": "string",
+        "description": "Looks for Products with variants that contain provided status"
       },
       "Products.Get.Api.V5.Taxonomy.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Get.Api.V5.Taxonomy.Id.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
@@ -10772,11 +11416,21 @@
       "Products.Get.Api.V5.Taxonomy.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.HttpValidationProblemDetails": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "errors": {
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           }
-        }
+        },
+        "additionalProperties": {}
       },
       "Products.InventoryViewModel": {
         "type": "object",
@@ -10789,7 +11443,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.LotInformationRequestModel": {
         "type": "object",
@@ -10801,7 +11456,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.LotInformationViewModel": {
         "type": "object",
@@ -10813,7 +11469,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.MergeVariantRequestModel": {
         "type": "object",
@@ -10822,7 +11479,8 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.MergeVariantRequestModelArray": {
         "type": "array",
@@ -10853,7 +11511,8 @@
           "variant_name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.MigrateVariantRequestModel": {
         "type": "object",
@@ -10881,7 +11540,8 @@
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.PackagingMaterialTypeViewModel": {
         "type": "object",
@@ -10893,7 +11553,8 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.PackagingRequirementViewModel": {
         "type": "object",
@@ -10922,7 +11583,8 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.PackagingRequirementViewModelArray": {
         "type": "array",
@@ -10957,12 +11619,24 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Post.Api.V4.Product.MoveVariants.Bad.Request.Object": {
-        "type": "object"
+      "Products.Post.Api.V4.Product.MoveVariants.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Post.Api.V4.Product.MoveVariants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Post.Api.V4.Product.ProductId.MoveVariants.Bad.Request.Object": {
-        "type": "object"
+      "Products.Post.Api.V4.Product.ProductId.MoveVariants.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Post.Api.V4.Product.ProductId.MoveVariants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Post.Api.V4.Product.ProductId.MoveVariants.ProductId.Integer": {
@@ -10973,12 +11647,24 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Post.Api.V5.Product.MoveVariants.Bad.Request.Object": {
-        "type": "object"
+      "Products.Post.Api.V5.Product.MoveVariants.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Post.Api.V5.Product.MoveVariants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.Object": {
-        "type": "object"
+      "Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Post.Api.V5.Product.ProductId.MoveVariants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
       "Products.Post.Api.V5.Product.ProductId.MoveVariants.ProductId.Integer": {
@@ -11021,7 +11707,8 @@
           "type": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": {}
       },
       "Products.ProductChannelMetadataModel": {
         "type": "object",
@@ -11063,7 +11750,8 @@
           "seller_sku": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ProductViewModel": {
         "type": "object",
@@ -11097,7 +11785,8 @@
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ProductViewModelPagedResponse": {
         "type": "object",
@@ -11118,7 +11807,8 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ProductViewModelV5": {
         "type": "object",
@@ -11150,7 +11840,8 @@
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ProductViewModelV5PagedResponse": {
         "type": "object",
@@ -11171,10 +11862,17 @@
           "prev": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "Products.Put.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Put.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Put.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.ChannelMetadataId.Integer": {
         "type": "integer",
@@ -11186,8 +11884,14 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
-        "type": "object"
+      "Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.ChannelMetadataId.Integer": {
         "type": "integer",
@@ -11221,7 +11925,8 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ReturnPreferencesViewModel": {
         "type": "object",
@@ -11233,9 +11938,17 @@
           "primary_action": {},
           "return_to_sender_backup_action": {},
           "return_to_sender_primary_action": {}
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ReviewsPendingType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -11255,7 +11968,8 @@
           "suffix": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.SerialScanViewModel": {
         "type": "object",
@@ -11273,21 +11987,36 @@
           "suffix": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.ShopifyChannelMetadataRequestModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "platform": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "Shopify Sales Channel Information"
       },
       "Products.ShopifyChannelMetadataViewModel": {
-        "type": "object"
+        "type": "object",
+        "allOf": [
+          {}
+        ],
+        "additionalProperties": false
       },
       "Products.ShopifyProductChannelMetadataModel": {
-        "type": "object"
+        "type": "object",
+        "allOf": [
+          {}
+        ],
+        "additionalProperties": false
       },
       "Products.TaxonomyInformationViewModel": {
         "type": "object",
@@ -11309,17 +12038,22 @@
           "path": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.TaxonomyViewModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "children": {
             "type": "array",
             "items": {}
           },
           "parent": {}
-        }
+        },
+        "additionalProperties": false
       },
       "Products.TaxonomyViewModelArray": {
         "type": "array",
@@ -11327,28 +12061,41 @@
       },
       "Products.UpdateProductRequestModelV3": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "variants": {
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "The product to update"
       },
       "Products.UpdateProductRequestModelV5": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "id": {
             "type": "integer",
+            "description": "Unique reference ID for the product",
             "format": "int64"
           },
           "variants": {
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.UpdateProductVariantModelV5": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcodes": {
             "type": "array",
@@ -11358,27 +12105,39 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.UpdateProductVariantRequestModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.UpdateProductVariantRequestModelV3": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcode_sticker_url": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.UpdateProductVariantRequestModelV5": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcodes": {
             "type": "array",
@@ -11388,9 +12147,15 @@
             "type": "integer",
             "format": "int64"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.VariantStatus": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
         "type": "integer",
         "format": "int32"
       },
@@ -11404,10 +12169,14 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.VariantViewModel": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcode": {
             "type": "string"
@@ -11419,7 +12188,8 @@
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.VariantViewModelArray": {
         "type": "array",
@@ -11489,10 +12259,14 @@
             "format": "date-time"
           },
           "weight": {}
-        }
+        },
+        "additionalProperties": false
       },
       "Products.VariantViewModelV5": {
         "type": "object",
+        "allOf": [
+          {}
+        ],
         "properties": {
           "barcodes": {
             "type": "array",
@@ -11502,7 +12276,8 @@
             "type": "array",
             "items": {}
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Products.VariantViewModelV5Array": {
         "type": "array",
@@ -11518,55 +12293,95 @@
             "type": "number",
             "format": "double"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Receiving.FulfillmentCenterViewModel": {
         "type": "object",
         "properties": {
           "address1": {
-            "type": "string"
+            "type": "string",
+            "description": "Address line one of the fulfillment center",
+            "example": "5900 W Ogden Ave"
           },
           "address2": {
-            "type": "string"
+            "type": "string",
+            "description": "Address line two of the fulfillment center",
+            "example": "Suite 100"
           },
           "city": {
-            "type": "string"
+            "type": "string",
+            "description": "City the fulfillment center is located in",
+            "example": "Cicero"
           },
           "country": {
-            "type": "string"
+            "type": "string",
+            "description": "Country the fulfillment center is located in",
+            "example": "USA"
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "description": "Email contact for the fulfillment center",
+            "example": "example@example.com"
           },
           "id": {
             "type": "integer",
+            "description": "Unique identifier of the fulfillment center",
             "format": "int32"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the fulfillment center",
+            "example": "Cicero (IL)"
           },
           "phone_number": {
-            "type": "string"
+            "type": "string",
+            "description": "Phone number contact for the fulfillment center",
+            "example": "555-555-5555"
           },
           "state": {
-            "type": "string"
+            "type": "string",
+            "description": "State the fulfillment center is located in",
+            "example": "IL"
           },
           "timezone": {
-            "type": "string"
+            "type": "string",
+            "description": "Timezone the fulfillment center is located in",
+            "example": "Central Standard Time"
           },
           "zip_code": {
-            "type": "string"
+            "type": "string",
+            "description": "Postal code of the fulfillment center",
+            "example": "60804"
           }
-        }
+        },
+        "additionalProperties": false,
+        "description": "Information about a fulfillment center"
       },
       "Receiving.PackageType": {
+        "enum": [
+          "Package",
+          "Pallet",
+          "FloorLoadedContainer"
+        ],
         "type": "string"
       },
       "Receiving.PackingType": {
+        "enum": [
+          "EverythingInOneBox",
+          "OneSkuPerBox",
+          "MultipleSkuPerBox"
+        ],
         "type": "string"
       },
-      "Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.Object": {
-        "type": "object"
+      "Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Receiving.ProblemDetails": {
         "type": "object",
@@ -11587,38 +12402,69 @@
           "type": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": {}
       },
       "Receiving.Put.Api.Receiving.Id.Tag.Authorization.String": {
         "type": "string"
       },
-      "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object": {
-        "type": "object"
+      "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Receiving.Put.Api.Receiving.Id.Tag.Id.Integer": {
         "type": "integer",
         "format": "int32"
       },
-      "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object": {
-        "type": "object"
+      "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "Receiving.ReceivingStatus": {
+        "enum": [
+          "Awaiting",
+          "Processing",
+          "Completed",
+          "Cancelled",
+          "Incomplete",
+          "Arrived",
+          "PartiallyArrived",
+          "PartiallyArrivedAtHub",
+          "ArrivedAtHub",
+          "ProcessingAtHub",
+          "InternalTransfer"
+        ],
         "type": "string"
       },
       "Receiving.TagModel": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        },
         "required": [
           "name",
           "value"
-        ]
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "value": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "Receiving.UpdateExternalSyncModel": {
         "type": "object",
@@ -11633,9 +12479,13 @@
           "is_external_sync": {
             "type": "boolean"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Receiving.UpdateReceivingTagsRequest": {
+        "required": [
+          "data"
+        ],
         "type": "object",
         "properties": {
           "data": {
@@ -11643,9 +12493,7 @@
             "items": {}
           }
         },
-        "required": [
-          "data"
-        ]
+        "additionalProperties": false
       },
       "Receiving.UpdateReceivingTagsResponse": {
         "type": "object",
@@ -11658,77 +12506,92 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Receiving.V2.InventoryQuantityViewModel": {
         "type": "object",
         "properties": {
           "expected_quantity": {
             "type": "integer",
+            "description": "Quantity of the inventory item submitted in the WRO",
             "format": "int32"
           },
           "inventory_id": {
             "type": "integer",
+            "description": "ID of the inventory item",
             "format": "int32"
           },
           "received_quantity": {
             "type": "integer",
+            "description": "Quantity of the inventory item received by the warehouse",
             "format": "int32"
           },
           "sku": {
-            "type": "string"
+            "type": "string",
+            "description": "Sku of the inventory item"
           },
           "stowed_quantity": {
             "type": "integer",
+            "description": "Quantity of the inventory item stowed by the warehouse",
             "format": "int32"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Receiving.V2.WarehouseReceivingOrderViewModel": {
         "type": "object",
         "properties": {
           "box_labels_uri": {
-            "type": "string"
+            "type": "string",
+            "description": "URL to the packing slip to be included in each box shipment for this receiving order",
+            "example": "https://api.shipbob.com/1.0/receiving/1/labels"
           },
           "box_packaging_type": {},
           "expected_arrival_date": {
             "type": "string",
+            "description": "Expected date that all packages will have arrived",
             "format": "date-time"
           },
           "external_sync_timestamp": {
             "type": "string",
+            "description": "The timestamp in UTC when a 3rd party integrator has set in our system",
             "format": "date-time"
           },
           "fulfillment_center": {},
           "id": {
             "type": "integer",
+            "description": "Unique id of the warehouse receiving order",
             "format": "int32"
           },
           "insert_date": {
             "type": "string",
+            "description": "Insert date of the receiving order",
             "format": "date-time"
           },
           "inventory_quantities": {
             "type": "array",
-            "items": {}
+            "items": {},
+            "description": "Inventory items and quantities within the WRO"
           },
           "last_updated_date": {
             "type": "string",
+            "description": "Last date the receiving order was updated",
             "format": "date-time"
           },
           "package_type": {},
           "purchase_order_number": {
-            "type": "string"
+            "type": "string",
+            "description": "Purchase order number for a receiving order"
           },
           "status": {}
-        }
+        },
+        "additionalProperties": false
       }
     },
     "securitySchemes": {
       "PAT": {
         "type": "apiKey",
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
         "name": "Authorization",
         "in": "header",
         "description": "Enter 'Bearer {your_personal_access_token}'"
