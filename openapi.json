@@ -1,233 +1,1867 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "title": "ShipBob Orders API",
-    "description": "ShipBob Orders API",
-    "version": "v1"
-  },
-  "paths": {
-    "/receiving-extended/{id}/tag": {
-      "put": {
-        "tags": [
-          "Receiving",
-          "Receiving:Extended"
-        ],
-        "summary": "  Update Warehouse Receiving Order Tags\n",
-        "description": "  Updates tags for the provided Warehouse Receiving Order\n",
-        "operationId": "0b40a20e6f25678c26ed11ebd0a2e433",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "int32"
+    "openapi": "3.0.1",
+    "info": {
+        "title": "ShipBob-Experimental-Original",
+        "description": "",
+        "version": ""
+    },
+    "paths": {
+        "/receiving-extended/{id}/tag": {
+            "put": {
+                "summary": "  Update Warehouse Receiving Order Tags\n",
+                "description": "  Updates tags for the provided Warehouse Receiving Order\n",
+                "operationId": "0b40a20e6f25678c26ed11ebd0a2e433",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Id.Integer"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Authorization.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Receiving",
+                    "Receiving:Extended"
+                ]
             }
-          },
-          {
+        },
+        "/channel:search": {
+            "post": {
+                "summary": "  Search channels\n",
+                "description": "  Search channels based on filters\n",
+                "operationId": "831a7380f5aaf8f77b9a356776f3e457",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Channels"
+                ]
+            }
+        },
+        "/channel": {
+            "post": {
+                "summary": "  Create Channel\n",
+                "description": "  Creates channel with provided name if none exists\n",
+                "operationId": "92111627502044489c5f9a8f8e0a8228",
+                "parameters": [
+                    {
+                        "name": "InheritScopes",
+                        "in": "query",
+                        "description": "Header specifying should the scopes be inherited from the token\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.InheritScopes.Boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Channels"
+                ]
+            }
+        },
+        "/receiving/:set-external-sync": {
+            "post": {
+                "summary": "Set ExternalSync flag for Wros\n",
+                "operationId": "a24cc704b22486f1d00776d6eabef67e",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Authorization missing or invalid"
+                    },
+                    "403": {
+                        "description": "The provided credentials are not authorized to access this resource"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Receiving"
+                ]
+            }
+        },
+        "/inventory-levels": {
+            "get": {
+                "summary": "    Get All Inventory Levels\n",
+                "operationId": "92f6f4de418ed836aca7dec8d17a1f84",
+                "parameters": [
+                    {
+                        "name": "SearchBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.SearchBy.String"
+                        }
+                    },
+                    {
+                        "name": "InventoryIds",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.InventoryIds.IntegerArray"
+                        }
+                    },
+                    {
+                        "name": "IsActive",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.IsActive.Boolean"
+                        }
+                    },
+                    {
+                        "name": "IsDigital",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.IsDigital.Boolean"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.PageSize.Integer"
+                        }
+                    },
+                    {
+                        "name": "SortBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.SortBy.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "InventoryLevels"
+                ]
+            }
+        },
+        "/inventories": {
+            "get": {
+                "summary": "    Get All Inventories\n",
+                "operationId": "5a3e974ce80c445f8f51b7f9ac682e2c",
+                "parameters": [
+                    {
+                        "name": "SearchBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.SearchBy.String"
+                        }
+                    },
+                    {
+                        "name": "FilterOperations",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.FilterOperationArray"
+                        }
+                    },
+                    {
+                        "name": "InventoryIds",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.InventoryIds.IntegerArray"
+                        }
+                    },
+                    {
+                        "name": "IsActive",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.IsActive.Boolean"
+                        }
+                    },
+                    {
+                        "name": "IsDigital",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.IsDigital.Boolean"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.PageSize.Integer"
+                        }
+                    },
+                    {
+                        "name": "SortBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.SortBy.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "Inventories"
+                ]
+            }
+        },
+        "/inventory-levels/{inventoryId}": {
+            "get": {
+                "summary": "    Get Inventory Levels\n",
+                "operationId": "69d1808c5d320b58f248877290e03f36",
+                "parameters": [
+                    {
+                        "name": "inventoryId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.InventoryId.InventoryId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "InventoryLevels"
+                ]
+            }
+        },
+        "/inventory-levels/locations": {
+            "get": {
+                "summary": "    Get All Inventory Levels Grouped By Fulfillment Center\n",
+                "operationId": "511ebaa4c51b171357da1850ec73b690",
+                "parameters": [
+                    {
+                        "name": "LocationType",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.LocationType.String"
+                        }
+                    },
+                    {
+                        "name": "LocationId",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.LocationId.Integer"
+                        }
+                    },
+                    {
+                        "name": "SearchBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.SearchBy.String"
+                        }
+                    },
+                    {
+                        "name": "InventoryIds",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.InventoryIds.IntegerArray"
+                        }
+                    },
+                    {
+                        "name": "IsActive",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.IsActive.Boolean"
+                        }
+                    },
+                    {
+                        "name": "IsDigital",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.IsDigital.Boolean"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.PageSize.Integer"
+                        }
+                    },
+                    {
+                        "name": "SortBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Locations.SortBy.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "InventoryLevels"
+                ]
+            }
+        },
+        "/inventory-levels/lots": {
+            "get": {
+                "summary": "    Get All Inventory Levels Grouped By Lot\n",
+                "operationId": "f114ded633454ff81bd27c6324c5d098",
+                "parameters": [
+                    {
+                        "name": "LocationId",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.LocationId.Integer"
+                        }
+                    },
+                    {
+                        "name": "SearchBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.SearchBy.String"
+                        }
+                    },
+                    {
+                        "name": "InventoryIds",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.InventoryIds.IntegerArray"
+                        }
+                    },
+                    {
+                        "name": "IsActive",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.IsActive.Boolean"
+                        }
+                    },
+                    {
+                        "name": "IsDigital",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.IsDigital.Boolean"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.PageSize.Integer"
+                        }
+                    },
+                    {
+                        "name": "SortBy",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.Lots.SortBy.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "InventoryLevels"
+                ]
+            }
+        },
+        "/inventory-levels/{inventoryId}/locations": {
+            "get": {
+                "summary": "    Get Inventory Levels Grouped By Fulfillment Center\n",
+                "operationId": "9ccd2885c6a35d9758faf63aee5c50bd",
+                "parameters": [
+                    {
+                        "name": "inventoryId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.InventoryId.Locations.InventoryId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "InventoryLevels"
+                ]
+            }
+        },
+        "/inventory-levels/{inventoryId}/lots": {
+            "get": {
+                "summary": "    Get Inventory Levels Grouped By Lot\n",
+                "operationId": "53e0fe48fd3e068eb74400fcdf4ac39d",
+                "parameters": [
+                    {
+                        "name": "inventoryId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventory.Levels.InventoryId.Lots.InventoryId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "InventoryLevels"
+                ]
+            }
+        },
+        "/inventories/{inventoryId}": {
+            "get": {
+                "summary": "    Get Inventory\n",
+                "operationId": "baabdeacd0fb29ccd774844538582e71",
+                "parameters": [
+                    {
+                        "name": "inventoryId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Inventory.Get.Api.V3.Inventories.InventoryId.InventoryId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Inventory",
+                    "Inventories"
+                ]
+            }
+        },
+        "/inventory/history": {
+            "post": {
+                "summary": "Merchant Inventory History.\n",
+                "description": "Returns all events that change the total on-hand quantity of a given merchant's inventory for a given facility.\n",
+                "operationId": "e717a735deb90e36e99360ae311df0c3",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "FulfillmentCenterInventoryService",
+                    "InventoryHistory"
+                ]
+            }
+        },
+        "/inventory/{InventoryId}/history": {
+            "get": {
+                "summary": "Single Inventory History.\n",
+                "description": "Returns all events that change the total on-hand quantity of a given inventory and lot combination for a given facility.\n",
+                "operationId": "97192f9a8c0a15b9832cfa9b74fa705c",
+                "parameters": [
+                    {
+                        "name": "InventoryId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.InventoryId.Integer"
+                        }
+                    },
+                    {
+                        "name": "FacilityId",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.FacilityId.Integer"
+                        }
+                    },
+                    {
+                        "name": "EventCategory",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.EventCategory.String"
+                        }
+                    },
+                    {
+                        "name": "StartDate",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.StartDate.String"
+                        }
+                    },
+                    {
+                        "name": "EndDate",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.EndDate.String"
+                        }
+                    },
+                    {
+                        "name": "Cursor",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Get.Inventory.InventoryId.History.Cursor.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "FulfillmentCenterInventoryService",
+                    "InventoryHistory"
+                ]
+            }
+        },
+        "/Product/{productId}/variants": {
+            "patch": {
+                "summary": "Updates multiple product variants\n",
+                "operationId": "16364e8117703570686434e0b3ba7abe",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Patch.Api.V5.Product.ProductId.Variants.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            },
+            "post": {
+                "summary": "Adds new product variants to a product\n",
+                "operationId": "14daa5e4386442d68fbf15d81ca67bea",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Post.Api.V5.Product.ProductId.Variants.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            },
+            "get": {
+                "summary": "Gets multiple product variants\n",
+                "operationId": "d7b5853f4a24d00f149fbe297ee11e5b",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "The product id\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Variants.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            }
+        },
+        "/Product/{productId}": {
+            "patch": {
+                "summary": "Update a single product with Json Merge Patch functionality\n",
+                "description": "Updates a single product. This endpoint supports Json Merge Patch functionality, which allows partial updates to be made to the product. The endpoint will only update the fields that are provided in the request. For updating variants, you mnust include the ID of the variant that you would like to update.\n",
+                "operationId": "2dd7afd0ffe30df53fe295964e471abc",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "The product identifier\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Patch.Api.V5.Product.ProductId.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            },
+            "delete": {
+                "summary": "Deletes Bundle and removes associations to related products\n",
+                "operationId": "dff42dc941ad7015e0ef589a5df04a41",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "The product identifier\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Delete.Api.V5.Product.ProductId.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            },
+            "get": {
+                "summary": "  Gets Product by Id\n",
+                "operationId": "9d82d40f4758612d28c98612ce997deb",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            }
+        },
+        "/Taxonomy": {
+            "get": {
+                "summary": "  Gets Taxonomy\n",
+                "operationId": "261e342a8a9514a5c30d6321ef4ff2c2",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Search.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "503": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Taxonomy"
+                ]
+            }
+        },
+        "/Variant/{variantId}/channel-metadata/{channelMetadataId}": {
+            "put": {
+                "summary": "Update specific channel metadata record from a variant by channel metadata ID\n",
+                "operationId": "90aa9021b19d7789681a49b76d79703d",
+                "parameters": [
+                    {
+                        "name": "variantId",
+                        "in": "path",
+                        "description": "The ID of the variant to update the metadata from\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.VariantId.Integer"
+                        }
+                    },
+                    {
+                        "name": "channelMetadataId",
+                        "in": "path",
+                        "description": "The ID of the channel metadata record to update\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.ChannelMetadataId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Variant"
+                ]
+            },
+            "delete": {
+                "summary": "Used to delete a specific channel metadata record from a variant by channel metadata ID\n",
+                "operationId": "b48e74188d2b119e672f2ea93f9b96c6",
+                "parameters": [
+                    {
+                        "name": "variantId",
+                        "in": "path",
+                        "description": "The ID of the variant to remove the metadata from\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.VariantId.Integer"
+                        }
+                    },
+                    {
+                        "name": "channelMetadataId",
+                        "in": "path",
+                        "description": "The ID of the channel metadata record to delete\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.ChannelMetadataId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Variant"
+                ]
+            }
+        },
+        "/Product/{productId}:moveVariants": {
+            "post": {
+                "summary": "Migrates variants to existing product\n",
+                "operationId": "a3869424cb29a4540a3c8890462b4704",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Post.Api.V5.Product.ProductId.MoveVariants.ProductId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            }
+        },
+        "/Taxonomy/{id}/parent": {
+            "get": {
+                "summary": "  Gets Taxonomy Parent\n",
+                "operationId": "09c013ed682b50f3d16234d4c69f519b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Parent.Id.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "503": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Taxonomy"
+                ]
+            }
+        },
+        "/Variant/{variantId}:convertToBundle": {
+            "post": {
+                "summary": "Add new product variants to a product\n",
+                "operationId": "0386f51f54514a8488c3b7e914220aba",
+                "parameters": [
+                    {
+                        "name": "variantId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Post.Api.V5.Variant.VariantId.ConvertToBundle.VariantId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Variant"
+                ]
+            }
+        },
+        "/Taxonomy/{id}": {
+            "get": {
+                "summary": "  Gets Taxonomy by Id\n",
+                "operationId": "45c19cd89efa4b89bc9c93f3d443f77c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Id.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "503": {
+                        "description": "Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Taxonomy"
+                ]
+            }
+        },
+        "/Product": {
+            "post": {
+                "summary": "Create single product to the store\n",
+                "operationId": "0c4a773215d74006c7062e138ae1b94e",
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            },
+            "get": {
+                "summary": "Retrieves List of Products based on filters provided\n",
+                "operationId": "5e4fe606de2077dfa918ff128f5bbfff",
+                "parameters": [
+                    {
+                        "name": "Search",
+                        "in": "query",
+                        "description": "Search Products by name, sku, inventory id or product Id.\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Search.String"
+                        }
+                    },
+                    {
+                        "name": "Barcode",
+                        "in": "query",
+                        "description": "Barcode Associated with variant\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Barcode.Int"
+                        }
+                    },
+                    {
+                        "name": "CategoryIds",
+                        "in": "query",
+                        "description": "List of Category Ids associated with product\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.CategoryIds.List.Int"
+                        }
+                    },
+                    {
+                        "name": "ChannelIds",
+                        "in": "query",
+                        "description": "Looks for Products variants by their channel IDs\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ChannelIds.List.Int"
+                        }
+                    },
+                    {
+                        "name": "HasDigitalVariants",
+                        "in": "query",
+                        "description": "Looks for Products with/without digital variants\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.HasDigitalVariants.Boolean"
+                        }
+                    },
+                    {
+                        "name": "HasVariants",
+                        "in": "query",
+                        "description": "Looks for Products with/without variants\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.HasVariants.Boolean"
+                        }
+                    },
+                    {
+                        "name": "InventoryId",
+                        "in": "query",
+                        "description": "Looks for variants by its associated inventory id\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.InventoryId.List.Int"
+                        }
+                    },
+                    {
+                        "name": "IsInventorySyncEnabled",
+                        "in": "query",
+                        "description": "Looks for Products variants by their IsInventorySyncEnabled is true\n",
+                        "required": false,
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "name": "LegacyIds",
+                        "in": "query",
+                        "description": "Looks for Products with by Legacy Product Id(s)\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.LegacyIds.List.Int"
+                        }
+                    },
+                    {
+                        "name": "Name",
+                        "in": "query",
+                        "description": "Looks for Products/Variants by name\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Name.String"
+                        }
+                    },
+                    {
+                        "name": "OnHand",
+                        "in": "query",
+                        "description": "Looks for Products with inventory\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.OnHand.Integer"
+                        }
+                    },
+                    {
+                        "name": "PlatformIds",
+                        "in": "query",
+                        "description": "Looks for Products variants by their external Platform IDs\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.PlatformIds.List.String"
+                        }
+                    },
+                    {
+                        "name": "ProductId",
+                        "in": "query",
+                        "description": "Looks for Products with an assigned Id\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.List.Int"
+                        }
+                    },
+                    {
+                        "name": "ProductType",
+                        "in": "query",
+                        "description": "Looks for Products by type\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductType.Integer"
+                        }
+                    },
+                    {
+                        "name": "ReviewsPending",
+                        "in": "query",
+                        "description": "Looks for Products by ReviewsPending\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ReviewsPending.List.ReviewsPendingType"
+                        }
+                    },
+                    {
+                        "name": "SalesChannel",
+                        "in": "query",
+                        "description": "Looks for Products variants assigned to a platform/sales channel \n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SalesChannel.List.String"
+                        }
+                    },
+                    {
+                        "name": "SellerSKU",
+                        "in": "query",
+                        "description": "Looks for Products that match the provided Seller query\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SellerSKU.String"
+                        }
+                    },
+                    {
+                        "name": "SKU",
+                        "in": "query",
+                        "description": "Looks for Products that match the provided Sku query\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SKU.String"
+                        }
+                    },
+                    {
+                        "name": "TaxonomyIds",
+                        "in": "query",
+                        "description": "Looks for Products variants by their taxonomy id or any descendants of the taxonomies sent separated by comma\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.TaxonomyIds.List.Int"
+                        }
+                    },
+                    {
+                        "name": "VariantId",
+                        "in": "query",
+                        "description": "Looks for products that contain a variant with the given ID\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.VariantId.List.Int"
+                        }
+                    },
+                    {
+                        "name": "VariantStatus",
+                        "in": "query",
+                        "description": "Looks for Products with variants that contain provided status\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.VariantStatus.String"
+                        }
+                    },
+                    {
+                        "name": "PageSize",
+                        "in": "query",
+                        "description": "1-250\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.PageSize.Int"
+                        }
+                    },
+                    {
+                        "name": "SortBy",
+                        "in": "query",
+                        "description": "Id, Name, Category, TotalOnHandQty\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SortBy.String"
+                        }
+                    },
+                    {
+                        "name": "SortOrder",
+                        "in": "query",
+                        "description": "ASC,DESC\n",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Get.Api.V5.Product.SortOrder.String"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            }
+        },
+        "/packaging-requirement": {
+            "get": {
+                "summary": "Gets Packaging Requirement\n",
+                "operationId": "672942b09322e1990e33ef572188ad73",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "PackagingRequirement"
+                ]
+            }
+        },
+        "/Variant/{variantId}:merge": {
+            "post": {
+                "summary": "Used to merge two or more variants together\n",
+                "operationId": "089b4461bf637cc52135f10eaf8f02a9",
+                "parameters": [
+                    {
+                        "name": "variantId",
+                        "in": "path",
+                        "description": "The ID of the variant to use as the merge target\n",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Post.Api.V5.Variant.VariantId.Merge.VariantId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Variant"
+                ]
+            }
+        },
+        "/Variant/{variantId}/channel-metadata": {
+            "post": {
+                "summary": "Create a new Channel Metadata Entry for a given Variant\n",
+                "operationId": "16bdf05dd87417fa58047a46bb481f61",
+                "parameters": [
+                    {
+                        "name": "variantId",
+                        "in": "path",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Products.Post.Api.V5.Variant.VariantId.Channel.Metadata.VariantId.Integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Variant"
+                ]
+            }
+        },
+        "/Product:moveVariants": {
+            "post": {
+                "summary": "Migrates existing variants to a new product\n",
+                "operationId": "d88155a65d5492b57f4cf1d9b2351989",
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "Products",
+                    "Product"
+                ]
+            }
+        },
+        "/pos-integration/pick-inventory": {
+            "post": {
+                "summary": "  \tPOS Pick Inventory\n",
+                "description": "    POS Integration API to pick inventory\n",
+                "operationId": "1400c7aeab22edbc7311475e92739299",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                },
+                "security": [
+                    {
+                        "PAT": []
+                    },
+                    {
+                        "OAuth2": []
+                    }
+                ],
+                "tags": [
+                    "ShopifyPick",
+                    "FacilityWorkflowIntegrations"
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "PAT": {
+            "type": "apiKey",
             "name": "Authorization",
             "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              }
-            }
-          },
-          "required": false
+            "description": "Enter 'Bearer {your_personal_access_token}'",
+            "x-bearerFormat": "JWT",
+            "x-key-type": "Bearer"
         },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "x-codegen-request-body-name": "receiving.UpdateReceivingTagsRequest"
-      }
-    },
-  },
-  "components": {
-    "schemas": {
-      "Receiving.UpdateReceivingTagsRequest": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Receiving.TagModel"
-            }
-          }
-        }
-      },
-	  "Receiving.TagModel": {
-        "required": [
-          "name",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-	  "Receiving.UpdateReceivingTagsResponse": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Receiving.TagModel"
-            }
-          },
-          "total_records": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-	  "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object": {
-        "type": "object"
-      },
-	  "Receiving.ProblemDetails": {
-        "type": "object",
-        "properties": {
-          "detail": {
-            "type": "string"
-          },
-          "instance": {
-            "type": "string"
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "title": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          }
-        }
-      },
-	  "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object": {
-        "type": "object"
-      }
-    },
-    "securitySchemes": {
-      "PAT": {
-        "type": "apiKey",
-        "description": "Enter 'Bearer {your_personal_access_token}'",
-        "name": "Authorization",
-        "in": "header",
-        "x-bearerFormat": "JWT",
-        "x-key-type": "Bearer"
-      },
-      "OAuth2": {
-        "type": "oauth2",
-        "flows": {
-          "authorizationCode": {
-            "authorizationUrl": "https://auth.shipbob.com/connect/integrate",
-            "tokenUrl": "https://auth.shipbob.com/connect/token",
+        "OAuth2": {
+            "type": "oauth2",
+            "flow": "password",
+            "tokenUrl": "https://auth.example.com/oauth/token",
             "scopes": {
-              "orders_read": "Access read operations",
-              "orders_write": "Access write operations"
-            }
-          }
+                "read": "Read access",
+                "write": "Write access",
+                "admin": "Admin access"
+            },
+            "description": "OAuth2 authentication using JWT tokens"
         }
-      }
     }
-  }
 }
