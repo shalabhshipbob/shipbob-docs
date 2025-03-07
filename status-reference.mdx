@@ -21,27 +21,33 @@ Shipment statuses reflect what is happening in the physical world with the packa
 
 The most important statuses and status details are listed here:
 
-| Shipment Status | Status Detail Name        | Status Detail Description                | Status Detail ID |
-| --------------- | ------------------------- | :--------------------------------------- | :--------------- |
-| Processing      | -                         | -                                        | -                |
-| Processing      | Picked                    | Picking Completed                        | 100              |
-| Processing      | Packed                    |                                          |                  |
-| Processing      | Labeled                   |                                          |                  |
-| LabeledCreated  | -                         | -                                        | -                |
-| Completed       | Processing                | Waiting For Carrier Pickup               | 200              |
-| Completed       | InTransit                 | Shipment In Transit                      | 201              |
-| Completed       | Delivered                 | Shipment Delivered                       | 203              |
-| Completed       | DeliveryException         |                                          |                  |
-| Exception       | -                         | -                                        | -                |
-| Exception       | OutOfStock                | No Stock On Hand For Sku                 | 303              |
-| Exception       | UnknownSku                | No Sku History (if there are no reasons) | 304              |
-| Exception       | InactiveSku               |                                          |                  |
-| On Hold         | InvalidAddress            | Invalid Address                          | 401              |
-| On Hold         | PaymentDeclined           |                                          |                  |
-| On Hold         | MissingTarriffInformation |                                          |                  |
-| On Hold         | AutoProcessingPause       |                                          |                  |
-| On Hold         | Manual                    | Manual                                   | 405              |
-| Cancelled       | Cancelled                 |                                          |                  |
+| Shipment Status | Status Detail Name             | Status Detail Description                          | Status Detail ID |
+| --------------- | ------------------------------ | :------------------------------------------------- | :--------------- |
+| Processing      | Picked                         | Picking Completed                                  | 100              |
+| Processing      | Packed                         | Packing Completed                                  | 101              |
+| Processing      | Labeled                        | Label Generated                                    | 102              |
+| Completed       | Processing                     | Waiting For Carrier Pickup                         | 200              |
+| Completed       | InTransit                      | Shipment In Transit                                | 201              |
+| Completed       | OutForDelivery                 | Shipment Out For Delivery                          | 202              |
+| Completed       | Delivered                      | Shipment Delivered                                 | 203              |
+| Completed       | DeliveryException              | OrderTracking contains CatchAll date               | 204              |
+| Exception       | Bundle                         | Shipment Contains Bundle Item                      | 300              |
+| Exception       | MergedItem                     | Shipment Contains Merge Child                      | 301              |
+| Exception       | InactiveSku                    | Shipment Contains an inactive sku                  | 302              |
+| Exception       | OutOfStock                     | No Stock On Hand For Sku                           | 303              |
+| Exception       | UnknownSku                     | No Sku History (if there are no reasons)           | 304              |
+| Exception       | InternalTransferInProgress     | Stock Being Transferred Between FCs                | 305              |
+| Exception       | BinTransferInProgress          | Stock Being Transferred Between Bins               | 306              |
+| Exception       | InventoryInNonPickableLocation | Stock In Non-pickable Location                     | 307              |
+| Exception       | InventoryPartiallyCommitted    | Shipment is partially allocated                    | 308              |
+| On Hold         | PaymentDeclined                | Payment Failure                                    | 400              |
+| On Hold         | InvalidAddress                 | Invalid Address                                    | 401              |
+| On Hold         | ReserveDateNotMet              | Wait For Pick Date                                 | 402              |
+| On Hold         | MissingTarriffInformation      | Missing Customs Info                               | 404              |
+| On Hold         | Manual                         | Manual                                             | 405              |
+| On Hold         | InternationalHazmat            | Hazmat Inventory cannot be shipped internationally | 406              |
+| On Hold         | PackagePreferenceNotSet        | No Package Preference Set For Inventory            | 407              |
+| On Hold         | AutoProcessingPause            | Automatic Processing Pause                         | 408              |
 
 ## Order Statuses
 
@@ -84,8 +90,6 @@ Orders can have 1 or many shipments (if the contents will not fit in 1 box, for 
 | `InternalTransfer`      |                                                            |
 | `Completed`             | WRO has been completed                                     |
 | `Cancelled`             | WRO has been cancelled                                     |
-
-
 
 ## Return Statuses
 
