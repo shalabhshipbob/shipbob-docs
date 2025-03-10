@@ -7,13 +7,13 @@ description: ''
 
 ShipBob’s Order POST endpoint has several required fields that you need to be aware of:
 
-* Shipping method: This is typically a value such as “Standard”, “Expedited”, “2-Day”, etc. Once a ship method comes through via the integration, the merchant will have the ability to map the method to a specific Ship Option that will determine the shipment’s SLA and carrier selection. More detail on Ship Options can be found in our help center [here](https://support.shipbob.com/s/article/Available-Ship-Options-and-Average-Carrier-Transit-Times-by-Country-of-Origin).
+* **Shipping method**: This is typically a value such as “Standard”, “Expedited”, “2-Day”, etc. Once a ship method comes through via the integration, the merchant will have the ability to map the method to a specific Ship Option that will determine the shipment’s SLA and carrier selection. More detail on Ship Options can be found in our help center [here](https://support.shipbob.com/s/article/Available-Ship-Options-and-Average-Carrier-Transit-Times-by-Country-of-Origin).
 
-* Recipient name - The name of the individual the shipment will be delivered to.
+* **Recipient name** - The name of the individual the shipment will be delivered to.
 
-* Recipient address – specifically the Address1, City, and Country (ISO Alpha-2 code is highly recommended). If available, please also pass the City and Zip Code.
+* **Recipient address** – specifically the Address1, City, and Country (ISO Alpha-2 code is highly recommended). If available, please also pass the City and Zip Code.
 
-* Reference id – This is a unique order number from the upstream platform being integrated with ShipBob. This number must be unique within ShipBob account.
+* **Reference id** – This is a unique order number from the upstream platform being integrated with ShipBob. This number must be unique within ShipBob account.
   You can also pass an optional order\_number field. This does not need to be unique, and is a more user-friendly order number that a customer service agent might be more familiar with.
 
 * Products – There are two methods for providing product data with your order payload to ShipBob:
@@ -49,6 +49,22 @@ To trigger a rule created within ShipBob, the order tag **name** must match th
 Where the tag “name” value of “AddMarketingInsert” is what will be used to trigger a rule created in ShipBob.
 
 Lastly, you will need to also specific a **`shipbob_channel_id`** within the request header to successfully create an order. To find which channel you have write access to, you can call the [GET Channel](https://developer.shipbob.com/api-docs#tag/Channels/paths/~11.0~1channel/get) endpoint to view a list of permissions you have access to under each channel. You will only have write access for one channel (your own integration channel), but you typically will have the ability to read data across other channels.
+
+### Sample requests
+
+<AccordionGroup>
+  <Accordion title="Create Order" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="Create Order (with tags)" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="Create order (specify fulfillment center)" defaultOpen={false}>
+
+  </Accordion>
+</AccordionGroup>
 
 ## Creating B2B orders
 
