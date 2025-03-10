@@ -5374,10 +5374,10 @@
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByProductIdModel"
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByReferenceIdModel"
                 },
                 {
-                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByReferenceIdModel"
+                  "$ref": "#/components/schemas/ShipBob.Orders.Presentation.Models.AddProductToOrderByProductIdModel"
                 }
               ]
             },
