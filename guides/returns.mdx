@@ -55,7 +55,7 @@ The request body is a JSON object with these fields:
 
 | Field            | Type   | Required? | Description                                                                              |
 | ---------------- | ------ | --------- | ---------------------------------------------------------------------------------------- |
-| `referenceId`    | String | Yes       | Your system’s unique identifier (e.g., "REDO\_RETURN\_12345") to track the return.       |
+| `referenceId`    | String | Yes       | Your system’s unique identifier (e.g., "RETURN\_12345") to track the return.             |
 | `inventory`      | Array  | Yes       | List of items being returned, each with an `inventoryId` and optional `requestedAction`. |
 | `trackingNumber` | String | No        | Carrier tracking number for the return shipment—helps ShipBob identify it faster.        |
 
@@ -209,15 +209,17 @@ sequenceDiagram
 
 <AccordionGroup>
   <Accordion title="How to find the return address?" defaultOpen={false}>
-    Make a request to GET Fulfillment Center to get the fulfillment centers the ShipBob user has access to.&#x20;
-
-    Below is a sample response:
-
-
+    Make a request to the [GET FulfillmentCenter](https://shipbob.mintlify.app/api-reference/receiving/get-fulfillment-centers?playground=open) endpoint to get the fulfillment centers the ShipBob user has access to and the address.
   </Accordion>
 
   <Accordion title="How to find the actions that can be taken on a return?" defaultOpen={false}>
+    Here are the available options: `Default`, `Restock`, `Quarantine`, `Dispose` .&#x20;
+  </Accordion>
 
+  <Accordion title="How to find inventory ID based on the Shopify variantID?" defaultOpen={false}>
+    * Make request to GET Products endpoint and pass the Shopify variant ID as the reference ID: `/1.0/product?referenceids={shopify-variantId}`
+
+    * In the product response, find the inventory ID in the fulfillable\_inventory\_items array&#x20;
   </Accordion>
 </AccordionGroup>
 
