@@ -1,0 +1,169 @@
+---
+title: "Sandbox Simulations"
+---
+
+## What Are Sandbox Simulations?
+
+Sandbox Simulations let you:
+
+* Test your integration with realistic, production-like data.
+
+* Simulate actions that happen in a ShipBob facility (e.g., shipping or delivering an order).
+
+* Spot and fix issues before they happen in real life.
+
+Think of it as a practice run—everything works like the real thing, but no actual shipments are made.
+
+***
+
+## Step 1: Get Set Up
+
+Before you can start simulating, you’ll need to set up your Sandbox environment. Here’s how:
+
+1. **Sign Up for the Sandbox Environment**
+
+   * Go [here](#) to sign up.
+
+   * Note: Your live (production) data won’t carry over—this is a fresh, clean slate.
+
+2. **Generate an API Access Token**
+
+   * Choose the token type that fits your needs:
+
+     * **Personal Access Token (PAT)**: Best for a single merchant. Generate it from the Sandbox ShipBob dashboard ([detailed steps here](#)).
+
+     * **OAuth**: Great for apps used by multiple merchants (e.g., a Shopify connector). Get credentials from the dashboard ([detailed steps here](#)).
+
+   * Learn more about tokens [here](#).
+
+3. **Use the Right Base URLs**
+
+   * For API calls: [`https://sandbox-api.shipbob.com/2.0/`](https://sandbox-api.shipbob.com/2.0/)
+
+   * For authentication: [`https://authstage.shipbob.com/`](https://authstage.shipbob.com/)
+
+***
+
+## Step 2: Understand How Simulations Work
+
+Here’s the basic flow:
+
+1. Send a request to a Simulation API endpoint.
+
+2. Get a **simulation ID** in response.
+
+3. The simulation runs in the background (it might take a little time to complete).
+
+***
+
+## Step 3: Pick an Action to Simulate
+
+In the Sandbox, you can currently simulate these self-service actions:
+
+* **Mark a Shipment/Order as Shipped**
+
+* **Mark a Shipment/Order as Delivered**
+
+Want to test other actions (like adding inventory or creating returns)? Email [`developers@shipbob.com`](mailto:developers@shipbob.com) with your request and the email tied to your Sandbox account.
+
+***
+
+## Step 4: Prepare Your Shipment for Simulation
+
+Before you run a simulation, make sure your shipment is ready. Here’s what you need:
+
+* **Inventory**: The shipment’s products must have inventory in one of these fulfillment centers:
+
+  * Cicero (IL)
+
+  * Moreno Valley (CA)
+
+  * Need inventory? Email [`developers@shipbob.com`](mailto:developers@shipbob.com).
+
+* **Packaging Preferences**: Set these up in the Merchant App Dashboard under Products > \[Your Product] > Packaging Preferences.
+
+* **Customs Info (for International Shipments)**: Add this in the Merchant App Dashboard under Products > \[Your Product] > Customs Information.
+
+* **Fulfillment Center**: Ensure inventory exists in the chosen center. Learn more [here](#).
+
+  * Want a different center? Email [`developers@shipbob.com`](mailto:developers@shipbob.com) or check [this article](#).
+
+* **Shipment Status**: It can’t be On-Hold, Exception, or Canceled.
+
+* **Dummy Payment Method**: Add a test credit card:
+
+  * Log in to the Merchant App Dashboard > Your Account > Payment Details.
+
+  * Use card number `4111 1111 1111 1111` (more options [here](#)), plus any name, email, CVC, and expiration date.
+
+***
+
+## Step 5: Run a Simulation
+
+Here’s how to send a simulation request:
+
+### Example Requests
+
+**Mark an Order as Shipped**
+
+```json POST https://sandbox-api.shipbob.com/2.0/simulate/shipment [expandable]
+{
+    "shipment_id": 11471145,
+    "simulation": {
+        "action": "ShipOrder",
+        "delay": null,
+        "next": null
+    }
+}
+```
+
+**Mark an Order as Delivered**
+
+```json POST https://sandbox-api.shipbob.com/2.0/simulate/shipment [expandable]
+{
+    "shipment_id": 11471145,
+    "simulation": {
+        "action": "ShipOrder",
+        "delay": null,
+        "next": null
+    }
+}
+```
+
+**Mark as Shipped, Then Delivered**
+
+```json POST https://sandbox-api.shipbob.com/2.0/simulate/shipment [expandable]
+ {
+     "shipment_id": 11471145,
+     "simulation": {
+         "action": "ShipOrder",
+         "delay": null,
+         "next": {
+             "action": "DeliverOrder",
+             "delay": null
+         }
+     }
+ }
+```
+
+**Add Delays (e.g., Ship in 5 minutes, Deliver in 10 minutes)**
+
+```json POST https://sandbox-api.shipbob.com/2.0/simulate/shipment [expandable]
+ {
+     "shipment_id": 11471145,
+     "simulation": {
+         "action": "ShipOrder",
+         "delay": 5,
+         "next": {
+             "action": "DeliverOrder",
+             "delay": 10
+         }
+     }
+ }
+```
+
+### What You’ll Get Back
+
+* Success (200): A `simulation_id` and a “Simulation registered successfully” message.
+
+* Errors: Check for `400` (bad request), `404` (shipment not found), or `500` (server issue—contact [support@shipbob.com](mailto:support@shipbob.com) with the error\_id).
