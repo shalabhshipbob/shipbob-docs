@@ -7,50 +7,31 @@ This documentation provides an overview and API request examples for getting pro
 
 ## Base Setup
 
-The base URL for all inventory history requests should be:
+Use the appropriate base URL depending on the environment.
 
-* Production base URL: [`https://api.shipbob.com/2.0/`](https://api.shipbob.com/2.0/)
+<Tabs>
+  <Tab title="Production">
+    **Base URL:**\
+    [`https://api.shipbob.com/2.0/`](https://api.shipbob.com/2.0/)
+  </Tab>
 
-* Sandbox base URL: [`https://sandbox-api.shipbob.com/2.0/`](https://sandbox-api.shipbob.com/2.0/)
+  <Tab title="Sandbox">
+    **Base URL:**\
+    [`https://sandbox-api.shipbob.com/2.0/`](https://sandbox-api.shipbob.com/2.0/)
+  </Tab>
+</Tabs>
 
-## Get Inventory History&#x20;
+## Get Inventory History
+
+<Tip>
+  Use this endpoint to retrieve a list of inventory history events filtered by date range and event category.
+</Tip>
 
 **Endpoint**: `GET /inventory/history:query`
 
 Sample Request: [`https://api.shipbob.com/2.0/inventory/history:query?EventCategory=SpotChecking&EndDate=2025-03-03&StartDate=2025-03-01`](https://api.shipbob.com/2.0/inventory/history:query?EventCategory=SpotChecking\&EndDate=2025-03-03\&StartDate=2025-03-01)
 
-<RequestExample>
-  ```json Request
-  https://api.shipbob.com/2.0/inventory/history:query?EventCategory=SpotChecking&EndDate=2025-03-03&StartDate=2025-03-01
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response
-  [
-    {
-      "inventory_id": 12345,
-      "event_category": "SpotChecking",
-      "event_date": "2025-03-02T19:52:15.6700004+00:00",
-      "fulfillment_center_id": 169,
-      "inventory_quantity_changed": -17,
-      "lot_number": null,
-      "expiration_date": null
-    },
-    {
-      "inventory_id": 45678,
-      "event_category": "SpotChecking",
-      "event_date": "2025-03-02T18:20:21.124613+00:00",
-      "fulfillment_center_id": 169,
-      "inventory_quantity_changed": 5,
-      "lot_number": null,
-      "expiration_date": null
-    }
-  ]
-  ```
-</ResponseExample>
-
-Sample Response
+**Sample Response**
 
 ```json
 [
@@ -75,24 +56,36 @@ Sample Response
 ]
 ```
 
-### Query Parameters
+### **Query Parameters**
 
-| Query string key | Value    | Description                                                          |
-| ---------------- | -------- | -------------------------------------------------------------------- |
-| EventCategory    | string   | The category of an inventory event to return - see list below        |
-| Limit            | integer  | The number of products to return in the response                     |
-| Page             | integer  | The page number to return, if pagination is needed                   |
-| StartDate        | datetime | The start time the query should return inventory history events for. |
-| EndDate          | datetime | The end time the query should return inventory history events for.   |
+| Parameter       | Type       | Description                                                  |
+| --------------- | ---------- | ------------------------------------------------------------ |
+| `EventCategory` | `string`   | The category of an inventory event (see below).              |
+| `Limit`         | `integer`  | Number of records to return. Default: `50`.                  |
+| `Page`          | `integer`  | Page number for paginated results.                           |
+| `StartDate`     | `datetime` | Start time (ISO 8601 format) for querying inventory history. |
+| `EndDate`       | `datetime` | End time (ISO 8601 format) for querying inventory history.   |
 
-### EventCategory Options
+<Note>
+  **Note**: Use **ISO 8601** format for date parameters. Example: `2025-03-01T00:00:00Z`.
+</Note>
 
-| EventCategory       |   | Description |
-| ------------------- | - | ----------- |
-| SpotChecking        |   |             |
-| CreateInventory     |   |             |
-| RestockAfterReturn  |   |             |
-| Receiving           |   |             |
-| OrderPicking        |   |             |
-| RestockAfterPicking |   |             |
-| SkuChange           |   |             |
+### **Event Category Options**
+
+| Event Category        | Description                                 |
+| --------------------- | ------------------------------------------- |
+| `SpotChecking`        | Manual stock verification adjustments.      |
+| `CreateInventory`     | Initial product creation in inventory.      |
+| `RestockAfterReturn`  | Returns added back to inventory.            |
+| `Receiving`           | New stock received at fulfillment center.   |
+| `OrderPicking`        | Items picked for order fulfillment.         |
+| `RestockAfterPicking` | Adjustments after picking orders.           |
+| `SkuChange`           | Updates to SKU numbers affecting inventory. |
+
+### Additional Notes
+
+* The API response is **paginated**; use `Limit` and `Page` for large data retrieval.
+
+* Ensure proper authentication using a **Bearer Token**.
+
+* The `event_date` field follows **UTC timezone**.
