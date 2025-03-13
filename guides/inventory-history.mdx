@@ -1,0 +1,67 @@
+---
+title: "Inventory History"
+description: "This documentation provides an overview and API request examples for getting product inventory history events from ShipBob."
+---
+
+## Base Setup
+
+The base URL for all inventory history requests should be:
+
+* Production base URL: [`https://api.shipbob.com/2.0/`](https://api.shipbob.com/2.0/)
+
+* Sandbox base URL: [`https://sandbox-api.shipbob.com/2.0/`](https://sandbox-api.shipbob.com/2.0/)
+
+&#x20;
+
+## Get Inventory History&#x20;
+
+**Endpoint**: `GET /inventory/history:query`
+
+Sample Request: [`https://api.shipbob.com/2.0/inventory/history:query?EventCategory=SpotChecking&EndDate=2025-03-03&StartDate=2025-03-01`](https://api.shipbob.com/2.0/inventory/history:query?EventCategory=SpotChecking\&EndDate=2025-03-03\&StartDate=2025-03-01)
+
+Sample Response
+
+```json [expandable]
+[
+  {
+    "inventory_id": 12345,
+    "event_category": "SpotChecking",
+    "event_date": "2025-03-02T19:52:15.6700004+00:00",
+    "fulfillment_center_id": 169,
+    "inventory_quantity_changed": -17,
+    "lot_number": null,
+    "expiration_date": null
+  },
+  {
+    "inventory_id": 45678,
+    "event_category": "SpotChecking",
+    "event_date": "2025-03-02T18:20:21.124613+00:00",
+    "fulfillment_center_id": 169,
+    "inventory_quantity_changed": 5,
+    "lot_number": null,
+    "expiration_date": null
+  }
+]
+```
+
+### Query Parameters
+
+| Query string key | Value    | Description                                                          |
+| ---------------- | -------- | -------------------------------------------------------------------- |
+| EventCategory    | string   | The category of an inventory event to return - see list below        |
+| Limit            | integer  | The number of products to return in the response                     |
+| Page             | integer  | The page number to return, if pagination is needed                   |
+| StartDate        | datetime | The start time the query should return inventory history events for. |
+| EndDate          | datetime | The end time the query should return inventory history events for.   |
+
+### EventCategory Options
+
+| EventCategory       |   | Description |
+| ------------------- | - | ----------- |
+| SpotChecking        |   |             |
+| CreateInventory     |   |             |
+| RestockAfterReturn  |   |             |
+| Receiving           |   |             |
+| OrderPicking        |   |             |
+| RestockAfterPicking |   |             |
+| SkuChange           |   |             |
