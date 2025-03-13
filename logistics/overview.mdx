@@ -233,6 +233,12 @@ Sync tracking numbers back to your system using the polling-based approach.
 
 If you need to refund or clean sweep shipping labels, you can use this endpoint.
 
+### Endpoint
+
+* **Sandbox**: `POST `[`https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel`](https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel)
+
+* **Production**: `POST `[`https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel`](https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel)
+
 ### Request Body
 
 Send a JSON object with order details:
@@ -242,12 +248,6 @@ Send a JSON object with order details:
   "reference_ids": ["ABCDEF","GHIJKL"]
 }
 ```
-
-### Endpoint
-
-* **Sandbox**: `POST `[`https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel`](https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel)
-
-* **Production**: `POST `[`https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel`](https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel)
 
 ## Tips for Success
 
