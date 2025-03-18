@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "ShipBob Developer API (Experimental)",
+    "title": "ShipBob-Experimental-Original",
     "description": "",
     "version": ""
   },
@@ -11,37 +11,192 @@
     }
   ],
   "paths": {
-    "/channel:search": {
+    "/order/transportation": {
       "post": {
-        "summary": "  Search channels\n",
-        "description": "  Search channels based on filters\n",
-        "operationId": "831a7380f5aaf8f77b9a356776f3e457",
+        "tags": [
+          "Hidden",
+          "Orders"
+        ],
+        "summary": "Create Transportation Order",
+        "operationId": "807efed776484bd1c29aab871819fabd",
+        "parameters": [
+          {
+            "name": "shipbob_channel_id",
+            "in": "header",
+            "description": "Channel Id for Operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Post.Api.Order.Transportation.Shipbob.Channel.Id.Integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.CreateTransportationOrderModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "location_id": 0,
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    },
+                    "recipient": {
+                      "address": {
+                        "address1": "100 Nowhere Blvd",
+                        "address2": "Suite 100",
+                        "city": "Gotham City",
+                        "company_name": "Wayne Enterprises",
+                        "country": "US",
+                        "state": "NJ",
+                        "zip_code": "07093"
+                      },
+                      "email": "john@example.com",
+                      "name": "John Doe",
+                      "phone_number": "555-555-5555"
+                    },
+                    "reference_id": "string",
+                    "shipping_method": "Free 2-day Shipping"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.CreateTransportationOrderModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "location_id": 0,
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    },
+                    "recipient": {
+                      "address": {
+                        "address1": "100 Nowhere Blvd",
+                        "address2": "Suite 100",
+                        "city": "Gotham City",
+                        "company_name": "Wayne Enterprises",
+                        "country": "US",
+                        "state": "NJ",
+                        "zip_code": "07093"
+                      },
+                      "email": "john@example.com",
+                      "name": "John Doe",
+                      "phone_number": "555-555-5555"
+                    },
+                    "reference_id": "string",
+                    "shipping_method": "Free 2-day Shipping"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.CreateTransportationOrderModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "location_id": 0,
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    },
+                    "recipient": {
+                      "address": {
+                        "address1": "100 Nowhere Blvd",
+                        "address2": "Suite 100",
+                        "city": "Gotham City",
+                        "company_name": "Wayne Enterprises",
+                        "country": "US",
+                        "state": "NJ",
+                        "zip_code": "07093"
+                      },
+                      "email": "john@example.com",
+                      "name": "John Doe",
+                      "phone_number": "555-555-5555"
+                    },
+                    "reference_id": "string",
+                    "shipping_method": "Free 2-day Shipping"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.CreateTransportationOrderModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "location_id": 0,
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    },
+                    "recipient": {
+                      "address": {
+                        "address1": "100 Nowhere Blvd",
+                        "address2": "Suite 100",
+                        "city": "Gotham City",
+                        "company_name": "Wayne Enterprises",
+                        "country": "US",
+                        "state": "NJ",
+                        "zip_code": "07093"
+                      },
+                      "email": "john@example.com",
+                      "name": "John Doe",
+                      "phone_number": "555-555-5555"
+                    },
+                    "reference_id": "string",
+                    "shipping_method": "Free 2-day Shipping"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Channels.v2.ChannelSearchViewModel"
+                  "$ref": "#/components/schemas/Orders.TransportationOrderViewModel"
                 },
                 "examples": {
                   "default": {
                     "summary": "",
                     "description": "",
                     "value": {
-                      "items": [
-                        {
-                          "application_name": "string",
-                          "id": 0,
-                          "name": "string",
-                          "scopes": [
-                            "string"
-                          ]
-                        }
-                      ],
-                      "next": "string",
-                      "prev": "string",
-                      "total_records": 0
+                      "shipment_id": 0
                     },
                     "externalValue": ""
                   }
@@ -54,7 +209,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Search.Bad.Request.Object"
+                  "$ref": "#/components/schemas/Orders.Post.Api.Order.Transportation.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -75,12 +230,517 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "No access right at this time"
           },
           "403": {
-            "description": "Forbidden"
+            "description": "No access"
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders.Post.Api.Order.Transportation.Unprocessable.Entity.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/receiving-extended/{id}/tag": {
+      "put": {
+        "tags": [
+          "Hidden",
+          "Receiving",
+          "Receiving:Extended"
+        ],
+        "summary": "  Update Warehouse Receiving Order Tags\n",
+        "description": "  Updates tags for the provided Warehouse Receiving Order\n",
+        "operationId": "0b40a20e6f25678c26ed11ebd0a2e433",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Id.Integer"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "schema": {
+              "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Authorization.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "string",
+                "externalValue": ""
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "data": [
+                      {
+                        "name": "string",
+                        "value": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "data": [
+                      {
+                        "name": "string",
+                        "value": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "data": [
+                      {
+                        "name": "string",
+                        "value": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "data": [
+                      {
+                        "name": "string",
+                        "value": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "items": [
+                        {
+                          "name": "string",
+                          "value": "string"
+                        }
+                      ],
+                      "total_records": 0
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "items": [
+                        {
+                          "name": "string",
+                          "value": "string"
+                        }
+                      ],
+                      "total_records": 0
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "detail": "string",
+                      "instance": "string",
+                      "property1": null,
+                      "property2": null,
+                      "status": 0,
+                      "title": "string",
+                      "type": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "detail": "string",
+                      "instance": "string",
+                      "property1": null,
+                      "property2": null,
+                      "status": 0,
+                      "title": "string",
+                      "type": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lot-exclusions/{inventoryId}": {
+      "get": {
+        "tags": [
+          "Hidden",
+          "Orders"
+        ],
+        "summary": "Get Lot Exlcusions By Inventory ID",
+        "operationId": "996a937ce093eb909a9f30e519e0ea62",
+        "parameters": [
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "description": "The inventory ID to get lot exclusions for",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Get.Api.LotExclusions.Inventory.Id.Integer"
+            }
+          },
+          {
+            "name": "lot_number",
+            "in": "query",
+            "description": "filter for lot number",
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Get.Api.LotExclusions.LotNumber.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": 12345,
+                "externalValue": ""
+              }
+            }
+          },
+          {
+            "name": "lot_date",
+            "in": "query",
+            "description": "filter for lot date",
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Get.Api.LotExclusions.LotDate.String"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": "2019-08-24T14:15:22+00:00",
+                "externalValue": ""
+              }
+            }
+          },
+          {
+            "name": "shipbob_channel_id",
+            "in": "header",
+            "description": "Channel Id for Operation",
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Get.Api.LotExclusions.Shipbob.Channel.Id.Integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders.Get.Api.LotExclusions.LotExclusionsViewModelArray"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": [
+                      {
+                        "locationId": 0,
+                        "lotDate": "2019-08-24T14:15:22+00:00",
+                        "lotNumber": "string",
+                        "quantity": 0
+                      }
+                    ],
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No access right at this time"
+          },
+          "403": {
+            "description": "No access"
+          }
+        }
+      }
+    },
+    "/lot-exclusions": {
+      "get": {
+        "tags": [
+          "Hidden",
+          "Orders"
+        ],
+        "summary": "Get Lot Exlcusions",
+        "operationId": "4fcc77811b1eed0efd37e54e60e2356e",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Page of lot exclusions to get",
+            "schema": {
+              "type": "integer"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": 1,
+                "externalValue": ""
+              }
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "description": "Amount of lot exclusions per page to request",
+            "schema": {
+              "type": "integer"
+            },
+            "examples": {
+              "default": {
+                "summary": "",
+                "description": "",
+                "value": 1,
+                "externalValue": ""
+              }
+            }
+          },
+          {
+            "name": "shipbob_channel_id",
+            "in": "header",
+            "description": "Channel Id for Operation",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders.Get.Api.LotExclusions.InventoryLotExclusionsViewModelArray"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "page": 0,
+                      "results": [
+                        {
+                          "exclusions": [
+                            {
+                              "locationId": 0,
+                              "lotDate": "2019-08-24T14:15:22+00:00",
+                              "lotNumber": "string",
+                              "quantity": 0
+                            }
+                          ],
+                          "inventoryId": 0
+                        }
+                      ],
+                      "resultsPerPage": 0,
+                      "totalPages": 0,
+                      "totalResults": 0
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No access right at this time"
+          },
+          "403": {
+            "description": "No access"
+          }
+        }
+      }
+    },
+    "/channel:search": {
+      "post": {
+        "tags": [
+          "Channels"
+        ],
+        "summary": "  Search channels\n",
+        "description": "  Search channels based on filters\n",
+        "operationId": "831a7380f5aaf8f77b9a356776f3e457",
         "requestBody": {
           "description": "",
           "content": {
@@ -158,23 +818,910 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Channels.v2.ChannelSearchViewModel"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "items": [
+                        {
+                          "application_name": "string",
+                          "id": 0,
+                          "name": "string",
+                          "scopes": [
+                            "string"
+                          ]
+                        }
+                      ],
+                      "next": "string",
+                      "prev": "string",
+                      "total_records": 0
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
           },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Search.Bad.Request.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/inventory/history:report": {
+      "post": {
+        "tags": [
+          "Inventory",
+          "Hidden"
+        ],
+        "summary": "General purpose inventory history report generation API.\n",
+        "description": "All the request body parameters are mandatory.\n",
+        "operationId": "e4e928b0515480ac944ce0691e3291ae",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory.InventoryHistoryReportQueryModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "endDate": "2019-08-24T14:15:22+00:00",
+                    "fulfillmentCenterId": 0,
+                    "inventoryIds": [
+                      0
+                    ],
+                    "requestId": "string",
+                    "startDate": "2019-08-24T14:15:22+00:00"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory.InventoryHistoryReportQueryModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "endDate": "2019-08-24T14:15:22+00:00",
+                    "fulfillmentCenterId": 0,
+                    "inventoryIds": [
+                      0
+                    ],
+                    "requestId": "string",
+                    "startDate": "2019-08-24T14:15:22+00:00"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory.InventoryHistoryReportQueryModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "endDate": "2019-08-24T14:15:22+00:00",
+                    "fulfillmentCenterId": 0,
+                    "inventoryIds": [
+                      0
+                    ],
+                    "requestId": "string",
+                    "startDate": "2019-08-24T14:15:22+00:00"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory.InventoryHistoryReportResponse"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "reportUrl": "string",
+                      "requestId": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory.Post.Api.Inventory.History.Report.Bad.Request.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/channel": {
+      "post": {
+        "tags": [
+          "Channels",
+          "Hidden"
+        ],
+        "summary": "  Create Channel\n",
+        "description": "  Creates channel with provided name if none exists\n",
+        "operationId": "92111627502044489c5f9a8f8e0a8228",
+        "parameters": [
           {
-            "OAuth2": []
+            "name": "InheritScopes",
+            "in": "query",
+            "description": "Header specifying should the scopes be inherited from the token\n",
+            "schema": {
+              "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.InheritScopes.Boolean"
+            }
           }
         ],
+        "requestBody": {
+          "description": "Request with channel name",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Channels.CreateChannelRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "name": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Channels.CreateChannelRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "name": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Channels.CreateChannelRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "name": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Channels.ChannelViewModel"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "application_name": "Api",
+                      "id": 0,
+                      "name": "string",
+                      "scopes": [
+                        "channels_read",
+                        "orders_read",
+                        "orders_write"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Channels.ChannelViewModel"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "application_name": "Api",
+                      "id": 0,
+                      "name": "string",
+                      "scopes": [
+                        "channels_read",
+                        "orders_read",
+                        "orders_write"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Bad.Request.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/inventory/lot-exclusion:create": {
+      "post": {
         "tags": [
-          "Channels"
-        ]
+          "Inventory",
+          "Hidden",
+          "InventoryLotExclusion"
+        ],
+        "summary": "Create a new inventory lot exclusion.\n",
+        "operationId": "0c7eccba8b28f851963831a549cb656f",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory.CreateInventoryLotExclusionRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "expiration_date": "2019-08-24T14:15:22+00:00",
+                    "inventory_id": 0,
+                    "lot_number": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory.CreateInventoryLotExclusionRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "expiration_date": "2019-08-24T14:15:22+00:00",
+                    "inventory_id": 0,
+                    "lot_number": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inventory.CreateInventoryLotExclusionRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "expiration_date": "2019-08-24T14:15:22+00:00",
+                    "inventory_id": 0,
+                    "lot_number": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lot exclusion created or already exists"
+          },
+          "400": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory.ResponseError"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "error_message": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Inventory not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory.ResponseError"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "error_message": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Header is missing or invalid format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory.ResponseError"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "error_message": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attachment": {
+      "post": {
+        "tags": [
+          "Hidden",
+          "Attachment"
+        ],
+        "summary": "Upload Attachment",
+        "operationId": "3fc11541a5264971a56c019c839afd9a",
+        "parameters": [
+          {
+            "name": "domainType",
+            "in": "query",
+            "description": "Type of attachment",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Attachment.Post.Api.DomainType.Integer"
+            }
+          },
+          {
+            "name": "fileType",
+            "in": "query",
+            "description": "File Type of attachment",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Attachment.Post.Api.FileType.Integer"
+            }
+          },
+          {
+            "name": "blobKey",
+            "in": "query",
+            "description": "blobKey",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Attachment.Post.Api.BlobKey.String"
+            }
+          },
+          {
+            "name": "fileName",
+            "in": "query",
+            "description": "Name of the attachment",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Attachment.Post.Api.FileName.String"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/Attachments.CreateViewModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "AttachmentName": "TestText.csv",
+                    "AttachmentUri": "http://cdn.shipbob.com/api/attachment/902-29121291202121821821-21sdhshd"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attachments.CreateViewModel"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "AttachmentName": "",
+                      "AttachmentUri": ""
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attachment.Post.Api.Attachment.Bad.Request.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No access right at this time"
+          },
+          "403": {
+            "description": "No access"
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attachment.Post.Api.Attachment.Unprocessable.Entity.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/{orderId}/dimensions": {
+      "put": {
+        "tags": [
+          "Hidden",
+          "Orders"
+        ],
+        "summary": "Update order dimensions",
+        "description": "Operation is allowed for transportation orders only as of now",
+        "operationId": "266cdd4fd10f2158758e120755cf024c",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Put.Api.Order.OrderId.Dimensions.OrderId.Integer"
+            }
+          },
+          {
+            "name": "shipbob_channel_id",
+            "in": "header",
+            "description": "Channel Id for Operation",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Orders.Put.Api.Order.OrderId.Dimensions.Shipbob.Channel.Id.Integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.UpdateOrderDimensionsModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    }
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.UpdateOrderDimensionsModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    }
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.UpdateOrderDimensionsModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    }
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders.UpdateOrderDimensionsModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "measurements": {
+                      "depth_in": 0,
+                      "length_in": 0,
+                      "total_weight_oz": 0,
+                      "width_in": 0
+                    }
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders.TransportationOrderViewModel"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "shipment_id": 0
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders.Put.Api.Order.OrderId.Dimensions.Bad.Request.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders.Put.Api.Order.OrderId.Dimensions.Unprocessable.Entity.Object"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "property1": [
+                        "string"
+                      ],
+                      "property2": [
+                        "string"
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/receiving/:set-external-sync": {
       "post": {
+        "tags": [
+          "Receiving"
+        ],
         "summary": "Set ExternalSync flag for Wros\n",
         "operationId": "a24cc704b22486f1d00776d6eabef67e",
+        "requestBody": {
+          "description": "The list of wro ids and a flag to enable external sync",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "ids": [
+                      0
+                    ],
+                    "is_external_sync": true
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "ids": [
+                      0
+                    ],
+                    "is_external_sync": true
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "ids": [
+                      0
+                    ],
+                    "is_external_sync": true
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "ids": [
+                      0
+                    ],
+                    "is_external_sync": true
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -258,99 +1805,14 @@
           "403": {
             "description": "The provided credentials are not authorized to access this resource"
           }
-        },
-        "requestBody": {
-          "description": "The list of wro ids and a flag to enable external sync",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "ids": [
-                      0
-                    ],
-                    "is_external_sync": true
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "ids": [
-                      0
-                    ],
-                    "is_external_sync": true
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "ids": [
-                      0
-                    ],
-                    "is_external_sync": true
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateExternalSyncModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "ids": [
-                      0
-                    ],
-                    "is_external_sync": true
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Receiving"
-        ]
+        }
       }
     },
     "/inventory-levels": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get All Inventory Levels\n",
         "operationId": "92f6f4de418ed836aca7dec8d17a1f84",
         "parameters": [
@@ -568,22 +2030,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventories": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get All Inventories\n",
         "operationId": "5a3e974ce80c445f8f51b7f9ac682e2c",
         "parameters": [
@@ -839,22 +2293,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventory-levels/{inventoryId}": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get Inventory Levels\n",
         "operationId": "69d1808c5d320b58f248877290e03f36",
         "parameters": [
@@ -1009,22 +2455,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventory-levels/locations": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get All Inventory Levels Grouped By Fulfillment Center\n",
         "operationId": "511ebaa4c51b171357da1850ec73b690",
         "parameters": [
@@ -1269,22 +2707,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventory-levels/lots": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get All Inventory Levels Grouped By Lot\n",
         "operationId": "f114ded633454ff81bd27c6324c5d098",
         "parameters": [
@@ -1524,22 +2954,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventory-levels/{inventoryId}/locations": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get Inventory Levels Grouped By Fulfillment Center\n",
         "operationId": "9ccd2885c6a35d9758faf63aee5c50bd",
         "parameters": [
@@ -1697,22 +3119,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventory-levels/{inventoryId}/lots": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get Inventory Levels Grouped By Lot\n",
         "operationId": "53e0fe48fd3e068eb74400fcdf4ac39d",
         "parameters": [
@@ -1881,22 +3295,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventories/{inventoryId}": {
       "get": {
+        "tags": [
+          "Inventories"
+        ],
         "summary": "    Get Inventory\n",
         "operationId": "baabdeacd0fb29ccd774844538582e71",
         "parameters": [
@@ -2068,22 +3474,14 @@
           "503": {
             "description": "Service Unavailable"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventories"
-        ]
+        }
       }
     },
     "/inventory/{InventoryId}/history": {
       "get": {
+        "tags": [
+          "Inventory History"
+        ],
         "summary": "Returns all events that change the total on-hand quantity of a given inventory.\n",
         "description": "Returns all events that change the total on-hand quantity of a given inventory and lot combination for a given facility.\n",
         "operationId": "97192f9a8c0a15b9832cfa9b74fa705c",
@@ -2246,22 +3644,14 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventory History"
-        ]
+        }
       }
     },
     "/product/{productId}/variants": {
       "patch": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Updates multiple product variants\n",
         "operationId": "16364e8117703570686434e0b3ba7abe",
         "parameters": [
@@ -2275,6 +3665,114 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.UpdateProductVariantModelV5"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "additional_hazmat_attributes": {
+                      "charge_state_percentage": 0.1,
+                      "container_metal": true,
+                      "lithium_battery_packaging": "string",
+                      "lithium_battery_type": "string",
+                      "magnet": true,
+                      "net_volume": 0.1,
+                      "net_weight": 0.1
+                    },
+                    "barcodes": [
+                      {
+                        "sticker_url": "string",
+                        "value": "string"
+                      }
+                    ],
+                    "bundle_definition": [
+                      {
+                        "quantity": 0,
+                        "variant_id": 0
+                      }
+                    ],
+                    "channel_metadata": [
+                      {
+                        "asin": "string",
+                        "channel_id": 0,
+                        "channel_name": "string",
+                        "currency": "string",
+                        "fnsku": "string",
+                        "fulfillment_channel": "string",
+                        "id": 0,
+                        "is_inventory_sync_enabled": true,
+                        "legacy_product_id": 0,
+                        "platform": "string",
+                        "platform_identifier": "string",
+                        "platform_inventory_item_id": "string",
+                        "price": 0.1,
+                        "seller_sku": "string"
+                      }
+                    ],
+                    "customs": {
+                      "country_code_of_origin": "string",
+                      "currency": "string",
+                      "description": "string",
+                      "hs_tariff_code": "string",
+                      "is321_eligible": true,
+                      "value": 0
+                    },
+                    "dimension": {
+                      "height": 0.1,
+                      "length": 0.1,
+                      "width": 0.1
+                    },
+                    "fulfillment_settings": {
+                      "dangerous_goods": true,
+                      "is_bpm_parcel": true,
+                      "is_case_pick": true,
+                      "msds_url": "string",
+                      "requires_prop65": true,
+                      "serial_scan": {
+                        "exact_character_length": 0,
+                        "is_enabled": true,
+                        "prefix": "string",
+                        "suffix": "string"
+                      }
+                    },
+                    "gtin": "string",
+                    "id": 0,
+                    "is_digital": true,
+                    "lot_information": {
+                      "is_lot": true,
+                      "minimum_shelf_life_days": 0
+                    },
+                    "name": "string",
+                    "packaging_material_type_id": 0,
+                    "packaging_requirement_id": 0,
+                    "return_preferences": {
+                      "backup_action_id": 0,
+                      "instructions": "string",
+                      "primary_action_id": 0,
+                      "return_to_sender_backup_action_id": 0,
+                      "return_to_sender_primary_action_id": 0
+                    },
+                    "reviews_pending": [
+                      0
+                    ],
+                    "sku": "string",
+                    "status": 1,
+                    "upc": "string",
+                    "weight": 0.1
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -2437,128 +3935,12 @@
               }
             }
           }
-        },
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.UpdateProductVariantModelV5"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "additional_hazmat_attributes": {
-                      "charge_state_percentage": 0.1,
-                      "container_metal": true,
-                      "lithium_battery_packaging": "string",
-                      "lithium_battery_type": "string",
-                      "magnet": true,
-                      "net_volume": 0.1,
-                      "net_weight": 0.1
-                    },
-                    "barcodes": [
-                      {
-                        "sticker_url": "string",
-                        "value": "string"
-                      }
-                    ],
-                    "bundle_definition": [
-                      {
-                        "quantity": 0,
-                        "variant_id": 0
-                      }
-                    ],
-                    "channel_metadata": [
-                      {
-                        "asin": "string",
-                        "channel_id": 0,
-                        "channel_name": "string",
-                        "currency": "string",
-                        "fnsku": "string",
-                        "fulfillment_channel": "string",
-                        "id": 0,
-                        "is_inventory_sync_enabled": true,
-                        "legacy_product_id": 0,
-                        "platform": "string",
-                        "platform_identifier": "string",
-                        "platform_inventory_item_id": "string",
-                        "price": 0.1,
-                        "seller_sku": "string"
-                      }
-                    ],
-                    "customs": {
-                      "country_code_of_origin": "string",
-                      "currency": "string",
-                      "description": "string",
-                      "hs_tariff_code": "string",
-                      "is321_eligible": true,
-                      "value": 0
-                    },
-                    "dimension": {
-                      "height": 0.1,
-                      "length": 0.1,
-                      "width": 0.1
-                    },
-                    "fulfillment_settings": {
-                      "dangerous_goods": true,
-                      "is_bpm_parcel": true,
-                      "is_case_pick": true,
-                      "msds_url": "string",
-                      "requires_prop65": true,
-                      "serial_scan": {
-                        "exact_character_length": 0,
-                        "is_enabled": true,
-                        "prefix": "string",
-                        "suffix": "string"
-                      }
-                    },
-                    "gtin": "string",
-                    "id": 0,
-                    "is_digital": true,
-                    "lot_information": {
-                      "is_lot": true,
-                      "minimum_shelf_life_days": 0
-                    },
-                    "name": "string",
-                    "packaging_material_type_id": 0,
-                    "packaging_requirement_id": 0,
-                    "return_preferences": {
-                      "backup_action_id": 0,
-                      "instructions": "string",
-                      "primary_action_id": 0,
-                      "return_to_sender_backup_action_id": 0,
-                      "return_to_sender_primary_action_id": 0
-                    },
-                    "reviews_pending": [
-                      0
-                    ],
-                    "sku": "string",
-                    "status": 1,
-                    "upc": "string",
-                    "weight": 0.1
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       },
       "post": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Adds new product variants to a product\n",
         "operationId": "14daa5e4386442d68fbf15d81ca67bea",
         "parameters": [
@@ -2572,184 +3954,6 @@
             }
           }
         ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.ProductViewModelV5"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "created_on": "2019-08-24T14:15:22+00:00",
-                      "id": 0,
-                      "name": "string",
-                      "taxonomy": {
-                        "id": 0,
-                        "name": "string",
-                        "parent_id": 0,
-                        "parent_name": "string",
-                        "path": "string"
-                      },
-                      "type": "string",
-                      "updated_on": "2019-08-24T14:15:22+00:00",
-                      "user_id": 0,
-                      "variants": [
-                        {
-                          "additional_hazmat_attributes": {
-                            "charge_state_percentage": 0.1,
-                            "container_metal": true,
-                            "lithium_battery_packaging": "string",
-                            "lithium_battery_type": "string",
-                            "magnet": true,
-                            "net_volume": 0.1,
-                            "net_weight": 0.1
-                          },
-                          "associated_bundles": [
-                            {
-                              "product_id": 0,
-                              "product_name": "string",
-                              "quantity": 0,
-                              "variant_id": 0,
-                              "variant_sku": "string"
-                            }
-                          ],
-                          "barcodes": [
-                            {
-                              "sticker_url": "string",
-                              "value": "string"
-                            }
-                          ],
-                          "bundle_definition": [
-                            {
-                              "product_id": 0,
-                              "quantity": 0,
-                              "variant_id": 0,
-                              "variant_name": "string",
-                              "variant_sku": "string"
-                            }
-                          ],
-                          "channel_metadata": [
-                            {
-                              "channel_id": 0,
-                              "channel_name": "string",
-                              "currency": "string",
-                              "id": 0,
-                              "is_inventory_sync_enabled": true,
-                              "legacy_product_id": 0,
-                              "platform": "string",
-                              "platform_identifier": "string",
-                              "platform_inventory_item_id": "string",
-                              "price": 0.1,
-                              "seller_sku": "string"
-                            }
-                          ],
-                          "created_on": "2019-08-24T14:15:22+00:00",
-                          "customs": {
-                            "country_code_of_origin": "string",
-                            "currency": "string",
-                            "description": "string",
-                            "hs_tariff_code": "string",
-                            "is321_eligible": true,
-                            "value": 0
-                          },
-                          "dimension": {
-                            "height": 0.1,
-                            "is_locked": true,
-                            "length": 0.1,
-                            "source": "string",
-                            "unit": "string",
-                            "width": 0.1
-                          },
-                          "fulfillment_settings": {
-                            "dangerous_goods": true,
-                            "is_bpm_parcel": true,
-                            "is_case_pick": true,
-                            "msds_url": "string",
-                            "requires_prop65": true,
-                            "serial_scan": {
-                              "exact_character_length": 0,
-                              "is_enabled": true,
-                              "prefix": "string",
-                              "suffix": "string"
-                            }
-                          },
-                          "gtin": "string",
-                          "id": 0,
-                          "inventory": {
-                            "inventory_id": 0,
-                            "on_hand_qty": 0
-                          },
-                          "is_digital": true,
-                          "is_image_uploaded": true,
-                          "lot_information": {
-                            "is_lot": true,
-                            "minimum_shelf_life_days": 0
-                          },
-                          "merge_children": [
-                            {
-                              "channel_ids": [
-                                0
-                              ],
-                              "completed_at": "2019-08-24T14:15:22+00:00",
-                              "inventory_id": 0,
-                              "variant_id": 0,
-                              "variant_name": "string"
-                            }
-                          ],
-                          "name": "string",
-                          "packaging_material_type": {
-                            "id": 0,
-                            "name": "string"
-                          },
-                          "packaging_requirement": {
-                            "id": 0,
-                            "name": "string"
-                          },
-                          "return_preferences": {
-                            "backup_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "instructions": "string",
-                            "primary_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "return_to_sender_backup_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "return_to_sender_primary_action": {
-                              "id": 0,
-                              "name": "string"
-                            }
-                          },
-                          "reviews_pending": [
-                            "string"
-                          ],
-                          "sku": "string",
-                          "status": "string",
-                          "upc": "string",
-                          "updated_on": "2019-08-24T14:15:22+00:00",
-                          "weight": {
-                            "unit": "string",
-                            "weight": 0.1
-                          }
-                        }
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          }
-        },
         "requestBody": {
           "description": "The product variants to add to product",
           "content": {
@@ -3151,19 +4355,189 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.ProductViewModelV5"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "created_on": "2019-08-24T14:15:22+00:00",
+                      "id": 0,
+                      "name": "string",
+                      "taxonomy": {
+                        "id": 0,
+                        "name": "string",
+                        "parent_id": 0,
+                        "parent_name": "string",
+                        "path": "string"
+                      },
+                      "type": "string",
+                      "updated_on": "2019-08-24T14:15:22+00:00",
+                      "user_id": 0,
+                      "variants": [
+                        {
+                          "additional_hazmat_attributes": {
+                            "charge_state_percentage": 0.1,
+                            "container_metal": true,
+                            "lithium_battery_packaging": "string",
+                            "lithium_battery_type": "string",
+                            "magnet": true,
+                            "net_volume": 0.1,
+                            "net_weight": 0.1
+                          },
+                          "associated_bundles": [
+                            {
+                              "product_id": 0,
+                              "product_name": "string",
+                              "quantity": 0,
+                              "variant_id": 0,
+                              "variant_sku": "string"
+                            }
+                          ],
+                          "barcodes": [
+                            {
+                              "sticker_url": "string",
+                              "value": "string"
+                            }
+                          ],
+                          "bundle_definition": [
+                            {
+                              "product_id": 0,
+                              "quantity": 0,
+                              "variant_id": 0,
+                              "variant_name": "string",
+                              "variant_sku": "string"
+                            }
+                          ],
+                          "channel_metadata": [
+                            {
+                              "channel_id": 0,
+                              "channel_name": "string",
+                              "currency": "string",
+                              "id": 0,
+                              "is_inventory_sync_enabled": true,
+                              "legacy_product_id": 0,
+                              "platform": "string",
+                              "platform_identifier": "string",
+                              "platform_inventory_item_id": "string",
+                              "price": 0.1,
+                              "seller_sku": "string"
+                            }
+                          ],
+                          "created_on": "2019-08-24T14:15:22+00:00",
+                          "customs": {
+                            "country_code_of_origin": "string",
+                            "currency": "string",
+                            "description": "string",
+                            "hs_tariff_code": "string",
+                            "is321_eligible": true,
+                            "value": 0
+                          },
+                          "dimension": {
+                            "height": 0.1,
+                            "is_locked": true,
+                            "length": 0.1,
+                            "source": "string",
+                            "unit": "string",
+                            "width": 0.1
+                          },
+                          "fulfillment_settings": {
+                            "dangerous_goods": true,
+                            "is_bpm_parcel": true,
+                            "is_case_pick": true,
+                            "msds_url": "string",
+                            "requires_prop65": true,
+                            "serial_scan": {
+                              "exact_character_length": 0,
+                              "is_enabled": true,
+                              "prefix": "string",
+                              "suffix": "string"
+                            }
+                          },
+                          "gtin": "string",
+                          "id": 0,
+                          "inventory": {
+                            "inventory_id": 0,
+                            "on_hand_qty": 0
+                          },
+                          "is_digital": true,
+                          "is_image_uploaded": true,
+                          "lot_information": {
+                            "is_lot": true,
+                            "minimum_shelf_life_days": 0
+                          },
+                          "merge_children": [
+                            {
+                              "channel_ids": [
+                                0
+                              ],
+                              "completed_at": "2019-08-24T14:15:22+00:00",
+                              "inventory_id": 0,
+                              "variant_id": 0,
+                              "variant_name": "string"
+                            }
+                          ],
+                          "name": "string",
+                          "packaging_material_type": {
+                            "id": 0,
+                            "name": "string"
+                          },
+                          "packaging_requirement": {
+                            "id": 0,
+                            "name": "string"
+                          },
+                          "return_preferences": {
+                            "backup_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "instructions": "string",
+                            "primary_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "return_to_sender_backup_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "return_to_sender_primary_action": {
+                              "id": 0,
+                              "name": "string"
+                            }
+                          },
+                          "reviews_pending": [
+                            "string"
+                          ],
+                          "sku": "string",
+                          "status": "string",
+                          "upc": "string",
+                          "updated_on": "2019-08-24T14:15:22+00:00",
+                          "weight": {
+                            "unit": "string",
+                            "weight": 0.1
+                          }
+                        }
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
           }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       },
       "get": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Gets multiple product variants\n",
         "operationId": "d7b5853f4a24d00f149fbe297ee11e5b",
         "parameters": [
@@ -3390,22 +4764,14 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/product/{productId}": {
       "patch": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Update a single product with Json Merge Patch functionality\n",
         "description": "Updates a single product. This endpoint supports Json Merge Patch functionality, which allows partial updates to be made to the product. The endpoint will only update the fields that are provided in the request. For updating variants, you mnust include the ID of the variant that you would like to update.\n",
         "operationId": "2dd7afd0ffe30df53fe295964e471abc",
@@ -3420,6 +4786,117 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.UpdateProductRequestModelV5"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "id": 0,
+                    "name": "string",
+                    "taxonomy_id": 0,
+                    "type_id": 0,
+                    "variants": [
+                      {
+                        "additional_hazmat_attributes": {
+                          "charge_state_percentage": 0.1,
+                          "container_metal": true,
+                          "lithium_battery_packaging": "string",
+                          "lithium_battery_type": "string",
+                          "magnet": true,
+                          "net_volume": 0.1,
+                          "net_weight": 0.1
+                        },
+                        "barcodes": [
+                          {
+                            "sticker_url": "string",
+                            "value": "string"
+                          }
+                        ],
+                        "bundle_definition": [
+                          {
+                            "quantity": 0,
+                            "variant_id": 0
+                          }
+                        ],
+                        "channel_metadata": [
+                          {
+                            "asin": "string",
+                            "channel_id": 0,
+                            "currency": "string",
+                            "fnsku": "string",
+                            "fulfillment_channel": "string",
+                            "id": 0,
+                            "is_inventory_sync_enabled": true,
+                            "legacy_product_id": 0,
+                            "platform": "string",
+                            "platform_identifier": "string",
+                            "platform_inventory_item_id": "string",
+                            "price": 0.1,
+                            "seller_sku": "string"
+                          }
+                        ],
+                        "customs": {
+                          "country_code_of_origin": "string",
+                          "description": "string",
+                          "hs_tariff_code": "string",
+                          "is321_eligible": true,
+                          "value": 0
+                        },
+                        "dimension": {
+                          "height": 0.1,
+                          "length": 0.1,
+                          "width": 0.1
+                        },
+                        "fulfillment_settings": {
+                          "dangerous_goods": true,
+                          "is_bpm_parcel": true,
+                          "is_case_pick": true,
+                          "msds_url": "string",
+                          "requires_prop65": true,
+                          "serial_scan": {
+                            "exact_character_length": 0,
+                            "is_enabled": true,
+                            "prefix": "string",
+                            "suffix": "string"
+                          }
+                        },
+                        "gtin": "string",
+                        "id": 0,
+                        "is_digital": true,
+                        "lot_information": {
+                          "is_lot": true,
+                          "minimum_shelf_life_days": 0
+                        },
+                        "name": "string",
+                        "packaging_material_type_id": 0,
+                        "packaging_requirement_id": 0,
+                        "return_preferences": {
+                          "backup_action_id": 0,
+                          "instructions": "string",
+                          "primary_action_id": 0,
+                          "return_to_sender_backup_action_id": 0,
+                          "return_to_sender_primary_action_id": 0
+                        },
+                        "sku": "string",
+                        "status_id": 0,
+                        "upc": "string",
+                        "weight": 0.1
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -3597,131 +5074,12 @@
               }
             }
           }
-        },
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.UpdateProductRequestModelV5"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "id": 0,
-                    "name": "string",
-                    "taxonomy_id": 0,
-                    "type_id": 0,
-                    "variants": [
-                      {
-                        "additional_hazmat_attributes": {
-                          "charge_state_percentage": 0.1,
-                          "container_metal": true,
-                          "lithium_battery_packaging": "string",
-                          "lithium_battery_type": "string",
-                          "magnet": true,
-                          "net_volume": 0.1,
-                          "net_weight": 0.1
-                        },
-                        "barcodes": [
-                          {
-                            "sticker_url": "string",
-                            "value": "string"
-                          }
-                        ],
-                        "bundle_definition": [
-                          {
-                            "quantity": 0,
-                            "variant_id": 0
-                          }
-                        ],
-                        "channel_metadata": [
-                          {
-                            "asin": "string",
-                            "channel_id": 0,
-                            "currency": "string",
-                            "fnsku": "string",
-                            "fulfillment_channel": "string",
-                            "id": 0,
-                            "is_inventory_sync_enabled": true,
-                            "legacy_product_id": 0,
-                            "platform": "string",
-                            "platform_identifier": "string",
-                            "platform_inventory_item_id": "string",
-                            "price": 0.1,
-                            "seller_sku": "string"
-                          }
-                        ],
-                        "customs": {
-                          "country_code_of_origin": "string",
-                          "description": "string",
-                          "hs_tariff_code": "string",
-                          "is321_eligible": true,
-                          "value": 0
-                        },
-                        "dimension": {
-                          "height": 0.1,
-                          "length": 0.1,
-                          "width": 0.1
-                        },
-                        "fulfillment_settings": {
-                          "dangerous_goods": true,
-                          "is_bpm_parcel": true,
-                          "is_case_pick": true,
-                          "msds_url": "string",
-                          "requires_prop65": true,
-                          "serial_scan": {
-                            "exact_character_length": 0,
-                            "is_enabled": true,
-                            "prefix": "string",
-                            "suffix": "string"
-                          }
-                        },
-                        "gtin": "string",
-                        "id": 0,
-                        "is_digital": true,
-                        "lot_information": {
-                          "is_lot": true,
-                          "minimum_shelf_life_days": 0
-                        },
-                        "name": "string",
-                        "packaging_material_type_id": 0,
-                        "packaging_requirement_id": 0,
-                        "return_preferences": {
-                          "backup_action_id": 0,
-                          "instructions": "string",
-                          "primary_action_id": 0,
-                          "return_to_sender_backup_action_id": 0,
-                          "return_to_sender_primary_action_id": 0
-                        },
-                        "sku": "string",
-                        "status_id": 0,
-                        "upc": "string",
-                        "weight": 0.1
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       },
       "delete": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Deletes Bundle and removes associations to related products\n",
         "operationId": "dff42dc941ad7015e0ef589a5df04a41",
         "parameters": [
@@ -3790,20 +5148,12 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       },
       "get": {
+        "tags": [
+          "Products"
+        ],
         "summary": "  Gets Product by Id\n",
         "operationId": "9d82d40f4758612d28c98612ce997deb",
         "parameters": [
@@ -4045,22 +5395,14 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/taxonomy": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "summary": "  Gets Taxonomy\n",
         "operationId": "261e342a8a9514a5c30d6321ef4ff2c2",
         "parameters": [
@@ -4177,22 +5519,14 @@
           "503": {
             "description": "Server Error"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/variant/{variantId}/channel-metadata/{channelMetadataId}": {
       "put": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Update specific channel metadata record from a variant by channel metadata ID\n",
         "operationId": "90aa9021b19d7789681a49b76d79703d",
         "parameters": [
@@ -4215,6 +5549,119 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "asin": "string",
+                    "channel_id": 0,
+                    "currency": "string",
+                    "fnsku": "string",
+                    "fulfillment_channel": "string",
+                    "id": 0,
+                    "is_inventory_sync_enabled": true,
+                    "legacy_product_id": 0,
+                    "platform": "string",
+                    "platform_identifier": "string",
+                    "platform_inventory_item_id": "string",
+                    "price": 0.1,
+                    "seller_sku": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "asin": "string",
+                    "channel_id": 0,
+                    "currency": "string",
+                    "fnsku": "string",
+                    "fulfillment_channel": "string",
+                    "id": 0,
+                    "is_inventory_sync_enabled": true,
+                    "legacy_product_id": 0,
+                    "platform": "string",
+                    "platform_identifier": "string",
+                    "platform_inventory_item_id": "string",
+                    "price": 0.1,
+                    "seller_sku": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "asin": "string",
+                    "channel_id": 0,
+                    "currency": "string",
+                    "fnsku": "string",
+                    "fulfillment_channel": "string",
+                    "id": 0,
+                    "is_inventory_sync_enabled": true,
+                    "legacy_product_id": 0,
+                    "platform": "string",
+                    "platform_identifier": "string",
+                    "platform_inventory_item_id": "string",
+                    "price": 0.1,
+                    "seller_sku": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "asin": "string",
+                    "channel_id": 0,
+                    "currency": "string",
+                    "fnsku": "string",
+                    "fulfillment_channel": "string",
+                    "id": 0,
+                    "is_inventory_sync_enabled": true,
+                    "legacy_product_id": 0,
+                    "platform": "string",
+                    "platform_identifier": "string",
+                    "platform_inventory_item_id": "string",
+                    "price": 0.1,
+                    "seller_sku": "string"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -4426,133 +5873,12 @@
               }
             }
           }
-        },
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "asin": "string",
-                    "channel_id": 0,
-                    "currency": "string",
-                    "fnsku": "string",
-                    "fulfillment_channel": "string",
-                    "id": 0,
-                    "is_inventory_sync_enabled": true,
-                    "legacy_product_id": 0,
-                    "platform": "string",
-                    "platform_identifier": "string",
-                    "platform_inventory_item_id": "string",
-                    "price": 0.1,
-                    "seller_sku": "string"
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "asin": "string",
-                    "channel_id": 0,
-                    "currency": "string",
-                    "fnsku": "string",
-                    "fulfillment_channel": "string",
-                    "id": 0,
-                    "is_inventory_sync_enabled": true,
-                    "legacy_product_id": 0,
-                    "platform": "string",
-                    "platform_identifier": "string",
-                    "platform_inventory_item_id": "string",
-                    "price": 0.1,
-                    "seller_sku": "string"
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "asin": "string",
-                    "channel_id": 0,
-                    "currency": "string",
-                    "fnsku": "string",
-                    "fulfillment_channel": "string",
-                    "id": 0,
-                    "is_inventory_sync_enabled": true,
-                    "legacy_product_id": 0,
-                    "platform": "string",
-                    "platform_identifier": "string",
-                    "platform_inventory_item_id": "string",
-                    "price": 0.1,
-                    "seller_sku": "string"
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Request.OneOf.AmazonChannelMetadataRequestModel.BaseChannelMetadataRequestModel.BigCommerceChannelMetadataRequestModel.ShopifyChannelMetadataRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "asin": "string",
-                    "channel_id": 0,
-                    "currency": "string",
-                    "fnsku": "string",
-                    "fulfillment_channel": "string",
-                    "id": 0,
-                    "is_inventory_sync_enabled": true,
-                    "legacy_product_id": 0,
-                    "platform": "string",
-                    "platform_identifier": "string",
-                    "platform_inventory_item_id": "string",
-                    "price": 0.1,
-                    "seller_sku": "string"
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       },
       "delete": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Used to delete a specific channel metadata record from a variant by channel metadata ID\n",
         "operationId": "b48e74188d2b119e672f2ea93f9b96c6",
         "parameters": [
@@ -4786,22 +6112,14 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/product/{productId}:moveVariants": {
       "post": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Migrates variants to existing product\n",
         "operationId": "a3869424cb29a4540a3c8890462b4704",
         "parameters": [
@@ -4815,6 +6133,111 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "Migration definition",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Created",
@@ -5047,127 +6470,14 @@
               }
             }
           }
-        },
-        "requestBody": {
-          "description": "Migration definition",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/taxonomy/{id}/parent": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "summary": "  Gets Taxonomy Parent\n",
         "operationId": "09c013ed682b50f3d16234d4c69f519b",
         "parameters": [
@@ -5301,22 +6611,14 @@
           "503": {
             "description": "Server Error"
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/variant/{variantId}:convertToBundle": {
       "post": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Add new product variants to a product\n",
         "operationId": "0386f51f54514a8488c3b7e914220aba",
         "parameters": [
@@ -5330,184 +6632,6 @@
             }
           }
         ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.ProductViewModelV5"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "created_on": "2019-08-24T14:15:22+00:00",
-                      "id": 0,
-                      "name": "string",
-                      "taxonomy": {
-                        "id": 0,
-                        "name": "string",
-                        "parent_id": 0,
-                        "parent_name": "string",
-                        "path": "string"
-                      },
-                      "type": "string",
-                      "updated_on": "2019-08-24T14:15:22+00:00",
-                      "user_id": 0,
-                      "variants": [
-                        {
-                          "additional_hazmat_attributes": {
-                            "charge_state_percentage": 0.1,
-                            "container_metal": true,
-                            "lithium_battery_packaging": "string",
-                            "lithium_battery_type": "string",
-                            "magnet": true,
-                            "net_volume": 0.1,
-                            "net_weight": 0.1
-                          },
-                          "associated_bundles": [
-                            {
-                              "product_id": 0,
-                              "product_name": "string",
-                              "quantity": 0,
-                              "variant_id": 0,
-                              "variant_sku": "string"
-                            }
-                          ],
-                          "barcodes": [
-                            {
-                              "sticker_url": "string",
-                              "value": "string"
-                            }
-                          ],
-                          "bundle_definition": [
-                            {
-                              "product_id": 0,
-                              "quantity": 0,
-                              "variant_id": 0,
-                              "variant_name": "string",
-                              "variant_sku": "string"
-                            }
-                          ],
-                          "channel_metadata": [
-                            {
-                              "channel_id": 0,
-                              "channel_name": "string",
-                              "currency": "string",
-                              "id": 0,
-                              "is_inventory_sync_enabled": true,
-                              "legacy_product_id": 0,
-                              "platform": "string",
-                              "platform_identifier": "string",
-                              "platform_inventory_item_id": "string",
-                              "price": 0.1,
-                              "seller_sku": "string"
-                            }
-                          ],
-                          "created_on": "2019-08-24T14:15:22+00:00",
-                          "customs": {
-                            "country_code_of_origin": "string",
-                            "currency": "string",
-                            "description": "string",
-                            "hs_tariff_code": "string",
-                            "is321_eligible": true,
-                            "value": 0
-                          },
-                          "dimension": {
-                            "height": 0.1,
-                            "is_locked": true,
-                            "length": 0.1,
-                            "source": "string",
-                            "unit": "string",
-                            "width": 0.1
-                          },
-                          "fulfillment_settings": {
-                            "dangerous_goods": true,
-                            "is_bpm_parcel": true,
-                            "is_case_pick": true,
-                            "msds_url": "string",
-                            "requires_prop65": true,
-                            "serial_scan": {
-                              "exact_character_length": 0,
-                              "is_enabled": true,
-                              "prefix": "string",
-                              "suffix": "string"
-                            }
-                          },
-                          "gtin": "string",
-                          "id": 0,
-                          "inventory": {
-                            "inventory_id": 0,
-                            "on_hand_qty": 0
-                          },
-                          "is_digital": true,
-                          "is_image_uploaded": true,
-                          "lot_information": {
-                            "is_lot": true,
-                            "minimum_shelf_life_days": 0
-                          },
-                          "merge_children": [
-                            {
-                              "channel_ids": [
-                                0
-                              ],
-                              "completed_at": "2019-08-24T14:15:22+00:00",
-                              "inventory_id": 0,
-                              "variant_id": 0,
-                              "variant_name": "string"
-                            }
-                          ],
-                          "name": "string",
-                          "packaging_material_type": {
-                            "id": 0,
-                            "name": "string"
-                          },
-                          "packaging_requirement": {
-                            "id": 0,
-                            "name": "string"
-                          },
-                          "return_preferences": {
-                            "backup_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "instructions": "string",
-                            "primary_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "return_to_sender_backup_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "return_to_sender_primary_action": {
-                              "id": 0,
-                              "name": "string"
-                            }
-                          },
-                          "reviews_pending": [
-                            "string"
-                          ],
-                          "sku": "string",
-                          "status": "string",
-                          "upc": "string",
-                          "updated_on": "2019-08-24T14:15:22+00:00",
-                          "weight": {
-                            "unit": "string",
-                            "weight": 0.1
-                          }
-                        }
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          }
-        },
         "requestBody": {
           "description": "The variant request that is to be converted to bundle",
           "content": {
@@ -5669,172 +6793,6 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
-      }
-    },
-    "/taxonomy/{id}": {
-      "get": {
-        "summary": "  Gets Taxonomy by Id\n",
-        "operationId": "45c19cd89efa4b89bc9c93f3d443f77c",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Id.Integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.TaxonomyViewModel"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "children": [
-                        {
-                          "has_children": true,
-                          "id": 0,
-                          "name": "string",
-                          "path": "string"
-                        }
-                      ],
-                      "id": 0,
-                      "name": "string",
-                      "parent": {
-                        "id": 0,
-                        "name": "string",
-                        "path": "string"
-                      },
-                      "path": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "detail": "string",
-                      "instance": "string",
-                      "property1": null,
-                      "property2": null,
-                      "status": 0,
-                      "title": "string",
-                      "type": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "detail": "string",
-                      "instance": "string",
-                      "property1": null,
-                      "property2": null,
-                      "status": 0,
-                      "title": "string",
-                      "type": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "detail": "string",
-                      "instance": "string",
-                      "property1": null,
-                      "property2": null,
-                      "status": 0,
-                      "title": "string",
-                      "type": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server Error"
-          },
-          "503": {
-            "description": "Server Error"
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
-      }
-    },
-    "/product": {
-      "post": {
-        "summary": "Create single product to the store\n",
-        "operationId": "0c4a773215d74006c7062e138ae1b94e",
         "responses": {
           "201": {
             "description": "Created",
@@ -6012,7 +6970,157 @@
               }
             }
           }
-        },
+        }
+      }
+    },
+    "/taxonomy/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "  Gets Taxonomy by Id\n",
+        "operationId": "45c19cd89efa4b89bc9c93f3d443f77c",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Id.Integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.TaxonomyViewModel"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "children": [
+                        {
+                          "has_children": true,
+                          "id": 0,
+                          "name": "string",
+                          "path": "string"
+                        }
+                      ],
+                      "id": 0,
+                      "name": "string",
+                      "parent": {
+                        "id": 0,
+                        "name": "string",
+                        "path": "string"
+                      },
+                      "path": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "detail": "string",
+                      "instance": "string",
+                      "property1": null,
+                      "property2": null,
+                      "status": 0,
+                      "title": "string",
+                      "type": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "detail": "string",
+                      "instance": "string",
+                      "property1": null,
+                      "property2": null,
+                      "status": 0,
+                      "title": "string",
+                      "type": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Taxonomy.Id.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "detail": "string",
+                      "instance": "string",
+                      "property1": null,
+                      "property2": null,
+                      "status": 0,
+                      "title": "string",
+                      "type": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "503": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create single product to the store\n",
+        "operationId": "0c4a773215d74006c7062e138ae1b94e",
         "requestBody": {
           "description": "The product to add",
           "content": {
@@ -6434,19 +7542,189 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.ProductViewModelV5"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "created_on": "2019-08-24T14:15:22+00:00",
+                      "id": 0,
+                      "name": "string",
+                      "taxonomy": {
+                        "id": 0,
+                        "name": "string",
+                        "parent_id": 0,
+                        "parent_name": "string",
+                        "path": "string"
+                      },
+                      "type": "string",
+                      "updated_on": "2019-08-24T14:15:22+00:00",
+                      "user_id": 0,
+                      "variants": [
+                        {
+                          "additional_hazmat_attributes": {
+                            "charge_state_percentage": 0.1,
+                            "container_metal": true,
+                            "lithium_battery_packaging": "string",
+                            "lithium_battery_type": "string",
+                            "magnet": true,
+                            "net_volume": 0.1,
+                            "net_weight": 0.1
+                          },
+                          "associated_bundles": [
+                            {
+                              "product_id": 0,
+                              "product_name": "string",
+                              "quantity": 0,
+                              "variant_id": 0,
+                              "variant_sku": "string"
+                            }
+                          ],
+                          "barcodes": [
+                            {
+                              "sticker_url": "string",
+                              "value": "string"
+                            }
+                          ],
+                          "bundle_definition": [
+                            {
+                              "product_id": 0,
+                              "quantity": 0,
+                              "variant_id": 0,
+                              "variant_name": "string",
+                              "variant_sku": "string"
+                            }
+                          ],
+                          "channel_metadata": [
+                            {
+                              "channel_id": 0,
+                              "channel_name": "string",
+                              "currency": "string",
+                              "id": 0,
+                              "is_inventory_sync_enabled": true,
+                              "legacy_product_id": 0,
+                              "platform": "string",
+                              "platform_identifier": "string",
+                              "platform_inventory_item_id": "string",
+                              "price": 0.1,
+                              "seller_sku": "string"
+                            }
+                          ],
+                          "created_on": "2019-08-24T14:15:22+00:00",
+                          "customs": {
+                            "country_code_of_origin": "string",
+                            "currency": "string",
+                            "description": "string",
+                            "hs_tariff_code": "string",
+                            "is321_eligible": true,
+                            "value": 0
+                          },
+                          "dimension": {
+                            "height": 0.1,
+                            "is_locked": true,
+                            "length": 0.1,
+                            "source": "string",
+                            "unit": "string",
+                            "width": 0.1
+                          },
+                          "fulfillment_settings": {
+                            "dangerous_goods": true,
+                            "is_bpm_parcel": true,
+                            "is_case_pick": true,
+                            "msds_url": "string",
+                            "requires_prop65": true,
+                            "serial_scan": {
+                              "exact_character_length": 0,
+                              "is_enabled": true,
+                              "prefix": "string",
+                              "suffix": "string"
+                            }
+                          },
+                          "gtin": "string",
+                          "id": 0,
+                          "inventory": {
+                            "inventory_id": 0,
+                            "on_hand_qty": 0
+                          },
+                          "is_digital": true,
+                          "is_image_uploaded": true,
+                          "lot_information": {
+                            "is_lot": true,
+                            "minimum_shelf_life_days": 0
+                          },
+                          "merge_children": [
+                            {
+                              "channel_ids": [
+                                0
+                              ],
+                              "completed_at": "2019-08-24T14:15:22+00:00",
+                              "inventory_id": 0,
+                              "variant_id": 0,
+                              "variant_name": "string"
+                            }
+                          ],
+                          "name": "string",
+                          "packaging_material_type": {
+                            "id": 0,
+                            "name": "string"
+                          },
+                          "packaging_requirement": {
+                            "id": 0,
+                            "name": "string"
+                          },
+                          "return_preferences": {
+                            "backup_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "instructions": "string",
+                            "primary_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "return_to_sender_backup_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "return_to_sender_primary_action": {
+                              "id": 0,
+                              "name": "string"
+                            }
+                          },
+                          "reviews_pending": [
+                            "string"
+                          ],
+                          "sku": "string",
+                          "status": "string",
+                          "upc": "string",
+                          "updated_on": "2019-08-24T14:15:22+00:00",
+                          "weight": {
+                            "unit": "string",
+                            "weight": 0.1
+                          }
+                        }
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
           }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       },
       "get": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Retrieves List of Products based on filters provided\n",
         "operationId": "5e4fe606de2077dfa918ff128f5bbfff",
         "parameters": [
@@ -6903,22 +8181,14 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/packaging-requirement": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Gets Packaging Requirement\n",
         "operationId": "672942b09322e1990e33ef572188ad73",
         "responses": {
@@ -6963,22 +8233,14 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/variant/{variantId}:merge": {
       "post": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Used to merge two or more variants together\n",
         "operationId": "089b4461bf637cc52135f10eaf8f02a9",
         "parameters": [
@@ -6992,184 +8254,6 @@
             }
           }
         ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Products.ProductViewModelV5"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "created_on": "2019-08-24T14:15:22+00:00",
-                      "id": 0,
-                      "name": "string",
-                      "taxonomy": {
-                        "id": 0,
-                        "name": "string",
-                        "parent_id": 0,
-                        "parent_name": "string",
-                        "path": "string"
-                      },
-                      "type": "string",
-                      "updated_on": "2019-08-24T14:15:22+00:00",
-                      "user_id": 0,
-                      "variants": [
-                        {
-                          "additional_hazmat_attributes": {
-                            "charge_state_percentage": 0.1,
-                            "container_metal": true,
-                            "lithium_battery_packaging": "string",
-                            "lithium_battery_type": "string",
-                            "magnet": true,
-                            "net_volume": 0.1,
-                            "net_weight": 0.1
-                          },
-                          "associated_bundles": [
-                            {
-                              "product_id": 0,
-                              "product_name": "string",
-                              "quantity": 0,
-                              "variant_id": 0,
-                              "variant_sku": "string"
-                            }
-                          ],
-                          "barcodes": [
-                            {
-                              "sticker_url": "string",
-                              "value": "string"
-                            }
-                          ],
-                          "bundle_definition": [
-                            {
-                              "product_id": 0,
-                              "quantity": 0,
-                              "variant_id": 0,
-                              "variant_name": "string",
-                              "variant_sku": "string"
-                            }
-                          ],
-                          "channel_metadata": [
-                            {
-                              "channel_id": 0,
-                              "channel_name": "string",
-                              "currency": "string",
-                              "id": 0,
-                              "is_inventory_sync_enabled": true,
-                              "legacy_product_id": 0,
-                              "platform": "string",
-                              "platform_identifier": "string",
-                              "platform_inventory_item_id": "string",
-                              "price": 0.1,
-                              "seller_sku": "string"
-                            }
-                          ],
-                          "created_on": "2019-08-24T14:15:22+00:00",
-                          "customs": {
-                            "country_code_of_origin": "string",
-                            "currency": "string",
-                            "description": "string",
-                            "hs_tariff_code": "string",
-                            "is321_eligible": true,
-                            "value": 0
-                          },
-                          "dimension": {
-                            "height": 0.1,
-                            "is_locked": true,
-                            "length": 0.1,
-                            "source": "string",
-                            "unit": "string",
-                            "width": 0.1
-                          },
-                          "fulfillment_settings": {
-                            "dangerous_goods": true,
-                            "is_bpm_parcel": true,
-                            "is_case_pick": true,
-                            "msds_url": "string",
-                            "requires_prop65": true,
-                            "serial_scan": {
-                              "exact_character_length": 0,
-                              "is_enabled": true,
-                              "prefix": "string",
-                              "suffix": "string"
-                            }
-                          },
-                          "gtin": "string",
-                          "id": 0,
-                          "inventory": {
-                            "inventory_id": 0,
-                            "on_hand_qty": 0
-                          },
-                          "is_digital": true,
-                          "is_image_uploaded": true,
-                          "lot_information": {
-                            "is_lot": true,
-                            "minimum_shelf_life_days": 0
-                          },
-                          "merge_children": [
-                            {
-                              "channel_ids": [
-                                0
-                              ],
-                              "completed_at": "2019-08-24T14:15:22+00:00",
-                              "inventory_id": 0,
-                              "variant_id": 0,
-                              "variant_name": "string"
-                            }
-                          ],
-                          "name": "string",
-                          "packaging_material_type": {
-                            "id": 0,
-                            "name": "string"
-                          },
-                          "packaging_requirement": {
-                            "id": 0,
-                            "name": "string"
-                          },
-                          "return_preferences": {
-                            "backup_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "instructions": "string",
-                            "primary_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "return_to_sender_backup_action": {
-                              "id": 0,
-                              "name": "string"
-                            },
-                            "return_to_sender_primary_action": {
-                              "id": 0,
-                              "name": "string"
-                            }
-                          },
-                          "reviews_pending": [
-                            "string"
-                          ],
-                          "sku": "string",
-                          "status": "string",
-                          "upc": "string",
-                          "updated_on": "2019-08-24T14:15:22+00:00",
-                          "weight": {
-                            "unit": "string",
-                            "weight": 0.1
-                          }
-                        }
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          }
-        },
         "requestBody": {
           "description": "The variants that should be merged to the target variant",
           "content": {
@@ -7243,34 +8327,6 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
-      }
-    },
-    "/variant/{variantId}/channel-metadata": {
-      "post": {
-        "summary": "Create a new Channel Metadata Entry for a given Variant\n",
-        "operationId": "16bdf05dd87417fa58047a46bb481f61",
-        "parameters": [
-          {
-            "name": "variantId",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Products.Post.Api.V5.Variant.VariantId.Channel.Metadata.VariantId.Integer"
-            }
-          }
-        ],
         "responses": {
           "201": {
             "description": "Created",
@@ -7448,7 +8504,27 @@
               }
             }
           }
-        },
+        }
+      }
+    },
+    "/variant/{variantId}/channel-metadata": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create a new Channel Metadata Entry for a given Variant\n",
+        "operationId": "16bdf05dd87417fa58047a46bb481f61",
+        "parameters": [
+          {
+            "name": "variantId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Products.Post.Api.V5.Variant.VariantId.Channel.Metadata.VariantId.Integer"
+            }
+          }
+        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -7562,23 +8638,298 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products.ProductViewModelV5"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "created_on": "2019-08-24T14:15:22+00:00",
+                      "id": 0,
+                      "name": "string",
+                      "taxonomy": {
+                        "id": 0,
+                        "name": "string",
+                        "parent_id": 0,
+                        "parent_name": "string",
+                        "path": "string"
+                      },
+                      "type": "string",
+                      "updated_on": "2019-08-24T14:15:22+00:00",
+                      "user_id": 0,
+                      "variants": [
+                        {
+                          "additional_hazmat_attributes": {
+                            "charge_state_percentage": 0.1,
+                            "container_metal": true,
+                            "lithium_battery_packaging": "string",
+                            "lithium_battery_type": "string",
+                            "magnet": true,
+                            "net_volume": 0.1,
+                            "net_weight": 0.1
+                          },
+                          "associated_bundles": [
+                            {
+                              "product_id": 0,
+                              "product_name": "string",
+                              "quantity": 0,
+                              "variant_id": 0,
+                              "variant_sku": "string"
+                            }
+                          ],
+                          "barcodes": [
+                            {
+                              "sticker_url": "string",
+                              "value": "string"
+                            }
+                          ],
+                          "bundle_definition": [
+                            {
+                              "product_id": 0,
+                              "quantity": 0,
+                              "variant_id": 0,
+                              "variant_name": "string",
+                              "variant_sku": "string"
+                            }
+                          ],
+                          "channel_metadata": [
+                            {
+                              "channel_id": 0,
+                              "channel_name": "string",
+                              "currency": "string",
+                              "id": 0,
+                              "is_inventory_sync_enabled": true,
+                              "legacy_product_id": 0,
+                              "platform": "string",
+                              "platform_identifier": "string",
+                              "platform_inventory_item_id": "string",
+                              "price": 0.1,
+                              "seller_sku": "string"
+                            }
+                          ],
+                          "created_on": "2019-08-24T14:15:22+00:00",
+                          "customs": {
+                            "country_code_of_origin": "string",
+                            "currency": "string",
+                            "description": "string",
+                            "hs_tariff_code": "string",
+                            "is321_eligible": true,
+                            "value": 0
+                          },
+                          "dimension": {
+                            "height": 0.1,
+                            "is_locked": true,
+                            "length": 0.1,
+                            "source": "string",
+                            "unit": "string",
+                            "width": 0.1
+                          },
+                          "fulfillment_settings": {
+                            "dangerous_goods": true,
+                            "is_bpm_parcel": true,
+                            "is_case_pick": true,
+                            "msds_url": "string",
+                            "requires_prop65": true,
+                            "serial_scan": {
+                              "exact_character_length": 0,
+                              "is_enabled": true,
+                              "prefix": "string",
+                              "suffix": "string"
+                            }
+                          },
+                          "gtin": "string",
+                          "id": 0,
+                          "inventory": {
+                            "inventory_id": 0,
+                            "on_hand_qty": 0
+                          },
+                          "is_digital": true,
+                          "is_image_uploaded": true,
+                          "lot_information": {
+                            "is_lot": true,
+                            "minimum_shelf_life_days": 0
+                          },
+                          "merge_children": [
+                            {
+                              "channel_ids": [
+                                0
+                              ],
+                              "completed_at": "2019-08-24T14:15:22+00:00",
+                              "inventory_id": 0,
+                              "variant_id": 0,
+                              "variant_name": "string"
+                            }
+                          ],
+                          "name": "string",
+                          "packaging_material_type": {
+                            "id": 0,
+                            "name": "string"
+                          },
+                          "packaging_requirement": {
+                            "id": 0,
+                            "name": "string"
+                          },
+                          "return_preferences": {
+                            "backup_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "instructions": "string",
+                            "primary_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "return_to_sender_backup_action": {
+                              "id": 0,
+                              "name": "string"
+                            },
+                            "return_to_sender_primary_action": {
+                              "id": 0,
+                              "name": "string"
+                            }
+                          },
+                          "reviews_pending": [
+                            "string"
+                          ],
+                          "sku": "string",
+                          "status": "string",
+                          "upc": "string",
+                          "updated_on": "2019-08-24T14:15:22+00:00",
+                          "weight": {
+                            "unit": "string",
+                            "weight": 0.1
+                          }
+                        }
+                      ]
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
           }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/product:moveVariants": {
       "post": {
+        "tags": [
+          "Products"
+        ],
         "summary": "Migrates existing variants to a new product\n",
         "operationId": "d88155a65d5492b57f4cf1d9b2351989",
+        "requestBody": {
+          "description": "Migration definition",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "category_id": 0,
+                    "name": "string",
+                    "product_id": 0,
+                    "sub_category_id": 0,
+                    "taxonomy_id": 0,
+                    "variants": [
+                      {
+                        "id": 0,
+                        "name": "string"
+                      }
+                    ]
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Created",
@@ -7811,185 +9162,18 @@
               }
             }
           }
-        },
-        "requestBody": {
-          "description": "Migration definition",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products.MigrateVariantRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "category_id": 0,
-                    "name": "string",
-                    "product_id": 0,
-                    "sub_category_id": 0,
-                    "taxonomy_id": 0,
-                    "variants": [
-                      {
-                        "id": 0,
-                        "name": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Products"
-        ]
+        }
       }
     },
     "/pos-integration/pick-inventory": {
       "post": {
+        "tags": [
+          "ShopifyPick",
+          "FacilityWorkflowIntegrations"
+        ],
         "summary": "  \tPOS Pick Inventory\n",
         "description": "    POS Integration API to pick inventory\n",
         "operationId": "1400c7aeab22edbc7311475e92739299",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FacilityWorkflowIntegrations.ShopifyResponseError"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "errorMessage": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FacilityWorkflowIntegrations.ShopifyResponseError"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "errorMessage": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FacilityWorkflowIntegrations.ShopifyResponseError"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "errorMessage": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          }
-        },
         "requestBody": {
           "description": "",
           "content": {
@@ -8067,22 +9251,68 @@
             }
           }
         },
-        "security": [
-          {
-            "PAT": []
+        "responses": {
+          "200": {
+            "description": "OK"
           },
-          {
-            "OAuth2": []
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacilityWorkflowIntegrations.ShopifyResponseError"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "errorMessage": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacilityWorkflowIntegrations.ShopifyResponseError"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "errorMessage": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacilityWorkflowIntegrations.ShopifyResponseError"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "errorMessage": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
           }
-        ],
-        "tags": [
-          "ShopifyPick",
-          "FacilityWorkflowIntegrations"
-        ]
+        }
       }
     },
     "/inventory/history:query": {
       "post": {
+        "tags": [
+          "Inventory History"
+        ],
         "summary": "Returns all events that change the total on-hand quantity of a given merchant's inventory.\n",
         "description": "Returns all events that change the total on-hand quantity of a given merchant's inventory for a given facility.\n",
         "operationId": "a6115ba6a9996652bca0d19f321f0204",
@@ -8096,6 +9326,34 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FulfillmentCenterInventoryService.MerchantHistoryRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "cursor": 0,
+                    "end_date": "2019-08-24T14:15:22+00:00",
+                    "event_category": "string",
+                    "facility_id": 0,
+                    "inventory_ids": [
+                      0
+                    ],
+                    "merchant_user_id": 0,
+                    "start_date": "2019-08-24T14:15:22+00:00"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -8180,46 +9438,7 @@
               }
             }
           }
-        },
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FulfillmentCenterInventoryService.MerchantHistoryRequest"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "cursor": 0,
-                    "end_date": "2019-08-24T14:15:22+00:00",
-                    "event_category": "string",
-                    "facility_id": 0,
-                    "inventory_ids": [
-                      0
-                    ],
-                    "merchant_user_id": 0,
-                    "start_date": "2019-08-24T14:15:22+00:00"
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Inventory History"
-        ]
+        }
       }
     }
   },
@@ -10823,6 +12042,15 @@
         },
         "additionalProperties": false
       },
+      "Products.Get.Api.V4.Product.Bad.Request.Object": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
       "Products.Get.Api.V5.Product.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
@@ -12169,41 +13397,6 @@
           "status": {}
         },
         "additionalProperties": false
-      }
-    },
-    "securitySchemes": {
-      "PAT": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header",
-        "description": "Provide your personal access token in the format 'Bearer {your_personal_access_token}'"
-      },
-      "OAuth2": {
-        "type": "oauth2",
-        "flows": {
-          "authorizationCode": {
-            "authorizationUrl": "https://authdev.shipbob.com/connect/authorize",
-            "tokenUrl": "https://authdev.shipbob.com/connect/token",
-            "scopes": {
-              "channels_read": "Read channel metadata",
-              "channels_write": "Write channel metadata",
-              "inventory_read": "Access inventory read operations",
-              "inventory_write": "Access inventory write operations",
-              "orders_read": "Access orders read operations",
-              "orders_write": "Access orders write operations",
-              "products_read": "Access products read operations",
-              "products_write": "Access products write operations",
-              "receiving_read": "Access receiving read operations",
-              "receiving_write": "Access receiving write operations",
-              "returns_read": "Access returns read operations",
-              "returns_write": "Access returns write operations",
-              "webhooks_read": "Access webhooks read operations",
-              "webhooks_write": "Access webhooks write operations",
-              "locations_read": "Access locations read operations"
-            }
-          }
-        },
-        "description": "OAuth2 authentication using JWT tokens"
       }
     }
   }
