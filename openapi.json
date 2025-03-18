@@ -12174,8 +12174,6 @@
     "securitySchemes": {
       "PAT": {
         "type": "apiKey",
-        "scheme": "bearer",
-        "bearerFormat": "opaque",
         "name": "Authorization",
         "in": "header",
         "description": "Provide your personal access token in the format 'Bearer {your_personal_access_token}'"
