@@ -9590,7 +9590,8 @@
         "type": "object",
         "properties": {
           "exclusions": {
-            "type": "array"
+            "type": "array",
+            "items": {}
           },
           "inventory_id": {
             "type": "integer",
