@@ -11,293 +11,6 @@
     }
   ],
   "paths": {
-    "/receiving-extended/{id}/tag": {
-      "put": {
-        "summary": "  Update Warehouse Receiving Order Tags\n",
-        "description": "  Updates tags for the provided Warehouse Receiving Order\n",
-        "operationId": "0b40a20e6f25678c26ed11ebd0a2e433",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Id.Integer"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "",
-            "schema": {
-              "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Authorization.String"
-            },
-            "examples": {
-              "default": {
-                "summary": "",
-                "description": "",
-                "value": "string",
-                "externalValue": ""
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "items": [
-                        {
-                          "name": "string",
-                          "value": "string"
-                        }
-                      ],
-                      "total_records": 0
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "items": [
-                        {
-                          "name": "string",
-                          "value": "string"
-                        }
-                      ],
-                      "total_records": 0
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.object"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "property1": [
-                        "string"
-                      ],
-                      "property2": [
-                        "string"
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "detail": "string",
-                      "instance": "string",
-                      "property1": null,
-                      "property2": null,
-                      "status": 0,
-                      "title": "string",
-                      "type": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.ProblemDetails"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "detail": "string",
-                      "instance": "string",
-                      "property1": null,
-                      "property2": null,
-                      "status": 0,
-                      "title": "string",
-                      "type": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Receiving.Put.Api.Receiving.Id.Tag.Not.Found.object"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "property1": [
-                        "string"
-                      ],
-                      "property2": [
-                        "string"
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "data": [
-                      {
-                        "name": "string",
-                        "value": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "data": [
-                      {
-                        "name": "string",
-                        "value": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "data": [
-                      {
-                        "name": "string",
-                        "value": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Receiving.UpdateReceivingTagsRequest"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "data": [
-                      {
-                        "name": "string",
-                        "value": "string"
-                      }
-                    ]
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Receiving",
-          "Receiving:Extended"
-        ]
-      }
-    },
     "/channel:search": {
       "post": {
         "summary": "  Search channels\n",
@@ -341,7 +54,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Search.Bad.Request.object"
+                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Search.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -438,171 +151,6 @@
                         "string"
                       ]
                     }
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "Channels"
-        ]
-      }
-    },
-    "/channel": {
-      "post": {
-        "summary": "  Create Channel\n",
-        "description": "  Creates channel with provided name if none exists\n",
-        "operationId": "92111627502044489c5f9a8f8e0a8228",
-        "parameters": [
-          {
-            "name": "InheritScopes",
-            "in": "query",
-            "description": "Header specifying should the scopes be inherited from the token\n",
-            "schema": {
-              "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.InheritScopes.Boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Channels.ChannelViewModel"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "application_name": "Api",
-                      "id": 0,
-                      "name": "string",
-                      "scopes": [
-                        "channels_read",
-                        "orders_read",
-                        "orders_write"
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Channels.ChannelViewModel"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "application_name": "Api",
-                      "id": 0,
-                      "name": "string",
-                      "scopes": [
-                        "channels_read",
-                        "orders_read",
-                        "orders_write"
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Channels.Post.Api.V2.Channel.Bad.Request.object"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "property1": [
-                        "string"
-                      ],
-                      "property2": [
-                        "string"
-                      ]
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        },
-        "requestBody": {
-          "description": "Request with channel name",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Channels.CreateChannelRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "name": "string"
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Channels.CreateChannelRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "name": "string"
-                  },
-                  "externalValue": ""
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Channels.CreateChannelRequestModel"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "name": "string"
                   },
                   "externalValue": ""
                 }
@@ -684,7 +232,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.object"
+                  "$ref": "#/components/schemas/Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -1030,8 +578,7 @@
           }
         ],
         "tags": [
-          "Inventory",
-          "InventoryLevels"
+          "Inventories"
         ]
       }
     },
@@ -1302,7 +849,6 @@
           }
         ],
         "tags": [
-          "Inventory",
           "Inventories"
         ]
       }
@@ -1473,8 +1019,7 @@
           }
         ],
         "tags": [
-          "Inventory",
-          "InventoryLevels"
+          "Inventories"
         ]
       }
     },
@@ -1734,8 +1279,7 @@
           }
         ],
         "tags": [
-          "Inventory",
-          "InventoryLevels"
+          "Inventories"
         ]
       }
     },
@@ -1990,8 +1534,7 @@
           }
         ],
         "tags": [
-          "Inventory",
-          "InventoryLevels"
+          "Inventories"
         ]
       }
     },
@@ -2164,8 +1707,7 @@
           }
         ],
         "tags": [
-          "Inventory",
-          "InventoryLevels"
+          "Inventories"
         ]
       }
     },
@@ -2349,8 +1891,7 @@
           }
         ],
         "tags": [
-          "Inventory",
-          "InventoryLevels"
+          "Inventories"
         ]
       }
     },
@@ -2537,105 +2078,13 @@
           }
         ],
         "tags": [
-          "Inventory",
           "Inventories"
-        ]
-      }
-    },
-    "/inventory/history": {
-      "post": {
-        "summary": "Merchant Inventory History.\n",
-        "description": "Returns all events that change the total on-hand quantity of a given merchant's inventory for a given facility.\n",
-        "operationId": "e717a735deb90e36e99360ae311df0c3",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FulfillmentCenterInventoryService.InventoryHistoryResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "",
-                    "description": "",
-                    "value": {
-                      "data": [
-                        {
-                          "decrement": {
-                            "expiration_date": "2019-08-24T14:15:22+00:00",
-                            "facility_id": 0,
-                            "lot_number": "string",
-                            "quantity_change": 0
-                          },
-                          "event_category": "string",
-                          "event_datetime": "2019-08-24T14:15:22+00:00",
-                          "increment": {
-                            "expiration_date": "2019-08-24T14:15:22+00:00",
-                            "facility_id": 0,
-                            "lot_number": "string",
-                            "quantity_change": 0
-                          },
-                          "inventory_id": 0,
-                          "shipbob_order_id": 0
-                        }
-                      ],
-                      "first": "string",
-                      "last": "string",
-                      "next": "string",
-                      "prev": "string"
-                    },
-                    "externalValue": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FulfillmentCenterInventoryService.MerchantHistoryRequest"
-              },
-              "examples": {
-                "default": {
-                  "summary": "",
-                  "description": "",
-                  "value": {
-                    "end_date": "2019-08-24T14:15:22+00:00",
-                    "event_category": "string",
-                    "facility_id": 0,
-                    "inventory_ids": [
-                      0
-                    ],
-                    "page": 0,
-                    "start_date": "2019-08-24T14:15:22+00:00"
-                  },
-                  "externalValue": ""
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "PAT": []
-          },
-          {
-            "OAuth2": []
-          }
-        ],
-        "tags": [
-          "FulfillmentCenterInventoryService",
-          "InventoryHistory"
         ]
       }
     },
     "/inventory/{InventoryId}/history": {
       "get": {
-        "summary": "Single Inventory History.\n",
+        "summary": "Returns all events that change the total on-hand quantity of a given inventory.\n",
         "description": "Returns all events that change the total on-hand quantity of a given inventory and lot combination for a given facility.\n",
         "operationId": "97192f9a8c0a15b9832cfa9b74fa705c",
         "parameters": [
@@ -2728,21 +2177,61 @@
                     "value": {
                       "data": [
                         {
+                          "additional_reference": [
+                            {
+                              "key": "string",
+                              "value": "string"
+                            }
+                          ],
                           "decrement": {
+                            "committed_quantity_change": 0,
                             "expiration_date": "2019-08-24T14:15:22+00:00",
                             "facility_id": 0,
+                            "inventory_status": "string",
+                            "location_id": 0,
                             "lot_number": "string",
-                            "quantity_change": 0
+                            "operational_stage": {
+                              "description": "string",
+                              "id": 0
+                            },
+                            "pack_description_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            },
+                            "quantity_change": 0,
+                            "sku": "string",
+                            "yuki_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            }
                           },
                           "event_category": "string",
                           "event_datetime": "2019-08-24T14:15:22+00:00",
                           "increment": {
+                            "committed_quantity_change": 0,
                             "expiration_date": "2019-08-24T14:15:22+00:00",
                             "facility_id": 0,
+                            "inventory_status": "string",
+                            "location_id": 0,
                             "lot_number": "string",
-                            "quantity_change": 0
+                            "operational_stage": {
+                              "description": "string",
+                              "id": 0
+                            },
+                            "pack_description_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            },
+                            "quantity_change": 0,
+                            "sku": "string",
+                            "yuki_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            }
                           },
+                          "inventory_audit_event_id": 0,
                           "inventory_id": 0,
+                          "merchant_user_id": 0,
                           "shipbob_order_id": 0
                         }
                       ],
@@ -2767,12 +2256,11 @@
           }
         ],
         "tags": [
-          "FulfillmentCenterInventoryService",
-          "InventoryHistory"
+          "Inventory History"
         ]
       }
     },
-    "/Product/{productId}/variants": {
+    "/product/{productId}/variants": {
       "patch": {
         "summary": "Updates multiple product variants\n",
         "operationId": "16364e8117703570686434e0b3ba7abe",
@@ -3067,8 +2555,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       },
       "post": {
@@ -3673,8 +3160,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       },
       "get": {
@@ -3858,7 +3344,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -3914,12 +3400,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       }
     },
-    "/Product/{productId}": {
+    "/product/{productId}": {
       "patch": {
         "summary": "Update a single product with Json Merge Patch functionality\n",
         "description": "Updates a single product. This endpoint supports Json Merge Patch functionality, which allows partial updates to be made to the product. The endpoint will only update the fields that are provided in the request. For updating variants, you mnust include the ID of the variant that you would like to update.\n",
@@ -4233,8 +3718,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       },
       "delete": {
@@ -4260,7 +3744,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Product.ProductId.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Product.ProductId.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -4316,8 +3800,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       },
       "get": {
@@ -4516,7 +3999,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.ProductId.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -4572,12 +4055,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       }
     },
-    "/Taxonomy": {
+    "/taxonomy": {
       "get": {
         "summary": "  Gets Taxonomy\n",
         "operationId": "261e342a8a9514a5c30d6321ef4ff2c2",
@@ -4705,12 +4187,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Taxonomy"
+          "Products"
         ]
       }
     },
-    "/Variant/{variantId}/channel-metadata/{channelMetadataId}": {
+    "/variant/{variantId}/channel-metadata/{channelMetadataId}": {
       "put": {
         "summary": "Update specific channel metadata record from a variant by channel metadata ID\n",
         "operationId": "90aa9021b19d7789681a49b76d79703d",
@@ -4899,7 +4380,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -5068,8 +4549,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Variant"
+          "Products"
         ]
       },
       "delete": {
@@ -5260,7 +4740,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -5316,12 +4796,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Variant"
+          "Products"
         ]
       }
     },
-    "/Product/{productId}:moveVariants": {
+    "/product/{productId}:moveVariants": {
       "post": {
         "summary": "Migrates variants to existing product\n",
         "operationId": "a3869424cb29a4540a3c8890462b4704",
@@ -5522,7 +5001,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -5683,12 +5162,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       }
     },
-    "/Taxonomy/{id}/parent": {
+    "/taxonomy/{id}/parent": {
       "get": {
         "summary": "  Gets Taxonomy Parent\n",
         "operationId": "09c013ed682b50f3d16234d4c69f519b",
@@ -5833,12 +5311,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Taxonomy"
+          "Products"
         ]
       }
     },
-    "/Variant/{variantId}:convertToBundle": {
+    "/variant/{variantId}:convertToBundle": {
       "post": {
         "summary": "Add new product variants to a product\n",
         "operationId": "0386f51f54514a8488c3b7e914220aba",
@@ -6201,12 +5678,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Variant"
+          "Products"
         ]
       }
     },
-    "/Taxonomy/{id}": {
+    "/taxonomy/{id}": {
       "get": {
         "summary": "  Gets Taxonomy by Id\n",
         "operationId": "45c19cd89efa4b89bc9c93f3d443f77c",
@@ -6351,12 +5827,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Taxonomy"
+          "Products"
         ]
       }
     },
-    "/Product": {
+    "/product": {
       "post": {
         "summary": "Create single product to the store\n",
         "operationId": "0c4a773215d74006c7062e138ae1b94e",
@@ -6968,8 +6443,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       },
       "get": {
@@ -7383,7 +6857,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Get.Api.V5.Product.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -7439,8 +6913,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       }
     },
@@ -7500,12 +6973,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "PackagingRequirement"
+          "Products"
         ]
       }
     },
-    "/Variant/{variantId}:merge": {
+    "/variant/{variantId}:merge": {
       "post": {
         "summary": "Used to merge two or more variants together\n",
         "operationId": "089b4461bf637cc52135f10eaf8f02a9",
@@ -7780,12 +7252,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Variant"
+          "Products"
         ]
       }
     },
-    "/Variant/{variantId}/channel-metadata": {
+    "/variant/{variantId}/channel-metadata": {
       "post": {
         "summary": "Create a new Channel Metadata Entry for a given Variant\n",
         "operationId": "16bdf05dd87417fa58047a46bb481f61",
@@ -8100,12 +7571,11 @@
           }
         ],
         "tags": [
-          "Products",
-          "Variant"
+          "Products"
         ]
       }
     },
-    "/Product:moveVariants": {
+    "/product:moveVariants": {
       "post": {
         "summary": "Migrates existing variants to a new product\n",
         "operationId": "d88155a65d5492b57f4cf1d9b2351989",
@@ -8295,7 +7765,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.MoveVariants.Bad.Request.object"
+                  "$ref": "#/components/schemas/Products.Post.Api.V5.Product.MoveVariants.Bad.Request.Object"
                 },
                 "examples": {
                   "default": {
@@ -8456,8 +7926,7 @@
           }
         ],
         "tags": [
-          "Products",
-          "Product"
+          "Products"
         ]
       }
     },
@@ -8611,11 +8080,152 @@
           "FacilityWorkflowIntegrations"
         ]
       }
+    },
+    "/inventory/history:query": {
+      "post": {
+        "summary": "Returns all events that change the total on-hand quantity of a given merchant's inventory.\n",
+        "description": "Returns all events that change the total on-hand quantity of a given merchant's inventory for a given facility.\n",
+        "operationId": "a6115ba6a9996652bca0d19f321f0204",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "$ref": "#/components/schemas/FulfillmentCenterInventoryService.Post.Inventory.History.Query.Cursor.Integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FulfillmentCenterInventoryService.InventoryHistoryResponse"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "",
+                    "description": "",
+                    "value": {
+                      "data": [
+                        {
+                          "additional_reference": [
+                            {
+                              "key": "string",
+                              "value": "string"
+                            }
+                          ],
+                          "decrement": {
+                            "committed_quantity_change": 0,
+                            "expiration_date": "2019-08-24T14:15:22+00:00",
+                            "facility_id": 0,
+                            "inventory_status": "string",
+                            "location_id": 0,
+                            "lot_number": "string",
+                            "operational_stage": {
+                              "description": "string",
+                              "id": 0
+                            },
+                            "pack_description_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            },
+                            "quantity_change": 0,
+                            "sku": "string",
+                            "yuki_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            }
+                          },
+                          "event_category": "string",
+                          "event_datetime": "2019-08-24T14:15:22+00:00",
+                          "increment": {
+                            "committed_quantity_change": 0,
+                            "expiration_date": "2019-08-24T14:15:22+00:00",
+                            "facility_id": 0,
+                            "inventory_status": "string",
+                            "location_id": 0,
+                            "lot_number": "string",
+                            "operational_stage": {
+                              "description": "string",
+                              "id": 0
+                            },
+                            "pack_description_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            },
+                            "quantity_change": 0,
+                            "sku": "string",
+                            "yuki_id": {
+                              "random": "string",
+                              "time": "2019-08-24T14:15:22+00:00"
+                            }
+                          },
+                          "inventory_audit_event_id": 0,
+                          "inventory_id": 0,
+                          "merchant_user_id": 0,
+                          "shipbob_order_id": 0
+                        }
+                      ],
+                      "first": "string",
+                      "last": "string",
+                      "next": "string",
+                      "prev": "string"
+                    },
+                    "externalValue": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FulfillmentCenterInventoryService.MerchantHistoryRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "",
+                  "description": "",
+                  "value": {
+                    "cursor": 0,
+                    "end_date": "2019-08-24T14:15:22+00:00",
+                    "event_category": "string",
+                    "facility_id": 0,
+                    "inventory_ids": [
+                      0
+                    ],
+                    "merchant_user_id": 0,
+                    "start_date": "2019-08-24T14:15:22+00:00"
+                  },
+                  "externalValue": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PAT": []
+          },
+          {
+            "OAuth2": []
+          }
+        ],
+        "tags": [
+          "Inventory History"
+        ]
+      }
     }
   },
   "components": {
     "schemas": {
-      "Attachment.Post.Api.Attachment.Bad.Request.object": {
+      "Attachment.Post.Api.Attachment.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -8624,7 +8234,7 @@
           }
         }
       },
-      "Attachment.Post.Api.Attachment.Unprocessable.Entity.object": {
+      "Attachment.Post.Api.Attachment.Unprocessable.Entity.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -8708,7 +8318,7 @@
         "additionalProperties": false,
         "description": "Model for create channel request"
       },
-      "Channels.Post.Api.V2.Channel.Bad.Request.object": {
+      "Channels.Post.Api.V2.Channel.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -8721,7 +8331,7 @@
         "type": "boolean",
         "default": false
       },
-      "Channels.Post.Api.V2.Channel.Search.Bad.Request.object": {
+      "Channels.Post.Api.V2.Channel.Search.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -8876,6 +8486,10 @@
       "FulfillmentCenterInventoryService.InventoryHistory": {
         "type": "object",
         "properties": {
+          "additional_reference": {
+            "type": "array",
+            "items": {}
+          },
           "decrement": {},
           "event_category": {
             "type": "string"
@@ -8885,7 +8499,15 @@
             "format": "date-time"
           },
           "increment": {},
+          "inventory_audit_event_id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "inventory_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "merchant_user_id": {
             "type": "integer",
             "format": "int32"
           },
@@ -8896,9 +8518,25 @@
         },
         "additionalProperties": false
       },
+      "FulfillmentCenterInventoryService.InventoryHistoryAdditionalReference": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "FulfillmentCenterInventoryService.InventoryHistoryDetails": {
         "type": "object",
         "properties": {
+          "committed_quantity_change": {
+            "type": "integer",
+            "format": "int32"
+          },
           "expiration_date": {
             "type": "string",
             "format": "date-time"
@@ -8907,13 +8545,26 @@
             "type": "integer",
             "format": "int32"
           },
+          "inventory_status": {
+            "type": "string"
+          },
+          "location_id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "lot_number": {
             "type": "string"
           },
+          "operational_stage": {},
+          "pack_description_id": {},
           "quantity_change": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "sku": {
+            "type": "string"
+          },
+          "yuki_id": {}
         },
         "additionalProperties": false
       },
@@ -8940,11 +8591,12 @@
         "additionalProperties": false
       },
       "FulfillmentCenterInventoryService.MerchantHistoryRequest": {
-        "required": [
-          "inventory_ids"
-        ],
         "type": "object",
         "properties": {
+          "cursor": {
+            "type": "integer",
+            "format": "int32"
+          },
           "end_date": {
             "type": "string",
             "format": "date-time"
@@ -8963,13 +8615,48 @@
               "format": "int32"
             }
           },
-          "page": {
+          "merchant_user_id": {
             "type": "integer",
             "format": "int32"
           },
           "start_date": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FulfillmentCenterInventoryService.Post.Inventory.History.Query.Cursor.Integer": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "FulfillmentCenterInventoryService.Ulid": {
+        "type": "object",
+        "properties": {
+          "random": {
+            "type": "string",
+            "format": "byte",
+            "readOnly": true
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FulfillmentCenterInventoryService.YukiOperationalStageEnumTypeResponse": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "readOnly": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -9715,7 +9402,7 @@
         },
         "additionalProperties": false
       },
-      "Inventory.Post.Api.Inventory.History.Report.Bad.Request.object": {
+      "Inventory.Post.Api.Inventory.History.Report.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -9903,10 +9590,7 @@
         "type": "object",
         "properties": {
           "exclusions": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
+            "type": "array"
           },
           "inventory_id": {
             "type": "integer",
@@ -9987,7 +9671,7 @@
         "additionalProperties": false,
         "description": "Measurements of a shipment"
       },
-      "Orders.Post.Api.Order.Transportation.Bad.Request.object": {
+      "Orders.Post.Api.Order.Transportation.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -10000,7 +9684,7 @@
         "type": "integer",
         "format": "int32"
       },
-      "Orders.Post.Api.Order.Transportation.Unprocessable.Entity.object": {
+      "Orders.Post.Api.Order.Transportation.Unprocessable.Entity.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -10009,7 +9693,7 @@
           }
         }
       },
-      "Orders.Put.Api.Order.OrderId.Dimensions.Bad.Request.object": {
+      "Orders.Put.Api.Order.OrderId.Dimensions.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -10026,7 +9710,7 @@
         "type": "integer",
         "format": "int32"
       },
-      "Orders.Put.Api.Order.OrderId.Dimensions.Unprocessable.Entity.object": {
+      "Orders.Put.Api.Order.OrderId.Dimensions.Unprocessable.Entity.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -10972,7 +10656,7 @@
         },
         "additionalProperties": false
       },
-      "Products.Delete.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+      "Products.Delete.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -10990,7 +10674,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Delete.Api.V4.Product.ProductId.Bad.Request.object": {
+      "Products.Delete.Api.V4.Product.ProductId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11004,7 +10688,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Delete.Api.V5.Product.ProductId.Bad.Request.object": {
+      "Products.Delete.Api.V5.Product.ProductId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11018,7 +10702,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+      "Products.Delete.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11138,138 +10822,7 @@
         },
         "additionalProperties": false
       },
-      "Products.Get.Api.V4.Product.Bad.Request.object": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "Products.Get.Api.V4.Product.Barcode.Int": {
-        "type": "object",
-        "description": "Barcode Associated with variant"
-      },
-      "Products.Get.Api.V4.Product.CategoryIds.List.Int": {
-        "type": "object",
-        "description": "List of Category Ids associated with product"
-      },
-      "Products.Get.Api.V4.Product.ChannelIds.List.Int": {
-        "type": "object",
-        "description": "Looks for Products variants by their channel IDs"
-      },
-      "Products.Get.Api.V4.Product.HasDigitalVariants.Boolean": {
-        "type": "boolean",
-        "description": "Looks for Products with/without digital variants"
-      },
-      "Products.Get.Api.V4.Product.HasVariants.Boolean": {
-        "type": "boolean",
-        "description": "Looks for Products with/without variants"
-      },
-      "Products.Get.Api.V4.Product.InventoryId.List.Int": {
-        "type": "object",
-        "description": "Looks for variants by its associated inventory id"
-      },
-      "Products.Get.Api.V4.Product.LegacyIds.List.Int": {
-        "type": "object",
-        "description": "Looks for Products with by Legacy Product Id(s)"
-      },
-      "Products.Get.Api.V4.Product.Name.String": {
-        "type": "string",
-        "description": "Looks for Products/Variants by name"
-      },
-      "Products.Get.Api.V4.Product.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Product.OnHand.Integer": {
-        "type": "integer",
-        "description": "Looks for Products with inventory"
-      },
-      "Products.Get.Api.V4.Product.PageSize.Int": {
-        "type": "integer"
-      },
-      "Products.Get.Api.V4.Product.PlatformIds.List.String": {
-        "type": "object",
-        "description": "Looks for Products variants by their external Platform IDs"
-      },
-      "Products.Get.Api.V4.Product.ProductId.Bad.Request.object": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "Products.Get.Api.V4.Product.ProductId.List.Int": {
-        "type": "object",
-        "description": "Looks for Products with an assigned Id"
-      },
-      "Products.Get.Api.V4.Product.ProductId.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Product.ProductId.ProductId.Integer": {
-        "type": "integer",
-        "format": "int64"
-      },
-      "Products.Get.Api.V4.Product.ProductType.Integer": {
-        "type": "integer",
-        "description": "Looks for Products by type"
-      },
-      "Products.Get.Api.V4.Product.ReviewsPending.List.ReviewsPendingType": {
-        "type": "object",
-        "description": "Looks for Products by ReviewsPending"
-      },
-      "Products.Get.Api.V4.Product.SKU.String": {
-        "type": "string",
-        "description": "Looks for Products that match the provided Sku query"
-      },
-      "Products.Get.Api.V4.Product.SalesChannel.List.String": {
-        "type": "object",
-        "description": "Looks for Products variants assigned to a platform/sales channel "
-      },
-      "Products.Get.Api.V4.Product.Search.String": {
-        "type": "string"
-      },
-      "Products.Get.Api.V4.Product.SellerSKU.String": {
-        "type": "string",
-        "description": "Looks for Products that match the provided Seller query"
-      },
-      "Products.Get.Api.V4.Product.SortBy.String": {
-        "type": "string"
-      },
-      "Products.Get.Api.V4.Product.SortOrder.String": {
-        "type": "string"
-      },
-      "Products.Get.Api.V4.Product.TaxonomyIds.List.Int": {
-        "type": "object",
-        "description": "Looks for Products variants by their taxonomy id or any descendants of the taxonomies sent separated by comma"
-      },
-      "Products.Get.Api.V4.Product.VariantId.List.Int": {
-        "type": "object",
-        "description": "Looks for products that contain a variant with the given ID"
-      },
-      "Products.Get.Api.V4.Product.VariantStatus.String": {
-        "type": "string",
-        "description": "Looks for Products with variants that contain provided status"
-      },
-      "Products.Get.Api.V4.Taxonomy.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Id.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Id.Id.Integer": {
-        "type": "integer",
-        "format": "int32"
-      },
-      "Products.Get.Api.V4.Taxonomy.Id.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Id.Parent.Forbidden.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Id.Parent.Id.Integer": {
-        "type": "integer",
-        "format": "int32"
-      },
-      "Products.Get.Api.V4.Taxonomy.Id.Parent.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Id.Parent.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Id.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V4.Taxonomy.Search.String": {
-        "type": "string"
-      },
-      "Products.Get.Api.V4.Taxonomy.Unauthorized.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Get.Api.V5.Product.Bad.Request.object": {
+      "Products.Get.Api.V5.Product.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11283,11 +10836,17 @@
         "description": "Barcode Associated with variant"
       },
       "Products.Get.Api.V5.Product.CategoryIds.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "List of Category Ids associated with product"
       },
       "Products.Get.Api.V5.Product.ChannelIds.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "Looks for Products variants by their channel IDs"
       },
       "Products.Get.Api.V5.Product.HasDigitalVariants.Boolean": {
@@ -11299,11 +10858,17 @@
         "description": "Looks for Products with/without variants"
       },
       "Products.Get.Api.V5.Product.InventoryId.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "Looks for variants by its associated inventory id"
       },
       "Products.Get.Api.V5.Product.LegacyIds.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "Looks for Products with by Legacy Product Id(s)"
       },
       "Products.Get.Api.V5.Product.Name.String": {
@@ -11319,10 +10884,13 @@
         "type": "integer"
       },
       "Products.Get.Api.V5.Product.PlatformIds.List.String": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
         "description": "Looks for Products variants by their external Platform IDs"
       },
-      "Products.Get.Api.V5.Product.ProductId.Bad.Request.object": {
+      "Products.Get.Api.V5.Product.ProductId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11332,7 +10900,10 @@
         }
       },
       "Products.Get.Api.V5.Product.ProductId.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "Looks for Products with an assigned Id"
       },
       "Products.Get.Api.V5.Product.ProductId.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
@@ -11340,7 +10911,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.object": {
+      "Products.Get.Api.V5.Product.ProductId.Variants.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11359,7 +10930,8 @@
         "description": "Looks for Products by type"
       },
       "Products.Get.Api.V5.Product.ReviewsPending.List.ReviewsPendingType": {
-        "type": "object",
+        "type": "array",
+        "items": {},
         "description": "Looks for Products by ReviewsPending"
       },
       "Products.Get.Api.V5.Product.SKU.String": {
@@ -11367,7 +10939,10 @@
         "description": "Looks for Products that match the provided Sku query"
       },
       "Products.Get.Api.V5.Product.SalesChannel.List.String": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
         "description": "Looks for Products variants assigned to a platform/sales channel "
       },
       "Products.Get.Api.V5.Product.Search.String": {
@@ -11384,11 +10959,17 @@
         "type": "string"
       },
       "Products.Get.Api.V5.Product.TaxonomyIds.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "Looks for Products variants by their taxonomy id or any descendants of the taxonomies sent separated by comma"
       },
       "Products.Get.Api.V5.Product.VariantId.List.Int": {
-        "type": "object",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
         "description": "Looks for products that contain a variant with the given ID"
       },
       "Products.Get.Api.V5.Product.VariantStatus.String": {
@@ -11619,7 +11200,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Post.Api.V4.Product.MoveVariants.Bad.Request.object": {
+      "Products.Post.Api.V4.Product.MoveVariants.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11629,7 +11210,7 @@
         }
       },
       "Products.Post.Api.V4.Product.MoveVariants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Post.Api.V4.Product.ProductId.MoveVariants.Bad.Request.object": {
+      "Products.Post.Api.V4.Product.ProductId.MoveVariants.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11647,7 +11228,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Post.Api.V5.Product.MoveVariants.Bad.Request.object": {
+      "Products.Post.Api.V5.Product.MoveVariants.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11657,7 +11238,7 @@
         }
       },
       "Products.Post.Api.V5.Product.MoveVariants.Not.Found.OneOf.ProblemDetails.HttpValidationProblemDetails": {},
-      "Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.object": {
+      "Products.Post.Api.V5.Product.ProductId.MoveVariants.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11865,7 +11446,7 @@
         },
         "additionalProperties": false
       },
-      "Products.Put.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+      "Products.Put.Api.V2.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -11884,7 +11465,7 @@
         "type": "integer",
         "format": "int64"
       },
-      "Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.object": {
+      "Products.Put.Api.V5.Variant.VariantId.Channel.Metadata.ChannelMetadataId.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -12374,7 +11955,7 @@
         ],
         "type": "string"
       },
-      "Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.object": {
+      "Receiving.Post.2.0.Receiving.Set.External.Sync.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -12408,7 +11989,7 @@
       "Receiving.Put.Api.Receiving.Id.Tag.Authorization.String": {
         "type": "string"
       },
-      "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.object": {
+      "Receiving.Put.Api.Receiving.Id.Tag.Bad.Request.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -12421,7 +12002,7 @@
         "type": "integer",
         "format": "int32"
       },
-      "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.object": {
+      "Receiving.Put.Api.Receiving.Id.Tag.Not.Found.Object": {
         "type": "object",
         "additionalProperties": {
           "type": "array",
@@ -12592,20 +12173,34 @@
     "securitySchemes": {
       "PAT": {
         "type": "apiKey",
+        "scheme": "bearer",
+        "bearerFormat": "opaque",
         "name": "Authorization",
         "in": "header",
-        "description": "Enter 'Bearer {your_personal_access_token}'"
+        "description": "Provide your personal access token in the format 'Bearer {your_personal_access_token}'"
       },
       "OAuth2": {
         "type": "oauth2",
         "flows": {
           "authorizationCode": {
-            "authorizationUrl": "https://auth.example.com/oauth/authorize",
-            "tokenUrl": "https://auth.example.com/oauth/token",
+            "authorizationUrl": "https://authdev.shipbob.com/connect/authorize",
+            "tokenUrl": "https://authdev.shipbob.com/connect/token",
             "scopes": {
-              "read": "Read access",
-              "write": "Write access",
-              "admin": "Admin access"
+              "channels_read": "Read channel metadata",
+              "channels_write": "Write channel metadata",
+              "inventory_read": "Access inventory read operations",
+              "inventory_write": "Access inventory write operations",
+              "orders_read": "Access orders read operations",
+              "orders_write": "Access orders write operations",
+              "products_read": "Access products read operations",
+              "products_write": "Access products write operations",
+              "receiving_read": "Access receiving read operations",
+              "receiving_write": "Access receiving write operations",
+              "returns_read": "Access returns read operations",
+              "returns_write": "Access returns write operations",
+              "webhooks_read": "Access webhooks read operations",
+              "webhooks_write": "Access webhooks write operations",
+              "locations_read": "Access locations read operations"
             }
           }
         },
