@@ -8,19 +8,19 @@ This API lets you create shipping labels and sync tracking numbers for orders pr
 
 ### Create an Account
 
-To get started, you’ll need a ShipBob account. Sign up for a sandbox account [here](https://webstage.shipbob.dev/app/merchant/#/SignUp?utm_source=app_partner). Let your ShipBob representative know once you have done this up and then they'll provide the necessary credentials.
+To get started, you’ll need a ShipBob sandbox account. Sign up [here](https://webstage.shipbob.dev/app/merchant/#/SignUp?utm_source=app_partner). After signing up, reach out to your ShipBob representative and they’ll guide you through the process and provide the necessary credentials.
 
 ## Base URLs
 
 ### Sandbox (Testing)
 
-- **UI**: 
-- **API**: 
+- **UI**: `https://logisticslabelprintingui-stage.shipbob.dev/`
+- **API**: `https://logisticslabelprintingapi-stage.shipbob.dev/`
 
 ### Production (Live)
 
-- **UI**: 
-- **API**: 
+- **UI**: `https://logisticslabelprintingui.shipbob.com/`
+- **API**: `https://logisticslabelprintingapi.shipbob.com/`
 
 ## Authentication
 
@@ -58,8 +58,8 @@ Generate a shipping label for an order. Labels default to ZPL format, but you ca
 
 ### Endpoint
 
-- **Sandbox**: `POST `
-- **Production**: `POST `
+- **Sandbox**: `POST https://logisticslabelprintingapi-stage.shipbob.dev/api/order:createLabel `
+- **Production**: `POST https://logisticslabelprintingapi.shipbob.com/api/order:createLabel `
 
 ### Headers
 
@@ -140,12 +140,12 @@ On success (HTTP 200):
 
 ## Bulk Cancel Labels
 
-If you need to refund or clean sweep shipping labels, you can use this endpoint.
+If you need to refund or cancel shipping labels, you can use this endpoint.
 
 ### Endpoint
 
-- **Sandbox**: `POST `
-- **Production**: `POST `
+- **Sandbox**: `POST https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel `
+- **Production**: `POST https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel `
 
 ### Headers
 
@@ -170,7 +170,7 @@ Sync tracking numbers back to your system using the polling-based approach.
 <Accordion title="How to integrate?" defaultOpen="false">
   <Steps>
     <Step title="Fetch Orders with Tracking">
-      - **Endpoint**: `GET `
+      - **Endpoint**: `GET https://sandbox-api.shipbob.com/1.0/order?HasTracking=true&IsTrackingUploaded=false`
       - **Optional Parameter**: Add `&limit=250` for up to 250 results.
       - **Header**:`Authorization: Bearer <Personal_Access_Token>`
       - **Response Example**:
