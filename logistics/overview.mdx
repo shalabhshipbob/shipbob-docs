@@ -161,6 +161,12 @@ If you need to refund or clean sweep shipping labels, you can use this endpoint.
 
 * **Production**: `POST `[`https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel`](https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel)
 
+### Headers
+
+| Header          | Value             | Required? | Description                       |
+| --------------- | ----------------- | --------- | --------------------------------- |
+| `Authorization` | `<SBL_authToken>` | Yes       | Your SBL authentication token     |
+
 ### Request Body
 
 Send a JSON object with order details:
