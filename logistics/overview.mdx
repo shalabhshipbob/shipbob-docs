@@ -1,6 +1,5 @@
 ---
 title: "ShipBob Logistics"
-description: ""
 ---
 
 This API lets you create shipping labels and sync tracking numbers for orders processed through ShipBob’s logistics system. It’s straightforward to integrate and works in both sandbox and production environments.
@@ -9,21 +8,19 @@ This API lets you create shipping labels and sync tracking numbers for orders pr
 
 ### Create an Account
 
-To get started, you’ll need a ShipBob account. Reach out to your ShipBob representative to set one up—they’ll guide you through the process and provide the necessary credentials.
+To get started, you’ll need a ShipBob account. Sign up for a sandbox account [here](https://webstage.shipbob.dev/app/merchant/#/SignUp?utm_source=app_partner). Let your ShipBob representative know once you have done this up and then they'll provide the necessary credentials.
 
 ## Base URLs
 
 ### Sandbox (Testing)
 
-* **UI**: [`https://logisticslabelprintingui-stage.shipbob.dev/`](https://logisticslabelprintingui-stage.shipbob.dev/)
-
-* **API**: [`https://logisticslabelprintingapi-stage.shipbob.dev/`](https://logisticslabelprintingapi-stage.shipbob.dev/)
+- **UI**: 
+- **API**: 
 
 ### Production (Live)
 
-* **UI**: [`https://logisticslabelprintingui.shipbob.com/`](https://logisticslabelprintingui.shipbob.com/)
-
-* **API**: [`https://logisticslabelprintingapi.shipbob.com/`](https://logisticslabelprintingapi.shipbob.com/)
+- **UI**: 
+- **API**: 
 
 ## Authentication
 
@@ -61,9 +58,8 @@ Generate a shipping label for an order. Labels default to ZPL format, but you ca
 
 ### Endpoint
 
-* **Sandbox**: `POST `[`https://logisticslabelprintingapi-stage.shipbob.dev/api/order:createLabel`](https://logisticslabelprintingapi-stage.shipbob.dev/api/order:createLabel)
-
-* **Production**: `POST `[`https://logisticslabelprintingapi.shipbob.com/api/order:createLabel`](https://logisticslabelprintingapi.shipbob.com/api/order:createLabel)
+- **Sandbox**: `POST `
+- **Production**: `POST `
 
 ### Headers
 
@@ -113,19 +109,13 @@ Send a JSON object with order details:
 
 #### Key Fields
 
-* `shipping_method`: The shipping option (e.g., "Standard").
-
-* `recipient`: Details about the recipient.
-
-* `location_id`: ShipBob location ID (integer).
-
-  * **Note**: In sandbox, always use `location_id: 8` for testing. In production, contact your ShipBob rep to get your specific `location_id`.
-
-* `reference_id`: Your unique order identifier.
-
-* `measurements`: Package dimensions and weight.
-
-* `meta`: Extra info for your records.
+- `shipping_method`: The shipping option (e.g., "Standard").
+- `recipient`: Details about the recipient.
+- `location_id`: ShipBob location ID (integer).
+  - **Note**: In sandbox, always use `location_id: 8` for testing. In production, contact your ShipBob rep to get your specific `location_id`.
+- `reference_id`: Your unique order identifier.
+- `measurements`: Package dimensions and weight.
+- `meta`: Extra info for your records.
 
 ### Response
 
@@ -140,16 +130,13 @@ On success (HTTP 200):
 }
 ```
 
-* `label`: ZPL string or PDF data (based on `Label-Type`).
+- `label`: ZPL string or PDF data (based on `Label-Type`).
 
 #### Error Responses
 
-* `400`: Bad request (check your JSON).
-
-* `401`: Invalid or missing `SBL_authToken`.
-
-* `500`: Server issue—try again later.
-
+- `400`: Bad request (check your JSON).
+- `401`: Invalid or missing `SBL_authToken`.
+- `500`: Server issue—try again later.
 
 ## Bulk Cancel Labels
 
@@ -157,15 +144,14 @@ If you need to refund or clean sweep shipping labels, you can use this endpoint.
 
 ### Endpoint
 
-* **Sandbox**: `POST `[`https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel`](https://logisticslabelprintingapi-stage.shipbob.dev/api/order:bulkcancel)
-
-* **Production**: `POST `[`https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel`](https://logisticslabelprintingapi.shipbob.com/api/order:bulkcancel)
+- **Sandbox**: `POST `
+- **Production**: `POST `
 
 ### Headers
 
-| Header          | Value             | Required? | Description                       |
-| --------------- | ----------------- | --------- | --------------------------------- |
-| `Authorization` | `<SBL_authToken>` | Yes       | Your SBL authentication token     |
+| Header          | Value             | Required? | Description                   |
+| --------------- | ----------------- | --------- | ----------------------------- |
+| `Authorization` | `<SBL_authToken>` | Yes       | Your SBL authentication token |
 
 ### Request Body
 
@@ -181,16 +167,13 @@ Send a JSON object with order details:
 
 Sync tracking numbers back to your system using the polling-based approach.
 
-<Accordion title="How to integrate?" defaultOpen={false}>
+<Accordion title="How to integrate?" defaultOpen="false">
   <Steps>
     <Step title="Fetch Orders with Tracking">
-      * **Endpoint**: `GET `[`https://sandbox-api.shipbob.com/1.0/order?HasTracking=true&IsTrackingUploaded=false`](https://sandbox-api.shipbob.com/1.0/order?HasTracking=true\&IsTrackingUploaded=false)
-
-      * **Optional Parameter**: Add `&limit=250` for up to 250 results.
-
-      * **Header**:`Authorization: Bearer <Personal_Access_Token>`
-
-      * **Response Example**:
+      - **Endpoint**: `GET `
+      - **Optional Parameter**: Add `&limit=250` for up to 250 results.
+      - **Header**:`Authorization: Bearer <Personal_Access_Token>`
+      - **Response Example**:
 
       ```json
         [
@@ -207,23 +190,18 @@ Sync tracking numbers back to your system using the polling-based approach.
         ]
       ```
 
-      ####
+      #### 
     </Step>
-
     <Step title="Iterate through each order">
-      * Each order has 1 shipment with ShipBob Logistics
+      - Each order has 1 shipment with ShipBob Logistics
     </Step>
-
     <Step title="Sync Tracking">
-      * Extract the `tracking_number` from the shipments array and update your system.
+      - Extract the `tracking_number` from the shipments array and update your system.
     </Step>
-
     <Step title="Mark as Uploaded">
-      * **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
-
-      * **Header**:`jsonAuthorization: <Personal_Access_Token>`
-
-      * **Body**:
+      - **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
+      - **Header**:`jsonAuthorization: <Personal_Access_Token>`
+      - **Body**:
 
       ```json
         {
@@ -231,25 +209,20 @@ Sync tracking numbers back to your system using the polling-based approach.
         }
       ```
 
-      * Replace `{shipmentId}` with the shipment ID (e.g., `12345678`).
+      - Replace `{shipmentId}` with the shipment ID (e.g., `12345678`).
     </Step>
-
     <Step title="Repeat">
-      * Poll every 30 minutes to stay updated.
+      - Poll every 30 minutes to stay updated.
     </Step>
   </Steps>
 </Accordion>
 
 ## Tips for Success
 
-* Test in the sandbox first (use `location_id: 8` for label creation).
-
-* Generate your Personal Access Token in the ShipBob dashboard for `sandbox-api` or `api.shipbob.com` calls.
-
-* Contact your ShipBob rep for your production `location_id` or if you hit a 401 error with your `SBL_authToken`.
-
-* Poll every 30 minutes to avoid missing tracking updates.
-
+- Test in the sandbox first (use `location_id: 8` for label creation).
+- Generate your Personal Access Token in the ShipBob dashboard for `sandbox-api` or `api.shipbob.com` calls.
+- Contact your ShipBob rep for your production `location_id` or if you hit a 401 error with your `SBL_authToken`.
+- Poll every 30 minutes to avoid missing tracking updates.
 
 ## Diagram
 
