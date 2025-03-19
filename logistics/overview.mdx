@@ -140,7 +140,7 @@ On success (HTTP 200):
 
 ## Bulk Cancel Labels
 
-If you need to refund or cancel shipping labels, you can use this endpoint.
+You can use this endpoint to refund or cancel shipping labels. Additionally, it allows you to cancel and resubmit one or more orders using the same reference_id. Once an order is canceled through this endpoint, it can be resubmitted as needed. However, please note that canceled orders will no longer be accessible in the UI or via the API. 
 
 ### Endpoint
 
@@ -149,9 +149,10 @@ If you need to refund or cancel shipping labels, you can use this endpoint.
 
 ### Headers
 
-| Header          | Value             | Required? | Description                   |
-| --------------- | ----------------- | --------- | ----------------------------- |
-| `Authorization` | `<SBL_authToken>` | Yes       | Your SBL authentication token |
+| Header          | Value              | Required? | Description                   |
+| --------------- | ------------------ | --------- | ----------------------------- |
+| `Authorization` | `<SBL_authToken>`  | Yes       | Your SBL authentication token |
+| `Content-Type`  | `application/json` | No        | Accepted content type         |
 
 ### Request Body
 
@@ -159,7 +160,7 @@ Send a JSON object with order details:
 
 ```json
 {
-  "reference_ids": ["ABCDEF","GHIJKL"]
+  "reference_ids": ["ORDER-1","ORDER-2"]
 }
 ```
 
