@@ -11,6 +11,19 @@ An order a digital record of a complete purchase that comes from an upstream sou
 
 When ShipBob fulfills the order, one or more shipments are created for that order. A shipment is a record of the physical package(s) sent out via a carrier. If an order is shipped in multiple packages then 2 or more shipments can be created for that order.
 
+<div style="display:flex; flex-direction: row; gap: 1rem;">
+
+<div style="width: 60%;">
+
+  # Fields
+
+  <ParamField path="id" type="integer">
+    Id of the Order
+  </ParamField>
+</div>
+
+<div style="width: 40%;">
+
 # Resource
 
 ```
@@ -221,9 +234,5 @@ When ShipBob fulfills the order, one or more shipments are created for that orde
   }
 }
 ```
-
-# Resource
-
-<ParamField path="id" type="integer">
-  Id of the Order
-</ParamField>
+</div>
+</div>
