@@ -60,6 +60,7 @@
                   {
                     "group": "Orders",
                     "pages": [
+                      "api-reference/orders/orders-resource",
                       "api-reference/orders/estimate-fulfillment-cost-for-order",
                       "api-reference/orders/get-order",
                       "api-reference/orders/get-orders",
