@@ -211,7 +211,7 @@
           },
           {
             "version": "Beta",
-            "openapi": "openapi.json"
+            "openapi": "https://marketplaceapi-dev.shipbob.dev/docs/ShipBob-Experimental-Original.json"
           }
         ]
       },
