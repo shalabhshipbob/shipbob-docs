@@ -1,0 +1,97 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "ShipBob",
+  "colors": {
+    "primary": "#175cff",
+    "light": "#457CFE",
+    "dark": "#175cff"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "dropdowns": [
+      {
+        "dropdown": "Getting Started",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "concepts",
+              "auth",
+              "status-reference",
+              "rate-limit",
+              "webhooks"
+            ]
+          },
+          {
+            "group": "Use Cases",
+            "pages": [
+              "guides/overview",
+              "guides/orders",
+              "guides/products",
+              "guides/tracking",
+              "guides/inventory",
+              "guides/receiving",
+              "guides/returns"
+            ]
+          }
+        ]
+      },
+      {
+        "dropdown": "API Reference",
+        "icon": "brackets-curly",
+        "versions": [
+          {
+            "version": "1.0",
+            "default": true,
+            "openapi": "https://marketplaceapi.shipbob.com/docs/1-0.json"
+          },
+          {
+            "version": "2.0",
+            "default": true,
+            "openapi": "https://marketplaceapi.shipbob.com/docs/1-0.json"
+          },
+          {
+            "version": "Experimental",
+            "default": true,
+            "openapi": "https://marketplaceapi.shipbob.com/docs/1-0.json"
+          }
+        ]
+      },
+      {
+        "dropdown": "Changelog",
+        "icon": "list-timeline",
+        "description": "Updates and changes",
+        "pages": [
+          "release-notes"
+        ]
+      }
+    ]
+  },
+  "styling": {
+    "codeblocks": "dark"
+  },
+  "logo": {
+    "light": "/logo/logo-sb.svg",
+    "dark": "/logo/dark.png"
+  },
+  "background": {
+    "decoration": "windows"
+  },
+  "footer": {
+    "socials": {
+      "linkedin": "https://www.linkedin.com/company/shipbob-inc-/",
+      "facebook": "https://www.facebook.com/LoveShipBob/",
+      "twitter": "https://twitter.com/shipbob"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/logistics",
+      "destination": "/logistics/overview"
+    }
+  ]
+}
