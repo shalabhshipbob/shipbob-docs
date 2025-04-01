@@ -24,7 +24,7 @@
       },
       {
         "dropdown": "API Reference",
-        "icon": "sqaure-terminal",
+        "icon": "brackets-curly",
         "versions": [
           {
             "version": "1.0",
