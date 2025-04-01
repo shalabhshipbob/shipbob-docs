@@ -51,13 +51,13 @@
           },
           {
             "version": "2.0",
-            "default": true,
-            "openapi": "https://marketplaceapi.shipbob.com/docs/1-0.json"
+            "default": false,
+            "openapi": "https://marketplaceapi.shipbob.com/docs/2-0.json"
           },
           {
             "version": "Experimental",
-            "default": true,
-            "openapi": "https://marketplaceapi.shipbob.com/docs/1-0.json"
+            "default": false,
+            "openapi": "https://marketplaceapi.shipbob.com/docs/ShipBob-Experimental-Original.json"
           }
         ]
       },
