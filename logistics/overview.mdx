@@ -200,8 +200,8 @@ Sync tracking numbers back to your system using the polling-based approach.
       - Extract the `tracking_number` from the shipments array and update your system.
     </Step>
     <Step title="Mark as Uploaded">
-      - **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/{shipmentId}`
-      - **Header**:`jsonAuthorization: <Personal_Access_Token>`
+      - **Endpoint**: `PUT https://sandbox-api.shipbob.com/1.0/shipment/{shipmentId}`
+      - **Header**:`Authorization: <Personal_Access_Token>`
       - **Body**:
 
       ```json
