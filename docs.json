@@ -45,19 +45,19 @@
         "icon": "brackets-curly",
         "versions": [
           {
-            "version": "1.0",
+            "version": "v1",
             "default": true,
             "openapi": {
               "source": "https://marketplaceapi.shipbob.com/docs/1-0.json",
-              "directory": "api-reference/1"
+              "directory": "api-reference/v1"
             }
           },
           {
-            "version": "2.0",
+            "version": "v2",
             "default": false,
             "openapi": {
-              "source": "https://marketplaceapi.shipbob.com/docs/2-0.json",
-              "directory": "api-reference/2"
+              "source": "openapi-experimental.json",
+              "directory": "api-reference/v2"
             }
           },
           {
