@@ -47,17 +47,26 @@
           {
             "version": "1.0",
             "default": true,
-            "openapi": "https://marketplaceapi.shipbob.com/docs/1-0.json"
+            "openapi": {
+              "source": "https://marketplaceapi.shipbob.com/docs/1-0.json",
+              "directory": "api-reference/1"
+            }
           },
           {
             "version": "2.0",
             "default": false,
-            "openapi": "https://marketplaceapi.shipbob.com/docs/2-0.json"
+            "openapi": {
+              "source": "https://marketplaceapi.shipbob.com/docs/2-0.json",
+              "directory": "api-reference/2"
+            }
           },
           {
             "version": "Experimental",
             "default": false,
-            "openapi": "https://marketplaceapi.shipbob.com/docs/ShipBob-Experimental-Original.json"
+            "openapi": {
+              "source": "https://marketplaceapi.shipbob.com/docs/ShipBob-Experimental-Original.json",
+              "directory": "api-reference/experimental"
+            }
           }
         ]
       },
