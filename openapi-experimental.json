@@ -7,6 +7,9 @@
   "servers": [
     {
       "url": "https://api.shipbob.com/2.0/"
+    },
+    {
+      "url": "https://sandbox-api.shipbob.com/2.0/"
     }
   ],
   "paths": {
