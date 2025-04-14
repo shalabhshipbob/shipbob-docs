@@ -11,7 +11,7 @@ ShipBob’s Order POST endpoint has several required fields that you need to be 
 - **Recipient address** – specifically the Address1, City, and Country (ISO Alpha-2 code is highly recommended). If available, please also pass the City and Zip Code.
 - **Reference id** – This is a unique order number from the upstream platform being integrated with ShipBob. This number must be unique within ShipBob account.
   You can also pass an optional order_number field. This does not need to be unique, and is a more user-friendly order number that a customer service agent might be more familiar with.
-- Products – There are two methods for providing product data with your order payload to ShipBob:
+- **Products** – There are two methods for providing product data with your order payload to ShipBob:
   - ReferenceId Model (highly recommended) – This model allows you to pass a product’s reference_id (typically the SKU value), as well as the product name. When an order is created, ShipBob will check if the product already exists based on a matching reference_id, and will automatically create a new product if one does not already exist.
     This model is recommended as you do not need to store any external ShipBob product id values to create an order successfully. It also has the ability to auto-create products if they do not exist based on the duplicate match of a reference_id value.
   - ProductId Model – This model requires that you pass ShipBob’s ProductId as part of the order payload to create the order. This will mean that you first must create a product using ShipBob’s Product API and have a method to either store or reference the ShipBob-generated ProductId to use as part of your order creation process.
@@ -40,12 +40,12 @@ To trigger a rule created within ShipBob, the order tag **name** must match th
 
 Where the tag “name” value of “AddMarketingInsert” is what will be used to trigger a rule created in ShipBob.
 
-Lastly, you will need to also specific a  within the request header to successfully create an order. To find which channel you have write access to, you can call the [GET Channel](https://developer.shipbob.com/api-docs#tag/Channels/paths/~11.0~1channel/get) endpoint to view a list of permissions you have access to under each channel. You will only have write access for one channel (your own integration channel), but you typically will have the ability to read data across other channels.
+Lastly, you will need to also specify a `shipbob_channel_id` within the request header to successfully create an order. To find which channel you have write access to, you can call the [GET Channel](https://developer.shipbob.com/api-docs#tag/Channels/paths/~11.0~1channel/get) endpoint to view a list of permissions you have access to under each channel. You will only have write access for one channel (your own integration channel), but you typically will have the ability to read data across other channels.
 
 ### Sample requests
 
 <AccordionGroup>
-  <Accordion title="Create Order" defaultOpen="false">
+  <Accordion title="Create Order">
     `POST https://api.shipbob.com/1.0/order`
 
     ```javascript
