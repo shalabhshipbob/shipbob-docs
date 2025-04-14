@@ -97,7 +97,14 @@ Send a JSON object with order details:
       "length_in": 2,
       "width_in": 4,
       "depth_in": 6
-    }
+    },
+    "products": [ // optional
+      {
+        "name": "Light Roast Coffee",
+        "sku": "LIGHT-ROAST",
+        "quantity": 1
+      }
+    ]
   },
   "meta": {
     "order_number": "101",
@@ -115,6 +122,7 @@ Send a JSON object with order details:
   - **Note**: In sandbox, always use `location_id: 8` for testing. In production, contact your ShipBob rep to get your specific `location_id`.
 - `reference_id`: Your unique order identifier.
 - `measurements`: Package dimensions and weight.
+- `products` (optional): pass products so you can also print pick list and use our batching functionality.
 - `meta`: Extra info for your records.
 
 ### Response
