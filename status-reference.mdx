@@ -1,6 +1,5 @@
 ---
-title: 'Status Reference'
-description: ''
+title: "Status Reference"
 ---
 
 A common use case of ShipBob's API includes filtering orders, shipments, returns, or WROs by status. Here you will find the valid statuses by resource.
@@ -9,77 +8,73 @@ A common use case of ShipBob's API includes filtering orders, shipments, returns
 
 Shipment statuses reflect what is happening in the physical world with the package. There is an additional "status detail" section with more detailed information that is also available in our ShipBob Merchant Application.
 
-* **Exception**: the shipment cannot be fulfilled due to an out of stock or inactive product.
-
-* **On Hold**: the shipment is not ready for fulfillment, even if there is stock available. Common reasons are: merchant manually placed on hold, missing tarriff codes on international orders, or bad credit card information.
-
-* **Processing**: the shipment is in the process of fulfillment.
-
-* **Completed**: the shipment has been fulfilled, i.e. it has left ShipBob. This does not mean it has been delivered by the carrier.
-
-* **Cancelled**: the shipment has been cancelled and will not be fulfilled.
+- **`Exception`**: the shipment cannot be fulfilled due to an out of stock or inactive product.
+- **`On Hold`**: the shipment is not ready for fulfillment, even if there is stock available. Common reasons are: merchant manually placed on hold, missing tarriff codes on international orders, or bad credit card information.
+- **`Processing`**: the shipment is in the process of fulfillment.
+- **`Completed`**: the shipment has been fulfilled, i.e. it has left ShipBob. This does not mean it has been delivered by the carrier.
+- **`Cancelled`**: the shipment has been cancelled and will not be fulfilled.
 
 The most important statuses and status details are listed here:
 
-| Shipment Status | Status Detail Name             | Status Detail Description                          | Status Detail ID |
-| --------------- | ------------------------------ | :------------------------------------------------- | :--------------- |
-| Processing      | Picked                         | Picking Completed                                  | 100              |
-| Processing      | Packed                         | Packing Completed                                  | 101              |
-| Processing      | Labeled                        | Label Generated                                    | 102              |
-| Completed       | Processing                     | Waiting For Carrier Pickup                         | 200              |
-| Completed       | InTransit                      | Shipment In Transit                                | 201              |
-| Completed       | OutForDelivery                 | Shipment Out For Delivery                          | 202              |
-| Completed       | Delivered                      | Shipment Delivered                                 | 203              |
-| Completed       | DeliveryException              | OrderTracking contains CatchAll date               | 204              |
-| Exception       | Bundle                         | Shipment Contains Bundle Item                      | 300              |
-| Exception       | MergedItem                     | Shipment Contains Merge Child                      | 301              |
-| Exception       | InactiveSku                    | Shipment Contains an inactive sku                  | 302              |
-| Exception       | OutOfStock                     | No Stock On Hand For Sku                           | 303              |
-| Exception       | UnknownSku                     | No Sku History (if there are no reasons)           | 304              |
-| Exception       | InternalTransferInProgress     | Stock Being Transferred Between FCs                | 305              |
-| Exception       | BinTransferInProgress          | Stock Being Transferred Between Bins               | 306              |
-| Exception       | InventoryInNonPickableLocation | Stock In Non-pickable Location                     | 307              |
-| Exception       | InventoryPartiallyCommitted    | Shipment is partially allocated                    | 308              |
-| On Hold         | PaymentDeclined                | Payment Failure                                    | 400              |
-| On Hold         | InvalidAddress                 | Invalid Address                                    | 401              |
-| On Hold         | ReserveDateNotMet              | Wait For Pick Date                                 | 402              |
-| On Hold         | MissingTarriffInformation      | Missing Customs Info                               | 404              |
-| On Hold         | Manual                         | Manual                                             | 405              |
-| On Hold         | InternationalHazmat            | Hazmat Inventory cannot be shipped internationally | 406              |
-| On Hold         | PackagePreferenceNotSet        | No Package Preference Set For Inventory            | 407              |
-| On Hold         | AutoProcessingPause            | Automatic Processing Pause                         | 408              |
+| Shipment Status | Status Detail Name               | Status Detail Description                          | Status Detail ID |
+| :-------------- | :------------------------------- | -------------------------------------------------- | ---------------- |
+| `Processing`    | `Picked`                         | Picking Completed                                  | 100              |
+| `Processing`    | `Packed`                         | Packing Completed                                  | 101              |
+| `Processing`    | `Labeled`                        | Label Generated                                    | 102              |
+| `Completed`     | `Processing`                     | Waiting For Carrier Pickup                         | 200              |
+| `Completed`     | `InTransit`                      | Shipment In Transit                                | 201              |
+| `Completed`     | `OutForDelivery`                 | Shipment Out For Delivery                          | 202              |
+| `Completed`     | `Delivered`                      | Shipment Delivered                                 | 203              |
+| `Completed`     | `DeliveryException`              | OrderTracking contains CatchAll date               | 204              |
+| `Exception`     | `Bundle`                         | Shipment Contains Bundle Item                      | 300              |
+| `Exception`     | `MergedItem`                     | Shipment Contains Merge Child                      | 301              |
+| `Exception`     | `InactiveSku`                    | Shipment Contains an inactive sku                  | 302              |
+| `Exception`     | `OutOfStock`                     | No Stock On Hand For Sku                           | 303              |
+| `Exception`     | `UnknownSku`                     | No Sku History (if there are no reasons)           | 304              |
+| `Exception`     | `InternalTransferInProgress`     | Stock Being Transferred Between FCs                | 305              |
+| `Exception`     | `BinTransferInProgress`          | Stock Being Transferred Between Bins               | 306              |
+| `Exception`     | `InventoryInNonPickableLocation` | Stock In Non-pickable Location                     | 307              |
+| `Exception`     | `InventoryPartiallyCommitted`    | Shipment is partially allocated                    | 308              |
+| `On Hold`       | `PaymentDeclined`                | Payment Failure                                    | 400              |
+| `On Hold`       | `InvalidAddress`                 | Invalid Address                                    | 401              |
+| `On Hold`       | `ReserveDateNotMet`              | Wait For Pick Date                                 | 402              |
+| `On Hold`       | `MissingTarriffInformation`      | Missing Customs Info                               | 404              |
+| `On Hold`       | `Manual`                         | Manual                                             | 405              |
+| `On Hold`       | `InternationalHazmat`            | Hazmat Inventory cannot be shipped internationally | 406              |
+| `On Hold`       | `PackagePreferenceNotSet`        | No Package Preference Set For Inventory            | 407              |
+| `On Hold`       | `AutoProcessingPause`            | Automatic Processing Pause                         | 408              |
 
 ## Order Statuses
 
 Orders can have 1 or many shipments (if the contents will not fit in 1 box, for example). Order statuses are imputed from the statuses of the underlying shipments.
 
-| Shipment 1 Status | Shipment n Status | Order Status        |
-| ----------------- | ----------------- | ------------------- |
-| Processing        |                   | Processing          |
-| Exception         |                   | Exception           |
-| On Hold           |                   | On Hold             |
-| Completed         |                   | Completed           |
-| Cancelled         |                   | Cancelled           |
-| Processing        | Processing        | Processing          |
-| Processing        | Exception         | Processing          |
-| Processing        | On Hold           | Processing          |
-| Processing        | Cancelled         | Processing          |
-| Processing        | Completed         | Partially Fulfilled |
-| Exception         | Exception         | Exception           |
-| Exception         | On Hold           | Exception           |
-| Exception         | Completed         | Partially Fulfilled |
-| Exception         | Cancelled         | Exception           |
-| On Hold           | On Hold           | Exception           |
-| On Hold           | Completed         | Partially Fulfilled |
-| On Hold           | Cancelled         | Exception           |
-| Completed         | Completed         | Fulfilled           |
-| Completed         | Cancelled         | Partially Fulfilled |
-| Cancelled         | Cancelled         | Cancelled           |
+| Shipment 1 Status | Shipment n Status | Order Status          |
+| :---------------- | :---------------- | :-------------------- |
+| `Processing`      |                   | `Processing`          |
+| `Exception`       |                   | `Exception`           |
+| `On Hold`         |                   | `On Hold`             |
+| `Completed`       |                   | `Completed`           |
+| `Cancelled`       |                   | `Cancelled`           |
+| `Processing`      | `Processing`      | `Processing`          |
+| `Processing`      | `Exception`       | `Processing`          |
+| `Processing`      | `On Hold`         | `Processing`          |
+| `Processing`      | `Cancelled`       | `Processing`          |
+| `Processing`      | `Completed`       | `Partially Fulfilled` |
+| `Exception`       | `Exception`       | `Exception`           |
+| `Exception`       | `On Hold`         | `Exception`           |
+| `Exception`       | `Completed`       | `Partially Fulfilled` |
+| `Exception`       | `Cancelled`       | `Exception`           |
+| `On Hold`         | `On Hold`         | `Exception`           |
+| `On Hold`         | `Completed`       | `Partially Fulfilled` |
+| `On Hold`         | `Cancelled`       | `Exception`           |
+| `Completed`       | `Completed`       | `Fulfilled`           |
+| `Completed`       | `Cancelled`       | `Partially Fulfilled` |
+| `Cancelled`       | `Cancelled`       | `Cancelled`           |
 
 ## Warehouse Receiving Order Statuses
 
 | Status                  | Description                                                |
-| ----------------------- | ---------------------------------------------------------- |
+| ----------------------- | :--------------------------------------------------------- |
 | `Awaiting`              | WRO has been created and awaiting arrival to the warehouse |
 | `Processing`            |                                                            |
 | `Arrived`               |                                                            |
@@ -94,7 +89,7 @@ Orders can have 1 or many shipments (if the contents will not fit in 1 box, for 
 ## Return Statuses
 
 | Status            | Description                                                   |
-| ----------------- | ------------------------------------------------------------- |
+| :---------------- | :------------------------------------------------------------ |
 | `AwaitingArrival` | Return has been created and awaiting arrival to the warehouse |
 | `Arrived`         | Return has arrived at the warehouse                           |
 | `Processing`      | Return is processing at the warehouse                         |
