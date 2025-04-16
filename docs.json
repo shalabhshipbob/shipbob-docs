@@ -64,7 +64,7 @@
             "version": "Experimental",
             "default": false,
             "openapi": {
-              "source": "https://marketplaceapi.shipbob.com/docs/ShipBob-Experimental-Original.json",
+              "source": "https://marketplaceapi-dev.shipbob.dev/docs/ShipBob-Experimental-Original.json",
               "directory": "api-reference/experimental"
             }
           }
